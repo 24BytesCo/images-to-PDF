@@ -12,12 +12,15 @@ const convertBtn = document.getElementById('convertBtn');
 const loader = document.getElementById('loader');
 const toolbar = document.getElementById('toolbar');
 const sortSelect = document.getElementById('sortOrder');
+const visitCounter = document.getElementById('visitCounter');
 
 // Marca de agua fija
 const WATERMARK_DATA_URL = 'imgs/24bytes-azul.png';
 const WATERMARK_LINK = 'https://24bytes.pro/';
 const WATERMARK_OPACITY = 0.1;
 let watermarkPromise = null;
+
+const VISIT_COUNTER_URL = 'https://api.countapi.xyz/hit/imgtopdf.app/global';
 
 const loadWatermark = () => {
   if (watermarkPromise) return watermarkPromise;
@@ -269,3 +272,20 @@ const convertToPDF = async () => {
 };
 
 convertBtn.addEventListener('click', convertToPDF);
+
+// Contador simple de visitas usando CountAPI (sin cookies ni datos personales)
+const updateVisitCounter = async () => {
+  if (!visitCounter) return;
+  try {
+    const response = await fetch(VISIT_COUNTER_URL);
+    if (!response.ok) throw new Error('Respuesta no válida');
+    const data = await response.json();
+    const total = Number(data.value) || 0;
+    visitCounter.textContent = `Visitas: ${total.toLocaleString('es-ES')}`;
+  } catch (error) {
+    visitCounter.textContent = 'Visitas: N/D';
+    console.error('No se pudo actualizar el contador de visitas', error);
+  }
+};
+
+updateVisitCounter();

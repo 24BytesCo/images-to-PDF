@@ -305,6 +305,14 @@ h1 {
   box-shadow: 0 16px 36px rgba(14, 165, 233, 0.55);
 }
 
+.visit-counter {
+  margin-top: 22px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
 .thumb-name {
   position: absolute;
   left: 0;
