@@ -20,7 +20,8 @@ const WATERMARK_LINK = 'https://24bytes.pro/';
 const WATERMARK_OPACITY = 0.1;
 let watermarkPromise = null;
 
-const VISIT_COUNTER_URL = 'https://api.countapi.xyz/hit/imgtopdf.app/global';
+// Contador público vía CounterAPI (CountAPI dejó de resolver DNS)
+const VISIT_COUNTER_URL = 'https://api.counterapi.dev/v1/imgtopdf.app/global/up';
 
 const loadWatermark = () => {
   if (watermarkPromise) return watermarkPromise;
@@ -280,7 +281,7 @@ const updateVisitCounter = async () => {
     const response = await fetch(VISIT_COUNTER_URL);
     if (!response.ok) throw new Error('Respuesta no válida');
     const data = await response.json();
-    const total = Number(data.value) || 0;
+    const total = Number(data.value ?? data.count) || 0;
     visitCounter.textContent = `Visitas: ${total.toLocaleString('es-ES')}`;
   } catch (error) {
     visitCounter.textContent = 'Visitas: N/D';
