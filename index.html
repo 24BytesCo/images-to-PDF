@@ -71,6 +71,35 @@
 
     <div class="visit-counter" id="visitCounter" aria-live="polite">Visitas: cargando...</div>
     <div class="visit-counter" id="pdfCounter" aria-live="polite">PDFs creados: cargando...</div>
+    <section class="feedback-panel" aria-label="Formulario de contacto">
+      <div class="feedback-header">
+        <div>
+          <div class="feedback-kicker">¿Tienes feedback?</div>
+          <h2 class="feedback-title">Cuéntame cómo mejorar</h2>
+          <p class="feedback-sub">Déjame tu nombre, un correo o número y una nota rápida. Llega directo a mi buzón.</p>
+        </div>
+        <div class="feedback-pill">1 min</div>
+      </div>
+      <form id="feedbackForm" class="feedback-form" data-endpoint="https://formsubmit.co/ajax/alexis.dorado@24bytes.pro">
+        <label class="input-field">
+          <span>Nombre</span>
+          <input id="feedbackName" name="name" type="text" placeholder="Tu nombre" required>
+        </label>
+        <label class="input-field">
+          <span>Correo o número</span>
+          <input id="feedbackContact" name="contact" type="text" placeholder="tu@email.com o +52..." required>
+        </label>
+        <label class="input-field">
+          <span>Mensaje</span>
+          <textarea id="feedbackMessage" name="message" rows="3" placeholder="Escribe tu feedback o duda" required></textarea>
+        </label>
+        <div class="feedback-actions">
+          <p class="form-hint">No guardo tus datos, solo los uso para responderte.</p>
+          <button type="submit" class="feedback-submit" id="feedbackSubmit">Enviar</button>
+        </div>
+        <div class="feedback-status" id="feedbackStatus" role="status" aria-live="polite"></div>
+      </form>
+    </section>
 
     <footer>
       <span class="footer-text">Powered by</span>

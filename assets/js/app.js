@@ -16,6 +16,12 @@ const visitCounter = document.getElementById('visitCounter');
 const pdfCounter = document.getElementById('pdfCounter');
 const brandCounter = document.getElementById('brandCounter');
 const brandBadge = document.querySelector('.brand-badge');
+const feedbackForm = document.getElementById('feedbackForm');
+const feedbackStatus = document.getElementById('feedbackStatus');
+const feedbackName = document.getElementById('feedbackName');
+const feedbackContact = document.getElementById('feedbackContact');
+const feedbackMessage = document.getElementById('feedbackMessage');
+const feedbackSubmit = document.getElementById('feedbackSubmit');
 
 // Marca de agua fija
 const WATERMARK_DATA_URL = 'imgs/24bytes-azul.png';
@@ -27,7 +33,12 @@ let watermarkPromise = null;
 const VISIT_COUNTER_URL = 'https://api.counterapi.dev/v1/imgtopdf.app/global/up';
 const PDF_COUNTER_URL = 'https://api.counterapi.dev/v1/imgtopdf.app/pdf-created';
 const BRAND_COUNTER_URL = 'https://api.counterapi.dev/v1/imgtopdf.app/brand-clicks';
+const FEEDBACK_ENDPOINT = 'https://formsubmit.co/ajax/alexis.dorado@24bytes.pro';
 
+/**
+ * Carga la marca de agua como dataURL y cachea la promesa.
+ * @returns {Promise<{dataUrl: string, width: number, height: number}>}
+ */
 const loadWatermark = () => {
   if (watermarkPromise) return watermarkPromise;
   watermarkPromise = new Promise((resolve) => {
@@ -37,22 +48,34 @@ const loadWatermark = () => {
       canvas.width = img.width;
       canvas.height = img.height;
       const ctx = canvas.getContext('2d');
+      // Pasamos la imagen a dataURL para usarla en jsPDF
       ctx.drawImage(img, 0, 0);
       const pngDataUrl = canvas.toDataURL('image/png');
       resolve({ dataUrl: pngDataUrl, width: img.width, height: img.height });
     };
+    // Dispara la carga
     img.src = WATERMARK_DATA_URL;
   });
   return watermarkPromise;
 };
 
 // Utilidad: valida y obtiene lista de archivos de imagen
+/**
+ * Filtra solo archivos de imagen permitidos.
+ * @param {FileList|File[]} files
+ * @returns {File[]}
+ */
 const getValidImages = (files) => {
   const acceptedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+  // Filtra solo los MIME permitidos
   return Array.from(files).filter(file => acceptedTypes.includes(file.type));
 };
 
+/**
+ * Ordena las imagenes segun el modo actual.
+ */
 const sortImages = () => {
+  // Evita reordenar si el usuario arrastró manualmente
   if (state.sort === 'manual') return;
   const direction = state.sort === 'desc' ? -1 : 1;
   state.images.sort((a, b) => {
@@ -64,25 +87,40 @@ const sortImages = () => {
   });
 };
 
+/**
+ * Limpia la seleccion de imagenes y la UI.
+ */
 const resetSelection = () => {
+  // Limpia estado y UI
   state.images = [];
   renderPreview();
   fileInput.value = '';
 };
 
+/**
+ * Muestra el loader mientras se genera el PDF.
+ */
 const showLoader = () => {
+  // Deshabilita acciones mientras se procesa
   loader.style.display = 'flex';
   convertBtn.disabled = true;
   convertBtn.textContent = 'Convirtiendo...';
 };
 
+/**
+ * Oculta el loader y re habilita el boton.
+ */
 const hideLoader = () => {
+  // Restablece controles
   loader.style.display = 'none';
   convertBtn.disabled = false;
   convertBtn.textContent = 'Convertir a PDF';
 };
 
-// Maneja la carga de archivos desde input o drop
+/**
+ * Maneja la carga de archivos desde input o drop.
+ * @param {FileList|File[]} files
+ */
 const handleFiles = (files) => {
   const validImages = getValidImages(files);
   const rejected = files.length - validImages.length;
@@ -95,6 +133,7 @@ const handleFiles = (files) => {
   validImages.forEach(file => {
     const reader = new FileReader();
     reader.onload = (event) => {
+      // Guarda cada imagen con su nombre y base64
       state.images.push({ name: file.name, dataUrl: event.target.result });
       renderPreview();
     };
@@ -102,8 +141,11 @@ const handleFiles = (files) => {
   });
 };
 
-// Renderiza la cuadrícula de previsualización
+/**
+ * Renderiza la cuadricula de previsualizacion.
+ */
 const renderPreview = () => {
+  // Limpia grilla antes de pintar
   previewGrid.innerHTML = '';
 
   sortImages();
@@ -160,6 +202,7 @@ const renderPreview = () => {
       const fromIndex = Number(event.dataTransfer.getData('text/plain'));
       const toIndex = Number(card.dataset.index);
       if (Number.isNaN(fromIndex) || Number.isNaN(toIndex) || fromIndex === toIndex) return;
+      // Reordena y fuerza modo manual
       const [moved] = state.images.splice(fromIndex, 1);
       state.images.splice(toIndex, 0, moved);
       state.sort = 'manual';
@@ -208,7 +251,11 @@ fileInput.addEventListener('change', (event) => {
   event.target.value = '';
 });
 
-// Conversión a PDF usando jsPDF
+/**
+ * Convierte las imagenes seleccionadas en un PDF usando jsPDF.
+ * Maneja tamaño, centrado y marca de agua.
+ * @returns {Promise<void>}
+ */
 const convertToPDF = async () => {
   if (!state.images.length) return;
 
@@ -220,6 +267,7 @@ const convertToPDF = async () => {
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
 
+    // Carga opcional de marca de agua
     const watermarkInfo = await loadWatermark().catch(() => null);
 
     for (let i = 0; i < state.images.length; i++) {
@@ -267,6 +315,7 @@ const convertToPDF = async () => {
       }
     }
 
+    // Guarda el PDF y sube el contador
     pdf.save('documento.pdf');
     await incrementPdfCounter();
     resetSelection();
@@ -280,20 +329,36 @@ const convertToPDF = async () => {
 
 convertBtn.addEventListener('click', convertToPDF);
 
+/**
+ * Pinta el texto de un contador (con o sin label).
+ * @param {HTMLElement|null} element
+ * @param {string} label
+ * @param {number} value
+ * @param {{onlyNumber?: boolean}} [options]
+ */
 const setCounterText = (element, label, value, options = {}) => {
   if (!element) return;
   const { onlyNumber = false } = options;
   const total = Number(value);
   const hasValue = Number.isFinite(total);
+  // Muestra solo número o label + número
   element.textContent = onlyNumber
     ? (hasValue ? total.toLocaleString('es-ES') : 'N/D')
     : `${label}: ${hasValue ? total.toLocaleString('es-ES') : 'N/D'}`;
 };
 
+/**
+ * Obtiene y actualiza un contador remoto.
+ * @param {string} url
+ * @param {HTMLElement|null} element
+ * @param {string} label
+ * @param {{fallbackZeroOnMissing?: boolean, onlyNumber?: boolean}} [options]
+ */
 const fetchCounter = async (url, element, label, options = {}) => {
   if (!element) return;
   const { fallbackZeroOnMissing = false, onlyNumber = false } = options;
   try {
+    // Consulta el contador remoto
     const response = await fetch(url);
     const data = await response.json().catch(() => null);
     if (!response.ok) {
@@ -320,6 +385,18 @@ const loadPdfCounter = () => fetchCounter(`${PDF_COUNTER_URL}/`, pdfCounter, 'PD
 const incrementPdfCounter = () => fetchCounter(`${PDF_COUNTER_URL}/up`, pdfCounter, 'PDFs creados');
 const loadBrandCounter = () => fetchCounter(`${BRAND_COUNTER_URL}/`, brandCounter, 'Clicks 24Bytes', { fallbackZeroOnMissing: true, onlyNumber: true });
 const incrementBrandCounter = () => fetchCounter(`${BRAND_COUNTER_URL}/up`, brandCounter, 'Clicks 24Bytes', { onlyNumber: true });
+/**
+ * Muestra mensaje de estado en el formulario de feedback.
+ * @param {string} message
+ * @param {'success'|'error'|''} [type]
+ */
+const setFeedbackStatus = (message, type = '') => {
+  if (!feedbackStatus) return;
+  // Limpia clases y muestra mensaje
+  feedbackStatus.textContent = message || '';
+  feedbackStatus.classList.remove('success', 'error');
+  if (type) feedbackStatus.classList.add(type);
+};
 
 updateVisitCounter();
 loadPdfCounter();
@@ -329,4 +406,66 @@ if (brandBadge) {
   brandBadge.addEventListener('click', () => {
     incrementBrandCounter();
   });
+}
+
+/**
+ * Maneja el submit del formulario de feedback usando FormSubmit.
+ * @param {SubmitEvent} event
+ * @returns {Promise<void>}
+ */
+const handleFeedbackSubmit = async (event) => {
+  event.preventDefault();
+  if (!feedbackForm) return;
+
+  // Datos y endpoint configurables
+  const endpoint = feedbackForm.dataset.endpoint || FEEDBACK_ENDPOINT;
+  const name = (feedbackName?.value || '').trim();
+  const contact = (feedbackContact?.value || '').trim();
+  const message = (feedbackMessage?.value || '').trim();
+
+  
+  if (!endpoint || !endpoint.includes('alexis.dorado@24bytes.pro')) {
+    setFeedbackStatus('Configura tu correo en FEEDBACK_ENDPOINT o data-endpoint del formulario.', 'error');
+    return;
+  }
+  if (!name || !contact || !message) {
+    setFeedbackStatus('Completa nombre, contacto y mensaje.', 'error');
+    return;
+  }
+
+  // Marca UI de envío
+  setFeedbackStatus('Enviando...', '');
+  if (feedbackSubmit) feedbackSubmit.disabled = true;
+
+  try {
+    // Arma payload para FormSubmit
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('contact', contact);
+    formData.append('message', message);
+    formData.append('_subject', 'Nuevo feedback Image2PDF');
+    formData.append('_captcha', 'false');
+    formData.append('_template', 'table');
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (!response.ok) throw new Error(`Respuesta ${response.status}`);
+
+    // Éxito: informar y limpiar
+    setFeedbackStatus('¡Gracias! Recibí tu mensaje.', 'success');
+    feedbackForm.reset();
+  } catch (error) {
+    console.error('No se pudo enviar el feedback', error);
+    setFeedbackStatus('No se pudo enviar. Intenta de nuevo.', 'error');
+  } finally {
+    // Desbloquea botón
+    if (feedbackSubmit) feedbackSubmit.disabled = false;
+  }
+};
+
+if (feedbackForm) {
+  feedbackForm.addEventListener('submit', handleFeedbackSubmit);
 }
