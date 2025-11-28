@@ -313,6 +313,10 @@ h1 {
   letter-spacing: 0.01em;
 }
 
+.visit-counter + .visit-counter {
+  margin-top: 6px;
+}
+
 .thumb-name {
   position: absolute;
   left: 0;
@@ -373,6 +377,18 @@ footer {
 
 .brand-badge .brand-name {
   color: #e0f2fe;
+}
+
+.brand-count {
+  min-width: 30px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e0f2fe;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.01em;
 }
 
 @media (max-width: 600px) {

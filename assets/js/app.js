@@ -13,6 +13,9 @@ const loader = document.getElementById('loader');
 const toolbar = document.getElementById('toolbar');
 const sortSelect = document.getElementById('sortOrder');
 const visitCounter = document.getElementById('visitCounter');
+const pdfCounter = document.getElementById('pdfCounter');
+const brandCounter = document.getElementById('brandCounter');
+const brandBadge = document.querySelector('.brand-badge');
 
 // Marca de agua fija
 const WATERMARK_DATA_URL = 'imgs/24bytes-azul.png';
@@ -22,6 +25,8 @@ let watermarkPromise = null;
 
 // Contador público vía CounterAPI (CountAPI dejó de resolver DNS)
 const VISIT_COUNTER_URL = 'https://api.counterapi.dev/v1/imgtopdf.app/global/up';
+const PDF_COUNTER_URL = 'https://api.counterapi.dev/v1/imgtopdf.app/pdf-created';
+const BRAND_COUNTER_URL = 'https://api.counterapi.dev/v1/imgtopdf.app/brand-clicks';
 
 const loadWatermark = () => {
   if (watermarkPromise) return watermarkPromise;
@@ -263,6 +268,7 @@ const convertToPDF = async () => {
     }
 
     pdf.save('documento.pdf');
+    await incrementPdfCounter();
     resetSelection();
   } catch (error) {
     console.error('Error al generar PDF:', error);
@@ -274,19 +280,53 @@ const convertToPDF = async () => {
 
 convertBtn.addEventListener('click', convertToPDF);
 
-// Contador simple de visitas usando CountAPI (sin cookies ni datos personales)
-const updateVisitCounter = async () => {
-  if (!visitCounter) return;
+const setCounterText = (element, label, value, options = {}) => {
+  if (!element) return;
+  const { onlyNumber = false } = options;
+  const total = Number(value);
+  const hasValue = Number.isFinite(total);
+  element.textContent = onlyNumber
+    ? (hasValue ? total.toLocaleString('es-ES') : 'N/D')
+    : `${label}: ${hasValue ? total.toLocaleString('es-ES') : 'N/D'}`;
+};
+
+const fetchCounter = async (url, element, label, options = {}) => {
+  if (!element) return;
+  const { fallbackZeroOnMissing = false, onlyNumber = false } = options;
   try {
-    const response = await fetch(VISIT_COUNTER_URL);
-    if (!response.ok) throw new Error('Respuesta no válida');
-    const data = await response.json();
-    const total = Number(data.value ?? data.count) || 0;
-    visitCounter.textContent = `Visitas: ${total.toLocaleString('es-ES')}`;
+    const response = await fetch(url);
+    const data = await response.json().catch(() => null);
+    if (!response.ok) {
+      const message = (data?.message || '').toLowerCase();
+      const isMissing = message.includes('record not found') || response.status === 404;
+      if (fallbackZeroOnMissing && isMissing) {
+        setCounterText(element, label, 0, { onlyNumber });
+        return;
+      }
+      throw new Error(`Respuesta no válida (${response.status})`);
+    }
+    const total = Number(data?.value ?? data?.count);
+    if (!Number.isFinite(total)) throw new Error('Valor no numérico');
+    setCounterText(element, label, total, { onlyNumber });
   } catch (error) {
-    visitCounter.textContent = 'Visitas: N/D';
-    console.error('No se pudo actualizar el contador de visitas', error);
+    setCounterText(element, label, NaN, { onlyNumber });
+    console.error(`No se pudo actualizar el contador de ${label.toLowerCase()}`, error);
   }
 };
 
+// Contadores simples usando CounterAPI (sin cookies ni datos personales)
+const updateVisitCounter = () => fetchCounter(VISIT_COUNTER_URL, visitCounter, 'Visitas');
+const loadPdfCounter = () => fetchCounter(`${PDF_COUNTER_URL}/`, pdfCounter, 'PDFs creados', { fallbackZeroOnMissing: true });
+const incrementPdfCounter = () => fetchCounter(`${PDF_COUNTER_URL}/up`, pdfCounter, 'PDFs creados');
+const loadBrandCounter = () => fetchCounter(`${BRAND_COUNTER_URL}/`, brandCounter, 'Clicks 24Bytes', { fallbackZeroOnMissing: true, onlyNumber: true });
+const incrementBrandCounter = () => fetchCounter(`${BRAND_COUNTER_URL}/up`, brandCounter, 'Clicks 24Bytes', { onlyNumber: true });
+
 updateVisitCounter();
+loadPdfCounter();
+loadBrandCounter();
+
+if (brandBadge) {
+  brandBadge.addEventListener('click', () => {
+    incrementBrandCounter();
+  });
+}
