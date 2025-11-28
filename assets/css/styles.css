@@ -62,17 +62,18 @@ h1 {
 
 .trust-banner {
   margin: 0 auto;
-  background: linear-gradient(120deg, rgba(34, 211, 238, 0.12), rgba(14, 165, 233, 0.12));
-  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: linear-gradient(120deg, rgba(34, 211, 238, 0.06), rgba(14, 165, 233, 0.06));
+  border: 1px solid rgba(34, 211, 238, 0.2);
   border-radius: 16px;
-  padding: 18px 20px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   max-width: 760px;
-  box-shadow: 0 16px 50px rgba(14, 165, 233, 0.12);
+  box-shadow: 0 10px 36px rgba(14, 165, 233, 0.1);
   text-align: center;
+  margin-top: 12px;
 }
 
 .trust-icon {
@@ -88,7 +89,7 @@ h1 {
 }
 
 .trust-title {
-  margin-top: 10px;
+  margin-top: 20px;
   font-weight: 800;
   letter-spacing: -0.01em;
 }
@@ -119,49 +120,63 @@ h1 {
 }
 
 .dropzone {
-  border: 1.5px dashed var(--border);
-  border-radius: 18px;
-  padding: 36px;
+  
+  align-content: center;
+  border: 2px solid rgba(34, 211, 238, 0.6);
+  border-radius: 22px;
+  padding: 44px 36px;
   text-align: center;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  background: radial-gradient(circle at 50% 30%, rgba(34, 211, 238, 0.16), rgba(14, 165, 233, 0.08) 40%, rgba(255, 255, 255, 0.02)),
+              linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  box-shadow: 0 18px 48px rgba(14, 165, 233, 0.22);
+  max-width: 900px;
+  height: 450px;
+  margin: 12px auto 18px;
+  margin-top: 80px;
 }
 
 .dropzone:hover {
-  border-color: rgba(34, 211, 238, 0.45);
-  background: linear-gradient(145deg, rgba(34, 211, 238, 0.04), rgba(255, 255, 255, 0.02));
+  border-color: rgba(34, 211, 238, 0.9);
+  background: radial-gradient(circle at 50% 30%, rgba(34, 211, 238, 0.2), rgba(14, 165, 233, 0.12) 45%, rgba(255, 255, 255, 0.03)),
+              linear-gradient(145deg, rgba(34, 211, 238, 0.06), rgba(255, 255, 255, 0.02));
   transform: translateY(-2px);
+  box-shadow: 0 22px 60px rgba(14, 165, 233, 0.3);
 }
 
 .dropzone.dragover {
   border-color: var(--accent);
-  background: linear-gradient(145deg, rgba(34, 211, 238, 0.08), rgba(255, 255, 255, 0.05));
-  box-shadow: 0 10px 40px rgba(34, 211, 238, 0.15);
+  background: radial-gradient(circle at 50% 30%, rgba(34, 211, 238, 0.24), rgba(14, 165, 233, 0.14) 50%, rgba(255, 255, 255, 0.05)),
+              linear-gradient(145deg, rgba(34, 211, 238, 0.1), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 24px 70px rgba(34, 211, 238, 0.35);
 }
 
 .drop-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  margin: 0 auto 14px;
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  margin: 0 auto 16px;
   display: grid;
   place-items: center;
-  background: rgba(34, 211, 238, 0.08);
+  background: rgba(34, 211, 238, 0.14);
   color: var(--accent);
-  font-size: 28px;
+  font-size: 30px;
+  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.25);
 }
 
 .drop-title {
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.01em;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  font-size: 18px;
 }
 
 .drop-helper {
-  color: var(--muted);
+  color: #e0f2fe;
   margin: 0;
   font-size: 14px;
+  opacity: 0.9;
 }
 
 .file-input {
@@ -318,7 +333,7 @@ h1 {
 }
 
 .feedback-panel {
-  margin-top: 32px;
+  margin-top: 100px;
   padding: 22px 20px;
   border-radius: 18px;
   background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(14, 165, 233, 0.05));
@@ -469,7 +484,7 @@ h1 {
 }
 
 footer {
-  margin-top: 28px;
+  margin-top: 30px;
   color: var(--muted);
   font-size: 13px;
   display: flex;
@@ -481,6 +496,10 @@ footer {
 
 .footer-text {
   color: var(--muted);
+}
+
+.mt-70{
+  margin-top: 70px;
 }
 
 .brand-badge {

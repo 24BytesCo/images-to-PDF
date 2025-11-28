@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convertir imágenes a PDF | Image2PDF Studio</title>
-  <meta name="description" content="Convierte imágenes JPG y PNG a PDF en segundos, 100% en tu navegador, sin subir archivos. Arrastra, ordena y descarga tu PDF gratis con marca de agua opcional.">
-  <meta name="keywords" content="convertir imagen a pdf, jpg a pdf, png a pdf, imagenes a pdf gratis, offline pdf converter, arrastrar y soltar pdf, conversor pdf sin subir archivos">
+  <title>Convertir imágenes a PDF | Images-to-PDF Studio</title>
+  <meta name="description"
+    content="Convierte imágenes JPG y PNG a PDF en segundos, 100% en tu navegador, sin subir archivos. Arrastra, ordena y descarga tu PDF gratis con marca de agua opcional.">
+  <meta name="keywords"
+    content="convertir imagen a pdf, jpg a pdf, png a pdf, imagenes a pdf gratis, offline pdf converter, arrastrar y soltar pdf, conversor pdf sin subir archivos">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Convertir imágenes a PDF | Image2PDF Studio">
-  <meta property="og:description" content="Convierte JPG y PNG a PDF sin subir nada. Arrastra, ordena y descarga tu PDF en segundos, 100% local.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/24BytesCo/ImgToGoPDF-App/main/imgs/img_24_bytes_image_to_pdf.png">
+  <meta property="og:title" content="Convertir imágenes a PDF | Images-to-PDF Studio">
+  <meta property="og:description"
+    content="Convierte JPG y PNG a PDF sin subir nada. Arrastra, ordena y descarga tu PDF en segundos, 100% local.">
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/24BytesCo/ImgToGoPDF-App/main/imgs/img_24_bytes_image_to_pdf.png">
   <meta property="og:locale" content="es_ES">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Convertir imágenes a PDF | Image2PDF Studio">
+  <meta name="twitter:title" content="Convertir imágenes a PDF | Images-to-PDF Studio">
   <meta name="twitter:description" content="Convierte JPG y PNG a PDF en segundos, sin subir archivos.">
   <meta name="theme-color" content="#0f172a">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
   <main class="app">
     <div class="loader" id="loader" aria-live="polite">
@@ -25,24 +31,27 @@
       <div class="loader-text">Convirtiendo a PDF...</div>
     </div>
     <header>
-      <h1>Image2PDF Studio</h1>
+      <h1>Images-to-PDF Studio</h1>
       <p class="subtitle">
-        Convierte múltiples imágenes a un PDF en segundos. 
+        Convierte múltiples imágenes a un PDF en segundos.
         Todo sucede en tu navegador.
         <br>
         Conversor de imágenes JPG/PNG a PDF gratis y seguro: 100% local, sin subir archivos.
       </p>
-      <div class="trust-banner">
-        <div class="trust-icon">🛡️</div>
-        <div class="trust-title">Privacidad total y velocidad inmediata</div>
-        <div class="trust-sub">Cada imagen se procesa en tu dispositivo: no hay envíos a la nube ni guardado en servidores externos.</div>
-        <div class="pill-row">
-          <span class="pill">100% local</span>
-          <span class="pill">Sin subir a servidores</span>
-          <span class="pill">Tu PDF en segundos</span>
-        </div>
-      </div>
     </header>
+
+
+    <div class="trust-banner">
+      <div class="trust-icon">🛡️</div>
+      <div class="trust-title">Privacidad total y velocidad inmediata</div>
+      <div class="trust-sub">Cada imagen se procesa en tu dispositivo: no hay envíos a la nube ni guardado en servidores
+        externos.</div>
+      <div class="pill-row">
+        <span class="pill">100% local</span>
+        <span class="pill">Sin subir a servidores</span>
+        <span class="pill">Tu PDF en segundos</span>
+      </div>
+    </div>
 
     <section class="dropzone" id="dropzone">
       <div class="drop-icon">📄</div>
@@ -50,6 +59,7 @@
       <p class="drop-helper">Formatos soportados: JPG, JPEG, PNG · Máxima privacidad, sin subir archivos</p>
       <input class="file-input" id="fileInput" type="file" accept="image/png, image/jpeg" multiple>
     </section>
+
 
     <section class="toolbar" id="toolbar" style="display: none;">
       <div class="toolbar-title">Tus imágenes</div>
@@ -69,8 +79,7 @@
       <button class="convert-btn" id="convertBtn">Convertir a PDF</button>
     </div>
 
-    <div class="visit-counter" id="visitCounter" aria-live="polite">Visitas: cargando...</div>
-    <div class="visit-counter" id="pdfCounter" aria-live="polite">PDFs creados: cargando...</div>
+
     <section class="feedback-panel" aria-label="Formulario de contacto">
       <div class="feedback-header">
         <div>
@@ -80,7 +89,8 @@
         </div>
         <div class="feedback-pill">1 min</div>
       </div>
-      <form id="feedbackForm" class="feedback-form" data-endpoint="https://formsubmit.co/ajax/alexis.dorado@24bytes.pro">
+      <form id="feedbackForm" class="feedback-form"
+        data-endpoint="https://formsubmit.co/ajax/alexis.dorado@24bytes.pro">
         <label class="input-field">
           <span>Nombre</span>
           <input id="feedbackName" name="name" type="text" placeholder="Tu nombre" required>
@@ -91,7 +101,8 @@
         </label>
         <label class="input-field">
           <span>Mensaje</span>
-          <textarea id="feedbackMessage" name="message" rows="3" placeholder="Escribe tu feedback o duda" required></textarea>
+          <textarea id="feedbackMessage" name="message" rows="3" placeholder="Escribe tu feedback o duda"
+            required></textarea>
         </label>
         <div class="feedback-actions">
           <p class="form-hint">No guardo tus datos, solo los uso para responderte.</p>
@@ -100,6 +111,9 @@
         <div class="feedback-status" id="feedbackStatus" role="status" aria-live="polite"></div>
       </form>
     </section>
+
+    <div class="visit-counter mt-70" id="visitCounter" aria-live="polite">Visitas: cargando...</div>
+    <div class="visit-counter" id="pdfCounter" aria-live="polite">PDFs creados: cargando...</div>
 
     <footer>
       <span class="footer-text">Powered by</span>
@@ -115,7 +129,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Image2PDF Studio",
+    "name": "Images-to-PDF Studio",
     "description": "Convierte imágenes JPG y PNG a PDF en tu navegador, sin subir archivos. Arrastra, ordena y descarga tu PDF gratis.",
     "operatingSystem": "Any",
     "applicationCategory": "UtilitiesApplication",
@@ -136,7 +150,10 @@
   }
   </script>
   <!-- jsPDF desde CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+    integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
   <script src="assets/js/app.js" defer></script>
 </body>
+
 </html>
