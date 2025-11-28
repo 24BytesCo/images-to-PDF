@@ -1,4 +1,6 @@
+
 # Images-to-PDF Studio
+
 
 Convierte, une y agrupa imágenes JPG y PNG en un solo PDF, directo en tu navegador. 100% local, gratis, sin publicidad y sin subir archivos. Nació para resolver mi propia necesidad y está abierto para cualquiera que lo necesite: https://24bytesco.github.io/images-to-PDF/
 
@@ -14,14 +16,28 @@ Convierte, une y agrupa imágenes JPG y PNG en un solo PDF, directo en tu navega
 - Contadores públicos: visitas, PDFs creados y clicks al badge (sin cookies ni datos personales).
 - Formulario de feedback/contacto (nombre, correo/número, mensaje) vía FormSubmit.
 
-## Cómo usar
-1. Abre `index.html` en tu navegador o visita https://24bytesco.github.io/images-to-PDF/.
-2. Arrastra tus imágenes, ordénalas y pulsa “Convertir a PDF”.
-3. (Opcional) Usa el formulario de feedback para dejar un mensaje. Configura tu correo en `index.html` (`data-endpoint`) o en `assets/js/app.js` (`FEEDBACK_ENDPOINT`) si haces tu propio fork.
+## 🛠️ Stack
+- HTML5
+- CSS3
+- JavaScript (ES6)
+- Librería: [jsPDF](https://github.com/parallax/jsPDF) (v2.5.1)
 
-## Estructura rápida
+## 🚀 Cómo usar
+### Clonar el repositorio
+```bash
+git clone https://github.com/24BytesCo/Images-to-PDF.git
+cd Images-to-PDF
+# Abre index.html en tu navegador favorito
 ```
-images-to-PDF/
+
+### Descarga directa
+1. Descarga el ZIP del repositorio.
+2. Descomprime la carpeta.
+3. Abre `index.html` en tu navegador.
+
+## 📂 Estructura del proyecto
+```plaintext
+Images-to-PDF/
 ├── index.html
 ├── assets/
 │   ├── css/styles.css
