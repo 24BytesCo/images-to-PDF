@@ -39,11 +39,25 @@ cd Images-to-PDF
 ```plaintext
 Images-to-PDF/
 ├── index.html
+├── robots.txt
+├── sitemap.xml
+├── manifest.json
 ├── assets/
 │   ├── css/styles.css
 │   └── js/app.js
-└── imgs/ (marca de agua)
+└── imgs/ (marca de agua, favicon, imagen OG)
 ```
+
+## 🌐 Preparado para un subdominio propio (pendiente, no activado)
+Hoy vive en `https://24bytesco.github.io/images-to-PDF/`. Si en el futuro se
+sirve en `pdf.24bytes.pro`, falta:
+1. Crear un archivo `CNAME` en la raíz del repo con el contenido `pdf.24bytes.pro`.
+2. En Cloudflare (DNS de `24bytes.pro`), un registro `CNAME` de `pdf` →
+   `24bytesco.github.io`, proxy desactivado (GitHub Pages gestiona su propio TLS).
+3. Activar "Enforce HTTPS" en GitHub Pages una vez el DNS resuelva.
+4. Actualizar `canonical`, `og:url`, `og:image`, `twitter:image` y
+   `sitemap.xml` en `index.html` para que apunten a `https://pdf.24bytes.pro/`
+   en vez de `https://24bytesco.github.io/images-to-PDF/`.
 
 ## Stack
 - HTML5

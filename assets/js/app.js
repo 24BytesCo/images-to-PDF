@@ -374,8 +374,10 @@ const fetchCounter = async (url, element, label, options = {}) => {
     if (!Number.isFinite(total)) throw new Error('Valor no numérico');
     setCounterText(element, label, total, { onlyNumber });
   } catch (error) {
-    setCounterText(element, label, NaN, { onlyNumber });
-    console.error(`No se pudo actualizar el contador de ${label.toLowerCase()}`, error);
+    // El contador no es esencial: si el servicio falla, ocultamos el bloque
+    // en lugar de mostrar "N/D" al usuario.
+    element.style.display = 'none';
+    console.warn(`No se pudo actualizar el contador de ${label.toLowerCase()}`, error);
   }
 };
 
