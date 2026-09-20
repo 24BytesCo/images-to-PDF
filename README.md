@@ -44,6 +44,18 @@ Cada herramienta son tres archivos:
 
 Los `index.html` son generados: no se editan a mano.
 
+## Usarlo en tu propio equipo
+
+Si tu red bloquea los conversores en línea, o prefieres no depender de ningún
+sitio, clónalo y ábrelo en local. No necesita instalar nada más que Python para
+servir los archivos, y funciona sin internet:
+
+```bash
+git clone https://github.com/24BytesCo/images-to-PDF.git
+cd images-to-PDF
+python3 -m http.server 8765     # abre http://localhost:8765/
+```
+
 ## Contribuir
 
 Fork y PR. Si te falta una herramienta, cuéntamelo desde el formulario de la
@@ -51,4 +63,4 @@ portada o abre un issue.
 
 ## Licencia
 
-MIT. Hecho en Colombia por [Alexis Dorado Muñoz — 24Bytes](https://24bytes.pro).
+MIT (ver `LICENSE`). Las librerías de `assets/vendor/` conservan sus propias licencias (MIT y Apache-2.0). Hecho en Colombia por [Alexis Dorado Muñoz — 24Bytes](https://24bytes.pro).
