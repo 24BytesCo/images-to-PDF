@@ -1,4 +1,4 @@
-/* Formulario de contacto de la portada (FormSubmit por AJAX). */
+/* Formulario de contacto de la portada: envía al endpoint propio de 24bytes.pro (correo por Resend). */
 (function () {
   'use strict';
   const form = document.getElementById('contactoForm');
@@ -8,17 +8,24 @@
 
   form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
-    const datos = new FormData(form);
-    if (datos.get('_honey')) return;
-    datos.append('_subject', 'Mensaje desde 24Bytes PDF');
+    const datos = Object.fromEntries(new FormData(form));
     const boton = form.querySelector('button[type=submit]');
     boton.disabled = true;
     decir('Enviando…');
     try {
-      const r = await fetch(form.dataset.endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: datos });
+      const r = await fetch(form.dataset.endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos),
+      });
+      if (r.status === 429) {
+        decir('Ya recibí varios mensajes tuyos. Si es urgente, escríbeme a alexis.dorado@24bytes.pro.', 'error');
+        return;
+      }
       if (!r.ok) throw new Error(String(r.status));
       form.reset();
       decir('Recibido. Te respondo pronto.', 'ok');
+      if (window.Suite) window.Suite.evento('contacto');
     } catch (_) {
       decir('No se pudo enviar. Escríbeme a alexis.dorado@24bytes.pro.', 'error');
     } finally {

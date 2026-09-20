@@ -19,7 +19,7 @@
       "h": "Qué se mide",
       "p": [
         "Usamos una instalación propia de Umami, una analítica sin cookies que no identifica personas: cuenta visitas por página, país aproximado, tipo de dispositivo y de qué sitio llegaste. También se registra que alguien descargó un resultado de una herramienta, sin ningún dato del archivo: ni nombre, ni tamaño, ni contenido.",
-        "No hay cuentas de usuario ni registro, así que no guardamos correos ni contraseñas. El formulario de contacto de la portada envía tu mensaje por correo mediante FormSubmit; solo se usa para responderte."
+        "No hay cuentas de usuario ni registro, así que no guardamos correos ni contraseñas. El formulario de contacto de la portada envía tu mensaje a nuestro propio servidor en 24bytes.pro, que lo reenvía por correo; no se guarda en ninguna base de datos y solo se usa para responderte."
       ]
     },
     {
