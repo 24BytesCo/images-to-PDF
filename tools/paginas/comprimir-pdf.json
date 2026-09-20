@@ -1,0 +1,24 @@
+{
+  "slug": "comprimir-pdf",
+  "orden": 7,
+  "nombre": "Comprimir PDF",
+  "icono": "comprimir",
+  "titulo": "Comprimir PDF gratis: reducir tamaño de archivo en línea",
+  "descripcion": "Reduce el peso de un PDF con fotos o páginas escaneadas convirtiéndolo a imágenes JPG. Elige el nivel y compara el tamaño antes de descargar. Todo en tu navegador.",
+  "h1": "Comprimir PDF sin subir archivos",
+  "bajada": "Reduce el peso de PDF escaneados o con fotos. Elige el nivel, mira cuánto bajó y decide si te conviene descargarlo: nada sale de tu equipo.",
+  "resumen_tarjeta": "Reduce el peso de un PDF con fotos o páginas escaneadas.",
+  "scripts": ["assets/vendor/pdf.min.js", "assets/vendor/jspdf.umd.min.js", "assets/js/comprimir-pdf.js"],
+  "pasos": [
+    ["Carga tu PDF.", "Arrástralo a la zona de carga o pulsa para elegirlo."],
+    ["Elige el nivel.", "Ligero, medio o fuerte: cada uno combina resolución y calidad de imagen."],
+    ["Compara y descarga.", "Verás el tamaño original y el nuevo antes de bajar el archivo."]
+  ],
+  "faqs": [
+    {"p": "¿Mi PDF se sube a algún servidor?", "r": "No. Todo el proceso ocurre en tu navegador con pdf.js y jsPDF. El archivo nunca se envía por internet."},
+    {"p": "¿Por qué el texto deja de poder seleccionarse?", "r": "Porque sin servidor la única forma real de comprimir es volver a dibujar cada página como una foto (imagen JPG) y armar un PDF nuevo con esas fotos. Eso reduce mucho el peso de PDF escaneados o con fotos, pero el texto deja de ser seleccionable o buscable: se convierte en parte de la imagen."},
+    {"p": "¿Siempre reduce el tamaño?", "r": "No. Si tu PDF ya es liviano y es solo texto (por ejemplo, un Word exportado a PDF), convertirlo a imágenes casi siempre lo deja más pesado, no más liviano. La herramienta te avisa antes de descargar si eso pasa, y no descarga nada sin que tú lo decidas."},
+    {"p": "¿Funciona con PDF protegidos con contraseña?", "r": "No. Si el PDF pide contraseña para abrirse, la herramienta lo detecta y te avisa; primero tendrías que quitarle la protección con otro programa."},
+    {"p": "¿Tiene costo o marca de agua?", "r": "Es gratis y sin límite de usos. El PDF comprimido no lleva marcas de agua."}
+  ]
+}

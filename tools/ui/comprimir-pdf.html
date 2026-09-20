@@ -1,0 +1,64 @@
+      <style>
+        /* Prefijo cpdf- por herramienta, según la guía: no hay clase para un aviso explicativo así en suite.css. */
+        .cpdf-explica { margin: 0 0 18px; padding: 14px 16px; border: 1px solid var(--linea); border-radius: 12px; background: #f8fafc; color: var(--gris); font-size: 14.5px; line-height: 1.5; }
+        .cpdf-explica strong { color: var(--tinta); }
+        .cpdf-resultado { margin-top: 18px; padding: 16px; border: 1px solid var(--linea); border-radius: 12px; background: #f8fafc; }
+        .cpdf-cifras { display: flex; flex-wrap: wrap; gap: 24px; margin: 0 0 12px; }
+        .cpdf-cifra-num { display: block; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+        .cpdf-cifra-etq { display: block; font-size: 13px; color: var(--gris); }
+        .cpdf-resultado[data-tipo='peor'] { border-color: var(--acento); background: var(--acento-suave); }
+        .cpdf-resultado[data-tipo='peor'] .cpdf-cifra-num.cpdf-nueva { color: var(--acento-oscuro); }
+        .cpdf-resultado[data-tipo='mejor'] .cpdf-cifra-num.cpdf-nueva { color: var(--ok); }
+        .cpdf-aviso-peor { margin: 0 0 12px; font-weight: 600; color: var(--acento-oscuro); }
+      </style>
+
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18H6z"/><path d="M12 6v4m0 0-2-2m2 2 2-2M12 18v-4m0 0-2 2m2-2 2 2"/></svg></span>
+        <p class="zona-titulo">Arrastra tu PDF aquí</p>
+        <p class="zona-texto">o pulsa para elegirlo · un archivo PDF</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" accept="application/pdf,.pdf">
+
+      <div id="panel" hidden>
+        <p class="cpdf-explica">
+          <strong>Cómo comprime esta herramienta:</strong> sin servidor, la única forma real de reducir bien un PDF es
+          volver a dibujar cada página como una foto (JPEG) y armar un PDF nuevo con esas fotos. Funciona muy bien con
+          PDF escaneados o llenos de fotos. Pero el texto deja de poder seleccionarse o buscarse, y si tu PDF ya es
+          liviano y es solo texto, esto casi siempre lo deja <strong>más pesado</strong>, no menos. Al terminar verás
+          el tamaño antes y después para que decidas.
+        </p>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <div class="barra-acciones">
+            <button class="boton boton-secundario boton-pequeno" type="button" id="quitar">Quitar PDF</button>
+          </div>
+        </div>
+        <div class="opciones">
+          <label class="campo">Nivel de compresión
+            <select id="nivel">
+              <option value="ligero">Ligero · 150 ppp, calidad alta</option>
+              <option value="medio" selected>Medio · 110 ppp, calidad media</option>
+              <option value="fuerte">Fuerte · 85 ppp, calidad baja</option>
+            </select>
+            <small>Más fuerte = más liviano, pero páginas más borrosas.</small>
+          </label>
+          <label class="campo">Nombre del archivo
+            <input id="nombre" type="text" value="documento" maxlength="80">
+          </label>
+        </div>
+        <div class="barra">
+          <span class="ayuda">Las páginas conservan su tamaño y orientación originales.</span>
+          <button class="boton" type="button" id="comprimir">Comprimir</button>
+        </div>
+
+        <div class="cpdf-resultado" id="resultado" hidden>
+          <div class="cpdf-cifras">
+            <span><span class="cpdf-cifra-num" id="cifraOriginal"></span><span class="cpdf-cifra-etq">Tamaño original</span></span>
+            <span><span class="cpdf-cifra-num cpdf-nueva" id="cifraNueva"></span><span class="cpdf-cifra-etq">Tamaño nuevo</span></span>
+            <span><span class="cpdf-cifra-num" id="cifraPorcentaje"></span><span class="cpdf-cifra-etq" id="cifraPorcentajeEtq">Diferencia</span></span>
+          </div>
+          <p class="cpdf-aviso-peor" id="avisoPeor" hidden>Quedó más pesado que tu PDF original. Mejor conserva el que ya tienes.</p>
+          <button class="boton" type="button" id="descargarComprimido" hidden>Descargar PDF comprimido</button>
+          <button class="boton boton-secundario" type="button" id="descargarDeTodasFormas" hidden>Descargar de todas formas</button>
+        </div>
+      </div>

@@ -1,0 +1,42 @@
+<style>
+  /* organizar-pdf: suite.css no trae un botón compacto para 5 acciones dentro
+     de una miniatura de 132px, así que se define aquí, con prefijo propio. */
+  .organizar-acciones { flex-wrap: wrap; }
+  .organizar-accion {
+    width: 27px; height: 27px; padding: 0; display: grid; place-items: center;
+    border: 1px solid var(--linea); border-radius: 8px; background: var(--papel);
+    color: var(--tinta); font-size: 15px; line-height: 1; cursor: pointer;
+  }
+  .organizar-accion:hover { background: var(--fondo); }
+  .organizar-accion:disabled { opacity: 0.35; cursor: not-allowed; }
+  .organizar-hoja { display: grid; place-items: center; color: var(--gris); font-size: 13px; }
+  .organizar-hoja canvas { transform-origin: center; }
+</style>
+
+<div class="zona" id="zona">
+  <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg></span>
+  <p class="zona-titulo">Arrastra tu PDF aquí</p>
+  <p class="zona-texto">o pulsa para elegirlo · un archivo PDF</p>
+</div>
+<input class="entrada-archivo" id="entrada" type="file" accept="application/pdf,.pdf">
+
+<div id="panel" hidden>
+  <div class="barra">
+    <span class="barra-info" id="resumen"></span>
+    <div class="barra-acciones">
+      <button class="boton boton-secundario boton-pequeno" type="button" id="rotarTodas">Rotar todas</button>
+      <button class="boton boton-secundario boton-pequeno" type="button" id="invertirOrden">Invertir orden</button>
+      <button class="boton boton-secundario boton-pequeno" type="button" id="deshacerTodo">Deshacer todo</button>
+    </div>
+  </div>
+  <div class="miniaturas" id="miniaturas"></div>
+  <div class="opciones">
+    <label class="campo">Nombre del archivo
+      <input id="nombre" type="text" value="documento" maxlength="80">
+    </label>
+  </div>
+  <div class="barra">
+    <span class="ayuda">El PDF se genera en tu dispositivo.</span>
+    <button class="boton" type="button" id="crear">Descargar PDF</button>
+  </div>
+</div>

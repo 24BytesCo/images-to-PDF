@@ -1,0 +1,71 @@
+<style>
+  .num-previa { margin-top: 18px; display: grid; gap: 8px; justify-items: center; }
+  .num-previa-lienzo { max-width: 100%; border: 1px solid var(--linea); border-radius: 10px; box-shadow: var(--sombra-hoja); background: #f8fafc; }
+  .num-previa-texto { color: var(--gris); font-size: 14px; }
+  .num-color { padding: 4px !important; height: 42px; }
+</style>
+<div class="zona" id="zona">
+  <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18H6z"/><path d="M10 17h4M11 7l1.5-1v5"/></svg></span>
+  <p class="zona-titulo">Arrastra tu PDF aquí</p>
+  <p class="zona-texto">o pulsa para elegirlo · un archivo PDF</p>
+</div>
+<input class="entrada-archivo" id="entrada" type="file" accept="application/pdf,.pdf">
+
+<div id="panel" hidden>
+  <div class="barra">
+    <span class="barra-info" id="resumen"></span>
+    <div class="barra-acciones">
+      <button class="boton boton-secundario boton-pequeno" type="button" id="quitar">Quitar PDF</button>
+    </div>
+  </div>
+
+  <div class="opciones">
+    <label class="campo">Posición
+      <select id="posicion">
+        <option value="abajo-centro" selected>Abajo, centro</option>
+        <option value="abajo-derecha">Abajo, derecha</option>
+        <option value="abajo-izquierda">Abajo, izquierda</option>
+        <option value="arriba-centro">Arriba, centro</option>
+        <option value="arriba-derecha">Arriba, derecha</option>
+        <option value="arriba-izquierda">Arriba, izquierda</option>
+      </select>
+    </label>
+    <label class="campo">Formato
+      <select id="formato">
+        <option value="n" selected>1</option>
+        <option value="n-total">1 / 10</option>
+        <option value="pagina-n-de-total">Página 1 de 10</option>
+        <option value="guion-n-guion">- 1 -</option>
+      </select>
+    </label>
+    <label class="campo">Número inicial
+      <input id="numeroInicial" type="number" min="0" value="1">
+    </label>
+    <label class="campo">Empieza en la página
+      <input id="empezarEn" type="number" min="1" value="1">
+      <small>Las páginas anteriores quedan sin número.</small>
+    </label>
+    <label class="campo">Tamaño
+      <input id="tamano" type="number" min="6" max="120" value="11">
+    </label>
+    <label class="campo">Color
+      <input class="num-color" id="color" type="color" value="#374151">
+    </label>
+    <label class="campo">Margen
+      <input id="margen" type="number" min="0" max="200" value="28">
+    </label>
+    <label class="campo">Nombre del archivo
+      <input id="nombre" type="text" value="documento" maxlength="80">
+    </label>
+  </div>
+
+  <div class="num-previa">
+    <canvas class="num-previa-lienzo" id="previa"></canvas>
+    <p class="num-previa-texto" id="previaTexto">Vista previa</p>
+  </div>
+
+  <div class="barra">
+    <span class="ayuda">Los números se dibujan sobre el PDF y se generan en tu dispositivo.</span>
+    <button class="boton" type="button" id="aplicar">Numerar y descargar</button>
+  </div>
+</div>

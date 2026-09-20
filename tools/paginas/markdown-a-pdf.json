@@ -1,0 +1,30 @@
+{
+  "slug": "markdown-a-pdf",
+  "orden": 2,
+  "nombre": "Markdown a PDF",
+  "icono": "markdown",
+  "titulo": "Markdown a PDF: convertir MD a PDF online sin subir archivos",
+  "descripcion": "Convierte Markdown a PDF con texto real y buscable. Pega tu .md o arrástralo, mira la vista previa en vivo y descarga el PDF: nada se sube a un servidor.",
+  "h1": "Convertir Markdown a PDF sin subir archivos",
+  "bajada": "Pega o carga tu Markdown, revisa la vista previa en vivo y descarga un PDF con texto real: tablas, código, listas y enlaces, todo en tu navegador.",
+  "resumen_tarjeta": "Convierte Markdown a PDF con texto real, tablas y código, en tu navegador.",
+  "scripts": [
+    "assets/vendor/pdfmake.min.js",
+    "assets/vendor/vfs_fonts.min.js",
+    "assets/vendor/marked.min.js",
+    "assets/vendor/purify.min.js",
+    "assets/js/markdown-a-pdf.js"
+  ],
+  "pasos": [
+    ["Pega o carga tu Markdown.", "Escríbelo directamente, pégalo o arrastra un archivo .md, .markdown o .txt."],
+    ["Revisa la vista previa.", "Se actualiza en vivo mientras escribes, así ves el resultado antes de exportar."],
+    ["Descarga el PDF.", "Elige tamaño de página, márgenes y tipografía, y pulsa Descargar PDF. El texto queda seleccionable y buscable."]
+  ],
+  "faqs": [
+    {"p": "¿Mi Markdown se sube a algún servidor?", "r": "No. Tanto la vista previa como la generación del PDF ocurren en tu navegador con JavaScript. El texto que escribes o el archivo que cargas nunca se envían por internet."},
+    {"p": "¿Hay límite de tamaño o de páginas?", "r": "No hay un límite fijo. Documentos de cientos de líneas generan un PDF de varias páginas sin problema; el límite real es la memoria de tu dispositivo, igual que con cualquier programa que corre en el navegador."},
+    {"p": "¿El PDF es una imagen o tiene texto real?", "r": "Tiene texto real. La herramienta no toma una captura de la vista previa: recorre tu Markdown y construye el PDF con texto seleccionable y buscable, incluidas las tablas y el código."},
+    {"p": "¿Qué pasa con las imágenes y el HTML que pego dentro del Markdown?", "r": "Las imágenes en formato data: o alojadas en el mismo origen se incluyen en el PDF; si una imagen remota falla por las restricciones de CORS del navegador, se omite y se avisa, sin interrumpir la descarga. El HTML incrustado en el Markdown se ignora en el PDF: no se interpreta ni se ejecuta."},
+    {"p": "¿Tiene algún costo o marca de agua?", "r": "Es gratis y sin límite de usos. El PDF sale limpio, sin marcas de agua ni anuncios superpuestos."}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "numerar-paginas-pdf",
+  "orden": 9,
+  "nombre": "Numerar páginas",
+  "icono": "numerar",
+  "titulo": "Numerar páginas de un PDF gratis: agregar número de página",
+  "descripcion": "Agrega números de página a tu PDF: posición, formato («1», «Página 1 de 10»…) y desde qué página empieza. Se procesa en tu navegador, sin subir nada.",
+  "h1": "Numerar páginas de un PDF sin subir archivos",
+  "bajada": "Agrega el número de página con el formato, la posición y el tamaño que quieras, y decide desde qué página empezar para saltarte la portada.",
+  "resumen_tarjeta": "Agrega números de página a tu PDF, con el formato y la posición que elijas.",
+  "scripts": ["assets/vendor/pdf-lib.min.js", "assets/vendor/pdf.min.js", "assets/js/numerar-paginas-pdf.js"],
+  "pasos": [
+    ["Carga tu PDF.", "Arrástralo a la zona de carga o pulsa para elegirlo."],
+    ["Elige formato y posición.", "Escoge dónde va el número, el formato del texto, desde qué página empieza y con qué número inicial."],
+    ["Revisa la vista previa y descarga.", "Se simula sobre la primera página numerada; cuando esté bien, pulsa Numerar y se genera en tu navegador."]
+  ],
+  "faqs": [
+    {"p": "¿Mi PDF se sube a algún servidor?", "r": "No. La numeración la hace tu navegador con pdf-lib; el archivo nunca se envía por internet."},
+    {"p": "¿Puedo saltarme la portada?", "r": "Sí. Define desde qué página empieza la numeración; las páginas anteriores quedan sin número."},
+    {"p": "¿Qué formatos de número admite?", "r": "«1», «1 / 10», «Página 1 de 10» y «- 1 -», con el número inicial que elijas."},
+    {"p": "¿Funciona con PDF protegidos con contraseña?", "r": "No. Si el PDF pide contraseña para abrirse, primero tienes que quitarle la protección; esta herramienta no procesa PDF cifrados."},
+    {"p": "¿Tiene algún costo o límite de usos?", "r": "Es gratis y sin límite de usos."}
+  ]
+}

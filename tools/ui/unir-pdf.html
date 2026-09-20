@@ -1,0 +1,25 @@
+      <div class="zona" id="unirZona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h6v7H5zM13 13h6v7h-6z"/><path d="M11 7.5h3.5V13M13 16.5H9.5V11"/></svg></span>
+        <p class="zona-titulo">Arrastra tus PDF aquí</p>
+        <p class="zona-texto">o pulsa para elegirlos · puedes añadir más después</p>
+      </div>
+      <input class="entrada-archivo" id="unirEntrada" type="file" accept="application/pdf" multiple>
+
+      <div id="unirPanel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="unirResumen"></span>
+          <div class="barra-acciones">
+            <button class="boton boton-secundario boton-pequeno" type="button" id="unirVaciar">Vaciar</button>
+          </div>
+        </div>
+        <ul class="lista" id="unirLista"></ul>
+        <div class="opciones">
+          <label class="campo">Nombre del archivo
+            <input id="unirNombre" type="text" value="documento-unido" maxlength="80">
+          </label>
+        </div>
+        <div class="barra">
+          <span class="ayuda">Arrastra la manija ⠿ para reordenar los PDF antes de unir.</span>
+          <button class="boton" type="button" id="unirBoton">Unir PDF</button>
+        </div>
+      </div>

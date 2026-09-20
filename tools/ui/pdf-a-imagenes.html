@@ -1,0 +1,42 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="m8.5 17 3-3 2 2 2-2.5"/><circle cx="10" cy="10" r="1.2"/></svg></span>
+        <p class="zona-titulo">Arrastra tu PDF aquí</p>
+        <p class="zona-texto">o pulsa para elegirlo · un archivo PDF</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" accept="application/pdf,.pdf">
+
+      <div id="panel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <div class="barra-acciones">
+            <button class="boton boton-secundario boton-pequeno" type="button" id="quitar">Quitar PDF</button>
+          </div>
+        </div>
+        <div class="opciones">
+          <label class="campo">Formato de imagen
+            <select id="formato">
+              <option value="jpg">JPG</option>
+              <option value="png">PNG</option>
+            </select>
+          </label>
+          <label class="campo">Resolución
+            <select id="resolucion">
+              <option value="72">72 ppp · para pantalla</option>
+              <option value="150" selected>150 ppp · para imprimir</option>
+              <option value="300">300 ppp · alta calidad</option>
+            </select>
+          </label>
+          <label class="campo">Páginas
+            <input id="paginas" type="text" placeholder="Todas, o ej. 1-3, 5">
+            <small>Deja vacío para convertirlas todas.</small>
+          </label>
+          <label class="campo">Nombre del archivo
+            <input id="nombre" type="text" value="documento" maxlength="80">
+          </label>
+        </div>
+        <div class="miniaturas" id="miniaturas"></div>
+        <div class="barra">
+          <span class="ayuda">Una sola página se descarga directo; varias, en un ZIP.</span>
+          <button class="boton" type="button" id="convertir">Convertir y descargar</button>
+        </div>
+      </div>

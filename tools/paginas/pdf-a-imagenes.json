@@ -1,0 +1,24 @@
+{
+  "slug": "pdf-a-imagenes",
+  "orden": 6,
+  "nombre": "PDF a imágenes",
+  "icono": "pdf-imagenes",
+  "titulo": "Convertir PDF a JPG o PNG gratis: pasar páginas a imagen",
+  "descripcion": "Convierte cada página de tu PDF en una imagen JPG o PNG. Elige la calidad y las páginas, y descarga una imagen o un ZIP. Todo ocurre en tu navegador.",
+  "h1": "Convertir PDF a imágenes sin subir archivos",
+  "bajada": "Saca cada página de tu PDF como JPG o PNG, con la resolución que necesites. Si son varias páginas se descargan en un ZIP: nada sale de tu equipo.",
+  "resumen_tarjeta": "Convierte páginas de un PDF a JPG o PNG, en la resolución que elijas.",
+  "scripts": ["assets/vendor/pdf.min.js", "assets/vendor/jszip.min.js", "assets/js/pdf-a-imagenes.js"],
+  "pasos": [
+    ["Carga tu PDF.", "Arrástralo a la zona de carga o pulsa para elegirlo."],
+    ["Elige formato, calidad y páginas.", "JPG o PNG, resolución en ppp (72, 150 o 300) y todas las páginas o una lista como «1-3, 5»."],
+    ["Descarga.", "Una sola página se descarga directo; varias, en un ZIP con una imagen por página."]
+  ],
+  "faqs": [
+    {"p": "¿Mi PDF se sube a algún servidor?", "r": "No. La conversión la hace tu navegador con pdf.js. El archivo nunca se envía por internet, por eso sirve para documentos con datos personales."},
+    {"p": "¿Qué resolución debo elegir?", "r": "72 ppp alcanza para ver en pantalla, 150 ppp para imprimir en calidad normal y 300 ppp para impresión de detalle o archivo. A más ppp, imágenes más pesadas y una conversión más lenta."},
+    {"p": "¿Hay límite de páginas?", "r": "No hay un límite fijo, pero un canvas no puede superar cerca de 16 millones de píxeles: si pides una resolución que se pasa de eso en una página muy grande, la herramienta la recorta sola y te avisa."},
+    {"p": "¿Funciona con PDF protegidos con contraseña?", "r": "No. Si el PDF pide contraseña para abrirse, la herramienta lo detecta y te avisa; primero tendrías que quitarle la protección con otro programa."},
+    {"p": "¿Tiene costo o marca de agua?", "r": "Es gratis y sin límite de usos. Las imágenes salen limpias, sin marcas de agua."}
+  ]
+}

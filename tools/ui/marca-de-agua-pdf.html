@@ -1,0 +1,103 @@
+<style>
+  .maw-tipos { display: flex; gap: 8px; margin-top: 4px; }
+  .maw-tipos label { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 12px; border: 1px solid #b9c2cf; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 14px; }
+  .maw-tipos input { margin: 0; }
+  .maw-tipos label:has(input:checked) { border-color: var(--acento); background: var(--acento-suave); }
+  .maw-previa { margin-top: 18px; display: grid; gap: 8px; justify-items: center; }
+  .maw-previa-lienzo { max-width: 100%; border: 1px solid var(--linea); border-radius: 10px; box-shadow: var(--sombra-hoja); background: #f8fafc; }
+  .maw-previa-texto { color: var(--gris); font-size: 14px; }
+  .maw-color { padding: 4px !important; height: 42px; }
+  .maw-rango { display: flex; align-items: center; gap: 10px; }
+  .maw-rango input[type="range"] { flex: 1; }
+  .maw-rango output { font-variant-numeric: tabular-nums; min-width: 3.2em; text-align: right; }
+</style>
+<div class="zona" id="zona">
+  <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18H6z"/><path d="m9 15 6-6M9 11l2-2m2 6 2-2"/></svg></span>
+  <p class="zona-titulo">Arrastra tu PDF aquí</p>
+  <p class="zona-texto">o pulsa para elegirlo · un archivo PDF</p>
+</div>
+<input class="entrada-archivo" id="entrada" type="file" accept="application/pdf,.pdf">
+
+<div id="panel" hidden>
+  <div class="barra">
+    <span class="barra-info" id="resumen"></span>
+    <div class="barra-acciones">
+      <button class="boton boton-secundario boton-pequeno" type="button" id="quitar">Quitar PDF</button>
+    </div>
+  </div>
+
+  <fieldset class="campo" style="border:0;padding:0;margin-top:18px">
+    <legend style="font-weight:700;margin-bottom:6px">Tipo de marca</legend>
+    <div class="maw-tipos">
+      <label><input type="radio" name="tipo" value="texto" id="tipoTexto" checked> Texto</label>
+      <label><input type="radio" name="tipo" value="imagen" id="tipoImagen"> Imagen</label>
+    </div>
+  </fieldset>
+
+  <div class="opciones" id="seccionTexto">
+    <label class="campo" style="grid-column:1/-1">Texto de la marca
+      <input id="texto" type="text" value="CONFIDENCIAL" maxlength="120">
+      <small id="textoAviso"></small>
+    </label>
+    <label class="campo">Tamaño
+      <input id="tamanoTexto" type="number" min="6" max="400" value="48">
+    </label>
+    <label class="campo">Color
+      <input class="maw-color" id="colorTexto" type="color" value="#c81e1e">
+    </label>
+    <label class="campo">Opacidad
+      <span class="maw-rango"><input id="opacidadTexto" type="range" min="0" max="100" value="30"><output id="opacidadTextoValor">30 %</output></span>
+    </label>
+    <label class="campo">Ángulo
+      <select id="anguloTipo">
+        <option value="diagonal" selected>Diagonal</option>
+        <option value="horizontal">Horizontal</option>
+        <option value="personalizado">Personalizado</option>
+      </select>
+    </label>
+    <label class="campo" id="campoAnguloPersonalizado" hidden>Grados (antihorario)
+      <input id="anguloPersonalizado" type="number" min="-180" max="180" value="45">
+    </label>
+  </div>
+
+  <div class="opciones" id="seccionImagen" hidden>
+    <label class="campo" style="grid-column:1/-1">Imagen de la marca
+      <input id="entradaImagen" type="file" accept="image/png,image/jpeg">
+      <small>PNG o JPG. El PNG conserva su transparencia.</small>
+    </label>
+    <label class="campo">Opacidad
+      <span class="maw-rango"><input id="opacidadImagen" type="range" min="0" max="100" value="40"><output id="opacidadImagenValor">40 %</output></span>
+    </label>
+    <label class="campo">Escala
+      <span class="maw-rango"><input id="escalaImagen" type="range" min="5" max="100" value="35"><output id="escalaImagenValor">35 %</output></span>
+      <small>Porcentaje del ancho de la página.</small>
+    </label>
+  </div>
+
+  <div class="opciones">
+    <label class="campo">Posición
+      <select id="posicion">
+        <option value="centro" selected>Centro</option>
+        <option value="mosaico">Mosaico repetido</option>
+        <option value="esquinas">Las cuatro esquinas</option>
+      </select>
+    </label>
+    <label class="campo">Páginas
+      <input id="paginas" type="text" value="todas" placeholder="todas, o ej. 1-3, 5">
+      <small>Escribe «todas» o una lista como «1-3, 5».</small>
+    </label>
+    <label class="campo">Nombre del archivo
+      <input id="nombre" type="text" value="documento" maxlength="80">
+    </label>
+  </div>
+
+  <div class="maw-previa">
+    <canvas class="maw-previa-lienzo" id="previa"></canvas>
+    <p class="maw-previa-texto" id="previaTexto">Vista previa</p>
+  </div>
+
+  <div class="barra">
+    <span class="ayuda">La marca se dibuja sobre el PDF y se genera en tu dispositivo.</span>
+    <button class="boton" type="button" id="aplicar">Aplicar y descargar</button>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "slug": "unir-pdf",
+  "orden": 3,
+  "nombre": "Unir PDF",
+  "icono": "unir",
+  "titulo": "Unir PDF gratis: combinar varios PDF en uno solo online",
+  "descripcion": "Junta varios PDF en el orden que quieras y descarga un solo archivo. Reordénalos arrastrando. Todo pasa en tu navegador, sin subir nada a un servidor.",
+  "h1": "Unir PDF sin subir archivos",
+  "bajada": "Carga varios PDF, ordénalos como quieras y descarga uno solo con todas las páginas. Puedes seguir añadiendo archivos antes de unir.",
+  "resumen_tarjeta": "Combina varios PDF en uno solo, en el orden que elijas.",
+  "scripts": ["assets/vendor/pdf-lib.min.js", "assets/js/unir-pdf.js"],
+  "pasos": [
+    ["Carga tus PDF.", "Arrástralos a la zona de carga o pulsa para elegirlos. Puedes añadir más archivos después."],
+    ["Ordénalos.", "Arrastra cada archivo de la lista a su lugar. Quita los que sobren antes de unir."],
+    ["Descarga el PDF.", "Pon nombre al archivo final y pulsa Unir PDF. Se genera en tu navegador y se guarda en tu equipo."]
+  ],
+  "faqs": [
+    {"p": "¿Mis PDF se suben a algún servidor?", "r": "No. Todo el proceso ocurre en tu navegador con JavaScript. Los archivos nunca se envían por internet, por eso sirve para contratos o documentos con información sensible."},
+    {"p": "¿Cuántos PDF puedo unir a la vez?", "r": "No hay un límite fijo. El tope real es la memoria de tu dispositivo: en un computador normal puedes unir decenas de PDF sin problema."},
+    {"p": "¿Puedo elegir el orden de los archivos?", "r": "Sí. Arrastra cada archivo de la lista para reordenarlo antes de unir; el PDF final respeta ese orden."},
+    {"p": "¿Qué pasa si un PDF tiene contraseña?", "r": "Se intenta abrir igual. Si se logra, se avisa que estaba protegido para que revises el resultado; si no se puede abrir, se omite ese archivo y se avisa cuál fue, sin afectar a los demás."},
+    {"p": "¿Tiene algún costo o marca de agua?", "r": "Es gratis y sin límite de usos. El PDF final sale limpio, sin marcas de agua."}
+  ]
+}
