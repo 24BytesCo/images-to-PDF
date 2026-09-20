@@ -17,8 +17,12 @@ meses, no semanas. El diferencial es la privacidad («no suben tus archivos»).
 
 ## 2. Estado al 2026-09-20
 
-Rama `suite/herramientas-pdf-20260920` (sale de `seo/mejoras-20260916`),
-**sin push**. `main` sigue con la herramienta vieja de una sola página.
+**Publicado el 20/09** en https://pdf.24bytes.pro/ (`main` = `6ffc1de`, HTTPS
+forzado, la URL vieja de `github.io` redirige con 301). Verificado desde fuera:
+18 páginas en 200, 13 descargas reales con Playwright contra producción y
+eventos llegando a Umami. El DNS (`pdf` CNAME → `24bytesco.github.io`, sin
+proxy) se creó por API con el token del `cert.pem` de cloudflared, que ahora
+vive en `/root/.cloudflared` del servidor.
 
 Nueve herramientas, todas probadas con Playwright en escritorio y a 390 px
 (descarga real, páginas contadas, cero errores de consola, sin desborde):
@@ -81,16 +85,14 @@ Además, desde el 20/09 por la tarde (informe de palabras clave completo en
 
 ## 5. Pendientes / decisiones de Alexis
 
-1. **Orden de publicación**: primero el registro DNS `pdf` CNAME →
-   `24bytesco.github.io` (proxy apagado) en Cloudflare, **después** fusionar a
-   `main` y push. Al revés, el `CNAME` del repo redirige el sitio actual a un
-   dominio que no resuelve. Luego: `gh api` para activar HTTPS forzado.
+1. Search Console: si `24bytes.pro` es propiedad de dominio, ya cubre el
+   subdominio; enviar `https://pdf.24bytes.pro/sitemap.xml` (el acceso por API
+   es de solo lectura, lo envía Alexis).
 2. Distribución (lo que de verdad mueve un dominio nuevo): PR a
    `karllhughes/awesome-pdf`, ficha en AlternativeTo, Show HN, dev.to en
    español, enlace desde SECOP Monitor y 24bytes.pro.
 3. AdSense: solicitar cuenta cuando haya tráfico; poner el id en
    `ADSENSE_CLIENT`.
-4. Search Console: dar de alta la propiedad y enviar `sitemap.xml`.
 5. Borrar `imgs/img_24_bytes_image_to_pdf.png` (6,3 MB, sin referencias).
 6. Ideas siguientes por volumen de búsqueda: PDF a Word/Word a PDF (difícil sin
    servidor), firmar PDF, proteger/desbloquear PDF, HTML a PDF, rotar PDF como
