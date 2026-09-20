@@ -9,8 +9,6 @@
   "bajada": "Pega o carga tu Markdown, revisa la vista previa en vivo y descarga un PDF con texto real: tablas, código, listas y enlaces, todo en tu navegador.",
   "resumen_tarjeta": "Convierte Markdown a PDF con texto real, tablas y código, en tu navegador.",
   "scripts": [
-    "assets/vendor/pdfmake.min.js",
-    "assets/vendor/vfs_fonts.min.js",
     "assets/vendor/marked.min.js",
     "assets/vendor/purify.min.js",
     "assets/js/markdown-a-pdf.js"

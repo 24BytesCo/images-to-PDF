@@ -2,6 +2,23 @@
 (function () {
   'use strict';
   const S = window.Suite;
+  // pdfmake y sus fuentes pesan ~1 MB: se cargan al primer uso y no al abrir la página.
+  const VENDOR = new URL('../vendor/', document.currentScript.src).href;
+  const cargarScript = (archivo) => new Promise((ok, mal) => {
+    const s = document.createElement('script');
+    s.src = VENDOR + archivo;
+    s.onload = ok;
+    s.onerror = () => mal(new Error('No se pudo cargar ' + archivo));
+    document.head.appendChild(s);
+  });
+  let pdfmakeListo = null;
+  const cargarPdfmake = () => {
+    if (!pdfmakeListo) {
+      pdfmakeListo = cargarScript('pdfmake.min.js').then(() => cargarScript('vfs_fonts.min.js'))
+        .catch((error) => { pdfmakeListo = null; throw error; });
+    }
+    return pdfmakeListo;
+  };
   const zona = document.getElementById('mdapdfZona');
   const entrada = document.getElementById('mdapdfArchivo');
   const editor = document.getElementById('mdapdfEditor');
@@ -317,6 +334,7 @@
     const nombre = S.nombreBase(document.getElementById('mdapdfNombre').value) + '.pdf';
     S.ocupado(true, 'Creando el PDF…');
     try {
+      await cargarPdfmake();
       const tokens = window.marked.lexer(texto);
       const margen = margenesPagina(margenClave, conPie);
       const anchoPagina = ANCHO_PAGINA_PT[formato] || ANCHO_PAGINA_PT.a4;
@@ -361,6 +379,8 @@
   };
 
   document.getElementById('mdapdfDescargar').addEventListener('click', crear);
+  // Al acercarse al botón se adelanta la carga, para que el clic no espere.
+  document.getElementById('mdapdfDescargar').addEventListener('pointerenter', () => { cargarPdfmake().catch(() => {}); }, { once: true });
 
   editor.value = EJEMPLO;
   renderizar();
