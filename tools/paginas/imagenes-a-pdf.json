@@ -1,0 +1,24 @@
+{
+  "slug": "imagenes-a-pdf",
+  "orden": 1,
+  "nombre": "Imágenes a PDF",
+  "icono": "imagenes",
+  "titulo": "Convertir imágenes a PDF gratis: unir JPG y PNG sin subir archivos",
+  "descripcion": "Pasa tus fotos JPG o PNG a un solo PDF, ordénalas arrastrando y descárgalo al instante. Todo se hace en tu navegador: las imágenes no se suben a ningún servidor.",
+  "h1": "Convertir imágenes a PDF sin subir archivos",
+  "bajada": "Junta fotos, capturas o documentos escaneados en un solo PDF. Ordénalos como quieras y descárgalo: nada sale de tu equipo.",
+  "resumen_tarjeta": "Une fotos JPG o PNG en un solo PDF, en el orden que elijas.",
+  "scripts": ["assets/vendor/jspdf.umd.min.js", "assets/js/imagenes-a-pdf.js"],
+  "pasos": [
+    ["Elige tus imágenes.", "Arrástralas a la zona de carga o pulsa para seleccionarlas. Sirven JPG, PNG y WebP."],
+    ["Ordénalas.", "Arrastra cada miniatura a su sitio u ordénalas por nombre. Quita las que sobren."],
+    ["Descarga el PDF.", "Elige tamaño de página y márgenes, y pulsa Crear PDF. Se genera en tu navegador y se guarda en tu equipo."]
+  ],
+  "faqs": [
+    {"p": "¿Mis imágenes se suben a algún servidor?", "r": "No. La conversión la hace tu navegador con JavaScript. Las imágenes nunca se envían por internet, por eso sirve para cédulas, contratos o cualquier documento con datos personales."},
+    {"p": "¿Hay límite de imágenes o de tamaño?", "r": "No hay un límite fijo. El tope real es la memoria de tu dispositivo: con un computador normal puedes unir más de cien fotos sin problema; en un celular conviene ir por tandas."},
+    {"p": "¿Puedo elegir el orden de las páginas?", "r": "Sí. Arrastra las miniaturas para reordenarlas, o usa el orden por nombre de archivo ascendente o descendente."},
+    {"p": "¿Qué formatos de imagen acepta?", "r": "JPG, PNG y WebP. Las imágenes WebP se convierten a JPG de forma automática al crear el PDF."},
+    {"p": "¿Tiene algún costo o marca de agua?", "r": "Es gratis y sin límite de usos. El PDF sale limpio, sin marcas de agua."}
+  ]
+}

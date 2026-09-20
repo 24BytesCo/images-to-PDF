@@ -1,0 +1,48 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra tus imágenes aquí</p>
+        <p class="zona-texto">o pulsa para elegirlas · JPG, PNG o WebP</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+
+      <div id="panel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <div class="barra-acciones">
+            <button class="boton boton-secundario boton-pequeno" type="button" id="ordenAsc">Ordenar A→Z</button>
+            <button class="boton boton-secundario boton-pequeno" type="button" id="ordenDesc">Ordenar Z→A</button>
+            <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+          </div>
+        </div>
+        <div class="miniaturas" id="miniaturas"></div>
+        <div class="opciones">
+          <label class="campo">Tamaño de página
+            <select id="formato">
+              <option value="a4">A4</option>
+              <option value="letter">Carta</option>
+              <option value="ajustar">Ajustar a cada imagen</option>
+            </select>
+          </label>
+          <label class="campo">Orientación
+            <select id="orientacion">
+              <option value="auto">Automática por imagen</option>
+              <option value="portrait">Vertical</option>
+              <option value="landscape">Horizontal</option>
+            </select>
+          </label>
+          <label class="campo">Margen
+            <select id="margen">
+              <option value="0">Sin margen</option>
+              <option value="8">Pequeño</option>
+              <option value="16">Grande</option>
+            </select>
+          </label>
+          <label class="campo">Nombre del archivo
+            <input id="nombre" type="text" value="documento" maxlength="80">
+          </label>
+        </div>
+        <div class="barra">
+          <span class="ayuda">El PDF se crea en tu dispositivo.</span>
+          <button class="boton" type="button" id="crear">Crear PDF</button>
+        </div>
+      </div>

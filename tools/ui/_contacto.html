@@ -1,0 +1,16 @@
+    <section class="bloque" aria-label="Contacto">
+      <h2>¿Te falta una herramienta?</h2>
+      <p class="parrafo">Cuéntame qué necesitas hacer con tus PDF y la sumo a la lista. Llega directo a mi correo.</p>
+      <form id="contactoForm" class="contacto" style="margin-top:18px" data-endpoint="https://formsubmit.co/ajax/alexis.dorado@24bytes.pro">
+        <div class="contacto-fila">
+          <label class="campo">Tu nombre<input name="name" type="text" autocomplete="name" required></label>
+          <label class="campo">Correo para responderte<input name="contact" type="email" autocomplete="email" required></label>
+        </div>
+        <label class="campo">Mensaje<textarea name="message" rows="3" required></textarea></label>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" hidden>
+        <div class="barra" style="margin-top:0">
+          <span class="contacto-estado" id="contactoEstado" role="status" aria-live="polite"></span>
+          <button class="boton" type="submit">Enviar</button>
+        </div>
+      </form>
+    </section>

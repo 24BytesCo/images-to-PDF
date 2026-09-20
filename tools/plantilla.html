@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{titulo}}</title>
+  <meta name="description" content="{{descripcion}}">
+  <link rel="canonical" href="{{canonical}}">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Alexis Dorado Muñoz — 24Bytes">
+  <meta name="theme-color" content="#eef1f5">
+  <meta name="google-site-verification" content="{{verificacion}}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:site_name" content="{{marca}}">
+  <meta property="og:title" content="{{titulo}}">
+  <meta property="og:description" content="{{descripcion}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:image" content="https://24bytesco.github.io/images-to-PDF/imgs/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{titulo}}">
+  <meta name="twitter:description" content="{{descripcion}}">
+  <meta name="twitter:image" content="https://24bytesco.github.io/images-to-PDF/imgs/og-image.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{raiz}}imgs/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{raiz}}imgs/favicon-180.png">
+  <link rel="manifest" href="{{raiz}}manifest.json">
+  <link rel="stylesheet" href="{{raiz}}assets/css/suite.css">
+  {{json_ld}}
+  {{adsense}}
+</head>
+<body class="{{clase_cuerpo}}">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <header class="cabecera">
+    <div class="cabecera-interior">
+      <a class="marca" href="{{raiz}}" aria-label="{{marca}}, inicio">
+        <span class="marca-sello" aria-hidden="true">PDF</span>
+        <span class="marca-nombre">{{marca}}</span>
+      </a>
+      <details class="menu">
+        <summary>Herramientas</summary>
+        <nav class="menu-lista" aria-label="Herramientas">
+          {{navegacion}}
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="contenido" class="contenido">
+{{cuerpo}}
+  </main>
+
+  <footer class="pie">
+    <p>Hecho en Colombia por <a href="https://24bytes.pro" rel="noopener">Alexis Dorado Muñoz — 24Bytes</a>. Código abierto en <a href="https://github.com/24BytesCo/images-to-PDF" rel="noopener">GitHub</a>.</p>
+    <p class="pie-nota">Tus archivos se procesan en tu dispositivo y no se envían a ningún servidor.</p>
+  </footer>
+
+  <div class="ocupado" id="ocupado" hidden aria-live="polite"><div class="ocupado-caja"><span class="ocupado-rueda" aria-hidden="true"></span><span id="ocupadoTexto">Procesando…</span></div></div>
+  <div class="aviso" id="aviso" role="status" aria-live="polite" hidden></div>
+
+  <script src="{{raiz}}assets/js/comun.js" defer></script>
+  {{scripts}}
+</body>
+</html>
