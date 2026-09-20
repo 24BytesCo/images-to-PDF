@@ -55,6 +55,15 @@ Además, desde el 20/09 por la tarde (informe de palabras clave completo en
   Adobe/iLovePDF/Smallpdf; el único hueco real de cabeza es **Markdown a PDF**
   (SERP en español casi toda en inglés). El resto es cola larga + privacidad.
 
+- **Formulario de contacto propio** (20/09): la portada envía a
+  `https://24bytes.pro/api/contacto`, una ruta del Portafolio
+  (`apps/web/src/app/api/contacto/route.ts`) que solo acepta el origen
+  `pdf.24bytes.pro`, con honeypot, Zod y tope de 5 envíos/hora por IP, y sale
+  por Resend. Probado de punta a punta en producción. Para otro sitio estático:
+  añadir su origen al mapa `ORIGENES` de esa ruta y redesplegar el Portafolio.
+- Lighthouse móvil (20/09): rendimiento 94-100, SEO 100, buenas prácticas 100,
+  CLS 0. IndexNow enviado (`python3 tools/indexnow.py`, 202).
+
 ## 3. Cómo está hecho
 
 - `python3 tools/build.py` (sin dependencias) lee `tools/paginas/<slug>.json`
