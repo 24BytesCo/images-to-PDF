@@ -3,8 +3,8 @@
   "orden": 2,
   "nombre": "Markdown a PDF",
   "icono": "markdown",
-  "titulo": "Markdown a PDF: convertir MD a PDF online sin subir archivos",
-  "descripcion": "Convierte Markdown a PDF con texto real y buscable. Pega tu .md o arrástralo, mira la vista previa en vivo y descarga el PDF: nada se sube a un servidor.",
+  "titulo": "Markdown a PDF online, con texto real y buscable",
+  "descripcion": "Convierte tu .md a PDF con tablas, código y enlaces reales, no una imagen. Vista previa en vivo, sin subir el archivo a ningún lado.",
   "h1": "Convertir Markdown a PDF sin subir archivos",
   "bajada": "Pega o carga tu Markdown, revisa la vista previa en vivo y descarga un PDF con texto real: tablas, código, listas y enlaces, todo en tu navegador.",
   "resumen_tarjeta": "Convierte Markdown a PDF con texto real, tablas y código, en tu navegador.",
@@ -16,15 +16,61 @@
     "assets/js/markdown-a-pdf.js"
   ],
   "pasos": [
-    ["Pega o carga tu Markdown.", "Escríbelo directamente, pégalo o arrastra un archivo .md, .markdown o .txt."],
-    ["Revisa la vista previa.", "Se actualiza en vivo mientras escribes, así ves el resultado antes de exportar."],
-    ["Descarga el PDF.", "Elige tamaño de página, márgenes y tipografía, y pulsa Descargar PDF. El texto queda seleccionable y buscable."]
+    [
+      "Pega o carga tu Markdown.",
+      "Escríbelo directamente, pégalo o arrastra un archivo .md, .markdown o .txt."
+    ],
+    [
+      "Revisa la vista previa.",
+      "Se actualiza en vivo mientras escribes, así ves el resultado antes de exportar."
+    ],
+    [
+      "Descarga el PDF.",
+      "Elige tamaño de página, márgenes y tipografía, y pulsa Descargar PDF. El texto queda seleccionable y buscable."
+    ]
   ],
   "faqs": [
-    {"p": "¿Mi Markdown se sube a algún servidor?", "r": "No. Tanto la vista previa como la generación del PDF ocurren en tu navegador con JavaScript. El texto que escribes o el archivo que cargas nunca se envían por internet."},
-    {"p": "¿Hay límite de tamaño o de páginas?", "r": "No hay un límite fijo. Documentos de cientos de líneas generan un PDF de varias páginas sin problema; el límite real es la memoria de tu dispositivo, igual que con cualquier programa que corre en el navegador."},
-    {"p": "¿El PDF es una imagen o tiene texto real?", "r": "Tiene texto real. La herramienta no toma una captura de la vista previa: recorre tu Markdown y construye el PDF con texto seleccionable y buscable, incluidas las tablas y el código."},
-    {"p": "¿Qué pasa con las imágenes y el HTML que pego dentro del Markdown?", "r": "Las imágenes en formato data: o alojadas en el mismo origen se incluyen en el PDF; si una imagen remota falla por las restricciones de CORS del navegador, se omite y se avisa, sin interrumpir la descarga. El HTML incrustado en el Markdown se ignora en el PDF: no se interpreta ni se ejecuta."},
-    {"p": "¿Tiene algún costo o marca de agua?", "r": "Es gratis y sin límite de usos. El PDF sale limpio, sin marcas de agua ni anuncios superpuestos."}
+    {
+      "p": "¿Mi Markdown se sube a algún servidor?",
+      "r": "No. Tanto la vista previa como la generación del PDF ocurren en tu navegador con JavaScript. El texto que escribes o el archivo que cargas nunca se envían por internet."
+    },
+    {
+      "p": "¿Hay límite de tamaño o de páginas?",
+      "r": "No hay un límite fijo. Documentos de cientos de líneas generan un PDF de varias páginas sin problema; el límite real es la memoria de tu dispositivo, igual que con cualquier programa que corre en el navegador."
+    },
+    {
+      "p": "¿El PDF es una imagen o tiene texto real?",
+      "r": "Tiene texto real. La herramienta no toma una captura de la vista previa: recorre tu Markdown y construye el PDF con texto seleccionable y buscable, incluidas las tablas y el código."
+    },
+    {
+      "p": "¿Qué pasa con las imágenes y el HTML que pego dentro del Markdown?",
+      "r": "Las imágenes en formato data: o alojadas en el mismo origen se incluyen en el PDF; si una imagen remota falla por las restricciones de CORS del navegador, se omite y se avisa, sin interrumpir la descarga. El HTML incrustado en el Markdown se ignora en el PDF: no se interpreta ni se ejecuta."
+    },
+    {
+      "p": "¿Tiene algún costo o marca de agua?",
+      "r": "Es gratis y sin límite de usos. El PDF sale limpio, sin marcas de agua ni anuncios superpuestos."
+    },
+    {
+      "p": "¿Puedo exportar un README.md directamente?",
+      "r": "Sí. Arrastra el archivo .md al editor o pega su contenido. Los títulos, listas, tablas, bloques de código y enlaces del README se convierten tal cual."
+    },
+    {
+      "p": "¿Se ve igual que en GitHub?",
+      "r": "Parecido, no idéntico. Se respeta la estructura de GitHub Flavored Markdown (tablas, listas de tareas, tachado), con una tipografía pensada para leer e imprimir. El HTML incrustado en el Markdown se ignora."
+    },
+    {
+      "p": "¿Las imágenes del Markdown salen en el PDF?",
+      "r": "Las incrustadas como data URI sí. Las remotas dependen de que su servidor permita leerlas desde el navegador; si no lo permite, se omiten y se avisa, sin dañar el resto del documento."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Un PDF de verdad, no una captura de pantalla",
+      "p": [
+        "Muchos conversores de Markdown toman una foto de la vista previa y la pegan en un PDF: el resultado no se puede buscar, no se puede copiar y se ve borroso al ampliar. Aquí el documento se reconstruye elemento por elemento: los títulos son texto, las tablas son tablas y los enlaces se pueden pulsar.",
+        "Eso lo hace útil para lo que de verdad se escribe en Markdown: documentación técnica, actas, apuntes de clase, notas exportadas de Obsidian o Notion y archivos README. Puedes elegir A4 o Carta, tres anchos de margen, el tamaño de letra y si quieres número de página al pie.",
+        "Soporta títulos de seis niveles, negrita, cursiva, tachado, listas anidadas y de tareas, citas, tablas con alineación, código en línea y en bloque, reglas horizontales y enlaces. Las tildes, la ñ y los signos ¿ ¡ salen correctamente."
+      ]
+    }
   ]
 }

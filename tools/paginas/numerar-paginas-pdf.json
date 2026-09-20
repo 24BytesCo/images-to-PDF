@@ -3,22 +3,67 @@
   "orden": 9,
   "nombre": "Numerar páginas",
   "icono": "numerar",
-  "titulo": "Numerar páginas de un PDF gratis: agregar número de página",
-  "descripcion": "Agrega números de página a tu PDF: posición, formato («1», «Página 1 de 10»…) y desde qué página empieza. Se procesa en tu navegador, sin subir nada.",
+  "titulo": "Numerar páginas de un PDF gratis online",
+  "descripcion": "Agrega número de página con el formato y la posición que quieras, sin subir tu PDF a ningún servidor. Gratis, sin registro.",
   "h1": "Numerar páginas de un PDF sin subir archivos",
   "bajada": "Agrega el número de página con el formato, la posición y el tamaño que quieras, y decide desde qué página empezar para saltarte la portada.",
   "resumen_tarjeta": "Agrega números de página a tu PDF, con el formato y la posición que elijas.",
-  "scripts": ["assets/vendor/pdf-lib.min.js", "assets/vendor/pdf.min.js", "assets/js/numerar-paginas-pdf.js"],
+  "scripts": [
+    "assets/vendor/pdf-lib.min.js",
+    "assets/vendor/pdf.min.js",
+    "assets/js/numerar-paginas-pdf.js"
+  ],
   "pasos": [
-    ["Carga tu PDF.", "Arrástralo a la zona de carga o pulsa para elegirlo."],
-    ["Elige formato y posición.", "Escoge dónde va el número, el formato del texto, desde qué página empieza y con qué número inicial."],
-    ["Revisa la vista previa y descarga.", "Se simula sobre la primera página numerada; cuando esté bien, pulsa Numerar y se genera en tu navegador."]
+    [
+      "Carga tu PDF.",
+      "Arrástralo a la zona de carga o pulsa para elegirlo."
+    ],
+    [
+      "Elige formato y posición.",
+      "Escoge dónde va el número, el formato del texto, desde qué página empieza y con qué número inicial."
+    ],
+    [
+      "Revisa la vista previa y descarga.",
+      "Se simula sobre la primera página numerada; cuando esté bien, pulsa Numerar y se genera en tu navegador."
+    ]
   ],
   "faqs": [
-    {"p": "¿Mi PDF se sube a algún servidor?", "r": "No. La numeración la hace tu navegador con pdf-lib; el archivo nunca se envía por internet."},
-    {"p": "¿Puedo saltarme la portada?", "r": "Sí. Define desde qué página empieza la numeración; las páginas anteriores quedan sin número."},
-    {"p": "¿Qué formatos de número admite?", "r": "«1», «1 / 10», «Página 1 de 10» y «- 1 -», con el número inicial que elijas."},
-    {"p": "¿Funciona con PDF protegidos con contraseña?", "r": "No. Si el PDF pide contraseña para abrirse, primero tienes que quitarle la protección; esta herramienta no procesa PDF cifrados."},
-    {"p": "¿Tiene algún costo o límite de usos?", "r": "Es gratis y sin límite de usos."}
+    {
+      "p": "¿Mi PDF se sube a algún servidor?",
+      "r": "No. La numeración la hace tu navegador con pdf-lib; el archivo nunca se envía por internet."
+    },
+    {
+      "p": "¿Puedo saltarme la portada?",
+      "r": "Sí. Define desde qué página empieza la numeración; las páginas anteriores quedan sin número."
+    },
+    {
+      "p": "¿Qué formatos de número admite?",
+      "r": "«1», «1 / 10», «Página 1 de 10» y «- 1 -», con el número inicial que elijas."
+    },
+    {
+      "p": "¿Funciona con PDF protegidos con contraseña?",
+      "r": "No. Si el PDF pide contraseña para abrirse, primero tienes que quitarle la protección; esta herramienta no procesa PDF cifrados."
+    },
+    {
+      "p": "¿Tiene algún costo o límite de usos?",
+      "r": "Es gratis y sin límite de usos."
+    },
+    {
+      "p": "¿Sirve para foliar un expediente?",
+      "r": "Sí. Foliar es numerar las hojas de forma consecutiva: elige el formato simple («1»), la esquina superior derecha, que es la ubicación habitual, y el número inicial que corresponda si el expediente continúa otro tomo."
+    },
+    {
+      "p": "¿Puedo empezar a numerar desde una página distinta a la 1?",
+      "r": "Sí. «Empezar en la página» deja sin número la portada o el índice, y «Número inicial» define con qué cifra arranca la cuenta."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Numerar y foliar documentos",
+      "p": [
+        "Tesis, informes, propuestas y expedientes suelen armarse uniendo archivos de orígenes distintos, y el resultado llega sin numeración o con la de cada parte por separado. Numerar al final, sobre el PDF ya unido, es la forma más simple de dejarlo consecutivo.",
+        "En trámites administrativos y judiciales a esto se le llama foliar. La herramienta respeta páginas de tamaños distintos y hojas apaisadas o rotadas: el número siempre cae en la esquina que elegiste de la página tal como se ve, no de como está guardada por dentro."
+      ]
+    }
   ]
 }

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://24bytesco.github.io/images-to-PDF/sitemap.xml
+Sitemap: https://pdf.24bytes.pro/sitemap.xml

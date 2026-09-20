@@ -3,22 +3,72 @@
   "orden": 4,
   "nombre": "Dividir PDF",
   "icono": "dividir",
-  "titulo": "Dividir PDF gratis: separar o extraer páginas de un PDF",
-  "descripcion": "Extrae un rango de páginas, separa cada página en su propio PDF o parte el documento cada N páginas. Todo ocurre en tu navegador, sin subir archivos.",
+  "titulo": "Dividir PDF gratis: separar y extraer páginas",
+  "descripcion": "Extrae un rango, separa cada página o divide cada N páginas, sin subir tu PDF a ningún servidor. Gratis, sin registro ni límites.",
   "h1": "Dividir PDF sin subir archivos",
   "bajada": "Extrae solo las páginas que necesitas, separa cada página en un PDF propio o parte el documento cada cierto número de páginas.",
   "resumen_tarjeta": "Extrae páginas, separa cada una o parte el PDF cada N páginas.",
-  "scripts": ["assets/vendor/pdf-lib.min.js", "assets/vendor/jszip.min.js", "assets/js/dividir-pdf.js"],
+  "scripts": [
+    "assets/vendor/pdf-lib.min.js",
+    "assets/vendor/jszip.min.js",
+    "assets/js/dividir-pdf.js"
+  ],
   "pasos": [
-    ["Carga tu PDF.", "Arrástralo a la zona de carga o pulsa para elegirlo. Se muestra cuántas páginas tiene."],
-    ["Elige cómo dividirlo.", "Escribe un rango de páginas, sepáralas todas en archivos individuales o parte el documento cada N páginas."],
-    ["Descarga el resultado.", "Si es un solo PDF se descarga directo; si son varios, llegan juntos en un ZIP."]
+    [
+      "Carga tu PDF.",
+      "Arrástralo a la zona de carga o pulsa para elegirlo. Se muestra cuántas páginas tiene."
+    ],
+    [
+      "Elige cómo dividirlo.",
+      "Escribe un rango de páginas, sepáralas todas en archivos individuales o parte el documento cada N páginas."
+    ],
+    [
+      "Descarga el resultado.",
+      "Si es un solo PDF se descarga directo; si son varios, llegan juntos en un ZIP."
+    ]
   ],
   "faqs": [
-    {"p": "¿Mi PDF se sube a algún servidor?", "r": "No. Todo el proceso ocurre en tu navegador con JavaScript. El archivo nunca se envía por internet, por eso sirve para documentos con información sensible."},
-    {"p": "¿Cómo escribo el rango de páginas?", "r": "Con números y comas, por ejemplo «1-3, 5, 8-10». Puedes mezclar páginas sueltas y rangos; si el formato no es válido o una página no existe en el documento, se avisa antes de generar nada."},
-    {"p": "¿En qué formato llegan varios archivos?", "r": "En un único ZIP con un PDF por archivo, numerados en orden, para que no tengas que descargarlos uno por uno."},
-    {"p": "¿Qué pasa si mi PDF tiene contraseña?", "r": "Se intenta abrir igual. Si el archivo está realmente protegido y no se puede leer, se avisa con claridad y no se genera nada."},
-    {"p": "¿Tiene algún costo o límite de páginas?", "r": "Es gratis y sin límite de usos. El tope real es la memoria de tu dispositivo con documentos muy grandes."}
+    {
+      "p": "¿Mi PDF se sube a algún servidor?",
+      "r": "No. Todo el proceso ocurre en tu navegador con JavaScript. El archivo nunca se envía por internet, por eso sirve para documentos con información sensible."
+    },
+    {
+      "p": "¿Cómo escribo el rango de páginas?",
+      "r": "Con números y comas, por ejemplo «1-3, 5, 8-10». Puedes mezclar páginas sueltas y rangos; si el formato no es válido o una página no existe en el documento, se avisa antes de generar nada."
+    },
+    {
+      "p": "¿En qué formato llegan varios archivos?",
+      "r": "En un único ZIP con un PDF por archivo, numerados en orden, para que no tengas que descargarlos uno por uno."
+    },
+    {
+      "p": "¿Qué pasa si mi PDF tiene contraseña?",
+      "r": "Se intenta abrir igual. Si el archivo está realmente protegido y no se puede leer, se avisa con claridad y no se genera nada."
+    },
+    {
+      "p": "¿Tiene algún costo o límite de páginas?",
+      "r": "Es gratis y sin límite de usos. El tope real es la memoria de tu dispositivo con documentos muy grandes."
+    },
+    {
+      "p": "¿Cuál es la diferencia entre dividir y extraer páginas?",
+      "r": "Extraer saca las páginas que indiques a un único PDF nuevo. Dividir parte el documento completo en varios archivos: uno por página o uno cada N páginas. Las tres opciones están en el mismo selector."
+    },
+    {
+      "p": "¿Puedo extraer páginas que no son consecutivas?",
+      "r": "Sí. Escribe páginas sueltas y rangos separados por comas, por ejemplo «2, 5-7, 12». Salen en un solo PDF y en ese orden."
+    },
+    {
+      "p": "¿El PDF original se modifica?",
+      "r": "No. El archivo original queda intacto en tu equipo; la herramienta crea archivos nuevos."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Tres formas de partir un PDF",
+      "p": [
+        "Extraer un rango sirve cuando solo necesitas una parte: el capítulo de un libro, la página firmada de un contrato o el certificado que viene dentro de un paquete de documentos.",
+        "Separar cada página genera un PDF por hoja, útil para facturas o comprobantes escaneados en lote que luego hay que archivar uno por uno. Partir cada N páginas resuelve el caso de un archivo demasiado grande para un formulario que solo admite cierto número de hojas por carga.",
+        "En los tres casos las páginas se copian sin recomprimir: el resultado tiene la misma calidad y el mismo texto seleccionable que el original."
+      ]
+    }
   ]
 }

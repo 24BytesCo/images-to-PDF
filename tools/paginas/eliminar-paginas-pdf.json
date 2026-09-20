@@ -1,0 +1,58 @@
+{
+  "slug": "eliminar-paginas-pdf",
+  "variante_de": "organizar-pdf",
+  "orden": 25,
+  "nombre": "Eliminar páginas de un PDF",
+  "icono": "organizar",
+  "titulo": "Eliminar páginas de un PDF gratis, sin subirlo",
+  "descripcion": "Borra las páginas que sobran de un PDF viendo las miniaturas: hojas en blanco, portadas o anexos. Sin subir el archivo y sin registro.",
+  "h1": "Eliminar páginas de un PDF sin subir archivos",
+  "bajada": "Mira las miniaturas, quita las hojas que sobran y descarga el PDF sin ellas. El original no se toca.",
+  "resumen_tarjeta": "Mira las miniaturas, quita las hojas que sobran y descarga el PDF sin ellas. El original no se toca.",
+  "scripts": [
+    "assets/vendor/pdf-lib.min.js",
+    "assets/vendor/pdf.min.js",
+    "assets/js/organizar-pdf.js"
+  ],
+  "pasos": [
+    [
+      "Carga tu PDF.",
+      "Se muestran todas las páginas como miniaturas."
+    ],
+    [
+      "Elimina las que sobran.",
+      "Pulsa el botón de eliminar en cada página que no quieras conservar."
+    ],
+    [
+      "Descarga el PDF.",
+      "El archivo nuevo contiene solo las páginas que dejaste."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Todo el proceso ocurre en tu navegador con JavaScript y el archivo nunca viaja por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: la herramienta sigue funcionando."
+    },
+    {
+      "p": "¿Puedo recuperar una página que borré por error?",
+      "r": "Sí, mientras no hayas descargado: «Deshacer todo» devuelve el documento completo. Y el archivo original nunca se modifica."
+    },
+    {
+      "p": "¿Cómo quito las hojas en blanco de un escaneo?",
+      "r": "Se reconocen a simple vista en las miniaturas. Elimínalas una por una; el resto de páginas se renumera solo."
+    },
+    {
+      "p": "¿Eliminar páginas reduce el peso del archivo?",
+      "r": "Sí, en proporción a lo que pesaban esas páginas. Si el objetivo principal es bajar el peso, prueba además Comprimir PDF."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Eliminar o extraer: cuál te conviene",
+      "p": [
+        "Si de un documento de 40 páginas sobran 3, lo más rápido es eliminarlas aquí. Si es al revés, y de esas 40 solo necesitas 3, es más cómodo Extraer páginas, donde escribes los números y listo.",
+        "Casos frecuentes: quitar la portada publicitaria de un extracto, las hojas en blanco que mete un escáner a doble cara, los anexos que no aplican a un trámite, o la última página de firmas de una versión anterior."
+      ]
+    }
+  ]
+}

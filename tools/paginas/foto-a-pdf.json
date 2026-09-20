@@ -1,0 +1,57 @@
+{
+  "slug": "foto-a-pdf",
+  "variante_de": "imagenes-a-pdf",
+  "orden": 22,
+  "nombre": "Foto a PDF",
+  "icono": "imagenes",
+  "titulo": "Foto a PDF desde el celular, sin instalar nada",
+  "descripcion": "Convierte las fotos de un documento en un PDF desde el navegador del celular. Sin aplicación, sin registro y sin subir tus fotos a ningún servidor.",
+  "h1": "Pasar fotos a PDF desde el celular o el computador",
+  "bajada": "Toma la foto del documento, ábrela aquí y llévate un PDF listo para enviar. Sin instalar ninguna aplicación.",
+  "resumen_tarjeta": "Toma la foto del documento, ábrela aquí y llévate un PDF listo para enviar. Sin instalar ninguna aplicación.",
+  "scripts": [
+    "assets/vendor/jspdf.umd.min.js",
+    "assets/js/imagenes-a-pdf.js"
+  ],
+  "pasos": [
+    [
+      "Toma o elige las fotos.",
+      "En el celular puedes elegirlas de la galería o tomar la foto en el momento."
+    ],
+    [
+      "Ordena las hojas.",
+      "Arrastra las miniaturas hasta dejarlas en el orden del documento."
+    ],
+    [
+      "Descarga y comparte.",
+      "El PDF queda en tus descargas, listo para WhatsApp o correo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Todo el proceso ocurre en tu navegador con JavaScript y el archivo nunca viaja por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: la herramienta sigue funcionando."
+    },
+    {
+      "p": "¿Necesito instalar una aplicación?",
+      "r": "No. Funciona en el navegador del celular, sea Android o iPhone, y en el computador."
+    },
+    {
+      "p": "¿Cómo escaneo un documento con la cámara?",
+      "r": "Apoya la hoja en una superficie oscura y plana, con luz de frente para que tu mano no haga sombra, y toma la foto desde arriba, con la hoja llenando el encuadre. Luego cárgala aquí."
+    },
+    {
+      "p": "¿Por qué el PDF queda tan pesado?",
+      "r": "Las cámaras actuales guardan fotos de 4 a 8 MB. Si el PDF queda grande para enviarlo, pásalo después por Comprimir PDF: con fotos es donde más reduce."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cómo fotografiar un documento para que se lea bien",
+      "p": [
+        "Tres cosas hacen casi toda la diferencia. La luz: de día junto a una ventana, o con la lámpara delante de ti y no detrás, para no proyectar sombra sobre la hoja. El ángulo: el celular paralelo al papel, porque una foto inclinada deforma el texto y no hay ajuste que lo arregle bien después. Y el fondo: una mesa oscura hace que el borde de la hoja se distinga.",
+        "Para una cédula o tarjeta, toma una foto por cada cara y déjalas en ese orden. Si eliges «ajustar a cada imagen» el PDF tendrá páginas del tamaño de cada foto; si lo vas a imprimir, mejor Carta o A4 con margen."
+      ]
+    }
+  ]
+}

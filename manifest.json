@@ -1,12 +1,12 @@
 {
-  "name": "Images-to-PDF Studio",
-  "short_name": "Img-to-PDF",
-  "description": "Convierte, une y agrupa imágenes JPG y PNG en un solo PDF, 100% local y sin subir archivos.",
-  "start_url": "https://24bytesco.github.io/images-to-PDF/",
-  "scope": "https://24bytesco.github.io/images-to-PDF/",
+  "name": "24Bytes PDF",
+  "short_name": "24Bytes PDF",
+  "description": "Herramientas PDF que funcionan en tu navegador, sin subir archivos.",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "background_color": "#eef1f5",
+  "theme_color": "#eef1f5",
   "lang": "es",
   "icons": [
     {

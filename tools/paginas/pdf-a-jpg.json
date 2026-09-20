@@ -1,0 +1,58 @@
+{
+  "slug": "pdf-a-jpg",
+  "variante_de": "pdf-a-imagenes",
+  "orden": 23,
+  "nombre": "PDF a JPG",
+  "icono": "pdf-imagenes",
+  "titulo": "PDF a JPG gratis, sin subir el archivo",
+  "descripcion": "Convierte las páginas de un PDF en imágenes JPG, todas o solo las que elijas, con la resolución que necesites. Se procesa en tu navegador.",
+  "h1": "Convertir PDF a JPG sin subir archivos",
+  "bajada": "Cada página de tu PDF convertida en un JPG, a 72, 150 o 300 ppp. Una página se descarga directa; varias, en un ZIP.",
+  "resumen_tarjeta": "Cada página de tu PDF convertida en un JPG, a 72, 150 o 300 ppp. Una página se descarga directa; varias, en un ZIP.",
+  "scripts": [
+    "assets/vendor/pdf.min.js",
+    "assets/vendor/jszip.min.js",
+    "assets/js/pdf-a-imagenes.js"
+  ],
+  "pasos": [
+    [
+      "Carga tu PDF.",
+      "Arrástralo o pulsa para elegirlo. Verás las miniaturas de las páginas."
+    ],
+    [
+      "Elige resolución y páginas.",
+      "JPG ya viene seleccionado. Indica las páginas o déjalo vacío para convertirlas todas."
+    ],
+    [
+      "Descarga los JPG.",
+      "Una sola imagen baja directa; varias llegan en un ZIP numeradas en orden."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Todo el proceso ocurre en tu navegador con JavaScript y el archivo nunca viaja por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: la herramienta sigue funcionando."
+    },
+    {
+      "p": "¿Cómo convierto solo la primera página?",
+      "r": "Escribe 1 en el campo de páginas. Se descarga un único JPG, sin ZIP."
+    },
+    {
+      "p": "¿Qué resolución necesito para redes sociales o WhatsApp?",
+      "r": "150 ppp es suficiente y pesa poco. 300 ppp solo hace falta para imprimir o para ampliar un detalle."
+    },
+    {
+      "p": "¿Por qué el fondo sale blanco?",
+      "r": "El formato JPG no admite transparencia, así que las páginas se dibujan sobre blanco, igual que se ven en un lector de PDF. Si necesitas transparencia, cambia el formato a PNG."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cuándo conviene pasar un PDF a JPG",
+      "p": [
+        "Para publicar un afiche o un certificado en redes sociales, que no aceptan PDF. Para insertar una página dentro de una presentación o de un documento de Word. Para enviar por chat una sola hoja sin que la otra persona tenga que abrir un archivo. Y para subir un soporte a formularios que solo reciben imágenes.",
+        "Ten presente que la imagen es una foto de la página: el texto deja de ser seleccionable. Si lo que quieres es separar hojas conservando el texto, usa Dividir PDF."
+      ]
+    }
+  ]
+}

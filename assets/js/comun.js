@@ -38,6 +38,8 @@
       a.click();
       a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 4000);
+      const partes = location.pathname.split('/').filter(Boolean);
+      Suite.evento('descarga', { herramienta: partes[partes.length - 1] || 'portada' });
     },
 
     ocupado(activo, texto = 'Procesando…') {

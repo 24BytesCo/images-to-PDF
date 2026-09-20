@@ -348,6 +348,7 @@
         });
       }
       window.pdfMake.createPdf(docDefinition).download(nombre);
+      S.evento('descarga', { herramienta: 'markdown-a-pdf' });
       if (ctx.omitidas.valor) S.aviso('PDF creado. Algunas imágenes remotas no se pudieron incluir (bloqueadas por CORS).', '');
       else S.aviso('PDF creado. Revisa tus descargas.', 'ok');
       S.evento('pdf-creado', { herramienta: 'markdown-a-pdf' });

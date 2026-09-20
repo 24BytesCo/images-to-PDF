@@ -6,7 +6,7 @@ por su propia búsqueda; todas comparten plantilla, estilos y pie. Las páginas 
 definen en `tools/paginas/<slug>.json` y su interfaz en `tools/ui/<slug>.html`.
 
 Uso:  python3 tools/build.py
-Al cambiar de dominio (p. ej. pdf.24bytes.pro) basta con tocar BASE_URL.
+Al cambiar de dominio basta con tocar BASE_URL (y el archivo CNAME de la raíz).
 """
 import html
 import json
@@ -14,7 +14,7 @@ from datetime import date
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
-BASE_URL = "https://24bytesco.github.io/images-to-PDF/"
+BASE_URL = "https://pdf.24bytes.pro/"
 MARCA = "24Bytes PDF"
 LEMA = "Herramientas PDF que no suben tus archivos"
 VERIFICACION_GOOGLE = "35QQddAFVCcauzJO1nGmIASlRfsLoPmEYeIm7bbcaj4"
@@ -53,9 +53,29 @@ def cargar_paginas() -> list[dict]:
     return sorted(paginas, key=lambda p: p.get("orden", 99))
 
 
+def principales(paginas: list[dict]) -> list[dict]:
+    """Herramientas con tarjeta y menú propios (ni variantes ni páginas de texto)."""
+    return [p for p in paginas if not p.get("variante_de") and p.get("tipo") != "texto"]
+
+
+def tareas(paginas: list[dict], raiz: str, de: str | None = None, excluir: str | None = None) -> str:
+    """Enlaces a las páginas por tarea (variantes), todas o solo las de una herramienta."""
+    enlaces = [f'<a href="{raiz}{p["slug"]}/">{e(p["nombre"])}</a>' for p in paginas
+               if p.get("variante_de") and p["slug"] != excluir and (de is None or p["variante_de"] == de)]
+    return f'<p class="tareas">{" ".join(enlaces)}</p>' if enlaces else ""
+
+
+def secciones(p: dict) -> str:
+    bloques = []
+    for s in p.get("secciones", []):
+        parrafos = "\n".join(f'<p class="parrafo">{e(x)}</p>' for x in s["p"])
+        bloques.append(f'<section class="bloque"><h2>{e(s["h"])}</h2>{parrafos}</section>')
+    return "\n".join(bloques)
+
+
 def tarjetas(paginas: list[dict], raiz: str, excluir: str | None = None) -> str:
     items = []
-    for p in paginas:
+    for p in principales(paginas):
         if p["slug"] == excluir:
             continue
         items.append(
@@ -69,7 +89,7 @@ def tarjetas(paginas: list[dict], raiz: str, excluir: str | None = None) -> str:
 
 def navegacion(paginas: list[dict], raiz: str, actual: str | None) -> str:
     enlaces = []
-    for p in paginas:
+    for p in principales(paginas):
         marca = ' aria-current="page"' if p["slug"] == actual else ""
         enlaces.append(f'<a href="{raiz}{p["slug"]}/"{marca}>{e(p["nombre"])}</a>')
     return "\n".join(enlaces)
@@ -100,7 +120,8 @@ def render(plantilla: str, valores: dict) -> str:
 def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str) -> str:
     raiz = "../"
     url = f'{BASE_URL}{p["slug"]}/'
-    ui = (RAIZ / "tools/ui" / f'{p["slug"]}.html').read_text(encoding="utf-8").replace("{{raiz}}", raiz)
+    base = p.get("variante_de") or p["slug"]
+    ui = (RAIZ / "tools/ui" / f'{base}.html').read_text(encoding="utf-8").replace("{{raiz}}", raiz)
     pasos = "\n".join(f"<li><strong>{e(t)}</strong> {e(d)}</li>" for t, d in p["pasos"])
     faqs = "\n".join(
         f'<details class="faq"><summary>{e(f["p"])}</summary><p>{e(f["r"])}</p></details>' for f in p["faqs"]
@@ -149,6 +170,7 @@ def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str) -> str:
 {ui}
     </section>
     {anuncio("tras-herramienta")}
+    {secciones(p)}
     <section class="bloque">
       <h2>Cómo funciona</h2>
       <ol class="pasos">{pasos}</ol>
@@ -159,6 +181,7 @@ def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str) -> str:
     </section>
     <section class="bloque">
       <h2>Más herramientas</h2>
+      {tareas(paginas, raiz, de=base, excluir=p["slug"])}
       <div class="rejilla">{tarjetas(paginas, raiz, excluir=p["slug"])}</div>
     </section>
 """
@@ -173,8 +196,31 @@ def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str) -> str:
         "json_ld": "\n".join(json_ld(d) for d in datos),
         "scripts": scripts,
         "verificacion": VERIFICACION_GOOGLE,
+        "base": BASE_URL,
         "adsense": f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>' if ADSENSE_CLIENT else "",
         "clase_cuerpo": "pagina-herramienta",
+    })
+
+
+def pagina_texto(p: dict, paginas: list[dict], plantilla: str) -> str:
+    raiz = "../"
+    cuerpo = f"""
+    <section class="portada portada-herramienta">
+      <p class="migas"><a href="{raiz}">{e(MARCA)}</a> <span aria-hidden="true">/</span> {e(p["nombre"])}</p>
+      <h1>{e(p["h1"])}</h1>
+      <p class="bajada">{e(p["bajada"])}</p>
+    </section>
+    {secciones(p)}
+    <section class="bloque">
+      <h2>Herramientas</h2>
+      <div class="rejilla">{tarjetas(paginas, raiz)}</div>
+    </section>
+"""
+    return render(plantilla, {
+        "titulo": e(p["titulo"]), "descripcion": e(p["descripcion"]), "canonical": f'{BASE_URL}{p["slug"]}/',
+        "raiz": raiz, "marca": e(MARCA), "navegacion": navegacion(paginas, raiz, None), "cuerpo": cuerpo,
+        "json_ld": "", "scripts": "", "verificacion": VERIFICACION_GOOGLE, "base": BASE_URL, "adsense": "",
+        "clase_cuerpo": "pagina-texto",
     })
 
 
@@ -185,7 +231,7 @@ def portada(paginas: list[dict], plantilla: str) -> str:
          "description": LEMA, "publisher": {"@type": "Organization", "name": "24Bytes", "url": "https://24bytes.pro"}},
         {"@context": "https://schema.org", "@type": "ItemList", "name": "Herramientas PDF",
          "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": p["nombre"], "url": f'{BASE_URL}{p["slug"]}/'}
-                             for i, p in enumerate(paginas)]},
+                             for i, p in enumerate(principales(paginas))]},
     ]
     contacto = (RAIZ / "tools/ui/_contacto.html").read_text(encoding="utf-8")
     cuerpo = f"""
@@ -196,6 +242,10 @@ def portada(paginas: list[dict], plantilla: str) -> str:
     </section>
     <section class="bloque bloque-rejilla" aria-label="Herramientas">
       <div class="rejilla rejilla-grande">{tarjetas(paginas, raiz)}</div>
+    </section>
+    <section class="bloque">
+      <h2>Tareas frecuentes</h2>
+      {tareas(paginas, raiz)}
     </section>
     {anuncio("portada")}
     <section class="bloque">
@@ -215,6 +265,7 @@ def portada(paginas: list[dict], plantilla: str) -> str:
         "json_ld": "\n".join(json_ld(d) for d in datos),
         "scripts": f'<script src="{raiz}assets/js/contacto.js" defer></script>',
         "verificacion": VERIFICACION_GOOGLE,
+        "base": BASE_URL,
         "adsense": f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>' if ADSENSE_CLIENT else "",
         "clase_cuerpo": "pagina-portada",
     })
@@ -227,7 +278,23 @@ def main() -> None:
     for p in paginas:
         destino = RAIZ / p["slug"]
         destino.mkdir(exist_ok=True)
-        (destino / "index.html").write_text(pagina_herramienta(p, paginas, plantilla), encoding="utf-8")
+        hacer = pagina_texto if p.get("tipo") == "texto" else pagina_herramienta
+        (destino / "index.html").write_text(hacer(p, paginas, plantilla), encoding="utf-8")
+    cuerpo_404 = f"""
+    <section class="portada">
+      <h1>Esta página no existe</h1>
+      <p class="bajada">Puede que el enlace esté mal escrito o que la herramienta haya cambiado de dirección. Todas siguen aquí:</p>
+    </section>
+    <section class="bloque bloque-rejilla" aria-label="Herramientas">
+      <div class="rejilla rejilla-grande">{tarjetas(paginas, "/")}</div>
+    </section>
+"""
+    (RAIZ / "404.html").write_text(render(plantilla, {
+        "titulo": e(f"Página no encontrada — {MARCA}"), "descripcion": e(LEMA), "canonical": BASE_URL,
+        "raiz": "/", "marca": e(MARCA), "navegacion": navegacion(paginas, "/", None), "cuerpo": cuerpo_404,
+        "json_ld": "", "scripts": "", "verificacion": VERIFICACION_GOOGLE, "base": BASE_URL, "adsense": "",
+        "clase_cuerpo": "pagina-portada",
+    }).replace('content="index, follow, max-image-preview:large"', 'content="noindex, follow"'), encoding="utf-8")
     hoy = date.today().isoformat()
     urls = [BASE_URL] + [f'{BASE_URL}{p["slug"]}/' for p in paginas]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
@@ -235,7 +302,7 @@ def main() -> None:
     sitemap.append("</urlset>")
     (RAIZ / "sitemap.xml").write_text("\n".join(sitemap) + "\n", encoding="utf-8")
     (RAIZ / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}sitemap.xml\n", encoding="utf-8")
-    print(f"{len(paginas)} herramientas + portada + sitemap ({len(urls)} URLs)")
+    print(f"{len(principales(paginas))} herramientas, {len(paginas) - len(principales(paginas))} páginas más + portada + sitemap ({len(urls)} URLs)")
 
 
 if __name__ == "__main__":

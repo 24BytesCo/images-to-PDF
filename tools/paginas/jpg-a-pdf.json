@@ -1,0 +1,57 @@
+{
+  "slug": "jpg-a-pdf",
+  "variante_de": "imagenes-a-pdf",
+  "orden": 21,
+  "nombre": "JPG a PDF",
+  "icono": "imagenes",
+  "titulo": "JPG a PDF gratis, sin subir tus fotos",
+  "descripcion": "Convierte uno o varios JPG en un solo PDF, en el orden que elijas. Las imágenes no salen de tu equipo. Gratis, sin registro y sin marca de agua.",
+  "h1": "Convertir JPG a PDF sin subir archivos",
+  "bajada": "Pasa uno o varios JPG a un único PDF, ordenados como quieras y sin marca de agua.",
+  "resumen_tarjeta": "Pasa uno o varios JPG a un único PDF, ordenados como quieras y sin marca de agua.",
+  "scripts": [
+    "assets/vendor/jspdf.umd.min.js",
+    "assets/js/imagenes-a-pdf.js"
+  ],
+  "pasos": [
+    [
+      "Elige tus JPG.",
+      "Arrástralos o pulsa para seleccionarlos. Puedes añadir más en cualquier momento."
+    ],
+    [
+      "Ordena y ajusta.",
+      "Arrastra las miniaturas y elige tamaño de página, orientación y margen."
+    ],
+    [
+      "Descarga el PDF.",
+      "Se genera en tu dispositivo, con una imagen por página."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Todo el proceso ocurre en tu navegador con JavaScript y el archivo nunca viaja por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: la herramienta sigue funcionando."
+    },
+    {
+      "p": "¿Se pierde calidad al pasar de JPG a PDF?",
+      "r": "No se recomprime: cada JPG se inserta en el PDF tal como es. El PDF pesa aproximadamente lo mismo que la suma de las fotos."
+    },
+    {
+      "p": "¿Cuántos JPG puedo unir?",
+      "r": "No hay límite fijo. Con decenas de fotos de cámara, de varios megas cada una, el tope lo pone la memoria del dispositivo."
+    },
+    {
+      "p": "¿También acepta PNG?",
+      "r": "Sí, y WebP. Puedes mezclar formatos en el mismo PDF. PNG conviene para capturas de pantalla y documentos con texto; JPG para fotografías."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Por qué te piden un PDF y no el JPG",
+      "p": [
+        "Portales de empleo, universidades y entidades públicas suelen aceptar solo PDF: es un único archivo aunque tenga varias hojas, se ve igual en cualquier equipo y se imprime al tamaño correcto. Un JPG suelto no garantiza nada de eso.",
+        "Si el destino es imprimir, elige A4 o Carta con un margen pequeño. Si es para enviarlo y verlo en pantalla, «ajustar a cada imagen» evita las franjas blancas alrededor de la foto."
+      ]
+    }
+  ]
+}

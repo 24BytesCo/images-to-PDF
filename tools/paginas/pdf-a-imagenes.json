@@ -3,22 +3,71 @@
   "orden": 6,
   "nombre": "PDF a imágenes",
   "icono": "pdf-imagenes",
-  "titulo": "Convertir PDF a JPG o PNG gratis: pasar páginas a imagen",
-  "descripcion": "Convierte cada página de tu PDF en una imagen JPG o PNG. Elige la calidad y las páginas, y descarga una imagen o un ZIP. Todo ocurre en tu navegador.",
+  "titulo": "PDF a JPG o PNG gratis, sin subir el archivo",
+  "descripcion": "Convierte cada página de tu PDF en imagen JPG o PNG con la calidad que elijas, directo en tu navegador. Gratis, sin registro.",
   "h1": "Convertir PDF a imágenes sin subir archivos",
   "bajada": "Saca cada página de tu PDF como JPG o PNG, con la resolución que necesites. Si son varias páginas se descargan en un ZIP: nada sale de tu equipo.",
   "resumen_tarjeta": "Convierte páginas de un PDF a JPG o PNG, en la resolución que elijas.",
-  "scripts": ["assets/vendor/pdf.min.js", "assets/vendor/jszip.min.js", "assets/js/pdf-a-imagenes.js"],
+  "scripts": [
+    "assets/vendor/pdf.min.js",
+    "assets/vendor/jszip.min.js",
+    "assets/js/pdf-a-imagenes.js"
+  ],
   "pasos": [
-    ["Carga tu PDF.", "Arrástralo a la zona de carga o pulsa para elegirlo."],
-    ["Elige formato, calidad y páginas.", "JPG o PNG, resolución en ppp (72, 150 o 300) y todas las páginas o una lista como «1-3, 5»."],
-    ["Descarga.", "Una sola página se descarga directo; varias, en un ZIP con una imagen por página."]
+    [
+      "Carga tu PDF.",
+      "Arrástralo a la zona de carga o pulsa para elegirlo."
+    ],
+    [
+      "Elige formato, calidad y páginas.",
+      "JPG o PNG, resolución en ppp (72, 150 o 300) y todas las páginas o una lista como «1-3, 5»."
+    ],
+    [
+      "Descarga.",
+      "Una sola página se descarga directo; varias, en un ZIP con una imagen por página."
+    ]
   ],
   "faqs": [
-    {"p": "¿Mi PDF se sube a algún servidor?", "r": "No. La conversión la hace tu navegador con pdf.js. El archivo nunca se envía por internet, por eso sirve para documentos con datos personales."},
-    {"p": "¿Qué resolución debo elegir?", "r": "72 ppp alcanza para ver en pantalla, 150 ppp para imprimir en calidad normal y 300 ppp para impresión de detalle o archivo. A más ppp, imágenes más pesadas y una conversión más lenta."},
-    {"p": "¿Hay límite de páginas?", "r": "No hay un límite fijo, pero un canvas no puede superar cerca de 16 millones de píxeles: si pides una resolución que se pasa de eso en una página muy grande, la herramienta la recorta sola y te avisa."},
-    {"p": "¿Funciona con PDF protegidos con contraseña?", "r": "No. Si el PDF pide contraseña para abrirse, la herramienta lo detecta y te avisa; primero tendrías que quitarle la protección con otro programa."},
-    {"p": "¿Tiene costo o marca de agua?", "r": "Es gratis y sin límite de usos. Las imágenes salen limpias, sin marcas de agua."}
+    {
+      "p": "¿Mi PDF se sube a algún servidor?",
+      "r": "No. La conversión la hace tu navegador con pdf.js. El archivo nunca se envía por internet, por eso sirve para documentos con datos personales."
+    },
+    {
+      "p": "¿Qué resolución debo elegir?",
+      "r": "72 ppp alcanza para ver en pantalla, 150 ppp para imprimir en calidad normal y 300 ppp para impresión de detalle o archivo. A más ppp, imágenes más pesadas y una conversión más lenta."
+    },
+    {
+      "p": "¿Hay límite de páginas?",
+      "r": "No hay un límite fijo, pero un canvas no puede superar cerca de 16 millones de píxeles: si pides una resolución que se pasa de eso en una página muy grande, la herramienta la recorta sola y te avisa."
+    },
+    {
+      "p": "¿Funciona con PDF protegidos con contraseña?",
+      "r": "No. Si el PDF pide contraseña para abrirse, la herramienta lo detecta y te avisa; primero tendrías que quitarle la protección con otro programa."
+    },
+    {
+      "p": "¿Tiene costo o marca de agua?",
+      "r": "Es gratis y sin límite de usos. Las imágenes salen limpias, sin marcas de agua."
+    },
+    {
+      "p": "¿En qué formato es mejor exportar, JPG o PNG?",
+      "r": "JPG para páginas con fotos o escaneos: pesa mucho menos. PNG para diagramas, planos, capturas y páginas con texto fino, porque no introduce el desenfoque propio del JPG."
+    },
+    {
+      "p": "¿Pierde calidad la imagen?",
+      "r": "Depende de la resolución que elijas. 150 ppp se ve bien en pantalla y en presentaciones; 300 ppp es calidad de impresión. El PDF se vuelve a dibujar a esa resolución, no se estira una imagen pequeña."
+    },
+    {
+      "p": "¿Puedo convertir solo una página?",
+      "r": "Sí. Escribe el número de página o un rango como «1-3, 5». Si el resultado es una sola imagen se descarga directa, sin ZIP."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Qué resolución elegir",
+      "p": [
+        "72 ppp produce imágenes pequeñas, suficientes para una vista previa o para pegar en un chat. 150 ppp es el punto medio: una hoja carta queda de unos 1.275 × 1.650 píxeles, nítida en pantalla y en diapositivas. 300 ppp es para imprimir o para recortar un detalle, y pesa unas cuatro veces más.",
+        "Las páginas se procesan una por una para no agotar la memoria, así que un documento largo tarda un poco más pero no bloquea el navegador. En páginas muy grandes, como planos, la resolución se ajusta sola al máximo que soporta el navegador y se avisa."
+      ]
+    }
   ]
 }

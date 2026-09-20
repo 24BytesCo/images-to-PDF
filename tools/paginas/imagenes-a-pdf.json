@@ -3,22 +3,70 @@
   "orden": 1,
   "nombre": "Imágenes a PDF",
   "icono": "imagenes",
-  "titulo": "Convertir imágenes a PDF gratis: unir JPG y PNG sin subir archivos",
-  "descripcion": "Pasa tus fotos JPG o PNG a un solo PDF, ordénalas arrastrando y descárgalo al instante. Todo se hace en tu navegador: las imágenes no se suben a ningún servidor.",
+  "titulo": "Imágenes a PDF gratis: unir JPG y PNG online",
+  "descripcion": "Convierte tus fotos o capturas en un solo PDF, en el orden que quieras, sin subirlas a ningún servidor. Gratis y sin límite de uso.",
   "h1": "Convertir imágenes a PDF sin subir archivos",
   "bajada": "Junta fotos, capturas o documentos escaneados en un solo PDF. Ordénalos como quieras y descárgalo: nada sale de tu equipo.",
   "resumen_tarjeta": "Une fotos JPG o PNG en un solo PDF, en el orden que elijas.",
-  "scripts": ["assets/vendor/jspdf.umd.min.js", "assets/js/imagenes-a-pdf.js"],
+  "scripts": [
+    "assets/vendor/jspdf.umd.min.js",
+    "assets/js/imagenes-a-pdf.js"
+  ],
   "pasos": [
-    ["Elige tus imágenes.", "Arrástralas a la zona de carga o pulsa para seleccionarlas. Sirven JPG, PNG y WebP."],
-    ["Ordénalas.", "Arrastra cada miniatura a su sitio u ordénalas por nombre. Quita las que sobren."],
-    ["Descarga el PDF.", "Elige tamaño de página y márgenes, y pulsa Crear PDF. Se genera en tu navegador y se guarda en tu equipo."]
+    [
+      "Elige tus imágenes.",
+      "Arrástralas a la zona de carga o pulsa para seleccionarlas. Sirven JPG, PNG y WebP."
+    ],
+    [
+      "Ordénalas.",
+      "Arrastra cada miniatura a su sitio u ordénalas por nombre. Quita las que sobren."
+    ],
+    [
+      "Descarga el PDF.",
+      "Elige tamaño de página y márgenes, y pulsa Crear PDF. Se genera en tu navegador y se guarda en tu equipo."
+    ]
   ],
   "faqs": [
-    {"p": "¿Mis imágenes se suben a algún servidor?", "r": "No. La conversión la hace tu navegador con JavaScript. Las imágenes nunca se envían por internet, por eso sirve para cédulas, contratos o cualquier documento con datos personales."},
-    {"p": "¿Hay límite de imágenes o de tamaño?", "r": "No hay un límite fijo. El tope real es la memoria de tu dispositivo: con un computador normal puedes unir más de cien fotos sin problema; en un celular conviene ir por tandas."},
-    {"p": "¿Puedo elegir el orden de las páginas?", "r": "Sí. Arrastra las miniaturas para reordenarlas, o usa el orden por nombre de archivo ascendente o descendente."},
-    {"p": "¿Qué formatos de imagen acepta?", "r": "JPG, PNG y WebP. Las imágenes WebP se convierten a JPG de forma automática al crear el PDF."},
-    {"p": "¿Tiene algún costo o marca de agua?", "r": "Es gratis y sin límite de usos. El PDF sale limpio, sin marcas de agua."}
+    {
+      "p": "¿Mis imágenes se suben a algún servidor?",
+      "r": "No. La conversión la hace tu navegador con JavaScript. Las imágenes nunca se envían por internet, por eso sirve para cédulas, contratos o cualquier documento con datos personales."
+    },
+    {
+      "p": "¿Hay límite de imágenes o de tamaño?",
+      "r": "No hay un límite fijo. El tope real es la memoria de tu dispositivo: con un computador normal puedes unir más de cien fotos sin problema; en un celular conviene ir por tandas."
+    },
+    {
+      "p": "¿Puedo elegir el orden de las páginas?",
+      "r": "Sí. Arrastra las miniaturas para reordenarlas, o usa el orden por nombre de archivo ascendente o descendente."
+    },
+    {
+      "p": "¿Qué formatos de imagen acepta?",
+      "r": "JPG, PNG y WebP. Las imágenes WebP se convierten a JPG de forma automática al crear el PDF."
+    },
+    {
+      "p": "¿Tiene algún costo o marca de agua?",
+      "r": "Es gratis y sin límite de usos. El PDF sale limpio, sin marcas de agua."
+    },
+    {
+      "p": "¿Puedo unir fotos tomadas con el celular directamente?",
+      "r": "Sí. Abre esta página en el navegador del celular, elige las fotos de la galería y ordénalas. Si tu iPhone guarda en HEIC, normalmente el propio sistema las entrega como JPG al elegirlas desde el navegador."
+    },
+    {
+      "p": "¿Se puede ajustar el tamaño de página?",
+      "r": "Sí: A4, Carta, o «ajustar a cada imagen», que crea cada página del tamaño exacto de la foto, sin márgenes blancos."
+    },
+    {
+      "p": "¿Agrega marca de agua o logo al PDF?",
+      "r": "No. El PDF sale limpio, sin marcas, sin portada añadida y sin límite de imágenes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Pensada para los documentos que más cuidas",
+      "p": [
+        "Lo que la gente convierte de foto a PDF rara vez son paisajes: son cédulas por ambas caras, recibos, fórmulas médicas, tareas del colegio y soportes para un trámite. Justamente lo que menos conviene subir a un servidor desconocido.",
+        "Aquí las imágenes no salen de tu dispositivo. Se aceptan JPG, PNG y WebP; puedes reordenarlas arrastrando, elegir orientación vertical u horizontal y dejar un margen para que nada quede pegado al borde al imprimir."
+      ]
+    }
   ]
 }

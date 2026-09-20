@@ -5,9 +5,11 @@
 ## 1. Qué es
 
 Suite de herramientas PDF 100 % en el navegador (sitio estático, sin servidor,
-sin subir archivos). Repo público `24BytesCo/images-to-PDF`, publicado en
-GitHub Pages: https://24bytesco.github.io/images-to-PDF/ (rama `main` =
-producción; el push a `main` despliega solo).
+sin subir archivos). Repo público `24BytesCo/images-to-PDF`, alojado en GitHub
+Pages (rama `main` = producción; el push a `main` despliega solo). Dominio
+decidido el 20/09: **https://pdf.24bytes.pro/** (hosting sigue en Pages; el
+dominio propio es lo que exige AdSense, que se solicita sobre `24bytes.pro` y
+cubre los subdominios; `ads.txt` va en la raíz, o sea en el Portafolio).
 
 **Para qué**: abrir una vía de ingresos por tráfico de búsqueda + anuncios
 (decisión de Alexis del 20/09, tras el fracaso de TikTok). Horizonte honesto:
@@ -30,6 +32,24 @@ Nueve herramientas, todas probadas con Playwright en escritorio y a 390 px
 | `pdf-a-imagenes` | pdf.js + JSZip |
 | `comprimir-pdf` | pdf.js → JPEG → jsPDF (rasteriza: avisa y no descarga si queda más pesado) |
 | `marca-de-agua-pdf`, `numerar-paginas-pdf` | pdf-lib + pdf.js (vista previa) |
+
+Además, desde el 20/09 por la tarde (informe de palabras clave completo en
+`docs/seo-palabras-clave.md`):
+
+- 7 **páginas por tarea** que reutilizan la interfaz de una herramienta
+  (`"variante_de"` en su JSON) con texto propio: `jpg-a-pdf`, `foto-a-pdf`,
+  `pdf-a-jpg`, `rotar-pdf`, `eliminar-paginas-pdf`, `extraer-paginas-pdf`,
+  `reducir-tamano-pdf-correo`. **No añadir más por plantilla**: `png-a-pdf`,
+  `pdf-a-png`, `md-a-pdf` y `foliar-pdf` se descartaron a propósito por ser
+  casi duplicados (lección de SECOP: contenido a escala).
+- Sección de texto propio por herramienta (`"secciones"`), `privacidad/`
+  (`"tipo": "texto"`), `404.html`, `CNAME`, manifest.
+- Analítica: sitio «24Bytes PDF» en el Umami de `24bytes.pro/stats`
+  (id `00ab1a32-c1d0-4735-8506-4104a5eb7f58`, solo cuenta en el dominio real);
+  evento `descarga` con la herramienta usada.
+- Diagnóstico SEO: las consultas de cabeza (unir, comprimir, jpg a pdf) son de
+  Adobe/iLovePDF/Smallpdf; el único hueco real de cabeza es **Markdown a PDF**
+  (SERP en español casi toda en inglés). El resto es cola larga + privacidad.
 
 ## 3. Cómo está hecho
 
@@ -61,10 +81,13 @@ Nueve herramientas, todas probadas con Playwright en escritorio y a 390 px
 
 ## 5. Pendientes / decisiones de Alexis
 
-1. **Fusionar a `main` y push** (publica). Nada se ha publicado.
-2. Dominio: `pdf.24bytes.pro` (CNAME en el repo + CNAME en Cloudflare a
-   `24bytesco.github.io` + cambiar `BASE_URL` y regenerar). AdSense aprueba
-   mejor un dominio propio que un `github.io`.
+1. **Orden de publicación**: primero el registro DNS `pdf` CNAME →
+   `24bytesco.github.io` (proxy apagado) en Cloudflare, **después** fusionar a
+   `main` y push. Al revés, el `CNAME` del repo redirige el sitio actual a un
+   dominio que no resuelve. Luego: `gh api` para activar HTTPS forzado.
+2. Distribución (lo que de verdad mueve un dominio nuevo): PR a
+   `karllhughes/awesome-pdf`, ficha en AlternativeTo, Show HN, dev.to en
+   español, enlace desde SECOP Monitor y 24bytes.pro.
 3. AdSense: solicitar cuenta cuando haya tráfico; poner el id en
    `ADSENSE_CLIENT`.
 4. Search Console: dar de alta la propiedad y enviar `sitemap.xml`.

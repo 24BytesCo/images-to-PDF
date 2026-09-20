@@ -1,0 +1,58 @@
+{
+  "slug": "reducir-tamano-pdf-correo",
+  "variante_de": "comprimir-pdf",
+  "orden": 27,
+  "nombre": "Reducir PDF para correo",
+  "icono": "comprimir",
+  "titulo": "Reducir el tamaño de un PDF para enviarlo por correo",
+  "descripcion": "Baja el peso de un PDF para que pase el límite de Gmail (25 MB) u Outlook (20 MB). Ves el tamaño antes y después. Sin subir el archivo.",
+  "h1": "Reducir el tamaño de un PDF para enviarlo por correo",
+  "bajada": "Si el correo rechaza tu PDF por pesado, redúcelo aquí y compara el tamaño antes de descargar.",
+  "resumen_tarjeta": "Si el correo rechaza tu PDF por pesado, redúcelo aquí y compara el tamaño antes de descargar.",
+  "scripts": [
+    "assets/vendor/pdf.min.js",
+    "assets/vendor/jspdf.umd.min.js",
+    "assets/js/comprimir-pdf.js"
+  ],
+  "pasos": [
+    [
+      "Carga el PDF que no pasa.",
+      "Se muestra su peso actual."
+    ],
+    [
+      "Elige el nivel.",
+      "Empieza por el medio: suele bastar para quedar por debajo del límite."
+    ],
+    [
+      "Compara y descarga.",
+      "Ves el tamaño original, el nuevo y el porcentaje de ahorro antes de quedarte con el archivo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Todo el proceso ocurre en tu navegador con JavaScript y el archivo nunca viaja por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: la herramienta sigue funcionando."
+    },
+    {
+      "p": "¿Cuánto es el máximo que puedo adjuntar?",
+      "r": "Gmail admite 25 MB por mensaje y Outlook.com 20 MB; los correos corporativos suelen estar entre 10 y 25 MB. Como los adjuntos crecen cerca de un tercio al codificarse para el envío, conviene dejar el PDF por debajo de unos 18 MB para Gmail y 15 MB para Outlook."
+    },
+    {
+      "p": "Ya lo reduje y sigue sin pasar, ¿qué hago?",
+      "r": "Prueba el nivel fuerte. Si aún es grande, divídelo en dos correos con Dividir PDF, o súbelo a tu nube (Drive, OneDrive) y envía el enlace."
+    },
+    {
+      "p": "¿Por qué mi PDF de texto no se redujo?",
+      "r": "Porque ya era liviano. Esta reducción sirve para escaneos y fotos; con un PDF exportado desde Word el resultado puede pesar más, y en ese caso se avisa y no se descarga automáticamente."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Por qué pesan tanto los PDF escaneados",
+      "p": [
+        "Un PDF hecho desde Word guarda letras, y veinte páginas pesan menos de 1 MB. Un PDF escaneado guarda una fotografía de cada hoja: a la resolución por defecto de muchos escáneres y aplicaciones del celular, cada página pesa entre 1 y 5 MB, y un expediente de veinte hojas supera con facilidad el límite del correo.",
+        "Bajar la resolución a 110 ppp y ajustar la calidad del JPG suele reducir entre un 70 % y un 90 % sin que el texto deje de leerse. La herramienta conserva el tamaño físico de las páginas, así que se imprime igual."
+      ]
+    }
+  ]
+}

@@ -3,22 +3,71 @@
   "orden": 8,
   "nombre": "Marca de agua",
   "icono": "marca",
-  "titulo": "Poner marca de agua a PDF gratis: texto o imagen, sin subir",
-  "descripcion": "Agrega una marca de agua de texto o imagen a tu PDF: tamaño, color, opacidad, ángulo, posición y en qué páginas. Todo se procesa en tu navegador, nada se sube.",
+  "titulo": "Poner marca de agua a un PDF, gratis y online",
+  "descripcion": "Agrega texto o imagen como marca de agua: tamaño, color, ángulo y páginas. Se procesa en tu navegador, sin subir el archivo.",
   "h1": "Poner marca de agua a un PDF sin subir archivos",
   "bajada": "Agrega texto como «CONFIDENCIAL» o «COPIA» —o una imagen— con el tamaño, color, ángulo y posición que quieras, en las páginas que elijas. Se procesa en tu navegador.",
   "resumen_tarjeta": "Agrega marca de agua de texto o imagen a tu PDF, en las páginas que elijas.",
-  "scripts": ["assets/vendor/pdf-lib.min.js", "assets/vendor/pdf.min.js", "assets/js/marca-de-agua-pdf.js"],
+  "scripts": [
+    "assets/vendor/pdf-lib.min.js",
+    "assets/vendor/pdf.min.js",
+    "assets/js/marca-de-agua-pdf.js"
+  ],
   "pasos": [
-    ["Carga tu PDF.", "Arrástralo a la zona de carga o pulsa para elegirlo."],
-    ["Configura la marca.", "Escribe el texto (o sube una imagen) y ajusta tamaño, color, opacidad, ángulo, posición y páginas."],
-    ["Revisa la vista previa y descarga.", "Se simula sobre la primera página afectada; cuando esté como quieres, pulsa Aplicar y se genera en tu navegador."]
+    [
+      "Carga tu PDF.",
+      "Arrástralo a la zona de carga o pulsa para elegirlo."
+    ],
+    [
+      "Configura la marca.",
+      "Escribe el texto (o sube una imagen) y ajusta tamaño, color, opacidad, ángulo, posición y páginas."
+    ],
+    [
+      "Revisa la vista previa y descarga.",
+      "Se simula sobre la primera página afectada; cuando esté como quieres, pulsa Aplicar y se genera en tu navegador."
+    ]
   ],
   "faqs": [
-    {"p": "¿Mi PDF se sube a algún servidor?", "r": "No. Todo el proceso ocurre en tu navegador con pdf-lib; el archivo nunca se envía por internet."},
-    {"p": "¿Hay límite de páginas o de tamaño de archivo?", "r": "No hay un límite fijo; el tope real es la memoria de tu dispositivo. PDFs de varios cientos de páginas funcionan bien en un computador normal."},
-    {"p": "¿Puedo quitar la marca de agua después?", "r": "No fácilmente: el texto o la imagen queda dibujado sobre el contenido de cada página, igual que en cualquier PDF con marca de agua. Para quitarla necesitarías editar el PDF con otra herramienta."},
-    {"p": "¿Funciona con PDF protegidos con contraseña?", "r": "No. Si el PDF pide contraseña para abrirse, primero tienes que quitarle la protección; esta herramienta no procesa PDF cifrados."},
-    {"p": "¿Tiene algún costo o límite de usos?", "r": "Es gratis y sin límite de usos."}
+    {
+      "p": "¿Mi PDF se sube a algún servidor?",
+      "r": "No. Todo el proceso ocurre en tu navegador con pdf-lib; el archivo nunca se envía por internet."
+    },
+    {
+      "p": "¿Hay límite de páginas o de tamaño de archivo?",
+      "r": "No hay un límite fijo; el tope real es la memoria de tu dispositivo. PDFs de varios cientos de páginas funcionan bien en un computador normal."
+    },
+    {
+      "p": "¿Puedo quitar la marca de agua después?",
+      "r": "No fácilmente: el texto o la imagen queda dibujado sobre el contenido de cada página, igual que en cualquier PDF con marca de agua. Para quitarla necesitarías editar el PDF con otra herramienta."
+    },
+    {
+      "p": "¿Funciona con PDF protegidos con contraseña?",
+      "r": "No. Si el PDF pide contraseña para abrirse, primero tienes que quitarle la protección; esta herramienta no procesa PDF cifrados."
+    },
+    {
+      "p": "¿Tiene algún costo o límite de usos?",
+      "r": "Es gratis y sin límite de usos."
+    },
+    {
+      "p": "¿Se puede quitar la marca de agua después?",
+      "r": "No con esta herramienta, y esa es la idea: la marca queda dibujada dentro de cada página. Guarda siempre tu original sin marca, que no se modifica."
+    },
+    {
+      "p": "¿Puedo poner el logo de mi empresa?",
+      "r": "Sí. Cambia a marca de imagen, carga un PNG o JPG y ajusta opacidad y escala. Un PNG con fondo transparente da el mejor resultado."
+    },
+    {
+      "p": "¿Se aplica a todas las páginas o puedo elegir?",
+      "r": "Por defecto a todas. Si escribes páginas o rangos, por ejemplo «2-5, 9», solo esas la llevan."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Para qué sirve una marca de agua",
+      "p": [
+        "El uso más práctico es proteger la copia de un documento de identidad: una marca diagonal que diga «Copia para arriendo — abril 2026» hace que esa copia no sirva para otro trámite si se filtra. También es habitual marcar borradores de contratos, cotizaciones y material de cursos.",
+        "La marca de texto se escribe como texto real con la fuente Helvetica, así que pesa casi nada y se ve nítida a cualquier zoom. Por esa misma razón admite tildes y ñ, pero no emojis: si escribes uno, se avisa antes de generar nada. La vista previa muestra la primera página afectada antes de descargar."
+      ]
+    }
   ]
 }

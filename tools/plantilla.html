@@ -16,17 +16,18 @@
   <meta property="og:title" content="{{titulo}}">
   <meta property="og:description" content="{{descripcion}}">
   <meta property="og:url" content="{{canonical}}">
-  <meta property="og:image" content="https://24bytesco.github.io/images-to-PDF/imgs/og-image.jpg">
+  <meta property="og:image" content="{{base}}imgs/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{titulo}}">
   <meta name="twitter:description" content="{{descripcion}}">
-  <meta name="twitter:image" content="https://24bytesco.github.io/images-to-PDF/imgs/og-image.jpg">
+  <meta name="twitter:image" content="{{base}}imgs/og-image.jpg">
   <link rel="icon" type="image/png" sizes="32x32" href="{{raiz}}imgs/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="{{raiz}}imgs/favicon-180.png">
   <link rel="manifest" href="{{raiz}}manifest.json">
   <link rel="stylesheet" href="{{raiz}}assets/css/suite.css">
   {{json_ld}}
   {{adsense}}
+  <script defer src="https://24bytes.pro/stats/script.js" data-website-id="00ab1a32-c1d0-4735-8506-4104a5eb7f58" data-domains="pdf.24bytes.pro"></script>
 </head>
 <body class="{{clase_cuerpo}}">
   <a class="saltar" href="#contenido">Saltar al contenido</a>
@@ -51,7 +52,7 @@
 
   <footer class="pie">
     <p>Hecho en Colombia por <a href="https://24bytes.pro" rel="noopener">Alexis Dorado Muñoz — 24Bytes</a>. Código abierto en <a href="https://github.com/24BytesCo/images-to-PDF" rel="noopener">GitHub</a>.</p>
-    <p class="pie-nota">Tus archivos se procesan en tu dispositivo y no se envían a ningún servidor.</p>
+    <p class="pie-nota">Tus archivos se procesan en tu dispositivo y no se envían a ningún servidor. <a href="{{raiz}}privacidad/">Privacidad</a></p>
   </footer>
 
   <div class="ocupado" id="ocupado" hidden aria-live="polite"><div class="ocupado-caja"><span class="ocupado-rueda" aria-hidden="true"></span><span id="ocupadoTexto">Procesando…</span></div></div>

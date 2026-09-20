@@ -1,0 +1,58 @@
+{
+  "slug": "extraer-paginas-pdf",
+  "variante_de": "dividir-pdf",
+  "orden": 26,
+  "nombre": "Extraer páginas de un PDF",
+  "icono": "dividir",
+  "titulo": "Extraer páginas de un PDF gratis, sin subirlo",
+  "descripcion": "Saca una o varias páginas de un PDF a un archivo nuevo escribiendo sus números: «2, 5-7». Sin subir el documento y sin registro.",
+  "h1": "Extraer páginas de un PDF sin subir archivos",
+  "bajada": "Escribe qué páginas necesitas, por ejemplo «2, 5-7», y descarga un PDF solo con ellas.",
+  "resumen_tarjeta": "Escribe qué páginas necesitas, por ejemplo «2, 5-7», y descarga un PDF solo con ellas.",
+  "scripts": [
+    "assets/vendor/pdf-lib.min.js",
+    "assets/vendor/jszip.min.js",
+    "assets/js/dividir-pdf.js"
+  ],
+  "pasos": [
+    [
+      "Carga tu PDF.",
+      "Se indica cuántas páginas tiene."
+    ],
+    [
+      "Escribe las páginas.",
+      "Páginas sueltas y rangos separados por comas: «1-3, 5, 8-10». El modo de rango ya viene elegido."
+    ],
+    [
+      "Descarga el PDF.",
+      "Contiene solo esas páginas, en el orden en que las escribiste."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Todo el proceso ocurre en tu navegador con JavaScript y el archivo nunca viaja por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: la herramienta sigue funcionando."
+    },
+    {
+      "p": "¿Puedo sacar una sola página?",
+      "r": "Sí. Escribe solo su número y obtendrás un PDF de una hoja."
+    },
+    {
+      "p": "¿Las páginas extraídas conservan la calidad y el texto?",
+      "r": "Sí. Se copian tal cual del original, sin recomprimir: mismo texto seleccionable, mismas imágenes."
+    },
+    {
+      "p": "¿Qué pasa si escribo una página que no existe?",
+      "r": "Se avisa cuál es el problema —página fuera de rango, rango invertido o formato no válido— y no se genera nada hasta corregirlo."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Enviar solo lo que hace falta",
+      "p": [
+        "Extraer páginas es, además de cómodo, una buena práctica de privacidad: si te piden el certificado que está en la página 4 de un paquete de documentos, no hay razón para enviar las otras quince con tu información.",
+        "También sirve para sacar un capítulo de un libro o manual, la página firmada de un contrato o las hojas de una declaración que pide un banco. Si necesitas cada página en su propio archivo, cambia el modo a «Separar cada página»."
+      ]
+    }
+  ]
+}

@@ -114,7 +114,7 @@
       }
       pdf.save(nombre);
       S.aviso('PDF creado. Revisa tus descargas.', 'ok');
-      S.evento('pdf-creado', { herramienta: 'imagenes-a-pdf', paginas: imagenes.length });
+      S.evento('descarga', { herramienta: 'imagenes-a-pdf' });
     } catch (error) {
       console.error(error);
       S.aviso('No se pudo crear el PDF. Prueba con menos imágenes o más pequeñas.', 'error');

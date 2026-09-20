@@ -1,0 +1,58 @@
+{
+  "slug": "rotar-pdf",
+  "variante_de": "organizar-pdf",
+  "orden": 24,
+  "nombre": "Rotar PDF",
+  "icono": "organizar",
+  "titulo": "Rotar PDF gratis y guardarlo, sin subir archivos",
+  "descripcion": "Gira una página o todo el PDF 90° a izquierda o derecha y guarda el cambio de forma permanente. Se hace en tu navegador, sin subir el archivo.",
+  "h1": "Rotar un PDF y guardarlo sin subir archivos",
+  "bajada": "Gira las páginas que quedaron de lado o de cabeza, una por una o todas a la vez, y descarga el PDF ya enderezado.",
+  "resumen_tarjeta": "Gira las páginas que quedaron de lado o de cabeza, una por una o todas a la vez, y descarga el PDF ya enderezado.",
+  "scripts": [
+    "assets/vendor/pdf-lib.min.js",
+    "assets/vendor/pdf.min.js",
+    "assets/js/organizar-pdf.js"
+  ],
+  "pasos": [
+    [
+      "Carga tu PDF.",
+      "Verás una miniatura por cada página."
+    ],
+    [
+      "Gira lo que haga falta.",
+      "Usa los botones de giro de cada miniatura, o «Rotar todas» si el documento completo quedó de lado."
+    ],
+    [
+      "Descarga el PDF.",
+      "La rotación queda guardada: se abrirá derecho en cualquier lector."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Todo el proceso ocurre en tu navegador con JavaScript y el archivo nunca viaja por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: la herramienta sigue funcionando."
+    },
+    {
+      "p": "¿Por qué mi lector de PDF no guarda la rotación?",
+      "r": "Porque en la mayoría de los lectores girar es solo una opción de vista: al cerrar, el archivo sigue igual. Aquí la rotación se escribe dentro del PDF y es permanente."
+    },
+    {
+      "p": "¿Puedo girar solo algunas páginas?",
+      "r": "Sí, cada página se gira por separado. Es lo habitual cuando en un escaneo solo las hojas apaisadas quedaron de lado."
+    },
+    {
+      "p": "¿Se pierde calidad al rotar?",
+      "r": "No. No se vuelve a dibujar nada: solo cambia la orientación guardada de la página. El texto sigue siendo seleccionable y el peso es el mismo."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "El problema típico: escaneos de lado",
+      "p": [
+        "Los escáneres con alimentador y las aplicaciones de escaneo del celular suelen dejar hojas giradas 90° o 180°, sobre todo cuando se mezclan páginas verticales y horizontales. Quien recibe el archivo tiene que girar la pantalla o la cabeza en cada hoja.",
+        "Girar 180° equivale a pulsar dos veces el mismo botón. Y si además las hojas quedaron en orden inverso, porque el escáner las tomó de atrás hacia adelante, «Invertir orden» lo corrige en la misma pantalla."
+      ]
+    }
+  ]
+}

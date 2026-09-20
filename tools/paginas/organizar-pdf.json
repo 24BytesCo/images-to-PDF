@@ -3,22 +3,71 @@
   "orden": 5,
   "nombre": "Organizar PDF",
   "icono": "organizar",
-  "titulo": "Ordenar páginas de un PDF: rotar y eliminar sin subir archivos",
-  "descripcion": "Ve miniaturas de cada página, reordénalas, rota, elimina o duplica las que quieras y descarga el PDF nuevo, sin subir el archivo a ningún servidor.",
+  "titulo": "Reordenar, rotar y eliminar páginas de un PDF",
+  "descripcion": "Mueve, rota, duplica o elimina páginas de tu PDF arrastrando miniaturas, sin subirlo a internet. Gratis y sin límite de páginas.",
   "h1": "Ordenar páginas de un PDF sin subir archivos",
   "bajada": "Carga un PDF, mira sus páginas como miniaturas y reorganízalas: arrastra, rota, elimina o duplica. El PDF nuevo se arma en tu equipo, nunca en un servidor.",
   "resumen_tarjeta": "Reordena, rota, elimina y duplica páginas de un PDF arrastrando miniaturas.",
-  "scripts": ["assets/vendor/pdf-lib.min.js", "assets/vendor/pdf.min.js", "assets/js/organizar-pdf.js"],
+  "scripts": [
+    "assets/vendor/pdf-lib.min.js",
+    "assets/vendor/pdf.min.js",
+    "assets/js/organizar-pdf.js"
+  ],
   "pasos": [
-    ["Carga tu PDF.", "Arrástralo a la zona de carga o pulsa para elegirlo. Verás una miniatura por cada página."],
-    ["Organízalo.", "Arrastra las miniaturas para moverlas, o usa los botones de mover, rotar, duplicar y eliminar de cada una."],
-    ["Descarga el resultado.", "Pulsa Descargar PDF. El archivo nuevo se genera en tu navegador con el orden y los giros que elegiste."]
+    [
+      "Carga tu PDF.",
+      "Arrástralo a la zona de carga o pulsa para elegirlo. Verás una miniatura por cada página."
+    ],
+    [
+      "Organízalo.",
+      "Arrastra las miniaturas para moverlas, o usa los botones de mover, rotar, duplicar y eliminar de cada una."
+    ],
+    [
+      "Descarga el resultado.",
+      "Pulsa Descargar PDF. El archivo nuevo se genera en tu navegador con el orden y los giros que elegiste."
+    ]
   ],
   "faqs": [
-    {"p": "¿Mi PDF se sube a algún servidor?", "r": "No. Todo el proceso —leer las páginas, mostrarlas, reordenarlas y armar el PDF nuevo— ocurre en tu navegador con JavaScript. El archivo nunca viaja por internet, por eso sirve para contratos o documentos con datos personales."},
-    {"p": "¿Hay límite de páginas?", "r": "No hay un límite fijo. Con un PDF de cien páginas las miniaturas se cargan por partes a medida que las ves, para que el navegador no se congele. El tope real es la memoria de tu dispositivo."},
-    {"p": "¿La rotación y el orden quedan igual de nítidos que el original?", "r": "Sí. La herramienta no vuelve a comprimir ni a redibujar tus páginas: solo cambia su orden y su rotación. El contenido de cada página queda exactamente igual que en el PDF original."},
-    {"p": "¿Funciona con un PDF protegido con contraseña?", "r": "No. Si el PDF tiene contraseña o está cifrado, la herramienta lo detecta y te avisa; hay que quitarle la protección antes (por ejemplo desde el programa con el que lo creaste) y volver a cargarlo."},
-    {"p": "¿Tiene costo o marca de agua?", "r": "Es gratis y sin límite de usos. El PDF que descargas sale limpio, sin marcas de agua ni páginas añadidas."}
+    {
+      "p": "¿Mi PDF se sube a algún servidor?",
+      "r": "No. Todo el proceso —leer las páginas, mostrarlas, reordenarlas y armar el PDF nuevo— ocurre en tu navegador con JavaScript. El archivo nunca viaja por internet, por eso sirve para contratos o documentos con datos personales."
+    },
+    {
+      "p": "¿Hay límite de páginas?",
+      "r": "No hay un límite fijo. Con un PDF de cien páginas las miniaturas se cargan por partes a medida que las ves, para que el navegador no se congele. El tope real es la memoria de tu dispositivo."
+    },
+    {
+      "p": "¿La rotación y el orden quedan igual de nítidos que el original?",
+      "r": "Sí. La herramienta no vuelve a comprimir ni a redibujar tus páginas: solo cambia su orden y su rotación. El contenido de cada página queda exactamente igual que en el PDF original."
+    },
+    {
+      "p": "¿Funciona con un PDF protegido con contraseña?",
+      "r": "No. Si el PDF tiene contraseña o está cifrado, la herramienta lo detecta y te avisa; hay que quitarle la protección antes (por ejemplo desde el programa con el que lo creaste) y volver a cargarlo."
+    },
+    {
+      "p": "¿Tiene costo o marca de agua?",
+      "r": "Es gratis y sin límite de usos. El PDF que descargas sale limpio, sin marcas de agua ni páginas añadidas."
+    },
+    {
+      "p": "¿Puedo rotar solo una página y no todas?",
+      "r": "Sí. Cada miniatura tiene sus propios botones de giro a izquierda y derecha. «Rotar todas» existe aparte para los documentos escaneados completos de lado."
+    },
+    {
+      "p": "¿Se puede deshacer un cambio antes de descargar?",
+      "r": "«Deshacer todo» devuelve el documento a como lo cargaste. Nada se aplica al archivo hasta que pulsas descargar, y el original nunca se modifica."
+    },
+    {
+      "p": "¿Sirve para arreglar un PDF escaneado al revés?",
+      "r": "Sí: usa «Invertir orden» si las hojas quedaron de atrás hacia adelante y los botones de giro si salieron de cabeza o de lado."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Una sola vista para ordenar, rotar, duplicar y eliminar",
+      "p": [
+        "La mayoría de los sitios reparte estas tareas en cuatro herramientas distintas, y cada una te hace subir el archivo otra vez. Aquí el PDF se carga una vez y todo se hace sobre las miniaturas: arrastras para reordenar, giras la hoja que quedó de lado, borras las páginas en blanco del escáner y duplicas la que necesitas repetir.",
+        "Cada miniatura indica su posición nueva y cuál era la original («3 · era 7»), para no perderte en documentos largos. Si no puedes arrastrar, por ejemplo en el celular o con teclado, los botones de mover antes y mover después hacen lo mismo. El giro se guarda como rotación real de la página, no como una imagen girada: el texto sigue siendo texto."
+      ]
+    }
   ]
 }
