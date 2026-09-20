@@ -1,73 +1,54 @@
+# 24Bytes PDF
 
-# Images-to-PDF Studio
+Herramientas PDF que no suben tus archivos: **https://pdf.24bytes.pro/**
 
+Todo se procesa en tu navegador con JavaScript. No hay servidor que reciba tus
+documentos, ni registro, ni límite de uso. Puedes comprobarlo desconectando el
+wifi después de cargar la página: todo sigue funcionando.
 
-Convierte, une y agrupa imágenes JPG y PNG en un solo PDF, directo en tu navegador. 100% local, gratis, sin publicidad y sin subir archivos. Nació para resolver mi propia necesidad y está abierto para cualquiera que lo necesite: https://24bytesco.github.io/images-to-PDF/
+## Herramientas
 
-## Propósito
-- Pasar imágenes a PDF sin instalar nada ni subirlas a servidores.
-- Ofrecer una herramienta ilimitada, sin anuncios y lista para usar en cualquier navegador moderno.
+| Herramienta | Qué hace |
+|---|---|
+| [Imágenes a PDF](https://pdf.24bytes.pro/imagenes-a-pdf/) | Une JPG, PNG y WebP en un PDF, en el orden que elijas |
+| [Markdown a PDF](https://pdf.24bytes.pro/markdown-a-pdf/) | Convierte `.md` a PDF con texto real, tablas, código y enlaces |
+| [Unir PDF](https://pdf.24bytes.pro/unir-pdf/) | Combina varios PDF en uno |
+| [Dividir PDF](https://pdf.24bytes.pro/dividir-pdf/) | Extrae un rango, separa cada página o parte cada N páginas |
+| [Organizar PDF](https://pdf.24bytes.pro/organizar-pdf/) | Reordena, rota, duplica y elimina páginas con miniaturas |
+| [PDF a imágenes](https://pdf.24bytes.pro/pdf-a-imagenes/) | Exporta páginas a JPG o PNG a 72, 150 o 300 ppp |
+| [Comprimir PDF](https://pdf.24bytes.pro/comprimir-pdf/) | Reduce PDF escaneados o con fotos, y avisa si no hubo ahorro |
+| [Marca de agua](https://pdf.24bytes.pro/marca-de-agua-pdf/) | Texto o imagen, con opacidad, ángulo y páginas a elegir |
+| [Numerar páginas](https://pdf.24bytes.pro/numerar-paginas-pdf/) | Números de página o foliado, con formato y posición |
 
-## Características
-- Arrastra y suelta, con orden alfabético o manual (drag & drop).
-- Convierte, une y agrupa JPG/PNG en un único PDF (A4) en segundos.
-- Procesamiento 100% cliente: tus archivos no salen de tu dispositivo.
-- Marca de agua de marca fija en el PDF.
-- Contadores públicos: visitas, PDFs creados y clicks al badge (sin cookies ni datos personales).
-- Formulario de feedback/contacto (nombre, correo/número, mensaje) vía FormSubmit.
+## Cómo está hecho
 
-## 🛠️ Stack
-- HTML5
-- CSS3
-- JavaScript (ES6)
-- Librería: [jsPDF](https://github.com/parallax/jsPDF) (v2.5.1)
+Sitio estático, sin framework ni paso de compilación de JavaScript. Las
+librerías van incluidas en `assets/vendor/` (nada se carga de un CDN):
+[pdf-lib](https://pdf-lib.js.org/), [pdf.js](https://mozilla.github.io/pdf.js/),
+[jsPDF](https://github.com/parallax/jsPDF), [pdfmake](http://pdfmake.org/),
+[marked](https://marked.js.org/), [DOMPurify](https://github.com/cure53/DOMPurify)
+y [JSZip](https://stuk.github.io/jszip/).
 
-## 🚀 Cómo usar
-### Clonar el repositorio
+Las páginas se generan con un script de Python sin dependencias:
+
 ```bash
-git clone https://github.com/24BytesCo/Images-to-PDF.git
-cd Images-to-PDF
-# Abre index.html en tu navegador favorito
+python3 tools/build.py          # regenera index.html, /<slug>/, sitemap.xml y robots.txt
+python3 -m http.server 8765     # y abre http://localhost:8765/
 ```
 
-### Descarga directa
-1. Descarga el ZIP del repositorio.
-2. Descomprime la carpeta.
-3. Abre `index.html` en tu navegador.
+Cada herramienta son tres archivos:
 
-## 📂 Estructura del proyecto
-```plaintext
-Images-to-PDF/
-├── index.html
-├── robots.txt
-├── sitemap.xml
-├── manifest.json
-├── assets/
-│   ├── css/styles.css
-│   └── js/app.js
-└── imgs/ (marca de agua, favicon, imagen OG)
-```
+- `tools/paginas/<slug>.json` — título, descripción, pasos, preguntas y texto de la página
+- `tools/ui/<slug>.html` — la interfaz
+- `assets/js/<slug>.js` — la lógica (utilidades comunes en `assets/js/comun.js`)
 
-## 🌐 Preparado para un subdominio propio (pendiente, no activado)
-Hoy vive en `https://24bytesco.github.io/images-to-PDF/`. Si en el futuro se
-sirve en `pdf.24bytes.pro`, falta:
-1. Crear un archivo `CNAME` en la raíz del repo con el contenido `pdf.24bytes.pro`.
-2. En Cloudflare (DNS de `24bytes.pro`), un registro `CNAME` de `pdf` →
-   `24bytesco.github.io`, proxy desactivado (GitHub Pages gestiona su propio TLS).
-3. Activar "Enforce HTTPS" en GitHub Pages una vez el DNS resuelva.
-4. Actualizar `canonical`, `og:url`, `og:image`, `twitter:image` y
-   `sitemap.xml` en `index.html` para que apunten a `https://pdf.24bytes.pro/`
-   en vez de `https://24bytesco.github.io/images-to-PDF/`.
-
-## Stack
-- HTML5
-- CSS3
-- JavaScript (ES6)
-- Librería: jsPDF (v2.5.1)
+Los `index.html` son generados: no se editan a mano.
 
 ## Contribuir
-- Fork + PR con tu mejora. Rama sugerida: `feature/tu-mejora`.
-- Ideas: más formatos, mejoras de accesibilidad/SEO, UX, tests, nuevas opciones de salida.
+
+Fork y PR. Si te falta una herramienta, cuéntamelo desde el formulario de la
+portada o abre un issue.
 
 ## Licencia
-MIT. Disfruta y compártelo. Sin publicidad, sin límites. 
+
+MIT. Hecho en Colombia por [Alexis Dorado Muñoz — 24Bytes](https://24bytes.pro).

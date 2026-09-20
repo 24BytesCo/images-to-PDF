@@ -93,7 +93,6 @@ Además, desde el 20/09 por la tarde (informe de palabras clave completo en
    español, enlace desde SECOP Monitor y 24bytes.pro.
 3. AdSense: solicitar cuenta cuando haya tráfico; poner el id en
    `ADSENSE_CLIENT`.
-5. Borrar `imgs/img_24_bytes_image_to_pdf.png` (6,3 MB, sin referencias).
 6. Ideas siguientes por volumen de búsqueda: PDF a Word/Word a PDF (difícil sin
    servidor), firmar PDF, proteger/desbloquear PDF, HTML a PDF, rotar PDF como
    página propia, versión en inglés.
