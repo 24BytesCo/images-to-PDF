@@ -159,6 +159,17 @@
 
   const combinar = (base, extra) => Object.assign({}, base, extra);
 
+  const ENTIDADES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0' };
+  /** marked entrega el texto escapado para HTML (&quot;, &lt;…); en el PDF va el carácter real. */
+  const desescapar = (texto) => String(texto == null ? '' : texto).replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (todo, e) => {
+    if (e[0] === '#') {
+      const codigo = e[1].toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
+      return Number.isFinite(codigo) && codigo > 0 && codigo <= 0x10ffff ? String.fromCodePoint(codigo) : todo;
+    }
+    const clave = e.toLowerCase();
+    return Object.prototype.hasOwnProperty.call(ENTIDADES, clave) ? ENTIDADES[clave] : todo;
+  });
+
   /** Aplana tokens en línea (negrita, cursiva, código, enlaces…) a "runs" de texto para pdfmake. */
   const correrInline = (tokens, estilo) => {
     const base = estilo || {};
@@ -175,7 +186,7 @@
           partes.push(...correrInline(t.tokens, combinar(base, { decoration: 'lineThrough' })));
           break;
         case 'codespan':
-          partes.push(combinar(base, { text: t.text, background: '#eef1f5', color: '#0f172a' }));
+          partes.push(combinar(base, { text: desescapar(t.text), background: '#eef1f5', color: '#0f172a' }));
           break;
         case 'link': {
           const hijos = correrInline(t.tokens && t.tokens.length ? t.tokens : [{ type: 'text', text: t.text }], base);
@@ -193,11 +204,11 @@
         case 'escape':
         case 'text':
           if (t.tokens && t.tokens.length) partes.push(...correrInline(t.tokens, base));
-          else partes.push(combinar(base, { text: t.text }));
+          else partes.push(combinar(base, { text: desescapar(t.text) }));
           break;
         default:
           if (t.tokens && t.tokens.length) partes.push(...correrInline(t.tokens, base));
-          else if (t.text) partes.push(combinar(base, { text: t.text }));
+          else if (t.text) partes.push(combinar(base, { text: desescapar(t.text) }));
       }
     });
     return partes;
@@ -300,10 +311,31 @@
       case 'list':
         return construirLista(token, ctx);
       case 'table': {
-        const cabecera = token.header.map((c, i) => ({ text: correrInline(c.tokens, {}), bold: true, fillColor: '#f1f5f9', alignment: alinear(token.align[i]) }));
-        const filas = token.rows.map((fila) => fila.map((c, i) => ({ text: correrInline(c.tokens, {}), alignment: alinear(token.align[i]) })));
+        const columnas = token.header.length;
+        // Con muchas columnas se reduce la letra: es preferible a una tabla que no cabe.
+        const letra = Math.max(6.5, ctx.letraBase * (columnas >= 6 ? 0.68 : columnas === 5 ? 0.76 : columnas === 4 ? 0.88 : 1));
+        const celda = (c, i, extra) => Object.assign({ text: correrInline(c.tokens, {}), alignment: alinear(token.align[i]), fontSize: letra }, extra);
+        const cabecera = token.header.map((c, i) => celda(c, i, { bold: true, fillColor: '#f1f5f9' }));
+        const filas = token.rows.map((fila) => fila.map((c, i) => celda(c, i)));
+        // Anchos FIJOS: con '*' pdfmake ensancha todas las columnas hasta la palabra más larga
+        // y la tabla se sale de la página. Se reparten según cuánto texto lleva cada columna
+        // (raíz cuadrada, para que una celda muy larga no aplaste a las demás), con un mínimo.
+        const largo = (c) => desescapar(c.text || '').length;
+        const celdasColumna = (i) => [token.header[i]].concat(token.rows.map((fila) => fila[i] || {}));
+        const pesos = token.header.map((c, i) => Math.sqrt(Math.max(4, ...celdasColumna(i).map(largo))));
+        // Mínimo por columna: que quepa su palabra más larga sin partirla (ancho medio de Roboto ≈ 0,55 em).
+        const palabraMasLarga = (i) => Math.max(4, ...celdasColumna(i).flatMap((c) => desescapar(c.text || '').split(/\s+/).map((w) => w.length)));
+        // El layout «lightHorizontalLines» mete 8 pt entre columnas (0 en los bordes exteriores).
+        const disponible = ctx.anchoUtil - (columnas - 1) * 16;
+        const minimos = token.header.map((c, i) => Math.min(disponible / columnas, Math.max(36, palabraMasLarga(i) * letra * 0.55 + 2)));
+        const sumaPesos = pesos.reduce((a, b) => a + b, 0);
+        let anchos = pesos.map((p) => (p / sumaPesos) * disponible);
+        const fijas = anchos.map((a, i) => a < minimos[i]);
+        const sobrante = disponible - minimos.reduce((a, m, i) => a + (fijas[i] ? m : 0), 0);
+        const pesoLibre = pesos.reduce((a, p, i) => a + (fijas[i] ? 0 : p), 0) || 1;
+        anchos = anchos.map((a, i) => (fijas[i] ? minimos[i] : (pesos[i] / pesoLibre) * sobrante));
         return {
-          table: { headerRows: 1, widths: cabecera.map(() => '*'), body: [cabecera].concat(filas) },
+          table: { headerRows: 1, dontBreakRows: false, widths: anchos.map((a) => Math.floor(a * 100) / 100), body: [cabecera].concat(filas) },
           layout: 'lightHorizontalLines',
           margin: [0, 4, 0, 12],
         };
@@ -315,7 +347,7 @@
           const partes = correrInline(token.tokens, {});
           if (partes.length) return { text: partes, margin: [0, 0, 0, 8] };
         } else if (token.text) {
-          return { text: token.text, margin: [0, 0, 0, 8] };
+          return { text: desescapar(token.text), margin: [0, 0, 0, 8] };
         }
         return null;
     }
@@ -338,7 +370,7 @@
       const tokens = window.marked.lexer(texto);
       const margen = margenesPagina(margenClave, conPie);
       const anchoPagina = ANCHO_PAGINA_PT[formato] || ANCHO_PAGINA_PT.a4;
-      const ctx = { anchoUtil: anchoPagina - margen[0] - margen[2], omitidas: { valor: false } };
+      const ctx = { anchoUtil: anchoPagina - margen[0] - margen[2], letraBase: base, omitidas: { valor: false } };
       const contenido = [];
       for (const t of tokens) {
         const nodo = await construirBloque(t, ctx);
