@@ -97,9 +97,13 @@ Además, desde el 20/09 por la tarde (informe de palabras clave completo en
 1. Search Console: si `24bytes.pro` es propiedad de dominio, ya cubre el
    subdominio; enviar `https://pdf.24bytes.pro/sitemap.xml` (el acceso por API
    es de solo lectura, lo envía Alexis).
-2. Distribución (lo que de verdad mueve un dominio nuevo): PR a
-   `karllhughes/awesome-pdf`, ficha en AlternativeTo, Show HN, dev.to en
-   español, enlace desde SECOP Monitor y 24bytes.pro.
+2. Distribución — **empezada el 10/10** (3 semanas tras publicar: 29
+   visitantes, 1 impresión en Google, `markdown-a-pdf` sin indexar). Hecho:
+   PR karllhughes/awesome-pdf#81, issue OneOffTech/awesome-pdf#104, enlace en
+   el pie de SECOP Monitor (prod). Pendiente de Alexis (necesitan su cuenta):
+   pedir indexación en GSC, AlternativeTo, Show HN, Product Hunt, dev.to —
+   textos listos en `Capturas/pdf-distribucion-20261010.md` y
+   `Capturas/pdf-distribucion-devto.md`. Revisar Umami/GSC el 10/11.
 3. AdSense: solicitar cuenta cuando haya tráfico; poner el id en
    `ADSENSE_CLIENT`.
 6. Ideas siguientes por volumen de búsqueda: PDF a Word/Word a PDF (difícil sin
