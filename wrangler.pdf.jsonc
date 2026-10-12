@@ -1,0 +1,7 @@
+{
+  // Worker de assets estáticos para pdf.24bytes.pro (sitio "pdf" de la suite).
+  // Sin lógica: solo sirve la carpeta sitios/pdf generada por tools/build.py.
+  "name": "pdf",
+  "compatibility_date": "2026-10-06",
+  "assets": { "directory": "sitios/pdf" }
+}

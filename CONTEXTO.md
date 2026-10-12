@@ -15,8 +15,20 @@
   `sitios/<sitio>/`, estáticos copiados por sitio, sitemap/robots por sitio, enlaces cruzados en el pie
   (mecanismo listo, no pintan con 1 solo sitio). Salida de pdf **byte-idéntica** a la de hoy; la raíz (prod
   de GitHub Pages) quedó intacta. Tests `tests/test_build.py` 6/6.
-  - **Decisión (cambia el plan):** `sitios/` va en `.gitignore`; Cloudflare Pages corre `python3 tools/build.py`
-    como build command (no se versiona la salida; evita ~18 MB duplicados).
+  - **Decisión (cambia el plan):** `sitios/` va en `.gitignore`; no se versiona la salida.
+- **Paso 2 HECHO (12/10):** pdf.24bytes.pro corre en **Cloudflare Workers Static Assets** (Pages quedó
+  fusionado en Workers; se eligió el camino moderno). Worker `pdf` sirve `sitios/pdf`
+  (`wrangler.pdf.jsonc`). Cutover por API: se borró el CNAME viejo (`pdf → 24bytesco.github.io`, DNS-only)
+  y se adjuntó el dominio al Worker; CF creó el DNS proxied y el SSL. Verificado desde fuera: portada +
+  herramientas + assets + sitemap/robots en 200, `server: cloudflare`, Umami y verificación Google intactos.
+  - **Despliegue:** `CLOUDFLARE_API_TOKEN=$(cat ~/.cf-pages-token) npx wrangler deploy -c wrangler.pdf.jsonc`
+    (account `ee64910954440d0ebd76761796e8d674`). El clasificador bloquea que lo corra Claude: va por
+    `! bash <script>` revisado (patrón [[clasificador-bloquea-borrados]]). No hay auto-deploy desde git.
+  - **Rollback:** recrear en Cloudflare el CNAME `pdf → 24bytesco.github.io` (DNS only).
+  - Pendiente menor: apagar GitHub Pages en Settings→Pages (ya no recibe tráfico); los archivos generados
+    en la RAÍZ del repo (index.html, 404, sitemap, robots, <slug>/) quedaron MUERTOS (build.py solo escribe
+    `sitios/`): no editarlos; borrarlos en una limpieza aparte. El token de acceso total sigue en
+    `~/.cf-pages-token`: borrarlo o rotarlo cuando se termine la tanda de Cloudflare.
   - **Aviso en SECOP Monitor** (Paso 6, lo más rápido para ingresos): lo ejecuta la **sesión de SECOP-Monitor**
     por rama→QA→master (regla de una sesión por proyecto). Encargo listo en `docs/encargo-aviso-secop.md`.
   - Pendiente aquí: Paso 2 (CF Pages + DNS, requiere Alexis/Cloudflare), Paso 3 (imagenes.24bytes.pro),
