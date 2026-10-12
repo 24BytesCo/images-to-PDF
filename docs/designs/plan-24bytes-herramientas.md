@@ -3,6 +3,10 @@
 Revisado con /plan-eng-review el 12/10/2026 · Repo: images-to-PDF · Alcance elegido por Alexis: **plan completo (B)**.
 Diseño previo: `docs/designs/cunas-de-trafico.md`.
 
+> **Cambio de decisión (12/10, Alexis):** la salida NO se versiona en git (`sitios/` en `.gitignore`).
+> Cloudflare Pages corre `python3 tools/build.py` como build command (cero dependencias, ~1 s) y publica
+> `sitios/<sitio>`. Evita ~18 MB de librerías duplicadas entre los 4 sitios; una sola fuente de verdad.
+
 ## Objetivo
 Un solo repo que genera y publica cuatro sitios de herramientas, todas en el navegador, con el núcleo
 compartido (plantilla, CSS, `comun.js`, `build.py`, Umami, AdSense). Más el aviso de «Preparar oferta

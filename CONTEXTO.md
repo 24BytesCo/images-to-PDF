@@ -11,7 +11,16 @@
   sitios (pdf., imagenes., audio., video. de 24bytes.pro) en Cloudflare Pages desde un solo repo, ffmpeg en R2
   (cdn.24bytes.pro) y suite E2E en `tests/`. Alexis eligió el **plan completo**.
 - Diseño: `docs/designs/cunas-de-trafico.md` · Plan aprobado: `docs/designs/plan-24bytes-herramientas.md`.
-- **Nada del plan está implementado todavía.** Se trabaja en una sesión propia de este proyecto (pedido de Alexis).
+- **Paso 1 HECHO (12/10, sin push):** núcleo multisitio. `tools/sitios.json` (config por sitio), build a
+  `sitios/<sitio>/`, estáticos copiados por sitio, sitemap/robots por sitio, enlaces cruzados en el pie
+  (mecanismo listo, no pintan con 1 solo sitio). Salida de pdf **byte-idéntica** a la de hoy; la raíz (prod
+  de GitHub Pages) quedó intacta. Tests `tests/test_build.py` 6/6.
+  - **Decisión (cambia el plan):** `sitios/` va en `.gitignore`; Cloudflare Pages corre `python3 tools/build.py`
+    como build command (no se versiona la salida; evita ~18 MB duplicados).
+  - **Aviso en SECOP Monitor** (Paso 6, lo más rápido para ingresos): lo ejecuta la **sesión de SECOP-Monitor**
+    por rama→QA→master (regla de una sesión por proyecto). Encargo listo en `docs/encargo-aviso-secop.md`.
+  - Pendiente aquí: Paso 2 (CF Pages + DNS, requiere Alexis/Cloudflare), Paso 3 (imagenes.24bytes.pro),
+    extraer `assets/js/rasterizar.js` (DRY comprimir+oferta, con E2E).
 - Descargador de YouTube: descartado (términos de YouTube, AdSense, DMCA, riesgo para sus canales). No re-proponer.
 - 200 herramientas: crecer por métricas de cada cuña, no por cantidad; nunca páginas en serie por plantilla.
 

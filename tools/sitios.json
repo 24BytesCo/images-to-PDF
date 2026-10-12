@@ -1,0 +1,21 @@
+{
+  "pdf": {
+    "dominio": "pdf.24bytes.pro",
+    "base_url": "https://pdf.24bytes.pro/",
+    "marca": "24Bytes PDF",
+    "sello": "PDF",
+    "lema": "Herramientas PDF que no suben tus archivos",
+    "verificacion_google": "35QQddAFVCcauzJO1nGmIASlRfsLoPmEYeIm7bbcaj4",
+    "adsense_client": "",
+    "umami_id": "00ab1a32-c1d0-4735-8506-4104a5eb7f58",
+    "og_image_alt": "24Bytes PDF: herramientas PDF que no suben tus archivos",
+    "nombre_pie": "Más herramientas",
+    "portada": {
+      "titulo": "24Bytes PDF: unir, dividir y convertir PDF sin subir archivos",
+      "descripcion": "Herramientas PDF gratis que funcionan en tu navegador: unir, dividir, ordenar páginas, pasar imágenes o Markdown a PDF y PDF a imágenes. Tus archivos no se suben a ningún servidor.",
+      "bajada": "Une, divide, ordena y convierte PDF directamente en tu navegador. Tus documentos no salen de tu equipo: no hay servidor que los reciba, ni registro, ni límite de uso.",
+      "porque_h": "Por qué no subimos nada",
+      "porque_p": "Casi todas las herramientas PDF en línea envían tu archivo a un servidor ajeno, lo procesan allá y te lo devuelven. Aquí el trabajo lo hace tu propio navegador: el contrato, la cédula escaneada o la historia clínica nunca viajan por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: todo sigue funcionando."
+    }
+  }
+}

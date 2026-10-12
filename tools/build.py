@@ -1,26 +1,24 @@
 #!/usr/bin/env python3
-"""Genera el sitio estático de la suite (GitHub Pages, sin dependencias).
+"""Genera los sitios estáticos de la suite (Cloudflare Pages, sin dependencias).
 
-Cada herramienta es una página propia (`/<slug>/index.html`) para que posicione
-por su propia búsqueda; todas comparten plantilla, estilos y pie. Las páginas se
-definen en `tools/paginas/<slug>.json` y su interfaz en `tools/ui/<slug>.html`.
+Un solo repo publica varios sitios (pdf, imagenes, audio, video). Cada sitio se
+configura en `tools/sitios.json`; cada herramienta es una página propia
+(`/<slug>/index.html`) definida en `tools/paginas/<slug>.json` (con el campo
+`sitio`, por defecto "pdf") y su interfaz en `tools/ui/<slug>.html`. Todas las
+páginas de un sitio comparten plantilla, estilos y pie.
 
+Salida: `sitios/<sitio>/` (lo que publica Cloudflare Pages, sin build propio).
 Uso:  python3 tools/build.py
-Al cambiar de dominio basta con tocar BASE_URL (y el archivo CNAME de la raíz).
 """
 import html
 import json
+import shutil
 from datetime import date
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
-BASE_URL = "https://pdf.24bytes.pro/"
-MARCA = "24Bytes PDF"
-LEMA = "Herramientas PDF que no suben tus archivos"
-VERIFICACION_GOOGLE = "35QQddAFVCcauzJO1nGmIASlRfsLoPmEYeIm7bbcaj4"
-# Publicidad: vacío = no se pinta nada. Con el id de AdSense (ca-pub-…) se
-# añaden el script y los huecos reservados, sin saltos de maquetación.
-ADSENSE_CLIENT = ""
+# Estáticos que se copian tal cual a la carpeta de cada sitio.
+ESTATICOS = ["assets", "imgs", "manifest.json", "9bed2c2d09393a8db9d492ed35b949ba.txt"]
 
 ICONOS = {
     "imagenes": '<path d="M4 5h16v14H4z"/><path d="m4 16 4.5-4.5 3.5 3.5 3-3L20 16"/><circle cx="9" cy="9" r="1.4"/>',
@@ -48,9 +46,15 @@ def e(texto: str) -> str:
     return html.escape(texto, quote=True)
 
 
-def cargar_paginas() -> list[dict]:
-    paginas = [json.loads(p.read_text(encoding="utf-8")) for p in sorted((RAIZ / "tools/paginas").glob("*.json"))]
-    return sorted(paginas, key=lambda p: p.get("orden", 99))
+def cargar_sitios() -> dict:
+    return json.loads((RAIZ / "tools/sitios.json").read_text(encoding="utf-8"))
+
+
+def cargar_paginas(sitio: str) -> list[dict]:
+    """Páginas del sitio indicado (campo `sitio`, por defecto "pdf")."""
+    todas = [json.loads(p.read_text(encoding="utf-8")) for p in sorted((RAIZ / "tools/paginas").glob("*.json"))]
+    propias = [p for p in todas if p.get("sitio", "pdf") == sitio]
+    return sorted(propias, key=lambda p: p.get("orden", 99))
 
 
 def principales(paginas: list[dict]) -> list[dict]:
@@ -99,15 +103,38 @@ def json_ld(objeto: dict) -> str:
     return '<script type="application/ld+json">' + json.dumps(objeto, ensure_ascii=False) + "</script>"
 
 
-def anuncio(posicion: str) -> str:
-    if not ADSENSE_CLIENT:
+def anuncio(cfg: dict, posicion: str) -> str:
+    if not cfg["adsense_client"]:
         return ""
     return (
         f'<aside class="anuncio" aria-label="Publicidad" data-posicion="{posicion}">'
-        f'<ins class="adsbygoogle" style="display:block" data-ad-client="{ADSENSE_CLIENT}" '
+        f'<ins class="adsbygoogle" style="display:block" data-ad-client="{cfg["adsense_client"]}" '
         'data-ad-format="auto" data-full-width-responsive="true"></ins>'
         "<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></aside>"
     )
+
+
+def script_adsense(cfg: dict) -> str:
+    if not cfg["adsense_client"]:
+        return ""
+    return (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+            f'?client={cfg["adsense_client"]}" crossorigin="anonymous"></script>')
+
+
+def script_umami(cfg: dict) -> str:
+    if not cfg.get("umami_id"):
+        return ""
+    return (f'<script defer src="https://24bytes.pro/stats/script.js" '
+            f'data-website-id="{cfg["umami_id"]}" data-domains="{cfg["dominio"]}"></script>')
+
+
+def pie_sitios(cfg: dict, sitios: dict) -> str:
+    """Enlace cruzado a los otros sitios de la suite (vacío si solo hay uno)."""
+    otros = [f'<a href="https://{o["dominio"]}/" rel="noopener">{e(o["marca"])}</a>'
+             for clave, o in sitios.items() if clave != cfg["_clave"]]
+    if not otros:
+        return ""
+    return f'\n    <p class="pie-sitios">Más herramientas de 24Bytes: {" · ".join(otros)}</p>'
 
 
 def render(plantilla: str, valores: dict) -> str:
@@ -117,9 +144,23 @@ def render(plantilla: str, valores: dict) -> str:
     return salida
 
 
-def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str) -> str:
+def comunes(cfg: dict, sitios: dict) -> dict:
+    """Placeholders iguales en toda página del sitio."""
+    return {
+        "marca": e(cfg["marca"]),
+        "sello": e(cfg["sello"]),
+        "verificacion": cfg["verificacion_google"],
+        "base": cfg["base_url"],
+        "og_image_alt": e(cfg["og_image_alt"]),
+        "adsense": script_adsense(cfg),
+        "umami": script_umami(cfg),
+        "pie_sitios": pie_sitios(cfg, sitios),
+    }
+
+
+def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str, cfg: dict, com: dict) -> str:
     raiz = "../"
-    url = f'{BASE_URL}{p["slug"]}/'
+    url = f'{cfg["base_url"]}{p["slug"]}/'
     base = p.get("variante_de") or p["slug"]
     ui = (RAIZ / "tools/ui" / f'{base}.html').read_text(encoding="utf-8").replace("{{raiz}}", raiz)
     pasos = "\n".join(f"<li><strong>{e(t)}</strong> {e(d)}</li>" for t, d in p["pasos"])
@@ -130,7 +171,7 @@ def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str) -> str:
         {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": f'{p["nombre"]} — {MARCA}',
+            "name": f'{p["nombre"]} — {cfg["marca"]}',
             "url": url,
             "description": p["descripcion"],
             "applicationCategory": "UtilitiesApplication",
@@ -153,7 +194,7 @@ def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str) -> str:
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-                {"@type": "ListItem", "position": 1, "name": MARCA, "item": BASE_URL},
+                {"@type": "ListItem", "position": 1, "name": cfg["marca"], "item": cfg["base_url"]},
                 {"@type": "ListItem", "position": 2, "name": p["nombre"], "item": url},
             ],
         },
@@ -161,7 +202,7 @@ def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str) -> str:
     scripts = "\n".join(f'<script src="{raiz}{s}" defer></script>' for s in p.get("scripts", []))
     cuerpo = f"""
     <section class="portada portada-herramienta">
-      <p class="migas"><a href="{raiz}">{e(MARCA)}</a> <span aria-hidden="true">/</span> {e(p["nombre"])}</p>
+      <p class="migas"><a href="{raiz}">{e(cfg["marca"])}</a> <span aria-hidden="true">/</span> {e(p["nombre"])}</p>
       <h1>{e(p["h1"])}</h1>
       <p class="bajada">{e(p["bajada"])}</p>
       <ul class="sellos"><li>Todo ocurre en tu navegador</li><li>Sin registro</li><li>Gratis y sin límite</li></ul>
@@ -169,7 +210,7 @@ def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str) -> str:
     <section class="herramienta" aria-label="{e(p["nombre"])}">
 {ui}
     </section>
-    {anuncio("tras-herramienta")}
+    {anuncio(cfg, "tras-herramienta")}
     {secciones(p)}
     <section class="bloque">
       <h2>Cómo funciona</h2>
@@ -190,23 +231,20 @@ def pagina_herramienta(p: dict, paginas: list[dict], plantilla: str) -> str:
         "descripcion": e(p["descripcion"]),
         "canonical": url,
         "raiz": raiz,
-        "marca": e(MARCA),
         "navegacion": navegacion(paginas, raiz, p["slug"]),
         "cuerpo": cuerpo,
         "json_ld": "\n".join(json_ld(d) for d in datos),
         "scripts": scripts,
-        "verificacion": VERIFICACION_GOOGLE,
-        "base": BASE_URL,
-        "adsense": f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>' if ADSENSE_CLIENT else "",
         "clase_cuerpo": "pagina-herramienta",
+        **com,
     })
 
 
-def pagina_texto(p: dict, paginas: list[dict], plantilla: str) -> str:
+def pagina_texto(p: dict, paginas: list[dict], plantilla: str, cfg: dict, com: dict) -> str:
     raiz = "../"
     cuerpo = f"""
     <section class="portada portada-herramienta">
-      <p class="migas"><a href="{raiz}">{e(MARCA)}</a> <span aria-hidden="true">/</span> {e(p["nombre"])}</p>
+      <p class="migas"><a href="{raiz}">{e(cfg["marca"])}</a> <span aria-hidden="true">/</span> {e(p["nombre"])}</p>
       <h1>{e(p["h1"])}</h1>
       <p class="bajada">{e(p["bajada"])}</p>
     </section>
@@ -217,27 +255,28 @@ def pagina_texto(p: dict, paginas: list[dict], plantilla: str) -> str:
     </section>
 """
     return render(plantilla, {
-        "titulo": e(p["titulo"]), "descripcion": e(p["descripcion"]), "canonical": f'{BASE_URL}{p["slug"]}/',
-        "raiz": raiz, "marca": e(MARCA), "navegacion": navegacion(paginas, raiz, None), "cuerpo": cuerpo,
-        "json_ld": "", "scripts": "", "verificacion": VERIFICACION_GOOGLE, "base": BASE_URL, "adsense": "",
-        "clase_cuerpo": "pagina-texto",
+        "titulo": e(p["titulo"]), "descripcion": e(p["descripcion"]), "canonical": f'{cfg["base_url"]}{p["slug"]}/',
+        "raiz": raiz, "navegacion": navegacion(paginas, raiz, None), "cuerpo": cuerpo,
+        "json_ld": "", "scripts": "", "clase_cuerpo": "pagina-texto", **com,
     })
 
 
-def portada(paginas: list[dict], plantilla: str) -> str:
+def portada(paginas: list[dict], plantilla: str, cfg: dict, com: dict) -> str:
     raiz = ""
+    po = cfg["portada"]
     datos = [
-        {"@context": "https://schema.org", "@type": "WebSite", "name": MARCA, "url": BASE_URL, "inLanguage": "es",
-         "description": LEMA, "publisher": {"@type": "Organization", "name": "24Bytes", "url": "https://24bytes.pro"}},
+        {"@context": "https://schema.org", "@type": "WebSite", "name": cfg["marca"], "url": cfg["base_url"],
+         "inLanguage": "es", "description": cfg["lema"],
+         "publisher": {"@type": "Organization", "name": "24Bytes", "url": "https://24bytes.pro"}},
         {"@context": "https://schema.org", "@type": "ItemList", "name": "Herramientas PDF",
-         "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": p["nombre"], "url": f'{BASE_URL}{p["slug"]}/'}
+         "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": p["nombre"], "url": f'{cfg["base_url"]}{p["slug"]}/'}
                              for i, p in enumerate(principales(paginas))]},
     ]
     contacto = (RAIZ / "tools/ui/_contacto.html").read_text(encoding="utf-8")
     cuerpo = f"""
     <section class="portada">
-      <h1>{e(LEMA)}</h1>
-      <p class="bajada">Une, divide, ordena y convierte PDF directamente en tu navegador. Tus documentos no salen de tu equipo: no hay servidor que los reciba, ni registro, ni límite de uso.</p>
+      <h1>{e(cfg["lema"])}</h1>
+      <p class="bajada">{e(po["bajada"])}</p>
       <ul class="sellos"><li>Todo ocurre en tu navegador</li><li>Sin registro</li><li>Gratis y sin límite</li></ul>
     </section>
     <section class="bloque bloque-rejilla" aria-label="Herramientas">
@@ -247,39 +286,52 @@ def portada(paginas: list[dict], plantilla: str) -> str:
       <h2>Tareas frecuentes</h2>
       {tareas(paginas, raiz)}
     </section>
-    {anuncio("portada")}
+    {anuncio(cfg, "portada")}
     <section class="bloque">
-      <h2>Por qué no subimos nada</h2>
-      <p class="parrafo">Casi todas las herramientas PDF en línea envían tu archivo a un servidor ajeno, lo procesan allá y te lo devuelven. Aquí el trabajo lo hace tu propio navegador: el contrato, la cédula escaneada o la historia clínica nunca viajan por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: todo sigue funcionando.</p>
+      <h2>{e(po["porque_h"])}</h2>
+      <p class="parrafo">{e(po["porque_p"])}</p>
     </section>
 {contacto}
 """
     return render(plantilla, {
-        "titulo": e(f"{MARCA}: unir, dividir y convertir PDF sin subir archivos"),
-        "descripcion": e("Herramientas PDF gratis que funcionan en tu navegador: unir, dividir, ordenar páginas, pasar imágenes o Markdown a PDF y PDF a imágenes. Tus archivos no se suben a ningún servidor."),
-        "canonical": BASE_URL,
+        "titulo": e(po["titulo"]),
+        "descripcion": e(po["descripcion"]),
+        "canonical": cfg["base_url"],
         "raiz": raiz,
-        "marca": e(MARCA),
         "navegacion": navegacion(paginas, raiz, None),
         "cuerpo": cuerpo,
         "json_ld": "\n".join(json_ld(d) for d in datos),
         "scripts": f'<script src="{raiz}assets/js/contacto.js" defer></script>',
-        "verificacion": VERIFICACION_GOOGLE,
-        "base": BASE_URL,
-        "adsense": f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>' if ADSENSE_CLIENT else "",
         "clase_cuerpo": "pagina-portada",
+        **com,
     })
 
 
-def main() -> None:
-    plantilla = (RAIZ / "tools/plantilla.html").read_text(encoding="utf-8")
-    paginas = cargar_paginas()
-    (RAIZ / "index.html").write_text(portada(paginas, plantilla), encoding="utf-8")
+def construir_sitio(clave: str, cfg: dict, sitios: dict, plantilla: str) -> int:
+    cfg = {**cfg, "_clave": clave}
+    salida = RAIZ / "sitios" / clave
+    if salida.exists():
+        shutil.rmtree(salida)
+    salida.mkdir(parents=True)
+    for nombre in ESTATICOS:
+        origen = RAIZ / nombre
+        if not origen.exists():
+            continue
+        destino = salida / nombre
+        if origen.is_dir():
+            shutil.copytree(origen, destino)
+        else:
+            shutil.copy2(origen, destino)
+
+    paginas = cargar_paginas(clave)
+    com = comunes(cfg, sitios)
+    (salida / "index.html").write_text(portada(paginas, plantilla, cfg, com), encoding="utf-8")
     for p in paginas:
-        destino = RAIZ / p["slug"]
+        destino = salida / p["slug"]
         destino.mkdir(exist_ok=True)
         hacer = pagina_texto if p.get("tipo") == "texto" else pagina_herramienta
-        (destino / "index.html").write_text(hacer(p, paginas, plantilla), encoding="utf-8")
+        (destino / "index.html").write_text(hacer(p, paginas, plantilla, cfg, com), encoding="utf-8")
+
     cuerpo_404 = f"""
     <section class="portada">
       <h1>Esta página no existe</h1>
@@ -289,20 +341,28 @@ def main() -> None:
       <div class="rejilla rejilla-grande">{tarjetas(paginas, "/")}</div>
     </section>
 """
-    (RAIZ / "404.html").write_text(render(plantilla, {
-        "titulo": e(f"Página no encontrada — {MARCA}"), "descripcion": e(LEMA), "canonical": BASE_URL,
-        "raiz": "/", "marca": e(MARCA), "navegacion": navegacion(paginas, "/", None), "cuerpo": cuerpo_404,
-        "json_ld": "", "scripts": "", "verificacion": VERIFICACION_GOOGLE, "base": BASE_URL, "adsense": "",
-        "clase_cuerpo": "pagina-portada",
+    (salida / "404.html").write_text(render(plantilla, {
+        "titulo": e(f"Página no encontrada — {cfg['marca']}"), "descripcion": e(cfg["lema"]), "canonical": cfg["base_url"],
+        "raiz": "/", "navegacion": navegacion(paginas, "/", None), "cuerpo": cuerpo_404,
+        "json_ld": "", "scripts": "", "clase_cuerpo": "pagina-portada", **com,
     }).replace('content="index, follow, max-image-preview:large"', 'content="noindex, follow"'), encoding="utf-8")
+
     hoy = date.today().isoformat()
-    urls = [BASE_URL] + [f'{BASE_URL}{p["slug"]}/' for p in paginas]
+    urls = [cfg["base_url"]] + [f'{cfg["base_url"]}{p["slug"]}/' for p in paginas]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     sitemap += [f"  <url><loc>{u}</loc><lastmod>{hoy}</lastmod></url>" for u in urls]
     sitemap.append("</urlset>")
-    (RAIZ / "sitemap.xml").write_text("\n".join(sitemap) + "\n", encoding="utf-8")
-    (RAIZ / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}sitemap.xml\n", encoding="utf-8")
-    print(f"{len(principales(paginas))} herramientas, {len(paginas) - len(principales(paginas))} páginas más + portada + sitemap ({len(urls)} URLs)")
+    (salida / "sitemap.xml").write_text("\n".join(sitemap) + "\n", encoding="utf-8")
+    (salida / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {cfg['base_url']}sitemap.xml\n", encoding="utf-8")
+    print(f"[{clave}] {len(principales(paginas))} herramientas, {len(paginas) - len(principales(paginas))} páginas más + portada + sitemap ({len(urls)} URLs)")
+    return len(urls)
+
+
+def main() -> None:
+    plantilla = (RAIZ / "tools/plantilla.html").read_text(encoding="utf-8")
+    sitios = cargar_sitios()
+    for clave, cfg in sitios.items():
+        construir_sitio(clave, cfg, sitios, plantilla)
 
 
 if __name__ == "__main__":
