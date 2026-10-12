@@ -1,0 +1,57 @@
+{
+  "slug": "heic-a-jpg",
+  "sitio": "imagenes",
+  "orden": 2,
+  "nombre": "HEIC a JPG",
+  "icono": "imagenes",
+  "titulo": "Convertir HEIC a JPG gratis online sin subir archivos",
+  "descripcion": "Convierte las fotos HEIC del iPhone a JPG en tu propio navegador, sin subirlas a ningún servidor. Gratis, varias a la vez y sin marca de agua.",
+  "h1": "Convertir HEIC a JPG sin subir archivos",
+  "bajada": "Pasa las fotos HEIC del iPhone a JPG para abrirlas o enviarlas en cualquier lado. Todo ocurre en tu navegador: tus fotos no se suben a ningún servidor.",
+  "resumen_tarjeta": "Pasa las fotos HEIC del iPhone a JPG, sin subirlas a ningún servidor.",
+  "scripts": [
+    "assets/vendor/jszip.min.js",
+    "assets/js/heic-a-jpg.js"
+  ],
+  "pasos": [
+    [
+      "Elige tus fotos HEIC.",
+      "Arrástralas a la zona de carga o pulsa para seleccionarlas. Puedes convertir varias a la vez."
+    ],
+    [
+      "Ajusta la calidad (opcional).",
+      "92 % conserva muy bien la foto. Bájala si quieres un archivo más liviano."
+    ],
+    [
+      "Convierte y descarga.",
+      "Una foto se baja sola; varias, en un ZIP. La conversión ocurre en tu equipo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué es un archivo HEIC?",
+      "r": "Es el formato con el que el iPhone guarda las fotos por defecto. Ocupa menos espacio que JPG, pero muchos programas y páginas de Windows o Android no lo abren. Pasarlo a JPG lo hace compatible con todo."
+    },
+    {
+      "p": "¿Mis fotos se suben a algún servidor?",
+      "r": "No. La conversión la hace tu navegador. En Safari se usa el decodificador del propio sistema; en los demás navegadores se carga un decodificador que corre dentro de tu equipo. Las fotos nunca viajan por internet."
+    },
+    {
+      "p": "¿Puedo convertir varias a la vez?",
+      "r": "Sí. Suelta todas las que quieras y se descargan juntas en un ZIP. El límite real es la memoria de tu dispositivo."
+    },
+    {
+      "p": "¿Se pierde calidad al pasar a JPG?",
+      "r": "JPG tiene algo de compresión con pérdida, pero con calidad 92 % la diferencia es imperceptible. Puedes subirla o bajarla según necesites."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Por qué el iPhone guarda en HEIC",
+      "p": [
+        "Desde iOS 11 el iPhone usa HEIC porque pesa casi la mitad que un JPG con la misma calidad. El problema aparece al compartir: Windows, Android y muchas plataformas web todavía no lo abren bien. Convertir a JPG resuelve la compatibilidad sin tener que cambiar los ajustes del teléfono.",
+        "Si prefieres no convertir cada vez, en el iPhone puedes ir a Ajustes → Cámara → Formatos y elegir «Más compatible» para que tome las fotos directamente en JPG."
+      ]
+    }
+  ]
+}

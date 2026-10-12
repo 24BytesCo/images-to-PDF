@@ -1,0 +1,23 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="m4 16 4.5-4.5 3.5 3.5 3-3L20 16"/><circle cx="9" cy="9" r="1.4"/></svg></span>
+        <p class="zona-titulo">Arrastra tus archivos HEIC aquí</p>
+        <p class="zona-texto">o pulsa para elegirlos · HEIC o HEIF del iPhone</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir archivos HEIC" accept=".heic,.heif,image/heic,image/heif" multiple>
+
+      <div id="panel" hidden>
+        <div class="opciones">
+          <label class="campo">Calidad del JPG: <output id="calidadValor">92 %</output>
+            <input id="calidad" type="range" min="60" max="100" step="2" value="92">
+          </label>
+        </div>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+        </div>
+        <div class="lista" id="lista"></div>
+        <div class="barra">
+          <span class="ayuda">Todo se procesa en tu dispositivo.</span>
+          <button class="boton" type="button" id="convertir">Convertir a JPG</button>
+        </div>
+      </div>
