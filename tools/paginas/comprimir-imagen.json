@@ -1,0 +1,58 @@
+{
+  "slug": "comprimir-imagen",
+  "sitio": "imagenes",
+  "orden": 1,
+  "nombre": "Comprimir imagen",
+  "icono": "comprimir",
+  "titulo": "Comprimir imagen online gratis: reducir el peso de JPG y PNG",
+  "descripcion": "Reduce el peso de tus fotos JPG, PNG o WebP sin subirlas a ningún servidor. Elige calidad y tamaño máximo, y descárgalas. Gratis y sin marca de agua.",
+  "h1": "Comprimir imágenes sin subir archivos",
+  "bajada": "Baja el peso de tus fotos para enviarlas por correo o subirlas más rápido. Ajusta la calidad y el tamaño máximo: todo ocurre en tu navegador, nada se sube.",
+  "resumen_tarjeta": "Reduce el peso de JPG, PNG y WebP eligiendo calidad y tamaño máximo.",
+  "scripts": [
+    "assets/vendor/jszip.min.js",
+    "assets/js/comprimir-imagen.js"
+  ],
+  "pasos": [
+    [
+      "Elige tus imágenes.",
+      "Arrástralas a la zona de carga o pulsa para seleccionarlas. Sirven JPG, PNG y WebP."
+    ],
+    [
+      "Ajusta calidad y tamaño.",
+      "Baja la calidad o fija un lado máximo en píxeles. Verás el peso resultante de cada imagen antes de descargar."
+    ],
+    [
+      "Descarga.",
+      "Una imagen se baja sola; varias se descargan en un ZIP. Todo se procesa en tu equipo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Mis fotos se suben a algún servidor?",
+      "r": "No. La compresión la hace tu navegador con JavaScript. Las imágenes nunca se envían por internet, así que sirve para fotos de documentos o personales."
+    },
+    {
+      "p": "¿Cuánto peso puedo quitar sin que se vea mal?",
+      "r": "Con calidad entre 70 % y 80 % casi no se nota la diferencia y el archivo suele quedar bastante más liviano. Si además reduces el tamaño máximo (por ejemplo a 1920 px), el ahorro es mayor."
+    },
+    {
+      "p": "¿Y si la imagen queda más pesada que la original?",
+      "r": "Puede pasar con PNG muy optimizados. En ese caso te avisamos y conservamos tu archivo original, para que nunca descargues algo peor de lo que tenías."
+    },
+    {
+      "p": "¿Puedo convertir de PNG a JPG o a WebP?",
+      "r": "Sí. Elige el formato de salida: JPG para fotos, WebP para el menor peso, o mantener el formato original."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cuándo conviene comprimir",
+      "p": [
+        "Para adjuntar fotos a un correo con límite de tamaño, subir imágenes a un formulario o una web, o liberar espacio sin borrar nada. La compresión con pérdida (JPG o WebP) reduce muchísimo el peso con una caída de calidad que casi no se percibe en pantalla.",
+        "Si la imagen tiene texto fino o transparencias, PNG o WebP conservan mejor los bordes; para fotografías, JPG o WebP con calidad 75 % suele ser el mejor equilibrio."
+      ]
+    }
+  ],
+  "faq_destacada": false
+}

@@ -272,7 +272,7 @@ def portada(paginas: list[dict], plantilla: str, cfg: dict, com: dict) -> str:
          "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": p["nombre"], "url": f'{cfg["base_url"]}{p["slug"]}/'}
                              for i, p in enumerate(principales(paginas))]},
     ]
-    contacto = (RAIZ / "tools/ui/_contacto.html").read_text(encoding="utf-8")
+    contacto = (RAIZ / "tools/ui/_contacto.html").read_text(encoding="utf-8") if cfg.get("contacto") else ""
     cuerpo = f"""
     <section class="portada">
       <h1>{e(cfg["lema"])}</h1>
@@ -301,7 +301,7 @@ def portada(paginas: list[dict], plantilla: str, cfg: dict, com: dict) -> str:
         "navegacion": navegacion(paginas, raiz, None),
         "cuerpo": cuerpo,
         "json_ld": "\n".join(json_ld(d) for d in datos),
-        "scripts": f'<script src="{raiz}assets/js/contacto.js" defer></script>',
+        "scripts": f'<script src="{raiz}assets/js/contacto.js" defer></script>' if cfg.get("contacto") else "",
         "clase_cuerpo": "pagina-portada",
         **com,
     })

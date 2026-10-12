@@ -1,0 +1,39 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra tus imágenes aquí</p>
+        <p class="zona-texto">o pulsa para elegirlas · JPG, PNG o WebP</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir imágenes" accept="image/jpeg,image/png,image/webp" multiple>
+
+      <div id="panel" hidden>
+        <div class="opciones">
+          <label class="campo">Formato de salida
+            <select id="formato">
+              <option value="image/jpeg">JPG (fotos)</option>
+              <option value="image/webp">WebP (menor peso)</option>
+              <option value="original">Mantener el original</option>
+            </select>
+          </label>
+          <label class="campo">Calidad: <output id="calidadValor">75 %</output>
+            <input id="calidad" type="range" min="30" max="95" step="5" value="75">
+          </label>
+          <label class="campo">Tamaño máximo (lado mayor)
+            <select id="maximo">
+              <option value="0">No cambiar</option>
+              <option value="1280">1280 px</option>
+              <option value="1920">1920 px</option>
+              <option value="2560">2560 px</option>
+              <option value="4096">4096 px</option>
+            </select>
+          </label>
+        </div>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+        </div>
+        <div class="lista" id="lista"></div>
+        <div class="barra">
+          <span class="ayuda">Todo se procesa en tu dispositivo.</span>
+          <button class="boton" type="button" id="comprimir">Comprimir y descargar</button>
+        </div>
+      </div>
