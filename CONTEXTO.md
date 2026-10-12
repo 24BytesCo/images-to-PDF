@@ -2,6 +2,19 @@
 
 > Actualizado 2026-09-20. Reglas comunes en `../SESIONES.md` y `../CLAUDE.md`.
 
+## 0. Estado al 2026-10-12 — LEER PRIMERO
+
+- **Publicada** «Preparar oferta para SECOP II» (`/oferta-secop-pdf/`, commit `ee3fd93`): une, folia con folio
+  corrido entre partes y parte en archivos de menos de 50 MB; compresión opcional con pdf-lib (jsPDF compartía
+  recursos y cada parte cargaba todas las imágenes). Probada en Chrome a 1280 y 390 px.
+- **Rumbo decidido** (office-hours + plan-eng-review con Alexis): el repo pasa a «24Bytes Herramientas», cuatro
+  sitios (pdf., imagenes., audio., video. de 24bytes.pro) en Cloudflare Pages desde un solo repo, ffmpeg en R2
+  (cdn.24bytes.pro) y suite E2E en `tests/`. Alexis eligió el **plan completo**.
+- Diseño: `docs/designs/cunas-de-trafico.md` · Plan aprobado: `docs/designs/plan-24bytes-herramientas.md`.
+- **Nada del plan está implementado todavía.** Se trabaja en una sesión propia de este proyecto (pedido de Alexis).
+- Descargador de YouTube: descartado (términos de YouTube, AdSense, DMCA, riesgo para sus canales). No re-proponer.
+- 200 herramientas: crecer por métricas de cada cuña, no por cantidad; nunca páginas en serie por plantilla.
+
 ## 1. Qué es
 
 Suite de herramientas PDF 100 % en el navegador (sitio estático, sin servidor,
