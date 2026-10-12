@@ -1,0 +1,70 @@
+{
+  "slug": "oferta-secop-pdf",
+  "orden": 2,
+  "nombre": "Preparar oferta para SECOP II",
+  "icono": "unir",
+  "titulo": "Preparar oferta para SECOP II: unir, foliar y partir en 50 MB",
+  "descripcion": "Une los PDF de tu oferta, folia todas las páginas y pártela en archivos de menos de 50 MB para cargarla en SECOP II. Gratis y sin subir tus documentos a ningún servidor.",
+  "h1": "Prepara tu oferta para SECOP II",
+  "bajada": "Une propuesta, anexos y certificados en el orden correcto, folia cada página y obtén archivos de menos de 50 MB listos para cargar en SECOP II.",
+  "resumen_tarjeta": "Une, folia y parte tu oferta en archivos de menos de 50 MB.",
+  "scripts": [
+    "assets/vendor/pdf-lib.min.js",
+    "assets/vendor/jszip.min.js",
+    "assets/vendor/pdf.min.js",
+    "assets/js/oferta-secop-pdf.js"
+  ],
+  "pasos": [
+    [
+      "Carga los PDF de la oferta.",
+      "Propuesta, anexos, certificados, RUP, pólizas: arrástralos todos y ordénalos como deben ir."
+    ],
+    [
+      "Elige el folio y el peso máximo.",
+      "Folio en la esquina que pida el pliego y peso por archivo (50 MB por defecto). Si son escaneos pesados, activa la compresión."
+    ],
+    [
+      "Descarga y carga en SECOP II.",
+      "Si cabe en un archivo se descarga directo; si no, llegan las partes en un ZIP, con el folio corrido de una parte a la otra."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Cuánto pesa como máximo un documento en SECOP II?",
+      "r": "Colombia Compra Eficiente indica 50 MB por documento. Algunas entidades piden menos en el pliego: puedes cambiar el límite antes de preparar la oferta."
+    },
+    {
+      "p": "¿Mis documentos se suben a algún servidor?",
+      "r": "No. Todo ocurre en tu navegador: la oferta, los certificados y los estados financieros nunca salen de tu equipo. Por eso sirve para documentos de una licitación."
+    },
+    {
+      "p": "¿El folio sigue la numeración entre las partes?",
+      "r": "Sí. Se folia el documento completo antes de partirlo: si la parte 1 termina en el folio 120, la parte 2 empieza en el 121."
+    },
+    {
+      "p": "¿Qué hago si mi oferta ya va foliada desde el folio 1 en otro tomo?",
+      "r": "Usa «Empezar en el folio» con el número que sigue, por ejemplo 301 para el segundo tomo."
+    },
+    {
+      "p": "¿Comprimir afecta la calidad?",
+      "r": "La compresión convierte cada página en imagen JPEG: reduce mucho los escaneos, pero el texto deja de ser seleccionable. Si tus documentos son digitales y no escaneados, déjala en «No»."
+    },
+    {
+      "p": "¿Y si una sola página pesa más que el límite?",
+      "r": "No se puede partir una página. La herramienta te avisa cuál es; elige la compresión fuerte o vuelve a escanear esa hoja a menor resolución."
+    },
+    {
+      "p": "¿Tiene costo?",
+      "r": "Es gratis, sin registro y sin límite de usos. El tope real es la memoria de tu equipo con ofertas muy grandes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "El problema de la noche del cierre",
+      "p": [
+        "SECOP II rechaza documentos de más de 50 MB, y una oferta escaneada con certificados de experiencia, estados financieros y pólizas pasa ese peso con facilidad. Partirla a mano, página por página, la noche antes del cierre es la forma más común de equivocarse en el orden o en el folio.",
+        "Esta herramienta hace los tres pasos de una vez y en el orden correcto: primero une, después folia el documento completo y al final lo parte por peso, para que el folio quede corrido y ninguna parte pase del límite."
+      ]
+    }
+  ]
+}

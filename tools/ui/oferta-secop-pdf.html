@@ -1,0 +1,60 @@
+      <div class="zona" id="ofertaZona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 12h6M9 16h4"/><path d="M15 3v3h3"/></svg></span>
+        <p class="zona-titulo">Arrastra aquí los PDF de tu oferta</p>
+        <p class="zona-texto">o pulsa para elegirlos · propuesta, anexos, certificados, RUP… en el orden en que van</p>
+      </div>
+      <input class="entrada-archivo" id="ofertaEntrada" type="file" aria-label="Elegir archivos PDF" accept="application/pdf" multiple>
+
+      <div id="ofertaPanel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="ofertaResumen"></span>
+          <div class="barra-acciones">
+            <button class="boton boton-secundario boton-pequeno" type="button" id="ofertaVaciar">Vaciar</button>
+          </div>
+        </div>
+        <ul class="lista" id="ofertaLista"></ul>
+        <div class="opciones">
+          <label class="campo">Peso máximo por archivo (MB)
+            <input id="ofertaLimite" type="number" min="1" step="1" value="50">
+            <small>SECOP II admite 50 MB por documento. Si el pliego pide menos, cámbialo.</small>
+          </label>
+          <label class="campo">Comprimir
+            <select id="ofertaComprimir">
+              <option value="no">No (conserva el texto seleccionable)</option>
+              <option value="ligero">Ligero (escaneos, buena calidad)</option>
+              <option value="medio">Medio</option>
+              <option value="fuerte">Fuerte (menos partes, menos nitidez)</option>
+            </select>
+            <small>Comprimir convierte cada página en imagen: úsalo con documentos escaneados.</small>
+          </label>
+          <label class="campo">Nombre del archivo
+            <input id="ofertaNombre" type="text" value="oferta" maxlength="80">
+          </label>
+          <label class="campo"><span style="display:flex; align-items:center; gap:8px; font-weight:600;"><input id="ofertaFoliar" type="checkbox" checked style="width:auto;"> Foliar todas las páginas</span></label>
+          <div id="ofertaOpcionesFolio" class="opciones">
+            <label class="campo">Formato
+              <select id="ofertaFormato">
+                <option value="folio">Folio 1, Folio 2…</option>
+                <option value="n-de-total">Folio 1 de 230…</option>
+                <option value="numero">1, 2, 3…</option>
+              </select>
+            </label>
+            <label class="campo">Posición
+              <select id="ofertaPosicion">
+                <option value="arriba-derecha">Arriba a la derecha</option>
+                <option value="abajo-derecha">Abajo a la derecha</option>
+                <option value="arriba-izquierda">Arriba a la izquierda</option>
+                <option value="abajo-izquierda">Abajo a la izquierda</option>
+              </select>
+            </label>
+            <label class="campo">Empezar en el folio
+              <input id="ofertaInicio" type="number" min="1" step="1" value="1">
+            </label>
+          </div>
+        </div>
+        <div class="barra">
+          <span class="ayuda">Arrastra la manija ⠿ para ordenar. El folio sigue de una parte a la otra.</span>
+          <button class="boton" type="button" id="ofertaBoton">Preparar oferta</button>
+        </div>
+        <ul class="lista" id="ofertaPartes" hidden></ul>
+      </div>
