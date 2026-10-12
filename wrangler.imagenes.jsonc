@@ -1,0 +1,7 @@
+{
+  // Worker de assets estáticos para imagenes.24bytes.pro (sitio "imagenes" de la suite).
+  // Sin lógica: solo sirve la carpeta sitios/imagenes generada por tools/build.py.
+  "name": "imagenes",
+  "compatibility_date": "2026-10-06",
+  "assets": { "directory": "sitios/imagenes" }
+}

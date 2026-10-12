@@ -29,6 +29,18 @@
     en la RAÍZ del repo (index.html, 404, sitemap, robots, <slug>/) quedaron MUERTOS (build.py solo escribe
     `sitios/`): no editarlos; borrarlos en una limpieza aparte. El token de acceso total sigue en
     `~/.cf-pages-token`: borrarlo o rotarlo cuando se termine la tanda de Cloudflare.
+- **Paso 3 HECHO (12/10):** imagenes.24bytes.pro vivo en Cloudflare Workers (Worker `imagenes`,
+  `wrangler.imagenes.jsonc`, dominio adjuntado por API; CF creó el registro proxied `AAAA 100::`).
+  Dos herramientas, ambas con E2E (Playwright) y verificadas en producción vía resolutor público:
+  - `comprimir-imagen`: canvas, calidad + tamaño máximo, respeta EXIF, conserva el original si engordaría.
+  - `heic-a-jpg`: nativo en Safari; en el resto, **libheif-js 1.23.5** (`libheif-bundle.js`, wasm) en un
+    Web Worker con carga perezosa. API: `libheif()` es una FACTORY → `new libheif().HeifDecoder()`
+    (equivocarse con `new libheif.HeifDecoder()` fue el bug). Bundle solo-decodificación (no trae encoder).
+  - Suite: `python3 -m pytest tests` = 10/10 (6 build + 2 comprimir + 2 heic; la de heic baja un HEIC real
+    del repo de libheif en tiempo de prueba, no se versiona binario).
+  - Pendientes de imagenes: **Umami** (crear sitio en el panel y poner `umami_id` en `sitios.json`);
+    **formulario de contacto** desactivado (añadir origen `imagenes.24bytes.pro` al mapa `ORIGENES` del
+    Portafolio y poner `"contacto": true`). Faltan Paso 4 (R2/ffmpeg) y Paso 5 (audio/video).
   - **Aviso en SECOP Monitor** (Paso 6, lo más rápido para ingresos): lo ejecuta la **sesión de SECOP-Monitor**
     por rama→QA→master (regla de una sesión por proyecto). Encargo listo en `docs/encargo-aviso-secop.md`.
   - Pendiente aquí: Paso 2 (CF Pages + DNS, requiere Alexis/Cloudflare), Paso 3 (imagenes.24bytes.pro),
