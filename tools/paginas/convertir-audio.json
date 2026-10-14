@@ -1,0 +1,61 @@
+{
+  "slug": "convertir-audio",
+  "sitio": "audio",
+  "orden": 2,
+  "nombre": "Convertir audio",
+  "icono": "audio",
+  "titulo": "Convertir audio a MP3, WAV, OGG o M4A online sin subir archivos",
+  "descripcion": "Convierte audios entre MP3, WAV, OGG y M4A directamente en tu navegador. Sin subir el archivo, sin registro y sin marca de agua.",
+  "h1": "Convertir audio entre MP3, WAV, OGG y M4A",
+  "bajada": "Cambia el formato de un audio para que lo abra tu reproductor, tu editor o tu celular. No se sube a ningún servidor.",
+  "resumen_tarjeta": "Pasa un audio entre MP3, WAV, OGG y M4A.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/convertir-audio.js"
+  ],
+  "pasos": [
+    [
+      "Elige el audio.",
+      "Arrastra el archivo o pulsa para seleccionarlo: MP3, WAV, OGG, M4A, FLAC, AAC…"
+    ],
+    [
+      "Elige el formato de salida.",
+      "MP3 para compatibilidad total, WAV para editar, OGG para web y juegos, M4A para el ecosistema Apple."
+    ],
+    [
+      "Convierte y descarga.",
+      "Verás el progreso; el resultado se puede escuchar antes de guardarlo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué formato me conviene?",
+      "r": "MP3 funciona en todas partes. WAV no comprime nada y es el que piden editores y software de audio profesional. OGG Vorbis es libre y liviano, común en juegos y web. M4A (AAC) es el natural en iPhone, iTunes y Mac."
+    },
+    {
+      "p": "¿Convertir un MP3 a WAV mejora la calidad?",
+      "r": "No. WAV solo guarda tal cual lo que ya había: el archivo ocupa diez veces más, pero suena igual que el MP3 de origen. Sirve para que un programa lo acepte, no para ganar fidelidad."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El procesamiento ocurre en tu navegador con ffmpeg compilado a WebAssembly. Puedes comprobarlo: abre la herramienta, espera a que cargue el motor, desconecta el wifi y úsala; funciona igual."
+    },
+    {
+      "p": "¿Por qué la primera vez tarda en empezar?",
+      "r": "Sí. La primera vez que usas una herramienta se descarga el motor de conversión (ffmpeg, unos 30 MB) desde nuestro CDN; después queda en la caché de tu navegador y no se vuelve a bajar. Lo único que viaja es ese motor: tu archivo nunca se envía a ningún servidor."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador mantiene el archivo varias veces en RAM mientras lo procesa y, por encima de eso, la pestaña se cierra sin avisar. Si tu archivo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cuándo conviene cada formato",
+      "p": [
+        "Si vas a seguir editando el audio, trabaja en WAV y exporta a MP3 o M4A solo al final: cada conversión entre formatos con pérdida (MP3, OGG, M4A) resta un poco de calidad, y encadenar varias se nota.",
+        "Para publicar o compartir, elige MP3 si no sabes qué usará quien lo reciba, y M4A si todos tienen dispositivos Apple. Los tonos de llamada de iPhone, por ejemplo, piden M4A."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "privacidad",
+  "sitio": "audio",
+  "tipo": "texto",
+  "orden": 90,
+  "nombre": "Privacidad",
+  "titulo": "Privacidad: qué pasa con tus archivos — 24Bytes Audio",
+  "descripcion": "Tus archivos no se suben a ningún servidor: se procesan en tu navegador. Qué se descarga, qué se mide y cómo comprobarlo tú mismo.",
+  "h1": "Privacidad: qué pasa con tus archivos",
+  "bajada": "La versión corta: tus archivos nunca salen de tu dispositivo. Esta página explica el resto.",
+  "secciones": [
+    {
+      "h": "Tus archivos",
+      "p": [
+        "Las herramientas de este sitio usan ffmpeg compilado a WebAssembly dentro de tu navegador. Cuando eliges un archivo se lee en la memoria de tu equipo, se procesa ahí y el resultado se descarga desde ahí. No existe un servidor que reciba, almacene o analice tus archivos.",
+        "Puedes comprobarlo: abre una herramienta, espera a que cargue el motor, desconecta el wifi o activa el modo avión y úsala. Funciona igual. El código es abierto y está enlazado al pie de cada página."
+      ]
+    },
+    {
+      "h": "Lo único que se descarga: el motor",
+      "p": [
+        "La primera vez que usas una herramienta, tu navegador descarga el motor de ffmpeg (unos 30 MB) desde cdn.24bytes.pro. Es un archivo igual para todos, que no contiene ni recibe nada tuyo; queda en la caché de tu navegador y no se vuelve a descargar."
+      ]
+    },
+    {
+      "h": "Qué se mide",
+      "p": [
+        "Podemos usar una instalación propia de Umami, una analítica sin cookies que no identifica personas: cuenta visitas por página, país aproximado y tipo de dispositivo. Nunca se registra nada del archivo que procesas: ni nombre, ni tamaño, ni contenido. No hay cuentas ni registro."
+      ]
+    },
+    {
+      "h": "Publicidad",
+      "p": [
+        "El sitio puede mostrar anuncios de Google AdSense para sostenerse. En ese caso Google y sus socios pueden usar cookies para personalizar los anuncios. Puedes desactivarlo en adssettings.google.com. Los anuncios no tienen acceso a los archivos que procesas."
+      ]
+    },
+    {
+      "h": "Quién está detrás",
+      "p": [
+        "24Bytes Audio es un proyecto de Alexis Dorado Muñoz (24Bytes), desarrollador en Bogotá, Colombia. Para cualquier duda escribe a alexis.dorado@24bytes.pro. Última actualización: 14 de octubre de 2026."
+      ]
+    }
+  ]
+}

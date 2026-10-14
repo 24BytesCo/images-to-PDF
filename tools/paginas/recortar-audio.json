@@ -1,0 +1,61 @@
+{
+  "slug": "recortar-audio",
+  "sitio": "audio",
+  "orden": 3,
+  "nombre": "Recortar audio",
+  "icono": "recortar",
+  "titulo": "Recortar audio online gratis: cortar MP3, WAV o M4A sin subirlo",
+  "descripcion": "Corta un fragmento de un audio MP3, WAV o M4A marcando inicio y fin mientras lo escuchas. En tu navegador, sin subir el archivo.",
+  "h1": "Recortar audio sin subir el archivo",
+  "bajada": "Escucha el audio, marca dónde empieza y dónde termina el tramo que quieres y descárgalo. Todo ocurre en tu navegador.",
+  "resumen_tarjeta": "Corta un tramo de un audio marcando inicio y fin mientras lo escuchas.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/recortar-audio.js"
+  ],
+  "pasos": [
+    [
+      "Elige el audio.",
+      "Arrástralo a la zona de carga o pulsa para seleccionarlo. También acepta un video: se queda con el sonido."
+    ],
+    [
+      "Marca el tramo.",
+      "Reproduce y pulsa «Marcar inicio aquí» y «Marcar fin aquí», o escribe los segundos exactos."
+    ],
+    [
+      "Recorta y descarga.",
+      "Escucha el resultado antes de guardarlo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Se pierde calidad al recortar?",
+      "r": "No, si dejas «El mismo del original»: el tramo se copia sin recodificar, así que el sonido es idéntico y el proceso casi instantáneo. Solo se recodifica si eliges MP3 o si el original es un video."
+    },
+    {
+      "p": "¿Qué tan exacto es el corte?",
+      "r": "Con el mismo formato, el corte cae en el límite de un fragmento de audio (unas centésimas de segundo), más que suficiente para un tono de llamada o una cuña. Si necesitas precisión de muestra, elige MP3 y se recorta exactamente."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El procesamiento ocurre en tu navegador con ffmpeg compilado a WebAssembly. Puedes comprobarlo: abre la herramienta, espera a que cargue el motor, desconecta el wifi y úsala; funciona igual."
+    },
+    {
+      "p": "¿Por qué la primera vez tarda en empezar?",
+      "r": "Sí. La primera vez que usas una herramienta se descarga el motor de conversión (ffmpeg, unos 30 MB) desde nuestro CDN; después queda en la caché de tu navegador y no se vuelve a bajar. Lo único que viaja es ese motor: tu archivo nunca se envía a ningún servidor."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador mantiene el archivo varias veces en RAM mientras lo procesa y, por encima de eso, la pestaña se cierra sin avisar. Si tu archivo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Para qué sirve recortar un audio",
+      "p": [
+        "Los usos habituales: quitar el silencio o la presentación del principio de una grabación, sacar una frase de una entrevista, preparar un tono de llamada o dejar una nota de voz en el fragmento importante antes de enviarla.",
+        "Para el tono de llamada, marca un tramo de unos 20 a 30 segundos y elige M4A en «Convertir audio» si es para iPhone."
+      ]
+    }
+  ]
+}

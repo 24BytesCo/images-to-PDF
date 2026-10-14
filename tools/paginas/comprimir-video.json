@@ -1,0 +1,71 @@
+{
+  "slug": "comprimir-video",
+  "sitio": "video",
+  "orden": 1,
+  "nombre": "Comprimir video",
+  "icono": "video",
+  "titulo": "Comprimir video online gratis sin subirlo: reducir el peso de MP4",
+  "descripcion": "Reduce el tamaño de un video MP4, MOV o WebM eligiendo compresión y resolución, directamente en tu navegador y sin subir el archivo.",
+  "h1": "Comprimir video sin subirlo a ningún servidor",
+  "bajada": "Baja el peso de un video para enviarlo por correo o WhatsApp. Eliges el nivel de compresión y la resolución; todo ocurre en tu navegador.",
+  "resumen_tarjeta": "Reduce el peso de un video eligiendo compresión y resolución.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/comprimir-video.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video.",
+      "Arrástralo a la zona de carga o pulsa para seleccionarlo. MP4, MOV, WebM, MKV…"
+    ],
+    [
+      "Ajusta la compresión.",
+      "«Equilibrada» baja mucho el peso sin diferencia visible; bajar la resolución a 720 p o 480 p ahorra aún más."
+    ],
+    [
+      "Comprime y compara.",
+      "Al terminar ves el peso antes y después, y puedes reproducirlo antes de descargar."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Cuánto tarda?",
+      "r": "Más que en un servidor: tu navegador codifica el video con la CPU de tu equipo y, en esta versión, con un solo hilo. Como referencia, un video de 1 minuto en 1080 p suele tardar uno o dos minutos; uno de 10 minutos, bastante más. Mantén la pestaña abierta y a la vista."
+    },
+    {
+      "p": "¿Cuánto se reduce el peso?",
+      "r": "Depende del video. Una grabación del celular suele bajar entre 50 % y 80 %. Un video que ya viene muy comprimido (descargado de redes) puede no bajar nada; en ese caso la herramienta te avisa de que el resultado no pesa menos."
+    },
+    {
+      "p": "¿Qué formato sale?",
+      "r": "MP4 con video H.264 y audio AAC, que reproduce prácticamente cualquier dispositivo, WhatsApp y correo incluidos."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El procesamiento ocurre en tu navegador con ffmpeg compilado a WebAssembly. Puedes comprobarlo: abre la herramienta, espera a que cargue el motor, desconecta el wifi y úsala; funciona igual."
+    },
+    {
+      "p": "¿Por qué la primera vez tarda en empezar?",
+      "r": "Sí. La primera vez que usas una herramienta se descarga el motor de conversión (ffmpeg, unos 30 MB) desde nuestro CDN; después queda en la caché de tu navegador y no se vuelve a bajar. Lo único que viaja es ese motor: tu archivo nunca se envía a ningún servidor."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador mantiene el archivo varias veces en RAM mientras lo procesa y, por encima de eso, la pestaña se cierra sin avisar. Si tu archivo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Qué hace realmente la compresión",
+      "p": [
+        "Un video pesa por la cantidad de información que guarda en cada segundo. Esta herramienta lo recodifica con H.264 a un nivel de calidad constante: donde la imagen es simple (una pared, un cielo) gasta poco, y donde hay movimiento gasta más. Por eso el ahorro varía de un video a otro.",
+        "La otra palanca es la resolución. Un video de celular suele grabarse en 1080 p o 4K, pero para verlo en una pantalla de teléfono o enviarlo por correo, 720 p es más que suficiente y pesa casi la mitad."
+      ]
+    },
+    {
+      "h": "Límites del navegador",
+      "p": [
+        "Procesar en tu equipo evita subir el video, pero tiene un costo: la memoria disponible. Por eso hay un tope de 500 MB por archivo. Si tienes un video más grande, córtalo primero en tramos con el reproductor de tu sistema."
+      ]
+    }
+  ]
+}

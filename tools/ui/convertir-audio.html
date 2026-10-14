@@ -1,0 +1,24 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra tu audio aquí</p>
+        <p class="zona-texto">o pulsa para elegirlo · MP3, WAV, OGG, M4A, FLAC, AAC…</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir audio" accept="audio/*,video/*,.mp3,.m4a,.aac,.wav,.ogg,.opus,.flac,.mp4,.m4v,.mov,.webm,.mkv,.avi,.3gp">
+
+      <div id="panel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+        </div>
+        <div class="opciones">
+          <label class="campo">Convertir a
+            <select id="formato"><option value="mp3" selected>MP3 · compatible con todo</option><option value="wav">WAV · sin compresión</option><option value="ogg">OGG Vorbis · libre y liviano</option><option value="m4a">M4A (AAC) · iPhone y Apple</option></select>
+          </label>
+        </div>
+
+        <div class="barra">
+          <span class="ayuda">La primera vez descarga el motor (~30 MB); después queda guardado.</span>
+          <button class="boton" type="button" id="ejecutar">Convertir</button>
+        </div>
+      </div>
+      <div id="salida"></div>

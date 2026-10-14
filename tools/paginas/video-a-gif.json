@@ -1,0 +1,71 @@
+{
+  "slug": "video-a-gif",
+  "sitio": "video",
+  "orden": 2,
+  "nombre": "Video a GIF",
+  "icono": "gif",
+  "titulo": "Convertir video a GIF online gratis sin subirlo",
+  "descripcion": "Convierte un tramo de un video MP4, MOV o WebM en un GIF animado, eligiendo inicio, duración, ancho y fluidez. En tu navegador, sin subir nada.",
+  "h1": "Convertir video a GIF sin subir el archivo",
+  "bajada": "Elige un tramo corto de un video y conviértelo en GIF animado. Ajusta el ancho y los cuadros por segundo para controlar el peso.",
+  "resumen_tarjeta": "Convierte un tramo de un video en un GIF animado liviano.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/video-a-gif.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video.",
+      "Arrástralo a la zona de carga o pulsa para seleccionarlo."
+    ],
+    [
+      "Elige el tramo y el tamaño.",
+      "Segundo de inicio, duración (hasta 30 s), ancho y cuadros por segundo."
+    ],
+    [
+      "Crea el GIF.",
+      "Míralo en pantalla y descárgalo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Por qué mi GIF pesa tanto?",
+      "r": "El formato GIF es muy ineficiente: guarda cada cuadro casi sin comprimir. Lo que más pesa es la duración, luego el ancho y los cuadros por segundo. Para un GIF de reacción, 3 a 5 segundos a 480 px y 10 cuadros por segundo suele quedar en pocos MB."
+    },
+    {
+      "p": "¿Los colores se ven bien?",
+      "r": "Sí. Se genera una paleta de 256 colores a medida de cada GIF en lugar de una genérica, que es lo que evita el aspecto «sucio» de muchos conversores."
+    },
+    {
+      "p": "¿El GIF lleva sonido?",
+      "r": "No: el formato GIF no admite audio. Si quieres conservar el sonido, comprime el video en lugar de convertirlo."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El procesamiento ocurre en tu navegador con ffmpeg compilado a WebAssembly. Puedes comprobarlo: abre la herramienta, espera a que cargue el motor, desconecta el wifi y úsala; funciona igual."
+    },
+    {
+      "p": "¿Por qué la primera vez tarda en empezar?",
+      "r": "Sí. La primera vez que usas una herramienta se descarga el motor de conversión (ffmpeg, unos 30 MB) desde nuestro CDN; después queda en la caché de tu navegador y no se vuelve a bajar. Lo único que viaja es ese motor: tu archivo nunca se envía a ningún servidor."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador mantiene el archivo varias veces en RAM mientras lo procesa y, por encima de eso, la pestaña se cierra sin avisar. Si tu archivo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cómo mantener el GIF liviano",
+      "p": [
+        "Reglas prácticas: menos de 5 segundos, 480 px de ancho como máximo y 10 cuadros por segundo. Con eso la mayoría de los GIF quedan por debajo de 5 MB, que es lo que aceptan sin problema los chats y las plataformas.",
+        "Si el movimiento es muy rápido, sube a 15 cuadros por segundo pero baja el ancho a 320 px para compensar."
+      ]
+    },
+    {
+      "h": "GIF o video corto",
+      "p": [
+        "Hoy muchas plataformas (WhatsApp, X, Slack) convierten un MP4 corto sin sonido en algo que se comporta como GIF y pesa una décima parte. Usa GIF cuando el destino lo exija: correos, documentos o sitios que no aceptan video."
+      ]
+    }
+  ]
+}
