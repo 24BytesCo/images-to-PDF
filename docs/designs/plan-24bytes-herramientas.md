@@ -112,6 +112,36 @@ Sin brechas críticas.
 | 6 Aviso SECOP | repo SECOP-Monitor | — |
 Carriles: A = 1 → 3 → 5 (mismo módulo, secuencial) · B = 4 · C = 6 · luego 2 tras 1.
 
+## Ampliación 14/10/2026 (pedido de Alexis)
+
+### A. Más herramientas de audio y video (ffmpeg.wasm, mismo motor y tope de 500 MB)
+Criterio: búsqueda real en español + gancho de privacidad; una herramienta = una lógica propia (nada de
+páginas casi duplicadas por plantilla: «MOV/MKV/AVI/WEBM a MP4» es UNA herramienta con selector).
+- **Fase A — audio (sitio `audio`):** volumen y normalizar · velocidad (con/sin cambio de tono) ·
+  quitar silencios · reducir ruido · fundido de entrada/salida · audio a video (MP3 + imagen → MP4 para
+  YouTube/Reels) · grabadora de voz (MediaRecorder, sin ffmpeg para grabar; exporta a MP3).
+- **Fase A — video (sitio `video`):** recortar · unir · convertir a MP4 (MOV/MKV/AVI/WEBM) · velocidad
+  (cámara lenta/rápida) · rotar y voltear · redimensionar / pasar a vertical 9:16 · extraer fotogramas a
+  JPG · cambiar o añadir audio · grabador de pantalla (getDisplayMedia + MediaRecorder; exporta a MP4) ·
+  GIF a MP4. «Comprimir a X MB para WhatsApp/Discord» entra como MODO de comprimir-video, no como página.
+- **Fase B (evaluar con métricas):** marca de agua en video · transcribir audio con Whisper en wasm
+  (modelo de 40-150 MB: caro en descarga, alto valor).
+- Total tras Fase A: ~45 herramientas (28 actuales + ~17).
+
+### B. Espera con apoyo al proyecto (modal al procesar)
+- Al pulsar el botón que procesa/descarga, aparece un modal **no cerrable** con barra de progreso, mínimo
+  **10 s** o lo que tarde la conversión (lo mayor). Al terminar se cierra solo y se inicia la descarga.
+  Un error cierra el modal de inmediato (no se castiga el fallo).
+- Texto fijo «¿Por qué te mostramos esto?»: el sitio es gratuito y de código abierto; el aviso (y, cuando
+  haya, un anuncio) ayuda a pagar dominios, servidores y bases de datos. Botón **«Invítame un café»**
+  (`cafe_url` en `sitios.json`; si está vacío, el botón no se pinta).
+- Configurable por sitio en `sitios.json` (`espera.activa`, `minimo_seg`, `cafe_url`,
+  `anuncio_en_modal`). Gancho de pruebas: `window.SUITE_ESPERA_MIN_MS`.
+- **Riesgo AdSense:** hasta donde sé, las políticas de AdSense no admiten anuncios dentro de pop-ups o
+  interstitiales forzados, y una sanción afecta a la cuenta que cubre `24bytes.pro` (incluye SECOP). Por eso
+  `anuncio_en_modal` queda en **false** por defecto: el modal muestra la explicación y el café; el anuncio
+  va en el hueco normal bajo la herramienta. Revisar la política vigente antes de activarlo.
+
 ## GSTACK REVIEW REPORT
 
 | Review | Trigger | Why | Runs | Status | Findings |
