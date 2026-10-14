@@ -1,0 +1,67 @@
+{
+  "sitio": "audio",
+  "slug": "grabadora-de-voz",
+  "orden": 3,
+  "nombre": "Grabadora de voz online",
+  "icono": "microfono",
+  "titulo": "Grabadora de voz online gratis: graba y descarga en MP3",
+  "descripcion": "Graba tu voz con el micrófono del computador o del celular y descárgala en MP3. La grabación no se sube: se queda en tu navegador. Sin registro ni límite de tiempo.",
+  "h1": "Grabadora de voz online que no sube tu grabación",
+  "bajada": "Graba con el micrófono, pausa, escucha y descarga en MP3. El audio se queda en tu equipo: no hay servidor, ni cuenta, ni límite de minutos.",
+  "resumen_tarjeta": "Graba con tu micrófono y descarga la grabación en MP3.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/grabadora-de-voz.js"
+  ],
+  "pasos": [
+    [
+      "Permite el micrófono.",
+      "Pulsa «Empezar a grabar»; el navegador te pedirá permiso la primera vez."
+    ],
+    [
+      "Graba.",
+      "Puedes pausar y reanudar. El medidor te muestra si el micrófono capta tu voz."
+    ],
+    [
+      "Detén y descarga.",
+      "Escucha la grabación y conviértela a MP3 o bájala tal cual."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Mi grabación se sube a algún sitio?",
+      "r": "No. El navegador graba el micrófono y guarda el audio en la memoria de la pestaña. Solo si pulsas «Convertir a MP3» se descarga el motor de conversión (unos 30 MB, una vez); la grabación sigue sin salir de tu equipo. Si cierras la pestaña antes de descargar, la grabación se pierde."
+    },
+    {
+      "p": "¿Por qué no me deja grabar?",
+      "r": "Casi siempre es el permiso del micrófono: pulsa el candado junto a la dirección y permítelo, y revisa que otra aplicación (Zoom, Meet) no lo esté usando. También hace falta que la página cargue con https y que haya un micrófono conectado."
+    },
+    {
+      "p": "¿Hay límite de duración?",
+      "r": "No hay un límite impuesto por la herramienta. Un minuto de voz ocupa aproximadamente 0,3 MB en el formato del navegador, así que una hora no llega a 20 MB. Al convertir a MP3 vale el tope general de 500 MB."
+    },
+    {
+      "p": "¿Por qué hay una opción para reducir ruido y eco?",
+      "r": "Es el procesamiento que el propio navegador aplica al micrófono (supresión de ruido, cancelación de eco y control de volumen). Ayuda en una voz sola; desmárcala si grabas música o instrumentos, porque la deforma."
+    },
+    {
+      "p": "¿Qué formato tiene la grabación original?",
+      "r": "Depende del navegador: WebM/Opus en Chrome, Edge y Firefox, M4A en Safari. Por eso se ofrece convertirla a MP3, que se reproduce en todas partes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Para qué se usa",
+      "p": [
+        "Notas de voz largas, clases y conferencias, dictados para transcribir después, locuciones para un video, mensajes de audio con mejor calidad que el de una app de mensajería, o una prueba rápida de micrófono antes de una reunión.",
+        "Como no hay cuenta ni servidor, sirve también para grabar algo sensible (una entrevista, una reunión interna) sin que pase por terceros."
+      ]
+    },
+    {
+      "h": "Cómo conseguir una buena grabación",
+      "p": [
+        "Graba en un cuarto con alfombras o cortinas, lejos de ventiladores, y a unos 15 cm del micrófono. Haz una prueba corta y mira el medidor: debe moverse a mitad de la barra, sin llegar siempre al tope. Después puedes mejorar el resultado con «Reducir ruido del audio», «Subir volumen y normalizar» y «Quitar silencios»."
+      ]
+    }
+  ]
+}

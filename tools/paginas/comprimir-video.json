@@ -4,11 +4,11 @@
   "orden": 1,
   "nombre": "Comprimir video",
   "icono": "video",
-  "titulo": "Comprimir video online gratis sin subirlo: reducir el peso de MP4",
-  "descripcion": "Reduce el tamaño de un video MP4, MOV o WebM eligiendo compresión y resolución, directamente en tu navegador y sin subir el archivo.",
+  "titulo": "Comprimir video online: a menos peso o a X MB para WhatsApp, sin subirlo",
+  "descripcion": "Reduce un video por nivel de compresión o indica el tamaño exacto que necesitas (WhatsApp 16 MB, Discord 10 MB, correo 25 MB). En tu navegador, sin subir el archivo.",
   "h1": "Comprimir video sin subirlo a ningún servidor",
-  "bajada": "Baja el peso de un video para enviarlo por correo o WhatsApp. Eliges el nivel de compresión y la resolución; todo ocurre en tu navegador.",
-  "resumen_tarjeta": "Reduce el peso de un video eligiendo compresión y resolución.",
+  "bajada": "Baja el peso de un video por nivel de compresión, o dile a cuántos MB debe quedar para WhatsApp, Discord o correo. Todo ocurre en tu navegador.",
+  "resumen_tarjeta": "Reduce el peso de un video, o ajústalo a X MB para WhatsApp o correo.",
   "scripts": [
     "assets/js/ffmpeg-motor.js",
     "assets/js/comprimir-video.js"
@@ -19,8 +19,8 @@
       "Arrástralo a la zona de carga o pulsa para seleccionarlo. MP4, MOV, WebM, MKV…"
     ],
     [
-      "Ajusta la compresión.",
-      "«Equilibrada» baja mucho el peso sin diferencia visible; bajar la resolución a 720 p o 480 p ahorra aún más."
+      "Elige cómo comprimir.",
+      "Por nivel («Equilibrada» baja mucho el peso sin diferencia visible) o por tamaño objetivo: escoge WhatsApp, Discord, correo u otro tamaño y la calidad se ajusta sola."
     ],
     [
       "Comprime y compara.",
@@ -35,6 +35,18 @@
     {
       "p": "¿Cuánto se reduce el peso?",
       "r": "Depende del video. Una grabación del celular suele bajar entre 50 % y 80 %. Un video que ya viene muy comprimido (descargado de redes) puede no bajar nada; en ese caso la herramienta te avisa de que el resultado no pesa menos."
+    },
+    {
+      "p": "¿Cómo funciona el modo de tamaño objetivo?",
+      "r": "Se calcula cuántos bits por segundo caben en los MB que pides según la duración del video, se descuenta el audio y se reserva un margen para el contenedor. Si hay pocos bits disponibles, también se baja la resolución (360 p, 480 p, 720 p) para que se vea mejor que estirar pocos datos sobre 1080 p. El cálculo es de un solo paso, así que el resultado queda cerca del objetivo, no exacto: si se pasa un poco, repite con un tamaño ~10 % menor."
+    },
+    {
+      "p": "¿Cuál es el límite de WhatsApp, Discord y el correo?",
+      "r": "Los límites que se usan como atajo son 16 MB para videos en WhatsApp, 10 MB para cuentas gratuitas de Discord y 25 MB para adjuntos de correo (Gmail, Outlook). Son los valores vigentes al publicar esta herramienta; las plataformas los cambian, así que verifica el actual o usa «Otro tamaño…»."
+    },
+    {
+      "p": "¿Qué pasa si el video es demasiado largo para el tamaño que pido?",
+      "r": "La herramienta te avisa antes de empezar: si los MB pedidos dejarían una calidad inservible para esa duración, te dice cuánto necesitaría como mínimo. En ese caso recorta el video con «Recortar video» o sube el tamaño objetivo."
     },
     {
       "p": "¿Qué formato sale?",
@@ -59,6 +71,13 @@
       "p": [
         "Un video pesa por la cantidad de información que guarda en cada segundo. Esta herramienta lo recodifica con H.264 a un nivel de calidad constante: donde la imagen es simple (una pared, un cielo) gasta poco, y donde hay movimiento gasta más. Por eso el ahorro varía de un video a otro.",
         "La otra palanca es la resolución. Un video de celular suele grabarse en 1080 p o 4K, pero para verlo en una pantalla de teléfono o enviarlo por correo, 720 p es más que suficiente y pesa casi la mitad."
+      ]
+    },
+    {
+      "h": "Comprimir a un tamaño exacto para enviarlo",
+      "p": [
+        "WhatsApp, Discord y el correo rechazan los archivos que pasan de su límite. En vez de probar niveles a ciegas, indica el tamaño máximo y la herramienta calcula la calidad que cabe. Un video de 1 minuto cabe bien en 16 MB; uno de 10 minutos para 16 MB quedará muy comprimido y a menor resolución.",
+        "Para el mejor resultado, recorta primero lo que sobra y comprime después: cada segundo menos es más calidad por segundo en el mismo peso."
       ]
     },
     {

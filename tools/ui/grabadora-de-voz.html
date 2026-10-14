@@ -1,0 +1,31 @@
+      <div class="grabadora" id="grabadora">
+        <p class="ff-error" id="errorGrabadora" role="alert" hidden></p>
+        <div class="barra">
+          <span class="grabadora-tiempo" id="tiempo" aria-live="off">00:00</span>
+          <meter id="nivel" min="0" max="100" value="0" aria-label="Nivel del micrófono" style="flex:1;min-width:120px"></meter>
+        </div>
+        <label class="campo campo-casilla"><input id="limpiarAudio" type="checkbox" checked> Reducir ruido y eco del micrófono (lo hace el navegador al grabar)</label>
+        <div class="barra">
+          <span class="barra-acciones">
+            <button class="boton" type="button" id="grabar">Empezar a grabar</button>
+            <button class="boton boton-secundario" type="button" id="pausar" hidden>Pausar</button>
+            <button class="boton" type="button" id="detener" hidden>Detener</button>
+          </span>
+        </div>
+        <div id="resultado" class="ff-resultado" hidden>
+          <audio class="ff-previa" id="previa" controls preload="metadata"></audio>
+          <div class="opciones">
+            <label class="campo">Calidad del MP3
+              <select id="calidad"><option value="192" selected>Buena · 192 kbps</option><option value="128">Ligera · 128 kbps</option><option value="64">Voz · 64 kbps mono</option></select>
+            </label>
+          </div>
+          <div class="barra">
+            <span class="barra-acciones">
+              <button class="boton" type="button" id="convertir">Convertir a MP3</button>
+              <button class="boton boton-secundario" type="button" id="descargarOriginal">Descargar sin convertir</button>
+            </span>
+          </div>
+          <p class="ff-estado" id="estadoConv" hidden aria-live="polite"></p>
+        </div>
+        <div id="salida"></div>
+      </div>

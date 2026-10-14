@@ -58,6 +58,25 @@ ICONOS.update({
 })
 
 
+# Iconos de las herramientas de audio y video de la ampliación 14/10 (bloque aparte).
+ICONOS.update({
+    "volumen": '<path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>',
+    "velocidad": '<path d="M4.5 17a8.5 8.5 0 1 1 15 0"/><path d="m12 13 4-4"/><circle cx="12" cy="13" r="1.2"/>',
+    "silencio-audio": '<path d="M3 12h2.5M8 8v8M11 5v14M14 9v6M17 11v2M19.5 12H21"/>',
+    "ruido": '<path d="M3 12c1.5-4 2.5 4 4 0s2.5 4 4 0 2.5 4 4 0 2.5 4 4 0"/><path d="M4 19h16" stroke-dasharray="2 3"/>',
+    "fundido": '<path d="M3 17 9 7v10M9 17l12-10"/><path d="M3 20h18"/>',
+    "audio-video": '<path d="M3 6h18v12H3z"/><path d="M10 9.5v5l4-2.5z"/>',
+    "microfono": '<path d="M9 4h6v9a3 3 0 0 1-6 0z"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/>',
+    "unir-video": '<path d="M3 6h8v12H3zM13 6h8v12h-8z"/><path d="M11 12h2"/>',
+    "convertir-video": '<path d="M3 5h12v9H3z"/><path d="m15 8 4-2v7l-4-2M7 18h11m0 0-2.5-2.5M18 18l-2.5 2.5"/>',
+    "rotar-video": '<path d="M5 9h9v8H5z"/><path d="M14 5h4a1 1 0 0 1 1 1v4m0 0-2-2m2 2 2-2"/>',
+    "proporcion": '<path d="M8 3h8v18H8z"/><path d="M3 8l2-2m0 0 2 2M5 6v4M21 16l-2 2m0 0-2-2m2 2v-4"/>',
+    "fotogramas": '<path d="M3 5h18v14H3z"/><path d="M3 9h18M3 15h18M8 5v14M16 5v14"/>',
+    "pantalla": '<path d="M3 4h18v12H3z"/><path d="M8 20h8M12 16v4"/><circle cx="12" cy="10" r="2.2" fill="currentColor"/>',
+    "gif-mp4": '<path d="M3 5h18v14H3z"/><path d="m9 9 6 3-6 3z"/>',
+})
+
+
 def svg(clave: str) -> str:
     trazos = ICONOS.get(clave, ICONOS["organizar"])
     return (

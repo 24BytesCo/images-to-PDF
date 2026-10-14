@@ -1,0 +1,27 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra tu audio aquí</p>
+        <p class="zona-texto">o pulsa para elegirlo · MP3, WAV, M4A, OGG, FLAC…</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir audio" accept="audio/*,video/*,.mp3,.m4a,.aac,.wav,.ogg,.opus,.flac,.mp4,.m4v,.mov,.webm,.mkv,.avi,.3gp">
+
+      <div id="panel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+        </div>
+        <div class="opciones ff-rango">
+          <label class="campo">Fundido de entrada (segundos)
+            <input id="fadeIn" type="number" inputmode="decimal" min="0" step="0.5" value="2">
+          </label>
+          <label class="campo">Fundido de salida (segundos)
+            <input id="fadeOut" type="number" inputmode="decimal" min="0" step="0.5" value="3">
+          </label>
+        </div>
+
+        <div class="barra">
+          <span class="ayuda">La primera vez descarga el motor (~30 MB); después queda guardado. Pon 0 en el que no quieras.</span>
+          <button class="boton" type="button" id="ejecutar">Aplicar fundido</button>
+        </div>
+      </div>
+      <div id="salida"></div>

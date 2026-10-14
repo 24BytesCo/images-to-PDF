@@ -1,0 +1,32 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra tu video aquí</p>
+        <p class="zona-texto">o pulsa para elegirlo · MP4, MOV, WebM, MKV…</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir video" accept="video/*,.mp4,.m4v,.mov,.webm,.mkv,.avi,.3gp,.wmv,.flv">
+
+      <div id="panel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+        </div>
+        <div class="opciones">
+          <label class="campo">Proporción
+            <select id="proporcion"><option value="vertical" selected>Vertical 9:16 · Reels, Shorts, TikTok, estados</option><option value="cuadrado">Cuadrado 1:1 · feed de Instagram</option><option value="retrato">Retrato 4:5 · Instagram, Facebook</option><option value="horizontal">Horizontal 16:9 · YouTube</option><option value="igual">Conservar la proporción (solo cambiar el tamaño)</option></select>
+          </label>
+          <label class="campo">Tamaño (lado corto)
+            <select id="lado"><option value="1080">1080 px · alta</option><option value="720" selected>720 px · equilibrada (más rápida)</option><option value="480">480 px · liviana</option></select>
+          </label>
+        </div>
+        <div class="opciones">
+          <label class="campo" id="campoAjuste">Cuando el video no encaja en esa proporción
+            <select id="ajuste"><option value="desenfocado" selected>Rellenar con el mismo video desenfocado</option><option value="barras">Barras negras</option><option value="recortar">Recortar los bordes (llena todo el cuadro)</option></select>
+          </label>
+        </div>
+
+        <div class="barra">
+          <span class="ayuda">La primera vez descarga el motor (~30 MB); después queda guardado. El desenfocado es el más lento.</span>
+          <button class="boton" type="button" id="ejecutar">Cambiar formato</button>
+        </div>
+      </div>
+      <div id="salida"></div>

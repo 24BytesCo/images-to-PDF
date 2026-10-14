@@ -1,0 +1,67 @@
+{
+  "sitio": "audio",
+  "slug": "quitar-silencios-audio",
+  "orden": 8,
+  "nombre": "Quitar silencios del audio",
+  "icono": "silencio-audio",
+  "titulo": "Quitar los silencios de un audio online, gratis y sin subirlo",
+  "descripcion": "Elimina las pausas largas, el silencio inicial y el final de una grabación de voz o un podcast. Eliges el umbral y la duración mínima; todo en tu navegador.",
+  "h1": "Quitar los silencios de un audio sin subirlo",
+  "bajada": "Recorta automáticamente las pausas largas de una grabación: menos relleno, la misma voz. Ajusta qué cuenta como silencio y cuánto debe durar.",
+  "resumen_tarjeta": "Elimina pausas largas y silencios de una grabación de voz.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/quitar-silencios-audio.js"
+  ],
+  "pasos": [
+    [
+      "Elige la grabación.",
+      "Una nota de voz, una clase, un podcast, una entrevista…"
+    ],
+    [
+      "Define el silencio.",
+      "El umbral dice qué tan bajo es «silencio»; la duración, cuánto debe durar la pausa para que se corte."
+    ],
+    [
+      "Procesa y compara.",
+      "Escucha el resultado: si cortó voz suave, usa un umbral más bajo; si dejó pausas, súbelo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué umbral debo elegir?",
+      "r": "-40 dB funciona para voz grabada en un lugar tranquilo. Si hay ruido de fondo constante (ventilador, calle), el ruido no se considera silencio y no se corta: prueba -30 dB o, mejor, reduce el ruido antes. Si tu voz es muy suave, usa -50 dB para que no se coma el final de las frases."
+    },
+    {
+      "p": "¿Corta también el silencio del principio y del final?",
+      "r": "Sí: el silencio inicial se elimina por completo, y las pausas largas del medio y del final también, dejando (si lo dejas marcado) un respiro de 0,15 s para que no suene «a tijeretazo»."
+    },
+    {
+      "p": "¿Sirve para música?",
+      "r": "No está pensado para eso: en música hay pasajes muy suaves que son parte de la obra y se podrían cortar. Úsalo con voz hablada."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Quitar los silencios ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cuándo ahorra tiempo de verdad",
+      "p": [
+        "Un podcast o una clase grabada suele tener entre un 10 % y un 25 % de pausas largas, respiraciones y dudas. Quitarlas acorta la escucha sin tocar la velocidad ni el tono. También limpia las notas de voz largas antes de enviarlas o de transcribirlas.",
+        "Si lo que quieres es acelerar todo el audio, usa «Cambiar velocidad del audio»: lo ideal para una clase es quitar silencios y luego subir a 1,25×."
+      ]
+    },
+    {
+      "h": "Cómo decide qué es silencio",
+      "p": [
+        "El filtro mide el nivel de cada tramo en decibelios. Todo lo que quede por debajo del umbral durante más del tiempo mínimo se considera silencio y se elimina. Por eso la calidad de la grabación importa: con un fondo limpio el corte es exacto; con ruido, el fondo se confunde con la voz."
+      ]
+    }
+  ]
+}

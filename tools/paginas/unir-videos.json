@@ -1,0 +1,67 @@
+{
+  "sitio": "video",
+  "slug": "unir-videos",
+  "orden": 4,
+  "nombre": "Unir videos",
+  "icono": "unir-video",
+  "titulo": "Unir videos online gratis: juntar varios clips en un MP4 sin subirlos",
+  "descripcion": "Une varios videos en uno solo, en el orden que elijas, aunque tengan distinto tamaño, formato o no tengan audio. En tu navegador, sin subir nada.",
+  "h1": "Unir varios videos en uno sin subirlos",
+  "bajada": "Junta clips de distinto tamaño y formato en un solo MP4. Reordénalos y el resultado se iguala solo: mismo tamaño, mismos cuadros por segundo y audio parejo.",
+  "resumen_tarjeta": "Une varios clips en un solo MP4, aunque sean de distinto formato.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/unir-videos.js"
+  ],
+  "pasos": [
+    [
+      "Elige los videos.",
+      "Arrastra todos los clips; puedes añadir más después."
+    ],
+    [
+      "Ordénalos.",
+      "Usa ↑ ↓ para cambiar el orden y × para quitar uno."
+    ],
+    [
+      "Elige el tamaño final y une.",
+      "Por defecto toma el del primer video; los demás se ajustan con barras negras si no coinciden."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué pasa si los videos tienen distinto tamaño o proporción?",
+      "r": "Cada clip se escala para caber en el tamaño final sin deformarse y se centra con barras negras si hace falta. Así puedes mezclar un video vertical del celular con uno horizontal sin que se estire."
+    },
+    {
+      "p": "¿Y si alguno no tiene audio?",
+      "r": "Se le añade un silencio de la misma duración. Sin eso, la unión fallaría o el audio del resto quedaría desfasado."
+    },
+    {
+      "p": "¿Se pierde calidad?",
+      "r": "Sí, un poco: para igualar los clips hay que recodificarlos todos (H.264, CRF 24). A esa calidad la diferencia es difícil de notar. Si los clips ya tienen el mismo formato y tamaño y quieres cero pérdida, esta herramienta no es la ideal."
+    },
+    {
+      "p": "¿Cuántos videos puedo unir?",
+      "r": "Hasta 10 a la vez, y entre todos no deben superar los 500 MB. Más allá de eso, el navegador no tiene memoria suficiente; une en dos tandas."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. La unión ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cuándo conviene unir aquí",
+      "p": [
+        "Para juntar las tomas de una grabación cortada por el celular, unir los clips de un viaje, pegar una intro a un video o armar un resumen de varios fragmentos. Es el paso final después de recortar cada tramo con «Recortar video».",
+        "Para videos muy largos (más de 20 o 30 minutos en total) el navegador será lento; tómalo con calma y no cierres la pestaña."
+      ]
+    },
+    {
+      "h": "Cómo se ajusta el resultado",
+      "p": [
+        "Todos los clips pasan a 30 cuadros por segundo, al tamaño que elijas (máximo 1080 p si usas el del primero) y con audio estéreo a 44,1 kHz. Es el formato que aceptan YouTube, Instagram y WhatsApp sin quejarse."
+      ]
+    }
+  ]
+}

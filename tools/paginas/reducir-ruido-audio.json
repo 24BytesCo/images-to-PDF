@@ -1,0 +1,67 @@
+{
+  "sitio": "audio",
+  "slug": "reducir-ruido-audio",
+  "orden": 9,
+  "nombre": "Reducir ruido del audio",
+  "icono": "ruido",
+  "titulo": "Reducir el ruido de un audio online: siseo, ventilador y zumbido",
+  "descripcion": "Limpia el ruido constante de una grabación (siseo, ventilador, aire acondicionado, zumbido) con tres intensidades. Gratis y en tu navegador, sin subir el audio.",
+  "h1": "Reducir el ruido de un audio sin subirlo a internet",
+  "bajada": "Atenúa el ruido de fondo constante de una grabación de voz: siseo del micrófono, ventilador, aire acondicionado, zumbido eléctrico.",
+  "resumen_tarjeta": "Atenúa el ruido constante de fondo en grabaciones de voz.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/reducir-ruido-audio.js"
+  ],
+  "pasos": [
+    [
+      "Elige la grabación.",
+      "Una nota de voz, una reunión, una entrevista o un video con mal sonido."
+    ],
+    [
+      "Escoge la intensidad.",
+      "Empieza por «Media»; si la voz suena metálica, baja a «Suave»."
+    ],
+    [
+      "Compara.",
+      "Escucha el resultado completo antes de descargar; el ruido debería bajar sin que la voz pierda cuerpo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué tipo de ruido elimina bien?",
+      "r": "El ruido constante y parecido a sí mismo: siseo del micrófono, ventilador, aire acondicionado, el zumbido de una nevera, el hum de la corriente. El filtro aprende cómo suena ese fondo y lo resta de toda la grabación."
+    },
+    {
+      "p": "¿Y el ruido que cambia, como voces de fondo, tráfico o una obra?",
+      "r": "No es lo suyo. Si el ruido varía o se parece a la voz (otra persona hablando), cualquier filtro simple se llevaría también la voz principal. Para eso hacen falta modelos de inteligencia artificial más pesados; esta herramienta solo hace lo que puede hacer bien."
+    },
+    {
+      "p": "¿Para qué sirve cortar los graves por debajo de 80 Hz?",
+      "r": "Esa franja casi no tiene voz y sí golpes en la mesa, viento en el micrófono, vibración del trípode y zumbido grave. Cortarla limpia la grabación sin afectar cómo suena quien habla."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Reducir el ruido ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cómo elegir la intensidad",
+      "p": [
+        "Suave (10 dB) conserva el sonido natural y es lo mejor para grabaciones decentes con un poco de siseo. Media (18 dB) es el punto que funciona en la mayoría de notas de voz. Fuerte (30 dB) limpia un fondo muy marcado a costa de que la voz pueda sonar «sumergida» o metálica: úsala solo si es necesario.",
+        "Un buen orden de trabajo es reducir ruido, luego normalizar el volumen y, si hace falta, quitar los silencios."
+      ]
+    },
+    {
+      "h": "Para que la próxima grabación salga limpia",
+      "p": [
+        "Ningún filtro iguala a una buena grabación. Acércate al micrófono, apaga ventiladores y aires durante la toma, y graba unos segundos de silencio al inicio: sirven de muestra para que el filtro aprenda el ruido."
+      ]
+    }
+  ]
+}

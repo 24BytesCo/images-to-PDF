@@ -1,0 +1,67 @@
+{
+  "sitio": "audio",
+  "slug": "volumen-audio",
+  "orden": 6,
+  "nombre": "Subir volumen y normalizar",
+  "icono": "volumen",
+  "titulo": "Subir el volumen de un audio y normalizarlo gratis online",
+  "descripcion": "Sube o baja el volumen de un MP3, WAV o M4A en dB, o normalízalo a un nivel estándar para que todo suene parejo. En tu navegador, sin subir el archivo.",
+  "h1": "Subir el volumen o normalizar un audio sin subirlo a internet",
+  "bajada": "Un audio grabado muy bajito, o varios que suenan a distinto volumen. Súbelo en decibelios o normalízalo a un nivel estándar, todo en tu navegador.",
+  "resumen_tarjeta": "Sube, baja o normaliza el volumen de un audio sin que sature.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/volumen-audio.js"
+  ],
+  "pasos": [
+    [
+      "Elige el audio.",
+      "MP3, WAV, M4A, OGG o incluso un video: se toma solo el sonido."
+    ],
+    [
+      "Escoge normalizar o subir dB.",
+      "Normalizar lo deja a un volumen estándar (-16 LUFS, el de los podcasts). Subir dB lo amplifica la cantidad exacta que escribas."
+    ],
+    [
+      "Procesa y escucha.",
+      "Antes de descargar puedes oír el resultado en el reproductor."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué diferencia hay entre normalizar y subir los dB?",
+      "r": "Subir dB multiplica todo por una cantidad fija: si el audio ya tenía picos altos, puede saturar, y si era muy bajo, sigue sonando bajo en los pasajes suaves. Normalizar mide el volumen percibido de todo el audio y lo lleva a un objetivo (-16 LUFS, usado en podcasts y plataformas), así que dos audios distintos terminan sonando parejos."
+    },
+    {
+      "p": "¿Cuántos dB equivalen a «el doble de fuerte»?",
+      "r": "Unos +10 dB se perciben como el doble de volumen y +6 dB como claramente más fuerte. -6 dB suena a la mitad aproximadamente. Empieza con +6 y ajusta: pasar de +12 suele traer distorsión."
+    },
+    {
+      "p": "¿Por qué al subir el volumen suena distorsionado?",
+      "r": "Un audio digital tiene un techo: lo que lo supere se «recorta» y suena áspero. Al subir dB la herramienta añade un limitador que frena los picos, pero si la grabación original ya estaba al límite no hay forma limpia de hacerla más fuerte."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Cambiar el volumen ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cuándo conviene normalizar y cuándo subir dB",
+      "p": [
+        "Normaliza cuando vas a juntar audios de distinta procedencia (varias notas de voz, clases de profesores distintos, episodios de un podcast) o cuando publicas en una plataforma y quieres un nivel previsible. El resultado queda cerca de -16 LUFS con un pico máximo de -1,5 dB, que es un punto cómodo para escuchar con auriculares.",
+        "Sube dB cuando el problema es claro y puntual: una grabación de celular hecha lejos del micrófono, una entrevista baja o un audio de reunión. Es una operación predecible: +6 dB hace exactamente eso."
+      ]
+    },
+    {
+      "h": "Lo que no puede hacer",
+      "p": [
+        "Subir el volumen también sube el ruido de fondo: si la grabación tiene siseo o ventilador, se oirá más fuerte. En ese caso pasa primero por «Reducir ruido de un audio» y luego normaliza. Tampoco repara voces recortadas: una grabación saturada de origen seguirá saturada."
+      ]
+    }
+  ]
+}

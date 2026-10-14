@@ -1,0 +1,71 @@
+{
+  "sitio": "video",
+  "slug": "velocidad-video",
+  "orden": 8,
+  "nombre": "Cámara lenta y rápida",
+  "icono": "velocidad",
+  "titulo": "Cámara lenta y acelerar video online: cambiar la velocidad sin subirlo",
+  "descripcion": "Pon un video en cámara lenta (0,25×) o acelérelo hasta 4×, conservando el audio con tono natural o sin él. Gratis, en tu navegador, sin subir el archivo.",
+  "h1": "Poner un video en cámara lenta o acelerarlo sin subirlo",
+  "bajada": "Ralentiza una jugada o acelera una receta. Elige un factor entre 0,25× y 4×, y decide si conservar el audio ajustado o quitarlo.",
+  "resumen_tarjeta": "Cámara lenta o rápida, de 0,25× a 4×, con el audio ajustado.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/velocidad-video.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video.",
+      "MP4, MOV, WebM, MKV…"
+    ],
+    [
+      "Escoge la velocidad.",
+      "De 0,25× (cámara muy lenta) a 4× (timelapse suave)."
+    ],
+    [
+      "Decide el audio.",
+      "Conservarlo con la misma altura de voz, o quitarlo si en cámara lenta suena raro."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Por qué mi cámara lenta se ve entrecortada?",
+      "r": "Porque el video no tiene cuadros de sobra. Un video a 30 fps puesto a 0,5× muestra 15 cuadros distintos por segundo; a 0,25× son 7,5. La cámara lenta fluida exige haber grabado a 60, 120 o 240 fps (el modo «slow motion» del celular)."
+    },
+    {
+      "p": "¿El audio también cambia de velocidad?",
+      "r": "Sí, si eliges conservarlo: se ajusta al mismo factor manteniendo el tono, así que la voz no se vuelve aguda ni grave. En cámara lenta fuerte (0,25×) el sonido suele sonar raro; ahí conviene quitarlo y poner música con «Cambiar o añadir audio a un video»."
+    },
+    {
+      "p": "¿Cuánto pesa el resultado?",
+      "r": "Si aceleras, el video dura menos y pesa menos. Si lo ralentizas, dura más y pesa más, aunque la calidad por cuadro sea la misma."
+    },
+    {
+      "p": "¿Puedo acelerar solo un tramo?",
+      "r": "Esta herramienta cambia la velocidad de todo el video. Para un tramo concreto, recórtalo con «Recortar video», cámbiale la velocidad y únelo de nuevo con el resto en «Unir videos»."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El cambio de velocidad ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Usos más comunes",
+      "p": [
+        "Cámara lenta: analizar un golpe de golf o un saque de tenis, un gol, un truco, una gota cayendo, una reacción. Cámara rápida: acortar un tutorial largo, mostrar un proceso (pintar, cocinar, armar un mueble) o ahorrar tiempo en una grabación de pantalla.",
+        "Para el efecto de timelapse de una hora comprimida en un minuto, el factor máximo de 4× no alcanza; aplícalo dos veces seguidas si necesitas más."
+      ]
+    },
+    {
+      "h": "Cómo se calcula la duración",
+      "p": [
+        "La duración final es la original dividida entre el factor: 2 minutos a 0,5× duran 4; 2 minutos a 4× duran 30 segundos. El video se recodifica a H.264 con calidad alta (CRF 23) y el resultado es un MP4 compatible con todo."
+      ]
+    }
+  ]
+}

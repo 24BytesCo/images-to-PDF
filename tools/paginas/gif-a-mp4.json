@@ -1,0 +1,71 @@
+{
+  "sitio": "video",
+  "slug": "gif-a-mp4",
+  "orden": 6,
+  "nombre": "GIF a MP4",
+  "icono": "gif-mp4",
+  "titulo": "Convertir GIF a MP4 online: más liviano y sin subir el archivo",
+  "descripcion": "Convierte un GIF animado en un video MP4 hasta 10 veces más liviano, y repítelo las veces que quieras. Gratis, en tu navegador, sin subir el GIF.",
+  "h1": "Convertir un GIF a MP4 sin subirlo",
+  "bajada": "Un GIF pesa mucho y se ve a saltos. En MP4 el mismo clip ocupa una fracción, se reproduce suave y las apps lo aceptan sin quejarse.",
+  "resumen_tarjeta": "Convierte un GIF animado en un MP4 mucho más liviano.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/gif-a-mp4.js"
+  ],
+  "pasos": [
+    [
+      "Elige el GIF.",
+      "Arrástralo a la zona de carga o pulsa para seleccionarlo."
+    ],
+    [
+      "Elige cuántas veces repetirlo.",
+      "Un MP4 no se repite solo como un GIF: se repite el clip tantas veces como indiques."
+    ],
+    [
+      "Convierte y descarga.",
+      "El resultado es un MP4 H.264 que ves antes de descargar; aparece cuánto menos pesa."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Cuánto más liviano queda el MP4?",
+      "r": "Típicamente entre 5 y 20 veces menos. Un GIF guarda cada cuadro casi como una imagen completa de 256 colores; un video guarda solo lo que cambia entre cuadros, y con mejor color."
+    },
+    {
+      "p": "¿Por qué querría un MP4 en vez de un GIF?",
+      "r": "Pesa mucho menos, carga más rápido, se ve mejor y funciona en Instagram, X, WhatsApp, Telegram y la mayoría de las plataformas. Muchas apps incluso convierten el GIF a video por su cuenta y lo recomprimen mal; si lo subes ya convertido, controlas el resultado."
+    },
+    {
+      "p": "¿Se repite en bucle como un GIF?",
+      "r": "Un MP4 termina al final. Aquí puedes repetirlo 3, 5 o 10 veces dentro del archivo. Si lo pones en una página web, la etiqueta <video loop muted autoplay> lo repite sin fin."
+    },
+    {
+      "p": "¿Conserva la transparencia?",
+      "r": "No: MP4 no admite transparencia, así que las zonas transparentes del GIF salen negras. Para conservarla necesitas WebM o un GIF."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. La conversión ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cuándo conviene el cambio",
+      "p": [
+        "Para publicar un clip animado en redes que limitan el peso, para una web que carga rápido (los GIF son de lo más pesado que se puede poner), o para enviar una demostración de pantalla por correo.",
+        "Si lo que tienes es un video y quieres un GIF, usa «Video a GIF»; esta herramienta es la ruta contraria."
+      ]
+    },
+    {
+      "h": "Detalles técnicos útiles",
+      "p": [
+        "El MP4 usa H.264 con color estándar y un tamaño par (los codecs lo exigen: si el GIF mide un número impar de píxeles, se ajusta un píxel). No tiene audio, porque los GIF no lo tienen."
+      ]
+    }
+  ]
+}

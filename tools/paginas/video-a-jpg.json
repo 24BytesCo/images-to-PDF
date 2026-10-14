@@ -1,0 +1,71 @@
+{
+  "sitio": "video",
+  "slug": "video-a-jpg",
+  "orden": 12,
+  "nombre": "Extraer fotogramas a JPG",
+  "icono": "fotogramas",
+  "titulo": "Extraer fotogramas de un video a JPG online, sin subirlo",
+  "descripcion": "Guarda un fotograma exacto de un video como JPG, o saca uno cada cierto tiempo en un ZIP. Marca el instante en la vista previa. En tu navegador, sin subir el video.",
+  "h1": "Sacar fotogramas de un video en JPG sin subirlo",
+  "bajada": "Una captura exacta de un instante o una tira de imágenes a intervalos regulares. Sin pérdida de resolución: la imagen sale al tamaño real del video.",
+  "resumen_tarjeta": "Guarda un fotograma como JPG, o uno cada N segundos en un ZIP.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/video-a-jpg.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video.",
+      "MP4, MOV, WebM, MKV… con vista previa."
+    ],
+    [
+      "Define qué sacar.",
+      "Un fotograma en un instante (usa la vista previa para encontrarlo) o varios, uno cada cierto tiempo."
+    ],
+    [
+      "Extrae y descarga.",
+      "Un JPG suelto, o un ZIP con todos los fotogramas numerados."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué resolución tienen los fotogramas?",
+      "r": "La misma del video: un video de 1920×1080 da JPG de 1920×1080. La calidad JPG «alta» es adecuada para casi todo; la «baja» reduce el peso si vas a sacar muchos."
+    },
+    {
+      "p": "¿Cómo encuentro el instante exacto?",
+      "r": "Mueve la vista previa hasta el cuadro que quieres, pausa y pulsa «Usar el instante de la vista previa». También puedes escribir los segundos con decimales (por ejemplo 12,4)."
+    },
+    {
+      "p": "¿Cuántos fotogramas puedo sacar de una vez?",
+      "r": "Hasta 150 por ZIP. Si necesitas más, divídelos por tramos con «Desde» y «Hasta». El ZIP no comprime los JPG (ya están comprimidos), así que pesa lo mismo que las imágenes sueltas."
+    },
+    {
+      "p": "¿Sirve para sacar la portada de un video o hacer una miniatura?",
+      "r": "Sí, es un uso muy común: elige el cuadro más expresivo, guárdalo como JPG y edítalo después con las herramientas de imágenes de 24Bytes."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. La extracción ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Usos habituales",
+      "p": [
+        "Miniaturas para YouTube, capturas de una clase o presentación grabada, fotogramas de evidencia (accidentes, cámaras de seguridad), material para un storyboard, o una foto sacada de un video familiar.",
+        "El modo «uno cada N segundos» genera una tira de contacto del video entero: útil para revisar de un vistazo qué pasa en una grabación larga."
+      ]
+    },
+    {
+      "h": "Por qué sale más nítido que una captura de pantalla",
+      "p": [
+        "Una captura de pantalla toma lo que se ve en el reproductor, con su compresión y el tamaño de la ventana. Esta herramienta decodifica el cuadro del archivo original y lo guarda a la resolución real, sin menús ni marcas encima."
+      ]
+    }
+  ]
+}

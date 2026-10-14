@@ -1,0 +1,31 @@
+      <div class="grabadora" id="grabadora">
+        <p class="ff-error" id="errorGrabadora" role="alert" hidden></p>
+        <p class="ff-aviso" id="avisoPantalla" hidden></p>
+        <div class="opciones">
+          <label class="campo-casilla"><input id="sistema" type="checkbox" checked> Incluir el audio de la pestaña o del sistema (si el navegador lo permite)</label>
+          <label class="campo-casilla"><input id="micro" type="checkbox"> Incluir mi micrófono (voz en off)</label>
+        </div>
+        <div class="barra">
+          <span class="grabadora-tiempo" id="tiempo" aria-live="off">00:00</span>
+          <span class="barra-acciones">
+            <button class="boton" type="button" id="grabar">Grabar pantalla</button>
+            <button class="boton" type="button" id="detener" hidden>Detener grabación</button>
+          </span>
+        </div>
+        <div id="resultado" class="ff-resultado" hidden>
+          <video class="ff-previa" id="previa" controls playsinline></video>
+          <div class="opciones">
+            <label class="campo">Calidad del MP4
+              <select id="calidad"><option value="23">Alta (archivo más grande)</option><option value="28" selected>Equilibrada (recomendada)</option><option value="33">Ligera (texto pequeño puede verse borroso)</option></select>
+            </label>
+          </div>
+          <div class="barra">
+            <span class="barra-acciones">
+              <button class="boton" type="button" id="convertir">Convertir a MP4</button>
+              <button class="boton boton-secundario" type="button" id="descargarOriginal">Descargar sin convertir (WebM)</button>
+            </span>
+          </div>
+          <p class="ff-estado" id="estadoConv" hidden aria-live="polite"></p>
+        </div>
+        <div id="salida"></div>
+      </div>

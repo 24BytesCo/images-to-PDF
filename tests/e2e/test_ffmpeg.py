@@ -111,16 +111,20 @@ def sondar(ruta):
 
 
 class Sesion:
-    def __init__(self, url, cdn_url, tope_mb=None, ancho=1280):
+    def __init__(self, url, cdn_url, tope_mb=None, ancho=1280, args=None, init_extra=""):
         self.p = sync_playwright().start()
-        self.navegador = self.p.chromium.launch(executable_path=CHROME)
+        self.navegador = self.p.chromium.launch(executable_path=CHROME, args=args or [])
         self.pagina = self.navegador.new_page(viewport={"width": ancho, "height": 900}, accept_downloads=True)
-        init = f"window.CDN_FFMPEG = {json.dumps(cdn_url)};"
+        # SUITE_ESPERA_MIN_MS = 0: la espera mínima del modal de Suite no debe alargar las pruebas.
+        init = f"window.CDN_FFMPEG = {json.dumps(cdn_url)}; window.SUITE_ESPERA_MIN_MS = 0;" + init_extra
         if tope_mb is not None:
             init += f"window.FFMPEG_TOPE_MB = {tope_mb};"
         self.pagina.add_init_script(init)
         self.errores = []
         self.pagina.on("console", lambda m: self.errores.append(m.text) if m.type == "error" else None)
+        self.consola = []
+        self.pagina.on("console", lambda m: self.consola.append(f"{m.type}: {m.text}"))
+        self.pagina.consola = self.consola
         self.pagina.on("pageerror", lambda e: self.errores.append(str(e)))
         self.url = url
 

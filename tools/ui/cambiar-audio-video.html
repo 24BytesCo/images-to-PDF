@@ -1,0 +1,31 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra el video y el audio aquí</p>
+        <p class="zona-texto">o pulsa para elegirlos · un video y un audio (MP3, WAV, M4A…)</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir video y audio" accept="video/*,audio/*,.mp4,.m4v,.mov,.webm,.mkv,.avi,.3gp,.mp3,.m4a,.aac,.wav,.ogg,.opus,.flac" multiple>
+
+      <div id="panel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+        </div>
+        <div class="lista" id="lista"></div>
+        <div class="opciones">
+          <label class="campo">Qué hacer con el sonido
+            <select id="modo"><option value="reemplazar" selected>Reemplazar el audio original por el nuevo</option><option value="mezclar">Mezclar: original + audio nuevo (música de fondo)</option></select>
+          </label>
+          <label class="campo" id="campoVolumen" hidden>Volumen del audio nuevo
+            <select id="volumen"><option value="1">100 %</option><option value="0.5" selected>50 % (música de fondo)</option><option value="0.25">25 %</option></select>
+          </label>
+          <label class="campo">Si el audio es más corto que el video
+            <select id="ajuste"><option value="cortar">El video termina cuando acaba el audio</option><option value="repetir" selected>Repetir el audio hasta cubrir el video</option></select>
+          </label>
+        </div>
+
+        <div class="barra">
+          <span class="ayuda">La primera vez descarga el motor (~30 MB); después queda guardado.</span>
+          <button class="boton" type="button" id="ejecutar">Combinar</button>
+        </div>
+      </div>
+      <div id="salida"></div>

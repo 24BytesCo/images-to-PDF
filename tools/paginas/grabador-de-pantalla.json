@@ -1,0 +1,67 @@
+{
+  "sitio": "video",
+  "slug": "grabador-de-pantalla",
+  "orden": 13,
+  "nombre": "Grabador de pantalla",
+  "icono": "pantalla",
+  "titulo": "Grabador de pantalla online gratis, con audio y descarga en MP4",
+  "descripcion": "Graba tu pantalla, una ventana o una pestaña, con audio del sistema y micrófono, y descarga el video en MP4. Sin instalar nada, sin marca de agua y sin subir la grabación.",
+  "h1": "Grabar la pantalla en el navegador, sin instalar nada",
+  "bajada": "Elige qué compartir, graba y descarga el video en MP4. La grabación se queda en tu equipo: no hay servidor, ni cuenta, ni marca de agua.",
+  "resumen_tarjeta": "Graba tu pantalla con audio y descárgala en MP4, sin instalar nada.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/grabador-de-pantalla.js"
+  ],
+  "pasos": [
+    [
+      "Elige el audio y pulsa Grabar.",
+      "Marca si quieres el sonido del sistema o de la pestaña y/o tu micrófono. El navegador te pregunta qué compartir: pantalla completa, ventana o pestaña."
+    ],
+    [
+      "Graba y detén.",
+      "Pulsa «Detener grabación» o termina el uso compartido desde el aviso del navegador."
+    ],
+    [
+      "Convierte a MP4 y descarga.",
+      "El navegador graba en WebM; con un clic se convierte a MP4, que se abre en todas partes."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Mi grabación se sube a algún sitio?",
+      "r": "No. La captura la hace tu navegador y queda en la memoria de la pestaña. Solo al convertir a MP4 se descarga el motor de conversión (unos 30 MB, una vez); el video nunca sale de tu equipo. Si cierras la pestaña antes de descargar, la grabación se pierde."
+    },
+    {
+      "p": "¿Se graba el sonido del computador?",
+      "r": "Depende de lo que compartas y del navegador. En Chrome y Edge, al compartir una pestaña o la pantalla completa en Windows aparece la casilla «Compartir audio» del selector; en Mac, solo el audio de una pestaña. Firefox y Safari no capturan el audio del sistema. El micrófono funciona en todos."
+    },
+    {
+      "p": "¿Funciona en el celular?",
+      "r": "No. Los navegadores de celular (Android e iPhone) no permiten grabar la pantalla desde una página web. Para eso usa el grabador integrado del teléfono; luego puedes comprimir o recortar el video aquí."
+    },
+    {
+      "p": "¿Hay límite de tiempo o marca de agua?",
+      "r": "Ninguno de los dos. El límite práctico es la memoria: unos 10 minutos de pantalla completa a buena calidad suelen ocupar 60 a 150 MB. Para convertir a MP4 vale el tope de 500 MB."
+    },
+    {
+      "p": "¿Por qué se descarga primero WebM?",
+      "r": "Porque es el formato en que graba el navegador. Está disponible con «Descargar sin convertir» si no necesitas MP4; convertirlo cuesta un rato de proceso, pero produce un archivo compatible con WhatsApp, editores de video y reproductores de escritorio."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Para qué sirve",
+      "p": [
+        "Tutoriales y clases, reportar un error con una grabación en vez de capturas, guardar una videollamada (con permiso de los participantes), demostraciones de producto, partidas o presentaciones. Es una alternativa sin instalación a programas de escritorio: nada que descargar, ninguna cuenta.",
+        "Por privacidad, el navegador solo graba lo que tú eliges compartir y muestra un aviso mientras lo hace."
+      ]
+    },
+    {
+      "h": "Trucos para una buena grabación",
+      "p": [
+        "Cierra las notificaciones y pestañas que no quieras mostrar, y comparte una ventana o pestaña en vez de toda la pantalla si hay información privada alrededor. Si el video sale pesado, redúcelo después con «Comprimir video» (también permite fijar un tamaño máximo para enviarlo por WhatsApp o correo)."
+      ]
+    }
+  ]
+}
