@@ -105,7 +105,7 @@ h1 { margin: 0; font-size: clamp(30px, 5vw, 50px); line-height: 1.04; letter-spa
 
 /* Listas y miniaturas */
 .lista { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 8px; }
-.lista-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--linea); border-radius: 12px; background: var(--papel); cursor: grab; }
+.lista-item { min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--linea); border-radius: 12px; background: var(--papel); cursor: grab; }
 .lista-item.arrastrando { opacity: 0.4; }
 .lista-asa { color: #98a2b3; font-size: 18px; line-height: 1; user-select: none; }
 .lista-nombre { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
@@ -142,6 +142,19 @@ h1 { margin: 0; font-size: clamp(30px, 5vw, 50px); line-height: 1.04; letter-spa
 .pie p { margin: 0 0 6px; }
 .pie a { color: var(--tinta); }
 .anuncio { margin-top: 40px; min-height: 120px; }
+
+/* Espera con apoyo al proyecto: panel en la página (ver assets/js/comun.js) */
+.espera { margin-top: 24px; padding: 20px; background: var(--papel); border: 1px solid var(--linea); border-radius: var(--radio); box-shadow: var(--sombra-hoja); }
+.espera-congelado { opacity: 0.55; }
+.espera-titulo { margin: 0 0 14px; font-size: 20px; letter-spacing: -0.02em; line-height: 1.2; }
+.espera-barra { height: 12px; border-radius: 999px; background: var(--linea); overflow: hidden; }
+.espera-relleno { display: block; width: 100%; height: 100%; background: var(--acento); transform-origin: left center; transform: scaleX(0); transition: transform 0.25s linear; }
+.espera-tiempo { margin: 14px 0 0; font-size: clamp(26px, 5vw, 34px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.espera-estado { margin: 6px 0 0; min-height: 1.5em; color: var(--gris); font-size: 15px; overflow-wrap: anywhere; }
+.espera-porque { margin-top: 14px; padding: 14px; border-radius: 12px; background: var(--fondo); }
+.espera-porque h3 { margin: 0 0 6px; font-size: 15px; }
+.espera-porque p { margin: 0; color: var(--gris); font-size: 14.5px; }
+.espera-cafe { display: flex; justify-content: center; margin-top: 16px; text-decoration: none; }
 
 @media (max-width: 560px) {
   .portada { padding-top: 36px; }

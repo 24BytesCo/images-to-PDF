@@ -152,6 +152,16 @@ def script_umami(cfg: dict) -> str:
             f'data-website-id="{cfg["umami_id"]}" data-domains="{cfg["dominio"]}"></script>')
 
 
+def config_suite(cfg: dict) -> str:
+    """Config que lee comun.js (espera con apoyo al proyecto). Vacío si el sitio no la define."""
+    espera = cfg.get("espera")
+    if not espera:
+        return ""
+    datos = {"espera": espera}
+    cuerpo = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/")
+    return f'<script type="application/json" id="suite-config">{cuerpo}</script>'
+
+
 def pie_sitios(cfg: dict, sitios: dict) -> str:
     """Enlace cruzado a los otros sitios de la suite (vacío si solo hay uno)."""
     otros = [f'<a href="https://{o["dominio"]}/" rel="noopener">{e(o["marca"])}</a>'
@@ -178,6 +188,7 @@ def comunes(cfg: dict, sitios: dict) -> dict:
         "og_image_alt": e(cfg["og_image_alt"]),
         "adsense": script_adsense(cfg),
         "umami": script_umami(cfg),
+        "config_suite": config_suite(cfg),
         "pie_sitios": pie_sitios(cfg, sitios),
     }
 

@@ -272,6 +272,7 @@ audio.ff-previa{background:transparent}
       elEstado.textContent = texto;
       if (fraccion == null) elBarra.removeAttribute('value');
       else elBarra.value = Math.round(fraccion * 100);
+      if (estado.trabajando) S.ocupado(true, texto); // el modal de espera repite el estado
     };
 
     const pintar = () => {
@@ -334,8 +335,9 @@ audio.ff-previa{background:transparent}
           mime: orden.mime,
           duracion: orden.duracion,
           alEstado: estadoUI,
-          alProgreso: (f) => estadoUI(`Procesando… ${Math.round(f * 100)} %`, f),
+          alProgreso: (f) => { S.progreso(f); estadoUI(`Procesando… ${Math.round(f * 100)} %`, f); },
         });
+        await S.esperarMinimo(); // el resultado se muestra al cumplirse el mínimo de la espera
         urlResultado = URL.createObjectURL(blob);
         const tag = orden.mime.startsWith('video/') ? 'video' : orden.mime.startsWith('image/') ? 'img' : 'audio';
         const previa = document.createElement(tag);
@@ -373,6 +375,7 @@ audio.ff-previa{background:transparent}
         }
       } finally {
         estado.trabajando = false;
+        S.ocupado(false);
         boton.disabled = false;
         elProgreso.hidden = true;
       }
