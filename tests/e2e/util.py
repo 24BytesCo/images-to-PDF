@@ -100,3 +100,19 @@ def dimensiones(pagina, datos: bytes, tipo: str):
         }""",
         {"b64": __import__("base64").b64encode(datos).decode(), "tipo": tipo},
     )
+
+
+def contar(pagina, datos: bytes, tipo: str, predicado_js: str) -> int:
+    """Cuenta píxeles de la imagen decodificada que cumplen `predicado_js` (función de r,g,b,a)."""
+    return pagina.evaluate(
+        """async ({b64, tipo, pred}) => {
+          const bin = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+          const bmp = await createImageBitmap(new Blob([bin], { type: tipo }));
+          const c = document.createElement('canvas'); c.width = bmp.width; c.height = bmp.height;
+          const x = c.getContext('2d'); x.drawImage(bmp, 0, 0);
+          const f = eval(pred); const d = x.getImageData(0, 0, c.width, c.height).data; let n = 0;
+          for (let i = 0; i < d.length; i += 4) if (f(d[i], d[i + 1], d[i + 2], d[i + 3])) n++;
+          return n;
+        }""",
+        {"b64": __import__("base64").b64encode(datos).decode(), "tipo": tipo, "pred": predicado_js},
+    )

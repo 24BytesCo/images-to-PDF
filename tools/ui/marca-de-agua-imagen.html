@@ -1,0 +1,54 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra tus fotos aquí</p>
+        <p class="zona-texto">o pulsa para elegirlas · JPG, PNG o WebP, varias a la vez</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir fotos" accept="image/jpeg,image/png,image/webp" multiple>
+
+      <div id="panel" hidden>
+        <div class="pestanas" role="group" aria-label="Tipo de marca">
+          <button class="pestana" type="button" id="tab-texto" aria-pressed="true">Texto</button>
+          <button class="pestana" type="button" id="tab-logo" aria-pressed="false">Logo (imagen)</button>
+        </div>
+        <div class="opciones">
+          <label class="campo" id="campoTexto">Texto de la marca
+            <input id="texto" type="text" value="© Tu nombre" maxlength="80">
+          </label>
+          <label class="campo" id="campoColor">Color del texto
+            <input id="color" type="color" value="#ffffff">
+          </label>
+          <label class="campo" id="campoLogo" hidden>Archivo del logo
+            <input id="logo" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+            <small>Un PNG con fondo transparente queda mejor.</small>
+          </label>
+          <label class="campo">Posición
+            <select id="posicion">
+              <option value="br">Abajo a la derecha</option>
+              <option value="bc">Abajo al centro</option>
+              <option value="bl">Abajo a la izquierda</option>
+              <option value="mc">Centro</option>
+              <option value="tr">Arriba a la derecha</option>
+              <option value="tc">Arriba al centro</option>
+              <option value="tl">Arriba a la izquierda</option>
+              <option value="mosaico">Repetida en mosaico (anti-copia)</option>
+            </select>
+          </label>
+          <label class="campo">Tamaño: <output id="tamanoValor">20 %</output>
+            <input id="tamano" type="range" min="5" max="80" step="1" value="20">
+          </label>
+          <label class="campo">Opacidad: <output id="opacidadValor">70 %</output>
+            <input id="opacidad" type="range" min="10" max="100" step="5" value="70">
+          </label>
+          <label class="campo">Inclinación: <output id="anguloValor">0°</output>
+            <input id="angulo" type="range" min="-60" max="60" step="5" value="0">
+          </label>
+        </div>
+        <div class="vista"><canvas id="vista" aria-label="Vista previa con la marca de agua"></canvas></div>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <span class="barra-acciones">
+            <button class="boton boton-secundario boton-pequeno" type="button" id="cambiar">Elegir otras fotos</button>
+            <button class="boton" type="button" id="aplicar">Aplicar y descargar</button>
+          </span>
+        </div>
+      </div>

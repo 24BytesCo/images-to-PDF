@@ -1,7 +1,7 @@
 {
   "slug": "quitar-exif",
   "sitio": "imagenes",
-  "orden": 6,
+  "orden": 10,
   "nombre": "Quitar datos EXIF y GPS",
   "icono": "exif",
   "titulo": "Quitar EXIF y ubicación GPS de una foto: borrar metadatos online",

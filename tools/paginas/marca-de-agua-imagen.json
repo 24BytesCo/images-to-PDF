@@ -1,0 +1,37 @@
+{
+  "slug": "marca-de-agua-imagen",
+  "sitio": "imagenes",
+  "orden": 8,
+  "nombre": "Marca de agua en imagen",
+  "icono": "marca-imagen",
+  "titulo": "Poner marca de agua a fotos online: texto o logo, varias a la vez",
+  "descripcion": "Añade una marca de agua de texto o con tu logo a una o muchas fotos: elige posición, tamaño, opacidad y mosaico. Gratis, sin subir tus fotos a un servidor.",
+  "h1": "Poner marca de agua a tus fotos",
+  "bajada": "Protege tus fotos con tu nombre o tu logo, en una esquina o repetido en mosaico, y aplícalo a todas de una vez. Todo en tu navegador: tus fotos no se suben.",
+  "resumen_tarjeta": "Añade texto o tu logo a una o varias fotos, en una posición o en mosaico.",
+  "scripts": [
+    "assets/vendor/jszip.min.js",
+    "assets/js/imagen-comun.js",
+    "assets/js/marca-de-agua-imagen.js"
+  ],
+  "pasos": [
+    ["Elige tus fotos.", "Una o varias a la vez, JPG, PNG o WebP. La primera sirve de vista previa."],
+    ["Diseña la marca.", "Escribe un texto o sube tu logo; ajusta posición, tamaño, opacidad e inclinación. El mosaico repite la marca por toda la foto."],
+    ["Descarga.", "Cada foto sale con la marca aplicada; si son varias, llegan juntas en un ZIP."]
+  ],
+  "faqs": [
+    {"p": "¿Qué tamaño de marca queda mejor?", "r": "Para una firma en una esquina, entre 15 % y 25 % del ancho con opacidad de 60 a 80 % se ve sin tapar la foto. Para proteger contra copias, usa el mosaico: es mucho más difícil de recortar sin dañar la imagen."},
+    {"p": "¿La marca se adapta a fotos de distinto tamaño?", "r": "Sí. El tamaño es proporcional al ancho de cada foto, así que se ve igual de grande en una imagen de 800 px que en una de 4000 px."},
+    {"p": "¿Mis fotos se suben a un servidor?", "r": "No. Se procesan en tu navegador, que es lo importante cuando trabajas con fotos de clientes o trabajos aún no publicados."},
+    {"p": "¿Se puede quitar luego la marca?", "r": "La marca queda dibujada en los píxeles de la copia, no como una capa. Una esquina discreta se puede recortar; un mosaico semitransparente es más difícil de eliminar. Conserva siempre el original sin marca."}
+  ],
+  "secciones": [
+    {
+      "h": "Marca de agua visible: cuándo sirve y cuándo no",
+      "p": [
+        "Una marca visible no impide que alguien use tu foto, pero sí deja claro quién es el autor y desanima el uso comercial sin permiso. Es habitual en portafolios de fotografía, catálogos de productos y avances de trabajos para clientes que aún no han pagado.",
+        "Si el objetivo es que nadie pueda reutilizar la imagen limpia, evita ponerla en una esquina y usa el mosaico en diagonal con opacidad baja: cubre toda la foto sin arruinarla. Para un logo, un PNG con fondo transparente da el mejor resultado."
+      ]
+    }
+  ]
+}

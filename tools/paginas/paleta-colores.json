@@ -1,0 +1,36 @@
+{
+  "slug": "paleta-colores",
+  "sitio": "imagenes",
+  "orden": 14,
+  "nombre": "Paleta de colores de una imagen",
+  "icono": "paleta",
+  "titulo": "Sacar la paleta de colores de una imagen: HEX, RGB y cuentagotas",
+  "descripcion": "Extrae los colores dominantes de cualquier imagen y copia su código HEX, RGB o HSL. Incluye cuentagotas para tomar el color exacto de un punto. Sin subir la imagen.",
+  "h1": "Sacar la paleta de colores de una imagen",
+  "bajada": "Sube una foto o un logo y obtén sus colores dominantes con el código HEX listo para copiar, o toma con el cuentagotas el color exacto de cualquier punto. Todo en tu navegador.",
+  "resumen_tarjeta": "Colores dominantes y cuentagotas con códigos HEX, RGB y HSL para copiar.",
+  "scripts": [
+    "assets/js/imagen-comun.js",
+    "assets/js/paleta-colores.js"
+  ],
+  "pasos": [
+    ["Elige la imagen.", "Una foto, un logo, una captura de un diseño: cualquier JPG, PNG, WebP, GIF o BMP."],
+    ["Mira los colores dominantes.", "Verás hasta 10 colores representativos, ordenados del que más aparece al que menos."],
+    ["Copia el que necesites.", "Pulsa un color para copiar su HEX. Con el cuentagotas, pulsa un punto de la imagen para ver su HEX, RGB y HSL exactos."]
+  ],
+  "faqs": [
+    {"p": "¿Cómo se calculan los colores dominantes?", "r": "La imagen se reduce y se cuentan sus colores; se eligen los más frecuentes que además sean distintos entre sí (así un detalle pequeño de otro color no se pierde) y cada color se promedia con los píxeles que le corresponden."},
+    {"p": "¿Qué diferencia hay entre HEX, RGB y HSL?", "r": "Son tres formas de escribir el mismo color. HEX (#d92d20) es el más usado en web y diseño; RGB da la cantidad de rojo, verde y azul de 0 a 255; HSL expresa matiz, saturación y luminosidad, y es cómodo para hacer un color más claro u oscuro."},
+    {"p": "¿El color del cuentagotas es exacto?", "r": "Es el color del píxel que pulsas en la imagen cargada. En fotos con grano puede variar de un píxel a otro: para el tono general de una zona, usa la paleta."},
+    {"p": "¿La imagen se sube a algún servidor?", "r": "No. El análisis se hace en tu navegador, sin enviar ningún dato."}
+  ],
+  "secciones": [
+    {
+      "h": "Para qué sirve una paleta sacada de una imagen",
+      "p": [
+        "Para que una web, una presentación o un cartel combinen con una foto o un logo sin adivinar los tonos: tomas los colores dominantes y los usas como base. También sirve para igualar el color de un texto con el de un elemento de la imagen, o para guardar la paleta de una referencia visual.",
+        "Si la imagen tiene fondos grandes de un solo color (por ejemplo un logo sobre blanco), ese fondo será el color dominante; sube el número de colores o usa el cuentagotas sobre las zonas que te interesan."
+      ]
+    }
+  ]
+}

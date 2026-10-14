@@ -281,10 +281,15 @@ def portada(paginas: list[dict], plantilla: str, cfg: dict, com: dict) -> str:
         {"@context": "https://schema.org", "@type": "WebSite", "name": cfg["marca"], "url": cfg["base_url"],
          "inLanguage": "es", "description": cfg["lema"],
          "publisher": {"@type": "Organization", "name": "24Bytes", "url": "https://24bytes.pro"}},
-        {"@context": "https://schema.org", "@type": "ItemList", "name": "Herramientas PDF",
+        {"@context": "https://schema.org", "@type": "ItemList", "name": cfg.get("lista_nombre", "Herramientas PDF"),
          "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": p["nombre"], "url": f'{cfg["base_url"]}{p["slug"]}/'}
                              for i, p in enumerate(principales(paginas))]},
     ]
+    enlaces_tareas = tareas(paginas, raiz)
+    seccion_tareas = f"""    <section class="bloque">
+      <h2>Tareas frecuentes</h2>
+      {enlaces_tareas}
+    </section>""" if enlaces_tareas else ""
     contacto = (RAIZ / "tools/ui/_contacto.html").read_text(encoding="utf-8") if cfg.get("contacto") else ""
     cuerpo = f"""
     <section class="portada">
@@ -295,10 +300,7 @@ def portada(paginas: list[dict], plantilla: str, cfg: dict, com: dict) -> str:
     <section class="bloque bloque-rejilla" aria-label="Herramientas">
       <div class="rejilla rejilla-grande">{tarjetas(paginas, raiz)}</div>
     </section>
-    <section class="bloque">
-      <h2>Tareas frecuentes</h2>
-      {tareas(paginas, raiz)}
-    </section>
+{seccion_tareas}
     {anuncio(cfg, "portada")}
     <section class="bloque">
       <h2>{e(po["porque_h"])}</h2>

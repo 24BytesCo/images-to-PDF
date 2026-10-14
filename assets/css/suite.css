@@ -43,7 +43,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .menu summary { list-style: none; cursor: pointer; padding: 8px 14px; border: 1px solid var(--linea); border-radius: 999px; background: var(--papel); font-weight: 600; font-size: 14px; }
 .menu summary::-webkit-details-marker { display: none; }
 .menu summary::after { content: '▾'; margin-left: 6px; color: var(--gris); }
-.menu-lista { position: absolute; right: 0; top: calc(100% + 8px); min-width: 230px; background: var(--papel); border: 1px solid var(--linea); border-radius: var(--radio); box-shadow: var(--sombra-hoja); padding: 6px; display: grid; }
+.menu-lista { max-height: min(70vh, 520px); overflow-y: auto; position: absolute; right: 0; top: calc(100% + 8px); min-width: 230px; background: var(--papel); border: 1px solid var(--linea); border-radius: var(--radio); box-shadow: var(--sombra-hoja); padding: 6px; display: grid; }
 .menu-lista a { padding: 9px 12px; border-radius: 9px; text-decoration: none; font-size: 15px; }
 .menu-lista a:hover, .menu-lista a[aria-current='page'] { background: var(--fondo); }
 .menu-lista a[aria-current='page'] { font-weight: 650; }
@@ -172,3 +172,4 @@ h1 { margin: 0; font-size: clamp(30px, 5vw, 50px); line-height: 1.04; letter-spa
 .muestra:hover { border-color: var(--tinta); }
 .muestra-color { height: 54px; border-radius: 8px; border: 1px solid rgba(15, 23, 42, 0.12); }
 .muestra code { font-size: 13.5px; font-weight: 700; }
+.campo input[type='color'] { padding: 3px; height: 44px; width: 100%; min-width: 64px; cursor: pointer; }

@@ -1,0 +1,37 @@
+{
+  "slug": "generador-qr",
+  "sitio": "imagenes",
+  "orden": 15,
+  "nombre": "Generador de código QR",
+  "icono": "qr",
+  "titulo": "Generador de código QR gratis: enlace, WiFi y WhatsApp sin registro",
+  "descripcion": "Crea códigos QR para enlaces, texto, redes WiFi o un chat de WhatsApp, con tus colores y logo opcional. Descarga en PNG o SVG, sin registro y sin caducidad.",
+  "h1": "Generador de código QR sin registro ni caducidad",
+  "bajada": "Escribe un enlace, los datos de tu WiFi o un número de WhatsApp y descarga el QR en PNG o SVG. Se genera en tu navegador: ni se guarda ni caduca.",
+  "resumen_tarjeta": "QR para enlaces, WiFi o WhatsApp, con colores y logo, en PNG o SVG.",
+  "scripts": [
+    "assets/vendor/qrcode-generator.js",
+    "assets/js/imagen-comun.js",
+    "assets/js/generador-qr.js"
+  ],
+  "pasos": [
+    ["Elige qué codificar.", "Un enlace o texto, los datos de una red WiFi, o un número de WhatsApp con mensaje opcional."],
+    ["Personaliza.", "Cambia los colores, el tamaño y el nivel de corrección de errores. Si pones un logo en el centro, se usa la corrección máxima."],
+    ["Descarga y prueba.", "Baja el PNG o el SVG y escanéalo con la cámara de tu celular antes de imprimirlo."]
+  ],
+  "faqs": [
+    {"p": "¿El código QR caduca o deja de funcionar?", "r": "No. El enlace o el texto va escrito dentro del propio código y no depende de nuestro sitio. Mientras la página a la que apunta siga existiendo, el QR funciona. Por eso mismo, no podemos cambiarlo después: si cambia tu enlace, genera uno nuevo."},
+    {"p": "¿Cómo hago un QR para compartir mi WiFi?", "r": "En la pestaña «Red WiFi» escribe el nombre y la contraseña. Al escanearlo, los celulares modernos ofrecen conectarse sin teclear la clave. La contraseña queda dentro del QR: no lo publiques si la red es privada."},
+    {"p": "¿Qué nivel de corrección de errores elijo?", "r": "Media (M) sirve para casi todo. Sube a Q o H si el código se va a imprimir en una superficie que se pueda ensuciar o rayar, o si le vas a poner un logo encima: a costa de un código con más módulos."},
+    {"p": "¿Qué formato descargo: PNG o SVG?", "r": "PNG para pantallas, chats y documentos. SVG para imprenta o diseño: se puede ampliar a cualquier tamaño sin perder nitidez."}
+  ],
+  "secciones": [
+    {
+      "h": "Consejos para que el QR se escanee bien",
+      "p": [
+        "Mantén un contraste alto: código oscuro sobre fondo claro es lo más fiable, y los códigos con colores invertidos fallan en varias aplicaciones. No lo hagas demasiado pequeño: como regla práctica, un código necesita al menos 2 cm de lado para ser escaneado desde 20 cm.",
+        "Cuanto más corto es el contenido, más simple y fácil de leer es el código. Si tu enlace es largo, genera el QR con una dirección corta. Y, sobre todo, escanéalo siempre con un celular antes de imprimirlo en cantidad."
+      ]
+    }
+  ]
+}

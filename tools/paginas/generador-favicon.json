@@ -1,0 +1,37 @@
+{
+  "slug": "generador-favicon",
+  "sitio": "imagenes",
+  "orden": 13,
+  "nombre": "Generador de favicon",
+  "icono": "favicon",
+  "titulo": "Generador de favicon: crear favicon.ico y PNG desde tu logo",
+  "descripcion": "Crea el favicon.ico y los iconos PNG (16, 32, 180, 192 y 512 px) de tu sitio a partir de un logo, con manifest y código HTML. Gratis y sin subir tu logo.",
+  "h1": "Crear favicon.ico y iconos de tu sitio desde una imagen",
+  "bajada": "Sube tu logo y descarga en un ZIP el favicon.ico, los iconos para iPhone y Android, el manifest y el código para pegar en tu web. Se genera en tu navegador.",
+  "resumen_tarjeta": "Saca favicon.ico, iconos PNG, manifest y código HTML desde un logo.",
+  "scripts": [
+    "assets/vendor/jszip.min.js",
+    "assets/js/imagen-comun.js",
+    "assets/js/generador-favicon.js"
+  ],
+  "pasos": [
+    ["Elige tu logo.", "PNG, JPG, WebP o SVG. Lo ideal es una imagen cuadrada de 512 px o más."],
+    ["Ajusta cómo se ve.", "Si no es cuadrado, decide entre mostrarlo entero o recortarlo al centro. Puedes poner esquinas redondeadas o un color de fondo."],
+    ["Descarga el ZIP.", "Sube los archivos a la raíz de tu sitio y pega el contenido de pegar-en-head.html dentro de la etiqueta head."]
+  ],
+  "faqs": [
+    {"p": "¿Qué tamaños de favicon necesito?", "r": "El favicon.ico con 16, 32 y 48 px cubre navegadores y pestañas; un PNG de 180 px sirve de icono al guardar la web en el iPhone; y los de 192 y 512 px los usa Android y las apps web instalables. El paquete los trae todos."},
+    {"p": "¿Dónde pongo los archivos?", "r": "En la raíz de tu sitio (por ejemplo https://tusitio.com/favicon.ico). Muchos navegadores piden /favicon.ico por defecto aunque no lo declares, y el código de pegar-en-head.html cubre el resto."},
+    {"p": "¿Puedo usar un SVG?", "r": "Sí. Un SVG se dibuja a cada tamaño sin perder nitidez, así que es la mejor fuente posible para los iconos."},
+    {"p": "¿El favicon no se actualiza en mi navegador, qué hago?", "r": "Los navegadores guardan el favicon en caché con mucha insistencia. Prueba con una ventana privada o cambia el nombre del archivo y su enlace para forzar la recarga."}
+  ],
+  "secciones": [
+    {
+      "h": "Cómo diseñar un buen favicon",
+      "p": [
+        "A 16 píxeles no caben los detalles. Funciona mejor una forma simple: una inicial, un símbolo o el logo sin texto, con buen contraste contra fondos claros y oscuros. Si tu logo es horizontal con texto, usa solo el isotipo.",
+        "Las vistas previas de arriba muestran el resultado a tamaño real: si a 16 y 32 px no se reconoce, conviene simplificar la imagen de origen antes de generar el paquete."
+      ]
+    }
+  ]
+}

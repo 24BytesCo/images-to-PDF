@@ -1,0 +1,61 @@
+      <div class="pestanas" role="group" aria-label="Qué codificar">
+        <button class="pestana" type="button" data-tipo="texto" aria-pressed="true">Enlace o texto</button>
+        <button class="pestana" type="button" data-tipo="wifi" aria-pressed="false">Red WiFi</button>
+        <button class="pestana" type="button" data-tipo="whatsapp" aria-pressed="false">WhatsApp</button>
+      </div>
+      <div class="opciones" id="f-texto">
+        <label class="campo">Enlace o texto
+          <textarea id="texto" rows="3" maxlength="1500">https://24bytes.pro</textarea>
+        </label>
+      </div>
+      <div class="opciones" id="f-wifi" hidden>
+        <label class="campo">Nombre de la red (SSID)<input id="ssid" type="text" maxlength="60" autocomplete="off"></label>
+        <label class="campo">Contraseña<input id="clave" type="text" maxlength="63" autocomplete="off"></label>
+        <label class="campo">Seguridad
+          <select id="seguridad">
+            <option value="WPA">WPA / WPA2 / WPA3</option>
+            <option value="WEP">WEP</option>
+            <option value="nopass">Sin contraseña</option>
+          </select>
+        </label>
+      </div>
+      <div class="opciones" id="f-whatsapp" hidden>
+        <label class="campo">Número con código de país
+          <input id="telefono" type="tel" placeholder="573001234567" inputmode="numeric" autocomplete="off">
+          <small>Solo dígitos. Colombia empieza por 57.</small>
+        </label>
+        <label class="campo">Mensaje inicial (opcional)
+          <input id="mensaje" type="text" maxlength="300" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="opciones">
+        <label class="campo">Color del código<input id="oscuro" type="color" value="#0f172a"></label>
+        <label class="campo">Color de fondo<input id="claro" type="color" value="#ffffff"></label>
+        <label class="campo">Corrección de errores
+          <select id="nivel">
+            <option value="L">Baja (L): el más simple</option>
+            <option value="M" selected>Media (M)</option>
+            <option value="Q">Alta (Q)</option>
+            <option value="H">Máxima (H): admite logo</option>
+          </select>
+        </label>
+        <label class="campo">Tamaño de la imagen
+          <select id="tamano">
+            <option value="512">512 px</option>
+            <option value="1024" selected>1024 px</option>
+            <option value="2048">2048 px (impresión)</option>
+          </select>
+        </label>
+        <label class="campo">Logo en el centro (opcional)
+          <input id="logo" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+          <small>Se usa corrección máxima automáticamente.</small>
+        </label>
+      </div>
+
+      <div class="vista"><canvas id="lienzo" aria-label="Código QR generado" style="max-width:min(100%,320px)"></canvas></div>
+      <p class="dato" id="estado"></p>
+      <div class="fila-botones">
+        <button class="boton" type="button" id="bajarPng">Descargar PNG</button>
+        <button class="boton boton-secundario" type="button" id="bajarSvg">Descargar SVG</button>
+      </div>
