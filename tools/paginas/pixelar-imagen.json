@@ -1,0 +1,36 @@
+{
+  "slug": "pixelar-imagen",
+  "sitio": "imagenes",
+  "orden": 9,
+  "nombre": "Pixelar y censurar imagen",
+  "icono": "pixelar",
+  "titulo": "Pixelar y censurar partes de una imagen online: caras, placas y datos",
+  "descripcion": "Marca zonas de una imagen y pixélalas, difumínalas o tápalas para ocultar caras, placas, números o datos personales. Sin subir la foto a ningún servidor.",
+  "h1": "Pixelar y censurar zonas de una imagen",
+  "bajada": "Arrastra un recuadro sobre lo que quieres ocultar —una cara, una placa, un número de cuenta— y elige pixelar, difuminar o tapar. La imagen no sale de tu navegador.",
+  "resumen_tarjeta": "Oculta caras, placas o datos pixelando, difuminando o tapando zonas.",
+  "scripts": [
+    "assets/js/imagen-comun.js",
+    "assets/js/pixelar-imagen.js"
+  ],
+  "pasos": [
+    ["Elige la imagen.", "Arrástrala o pulsa para seleccionarla."],
+    ["Marca lo que quieres ocultar.", "Arrastra un recuadro sobre cada zona. Puedes marcar varias y deshacer la última. Cambia el efecto o su intensidad cuando quieras."],
+    ["Descarga.", "Los píxeles de las zonas marcadas se reemplazan en el archivo descargado: el original no se modifica."]
+  ],
+  "faqs": [
+    {"p": "¿Cuál efecto es más seguro: pixelar, difuminar o tapar?", "r": "Tapar con negro es el único que destruye por completo la información. Pixelar y difuminar con poca intensidad pueden dejar texto o rasgos recuperables con programas de mejora. Para números, documentos o placas, usa tapar o pixelado fuerte."},
+    {"p": "¿Se puede deshacer la censura después de descargar?", "r": "No. El archivo descargado trae los píxeles ya reemplazados; los datos originales de esa zona no están en él. Conserva tu foto original si la necesitas."},
+    {"p": "¿Esto borra también los datos ocultos de la foto?", "r": "No. Al volver a guardar la imagen en el navegador se descartan los metadatos como la ubicación GPS, pero si quieres revisarlos o quitarlos de una foto sin tocarla, usa Quitar datos EXIF y GPS."},
+    {"p": "¿Mi imagen se sube a algún sitio?", "r": "No, el trabajo ocurre en tu navegador. Es justamente lo que conviene al censurar datos sensibles: la imagen sin censurar nunca sale de tu equipo."}
+  ],
+  "secciones": [
+    {
+      "h": "Cuándo censurar una imagen",
+      "p": [
+        "Antes de publicar una captura de pantalla con correos o nombres, de mostrar un recibo, de subir una foto donde aparecen placas de vehículos o rostros de menores, o de compartir un documento donde solo debe verse una parte. Muchas plataformas de reclamos, ventas y soporte piden evidencia: censurar lo que sobra protege tu información sin invalidarla.",
+        "Un consejo práctico: marca la zona con un margen holgado alrededor del dato, para que no queden trazos de letras en los bordes, y revisa el resultado a tamaño completo antes de enviarlo."
+      ]
+    }
+  ]
+}

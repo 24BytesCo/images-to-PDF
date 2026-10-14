@@ -1,0 +1,36 @@
+{
+  "slug": "rotar-voltear-imagen",
+  "sitio": "imagenes",
+  "orden": 6,
+  "nombre": "Rotar y voltear imagen",
+  "icono": "rotar",
+  "titulo": "Rotar y voltear imagen online: girar 90°, espejo y enderezar fotos",
+  "descripcion": "Gira una imagen 90° a izquierda o derecha, voltéala en espejo o endereza un horizonte torcido con ángulo fino. En tu navegador, sin subir la foto.",
+  "h1": "Rotar, voltear y enderezar imágenes",
+  "bajada": "Corrige una foto de lado, ponla en espejo o endereza un horizonte inclinado con un ángulo fino. Se hace en tu navegador y la foto no sale de tu equipo.",
+  "resumen_tarjeta": "Gira 90°, voltea en espejo o endereza una foto con ángulo fino.",
+  "scripts": [
+    "assets/js/imagen-comun.js",
+    "assets/js/rotar-voltear-imagen.js"
+  ],
+  "pasos": [
+    ["Elige la imagen.", "Arrástrala o pulsa para seleccionarla."],
+    ["Gira o voltea.", "Usa los botones de 90°, de espejo o el control de ángulo fino para enderezar. La vista previa se actualiza al instante."],
+    ["Descarga.", "Se guarda con las dimensiones nuevas. Con ángulo fino el lienzo crece lo justo para que no se corte nada."]
+  ],
+  "faqs": [
+    {"p": "Mi foto del celular sale de lado en el computador, ¿esto la arregla?", "r": "Sí: gírala 90° hasta que quede derecha y descárgala. Al guardarla, la orientación queda grabada en los propios píxeles y se verá igual en cualquier programa."},
+    {"p": "¿Girar vuelve a comprimir la imagen?", "r": "Se vuelve a guardar la imagen, así que en JPG y WebP se aplica una compresión nueva (a calidad alta). En PNG no se pierde nada."},
+    {"p": "¿Qué pasa con las esquinas al enderezar un poco?", "r": "Al inclinar, aparecen esquinas vacías. En PNG y WebP quedan transparentes; en JPG se rellenan con el color de fondo que elijas. Si prefieres no tenerlas, recorta después con Recortar imagen."},
+    {"p": "¿Cuál es la diferencia entre voltear y girar?", "r": "Girar hace rotar la imagen; voltear la refleja como un espejo (útil para selfies que salieron invertidas o para corregir texto que se ve al revés)."}
+  ],
+  "secciones": [
+    {
+      "h": "Horizontes torcidos y fotos de documentos",
+      "p": [
+        "Un horizonte inclinado medio grado ya se nota. Con el ángulo fino puedes corregirlo de a 0,5° mirando la vista previa. Para fotos de documentos o pizarras tomadas en ángulo, un giro pequeño suele bastar para que las líneas del texto queden horizontales.",
+        "Cuando enderezas se pierde un poco de imagen en los bordes si luego recortas las esquinas vacías; por eso conviene girar primero y recortar después."
+      ]
+    }
+  ]
+}

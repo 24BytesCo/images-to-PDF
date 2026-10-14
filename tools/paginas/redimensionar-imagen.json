@@ -1,0 +1,36 @@
+{
+  "slug": "redimensionar-imagen",
+  "sitio": "imagenes",
+  "orden": 4,
+  "nombre": "Redimensionar imagen",
+  "icono": "redimensionar",
+  "titulo": "Redimensionar imagen online: cambiar tamaño en píxeles o porcentaje",
+  "descripcion": "Cambia el tamaño de una imagen en píxeles, por porcentaje o a medidas de Instagram, HD o A4. Mantiene la proporción y no sube nada: se hace en tu navegador.",
+  "h1": "Redimensionar imágenes sin subirlas",
+  "bajada": "Pon el ancho y el alto que necesitas, un porcentaje o una medida habitual de redes y pantallas. La imagen se reescala en tu navegador y nunca sale de tu equipo.",
+  "resumen_tarjeta": "Cambia el tamaño en píxeles, en porcentaje o a medidas de redes y pantallas.",
+  "scripts": [
+    "assets/js/imagen-comun.js",
+    "assets/js/redimensionar-imagen.js"
+  ],
+  "pasos": [
+    ["Elige la imagen.", "Arrástrala o pulsa para seleccionarla. Verás su tamaño original en píxeles."],
+    ["Define la medida.", "Escribe ancho o alto (el otro se calcula solo), usa un porcentaje o escoge una medida habitual como 1080 × 1080 para Instagram."],
+    ["Descarga.", "El archivo se baja con la medida en el nombre, por ejemplo foto-1280x720.jpg."]
+  ],
+  "faqs": [
+    {"p": "¿Cómo reduzco una foto sin que se deforme?", "r": "Deja la opción «Mantener la proporción» y cambia solo el ancho o el alto: el otro lado se ajusta solo. Las medidas habituales también respetan la proporción y la imagen se ajusta para caber dentro."},
+    {"p": "¿Qué diferencia hay entre redimensionar y comprimir?", "r": "Redimensionar cambia cuántos píxeles tiene la imagen; comprimir baja el peso del archivo manteniendo o no esos píxeles. Reducir los píxeles casi siempre reduce también el peso. Si solo quieres un archivo más liviano, usa Comprimir imagen."},
+    {"p": "¿Puedo agrandar una imagen?", "r": "Sí, pero ampliar no crea detalle que no existe: una foto pequeña agrandada se verá borrosa. Funciona bien para ajustar una medida exacta, no para ganar nitidez."},
+    {"p": "¿Hay un límite de tamaño?", "r": "Hasta 16 000 píxeles por lado y 100 megapíxeles en total, que es lo que los navegadores suelen soportar sin quedarse sin memoria."}
+  ],
+  "secciones": [
+    {
+      "h": "Medidas que suelen pedir las plataformas",
+      "p": [
+        "Instagram trabaja bien con 1080 × 1080 para publicaciones cuadradas y 1080 × 1350 para las verticales. Para una imagen que se comparte como enlace en Facebook o WhatsApp, 1200 × 630 es la medida de vista previa más habitual. En correo y webs, 800 a 1200 píxeles de ancho bastan y cargan rápido.",
+        "Si vas a imprimir, los píxeles dependen del tamaño del papel: una hoja A4 a 300 ppp son 3508 × 2480. Reducir una foto de cámara de 6000 píxeles a 2000 antes de mandarla por correo suele bajar su peso a una décima parte sin que se note en pantalla."
+      ]
+    }
+  ]
+}

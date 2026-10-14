@@ -1,0 +1,44 @@
+      <style>
+        .fav-previas { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-end; }
+        .fav-previas figure { margin: 0; display: grid; gap: 6px; justify-items: center; font-size: 12.5px; color: var(--gris); }
+        .fav-previas canvas { background: repeating-conic-gradient(#e6eaf0 0 25%, #f8fafc 0 50%) 0 0 / 10px 10px; border: 1px solid var(--linea); image-rendering: auto; }
+      </style>
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra tu logo aquí</p>
+        <p class="zona-texto">o pulsa para elegirlo · PNG, JPG, WebP o SVG, mejor si es cuadrado y de 512 px o más</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir logo" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,image/svg+xml,.svg">
+
+      <div id="panel" hidden>
+        <div class="opciones">
+          <label class="campo">Si no es cuadrado
+            <select id="ajuste">
+              <option value="contain">Mostrarlo entero (con margen transparente)</option>
+              <option value="cover">Recortar al centro para llenar el cuadrado</option>
+            </select>
+          </label>
+          <label class="campo">Esquinas
+            <select id="esquinas">
+              <option value="0">Rectas</option>
+              <option value="0.22">Redondeadas</option>
+              <option value="0.5">Circulares</option>
+            </select>
+          </label>
+          <label class="campo">Color de fondo
+            <select id="fondoModo">
+              <option value="transparente">Transparente</option>
+              <option value="color">Color sólido</option>
+            </select>
+          </label>
+          <label class="campo" id="campoFondo" hidden>Color
+            <input id="fondo" type="color" value="#ffffff">
+          </label>
+        </div>
+        <div class="vista"><div class="fav-previas" id="previas"></div></div>
+        <p class="dato">El ZIP trae <strong>favicon.ico</strong> (16, 32 y 48 px), PNG de 16, 32, 180 (iPhone), 192 y 512 px (Android), <strong>site.webmanifest</strong> y el código HTML para pegar.</p>
+        <div class="barra">
+          <button class="boton boton-secundario boton-pequeno" type="button" id="cambiar">Elegir otra imagen</button>
+          <button class="boton" type="button" id="generar">Descargar paquete (ZIP)</button>
+        </div>
+      </div>

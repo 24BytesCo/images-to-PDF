@@ -1,0 +1,36 @@
+{
+  "slug": "unir-imagenes",
+  "sitio": "imagenes",
+  "orden": 7,
+  "nombre": "Unir imágenes",
+  "icono": "unir-imagen",
+  "titulo": "Unir imágenes en una sola: vertical, horizontal o en cuadrícula",
+  "descripcion": "Junta varias fotos o capturas en una única imagen, una debajo de otra, al lado o en cuadrícula, con separación y color de fondo. Sin subir nada a un servidor.",
+  "h1": "Unir varias imágenes en una sola",
+  "bajada": "Pega capturas una debajo de otra, junta fotos en una tira o arma una cuadrícula. Cambias el orden, la separación y el fondo; todo se hace en tu navegador.",
+  "resumen_tarjeta": "Une fotos o capturas en una sola imagen: vertical, horizontal o cuadrícula.",
+  "scripts": [
+    "assets/js/imagen-comun.js",
+    "assets/js/unir-imagenes.js"
+  ],
+  "pasos": [
+    ["Elige las imágenes.", "Selecciona dos o más. Puedes añadir más después y reordenarlas con las flechas."],
+    ["Escoge la disposición.", "Una debajo de otra, una al lado de otra, o en cuadrícula de 2 a 4 columnas. Ajusta la separación y el color de fondo."],
+    ["Descarga el resultado.", "Obtienes una sola imagen PNG, JPG o WebP con todas unidas."]
+  ],
+  "faqs": [
+    {"p": "¿Cómo junto varias capturas de pantalla en una sola?", "r": "Elígelas, déjalas en «Una debajo de otra» y ordénalas con las flechas. Todas se igualan al ancho de la más estrecha para que el resultado quede alineado."},
+    {"p": "¿Las imágenes se deforman si tienen tamaños distintos?", "r": "No. Se escalan manteniendo su proporción: en vertical se igualan en ancho; en horizontal, en alto; y en cuadrícula, al ancho de la más estrecha. Nunca se amplían por encima de esa medida."},
+    {"p": "¿Hay un límite de tamaño o de cantidad?", "r": "Hasta 40 imágenes y 16 000 píxeles por lado en el resultado. Si te pasas, la herramienta te avisa antes de intentarlo."},
+    {"p": "¿Se suben mis imágenes?", "r": "No. Se juntan en tu navegador y nunca salen de tu equipo."}
+  ],
+  "secciones": [
+    {
+      "h": "Usos habituales",
+      "p": [
+        "Reunir en una sola imagen las capturas de una conversación o de un trámite en línea para enviarlas como evidencia, armar un antes y después, o juntar las fotos de un producto en una sola lámina para un anuncio.",
+        "Si lo que necesitas es un documento con varias imágenes en páginas, una por hoja, usa mejor un convertidor de imágenes a PDF; unir imágenes produce una única imagen continua."
+      ]
+    }
+  ]
+}

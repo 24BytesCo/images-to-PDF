@@ -1,0 +1,36 @@
+{
+  "slug": "svg-a-png",
+  "sitio": "imagenes",
+  "orden": 12,
+  "nombre": "SVG a PNG",
+  "icono": "svg",
+  "titulo": "Convertir SVG a PNG online: elige el tamaño y el fondo",
+  "descripcion": "Convierte un archivo o código SVG a PNG, JPG o WebP al tamaño que necesites (×2, ×4 o ancho exacto), con fondo transparente o de color. En tu navegador.",
+  "h1": "Convertir SVG a PNG con el tamaño que necesites",
+  "bajada": "Sube un SVG o pega su código y obtén un PNG nítido a la escala que quieras, con fondo transparente o de color. Se convierte en tu navegador, sin subir nada.",
+  "resumen_tarjeta": "Rasteriza un SVG a PNG, JPG o WebP a cualquier escala y con fondo a elección.",
+  "scripts": [
+    "assets/js/imagen-comun.js",
+    "assets/js/svg-a-png.js"
+  ],
+  "pasos": [
+    ["Carga el SVG.", "Sube el archivo .svg o pega su código en la otra pestaña."],
+    ["Elige el tamaño y el fondo.", "Escala ×2, ×3, ×4 o un ancho exacto en píxeles. El fondo puede ser transparente, blanco o del color que elijas."],
+    ["Descarga la imagen.", "Obtienes un PNG (o JPG o WebP) con el tamaño en el nombre, por ejemplo logo-1024x1024.png."]
+  ],
+  "faqs": [
+    {"p": "¿Por qué convertir un SVG a PNG?", "r": "Muchos sitios, editores y redes sociales no aceptan SVG, sobre todo al subir imágenes de perfil, portadas o adjuntos. El PNG se abre en cualquier parte y conserva la transparencia."},
+    {"p": "¿Pierdo nitidez?", "r": "El SVG es vectorial, así que el PNG sale nítido al tamaño que pidas. Eso sí: el PNG ya no se puede ampliar sin pérdida, por eso conviene generarlo directamente al tamaño final (o mayor)."},
+    {"p": "Mi SVG no tiene ancho ni alto, ¿qué tamaño usa?", "r": "Si trae viewBox, se usa esa medida como tamaño base. Si no trae ninguna, se toma 300 × 150 px, que es lo que usan los navegadores, y siempre puedes fijar el ancho exacto."},
+    {"p": "¿Se ejecuta el código de mi SVG?", "r": "No. Los SVG se dibujan como imagen, sin ejecutar scripts, y la conversión ocurre en tu navegador sin enviarse a ningún servidor."}
+  ],
+  "secciones": [
+    {
+      "h": "Fuentes e imágenes enlazadas en el SVG",
+      "p": [
+        "Un SVG que usa una fuente instalada en tu equipo se dibujará con ella, pero si usa una fuente web o un archivo externo enlazado, el navegador no puede cargarlo al convertir y el resultado mostrará una fuente de reemplazo o un hueco. Si te pasa, convierte el texto a trazados en tu editor (Inkscape, Illustrator o Figma) y vuelve a exportar el SVG.",
+        "Las imágenes incrustadas como data URI dentro del SVG sí se respetan, ya que viajan dentro del propio archivo."
+      ]
+    }
+  ]
+}

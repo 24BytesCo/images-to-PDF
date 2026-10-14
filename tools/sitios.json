@@ -32,9 +32,10 @@
     "nombre_pie": "Más herramientas",
     "contacto": false,
     "portada": {
-      "titulo": "24Bytes Imágenes: comprimir y convertir fotos sin subirlas",
-      "descripcion": "Herramientas de imágenes gratis que funcionan en tu navegador: comprimir fotos y convertir HEIC a JPG. Tus imágenes no se suben a ningún servidor.",
-      "bajada": "Comprime y convierte tus fotos directamente en tu navegador. No se suben a ningún servidor: ni registro, ni marca de agua, ni límite de uso.",
+      "titulo": "24Bytes Imágenes: comprimir, convertir y editar fotos sin subirlas",
+      "descripcion": "Herramientas de imágenes gratis en tu navegador: comprimir, redimensionar, recortar y convertir fotos, quitar datos GPS, favicon, QR y más. Tus imágenes no se suben a ningún servidor.",
+      "bajada": "Comprime, redimensiona, recorta y convierte tus fotos directamente en tu navegador. No se suben a ningún servidor: ni registro, ni marca de agua, ni límite de uso.",
+      "lista_nombre": "Herramientas de imágenes",
       "porque_h": "Por qué no subimos tus fotos",
       "porque_p": "Casi todas las herramientas de imágenes en línea suben tu foto a un servidor ajeno para procesarla. Aquí el trabajo lo hace tu propio navegador: la foto del documento, el recibo o la imagen personal nunca viajan por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: todo sigue funcionando."
     }

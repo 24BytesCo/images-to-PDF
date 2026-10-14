@@ -1,0 +1,63 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra una imagen aquí</p>
+        <p class="zona-texto">o pulsa para elegirla · JPG, PNG, WebP, GIF o BMP</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir imagen" accept="image/jpeg,image/png,image/webp,image/gif,image/bmp">
+
+      <div id="panel" hidden>
+        <p class="dato" id="original"></p>
+        <div class="pestanas" role="group" aria-label="Cómo definir el tamaño">
+          <button class="pestana" type="button" data-modo="px" aria-pressed="true">En píxeles</button>
+          <button class="pestana" type="button" data-modo="pct" aria-pressed="false">En porcentaje</button>
+          <button class="pestana" type="button" data-modo="pre" aria-pressed="false">Medidas habituales</button>
+        </div>
+        <div class="opciones" id="modo-px">
+          <label class="campo">Ancho (px)<input id="ancho" type="number" min="1" max="16000" inputmode="numeric"></label>
+          <label class="campo">Alto (px)<input id="alto" type="number" min="1" max="16000" inputmode="numeric"></label>
+          <label class="campo">Proporción
+            <select id="proporcion">
+              <option value="1">Mantener la proporción</option>
+              <option value="0">Libre (puede deformar)</option>
+            </select>
+          </label>
+        </div>
+        <div class="opciones" id="modo-pct" hidden>
+          <label class="campo">Escala: <output id="pctValor">50 %</output>
+            <input id="pct" type="range" min="5" max="300" step="5" value="50">
+          </label>
+        </div>
+        <div class="opciones" id="modo-pre" hidden>
+          <label class="campo">Ajustar dentro de
+            <select id="preajuste">
+              <option value="1080x1080">1080 × 1080 · Instagram cuadrado</option>
+              <option value="1080x1350">1080 × 1350 · Instagram vertical</option>
+              <option value="1920x1080">1920 × 1080 · Full HD</option>
+              <option value="1280x720">1280 × 720 · HD</option>
+              <option value="1200x630">1200 × 630 · Facebook / enlaces</option>
+              <option value="800x600">800 × 600 · web y correo</option>
+              <option value="512x512">512 × 512 · avatar</option>
+              <option value="3508x2480">3508 × 2480 · A4 a 300 ppp</option>
+            </select>
+            <small>Se reduce o amplía sin deformar hasta que quepa en esa medida.</small>
+          </label>
+        </div>
+        <div class="opciones">
+          <label class="campo">Formato de salida
+            <select id="formato">
+              <option value="original">El mismo de la imagen</option>
+              <option value="image/jpeg">JPG</option>
+              <option value="image/png">PNG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </label>
+          <label class="campo">Calidad (JPG y WebP): <output id="calidadValor">90 %</output>
+            <input id="calidad" type="range" min="40" max="100" step="5" value="90">
+          </label>
+        </div>
+        <p class="dato">Resultado: <strong id="resultado"></strong></p>
+        <div class="barra">
+          <button class="boton boton-secundario boton-pequeno" type="button" id="cambiar">Elegir otra imagen</button>
+          <button class="boton" type="button" id="aplicar">Redimensionar y descargar</button>
+        </div>
+      </div>

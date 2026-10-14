@@ -1,0 +1,53 @@
+      <style>
+        .unir-fila { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid var(--linea); border-radius: 12px; background: var(--papel); }
+        .unir-fila canvas { width: 48px; height: 48px; object-fit: cover; border-radius: 6px; background: #f1f4f8; flex: none; }
+        .unir-fila .lista-nombre { flex: 1; }
+        .unir-mover { border: 1px solid #b9c2cf; background: var(--papel); border-radius: 8px; width: 34px; height: 34px; cursor: pointer; font-size: 16px; line-height: 1; }
+        .unir-mover:disabled { opacity: 0.35; cursor: not-allowed; }
+      </style>
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra las imágenes que quieres unir</p>
+        <p class="zona-texto">o pulsa para elegirlas · mínimo 2 · JPG, PNG, WebP, GIF o BMP</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir imágenes" accept="image/jpeg,image/png,image/webp,image/gif,image/bmp" multiple>
+
+      <div id="panel" hidden>
+        <div class="lista" id="lista"></div>
+        <div class="fila-botones">
+          <button class="boton boton-secundario boton-pequeno" type="button" id="agregar">Añadir más imágenes</button>
+        </div>
+        <div class="opciones">
+          <label class="campo">Disposición
+            <select id="modo">
+              <option value="vertical">Una debajo de otra</option>
+              <option value="horizontal">Una al lado de otra</option>
+              <option value="cuadricula">Cuadrícula</option>
+            </select>
+          </label>
+          <label class="campo" id="campoColumnas" hidden>Columnas
+            <select id="columnas">
+              <option value="2">2</option><option value="3">3</option><option value="4">4</option>
+            </select>
+          </label>
+          <label class="campo">Separación: <output id="espacioValor">0 px</output>
+            <input id="espacio" type="range" min="0" max="80" step="2" value="0">
+          </label>
+          <label class="campo">Color de fondo
+            <input id="fondo" type="color" value="#ffffff">
+          </label>
+          <label class="campo">Formato
+            <select id="formato">
+              <option value="image/png">PNG</option>
+              <option value="image/jpeg">JPG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </label>
+        </div>
+        <div class="vista"><canvas id="vista" aria-label="Vista previa del resultado"></canvas></div>
+        <p class="dato">Resultado: <strong id="medida"></strong></p>
+        <div class="barra">
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Empezar de nuevo</button>
+          <button class="boton" type="button" id="unir">Unir y descargar</button>
+        </div>
+      </div>

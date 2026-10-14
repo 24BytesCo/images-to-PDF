@@ -1,0 +1,37 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra una imagen aquí</p>
+        <p class="zona-texto">o pulsa para elegirla · JPG, PNG, WebP, GIF o BMP</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir imagen" accept="image/jpeg,image/png,image/webp,image/gif,image/bmp">
+
+      <div id="panel" hidden>
+        <div class="fila-botones">
+          <button class="boton boton-secundario boton-pequeno" type="button" id="izquierda">↺ Girar 90° a la izquierda</button>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="derecha">↻ Girar 90° a la derecha</button>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="horizontal">⇋ Voltear horizontal</button>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vertical">⇅ Voltear vertical</button>
+        </div>
+        <div class="opciones">
+          <label class="campo">Enderezar (ángulo fino): <output id="finoValor">0°</output>
+            <input id="fino" type="range" min="-45" max="45" step="0.5" value="0">
+            <small>Para corregir un horizonte torcido. Las esquinas que quedan vacías se rellenan con el fondo.</small>
+          </label>
+          <label class="campo">Formato de salida
+            <select id="formato">
+              <option value="image/png">PNG (fondo transparente en las esquinas)</option>
+              <option value="image/jpeg">JPG (esquinas con color de fondo)</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </label>
+          <label class="campo">Color de fondo (JPG)
+            <input id="fondo" type="color" value="#ffffff">
+          </label>
+        </div>
+        <div class="vista"><canvas id="vista" aria-label="Vista previa"></canvas></div>
+        <p class="dato">Resultado: <strong id="medida"></strong></p>
+        <div class="barra">
+          <button class="boton boton-secundario boton-pequeno" type="button" id="cambiar">Elegir otra imagen</button>
+          <button class="boton" type="button" id="guardar">Descargar</button>
+        </div>
+      </div>

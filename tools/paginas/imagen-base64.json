@@ -1,0 +1,36 @@
+{
+  "slug": "imagen-base64",
+  "sitio": "imagenes",
+  "orden": 11,
+  "nombre": "Imagen a Base64",
+  "icono": "base64",
+  "titulo": "Imagen a Base64 y Base64 a imagen: convertir online sin subir nada",
+  "descripcion": "Convierte una imagen a Base64 o a data URI para HTML y CSS, o decodifica un Base64 y descarga la imagen. Todo en tu navegador, sin subir archivos.",
+  "h1": "Convertir imagen a Base64 y Base64 a imagen",
+  "bajada": "Codifica una imagen como texto Base64 listo para pegar en HTML o CSS, o pega un Base64 y recupera la imagen. Nada sale de tu navegador.",
+  "resumen_tarjeta": "Imagen a Base64 o data URI para HTML y CSS, y de Base64 de vuelta a imagen.",
+  "scripts": [
+    "assets/js/imagen-comun.js",
+    "assets/js/imagen-base64.js"
+  ],
+  "pasos": [
+    ["Elige la dirección.", "«Imagen a Base64» convierte un archivo en texto; «Base64 a imagen» recupera el archivo desde el texto."],
+    ["Sube la imagen o pega el texto.", "Admite JPG, PNG, WebP, GIF, BMP y SVG. Al decodificar, el formato se detecta solo, con o sin el prefijo data:image."],
+    ["Copia o descarga.", "Copia el resultado como data URI, Base64 puro, etiqueta img o regla CSS; o descarga la imagen recuperada."]
+  ],
+  "faqs": [
+    {"p": "¿Qué es un data URI?", "r": "Es una dirección que lleva la imagen dentro: empieza por data:image/png;base64, y sigue el contenido codificado. Se puede usar en el atributo src de una etiqueta img o en un url() de CSS sin necesidad de un archivo aparte."},
+    {"p": "¿Cuándo conviene incrustar una imagen en Base64?", "r": "Para iconos o imágenes muy pequeñas (hasta unos pocos KB), correos HTML y archivos que deben ser autocontenidos. Para imágenes grandes no conviene: el Base64 pesa un 33 % más y el navegador no puede guardarlas en caché por separado."},
+    {"p": "¿Por qué el texto pesa más que la imagen?", "r": "Base64 representa cada 3 bytes con 4 caracteres, por eso el resultado es aproximadamente un tercio mayor que el archivo original."},
+    {"p": "¿Se sube mi imagen o mi texto a un servidor?", "r": "No. La codificación y decodificación se hacen en el navegador."}
+  ],
+  "secciones": [
+    {
+      "h": "Usos habituales",
+      "p": [
+        "En desarrollo web se usa para incrustar logos pequeños en una hoja de estilos o en un correo HTML, de modo que el mensaje se vea sin descargar archivos externos. También aparece cuando una API devuelve una imagen como cadena de texto y quieres ver qué contiene o guardarla.",
+        "Si recibes un Base64 que no abre, comprueba que no esté cortado y que sea realmente una imagen: la herramienta intenta reconocer el formato por su cabecera y te avisa cuando el contenido no corresponde a una imagen válida."
+      ]
+    }
+  ]
+}

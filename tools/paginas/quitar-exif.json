@@ -1,0 +1,37 @@
+{
+  "slug": "quitar-exif",
+  "sitio": "imagenes",
+  "orden": 10,
+  "nombre": "Quitar datos EXIF y GPS",
+  "icono": "exif",
+  "titulo": "Quitar EXIF y ubicación GPS de una foto: borrar metadatos online",
+  "descripcion": "Mira qué datos ocultos lleva tu foto (ubicación GPS, cámara, fecha) y bórralos antes de compartirla. Sin recomprimir ni subir nada: se hace en tu navegador.",
+  "h1": "Quitar EXIF, GPS y metadatos de tus fotos",
+  "bajada": "Las fotos del celular guardan dónde y cuándo se tomaron. Aquí ves qué datos lleva cada una y descargas una copia limpia, sin perder calidad y sin subirla a ningún servidor.",
+  "resumen_tarjeta": "Ve qué datos ocultos lleva una foto (GPS, cámara, fecha) y bórralos sin recomprimir.",
+  "scripts": [
+    "assets/vendor/jszip.min.js",
+    "assets/js/imagen-comun.js",
+    "assets/js/quitar-exif.js"
+  ],
+  "pasos": [
+    ["Elige tus fotos.", "Arrástralas o pulsa para seleccionarlas. Sirven JPG, PNG y WebP, varias a la vez."],
+    ["Revisa lo que llevan.", "Verás por cada foto la ubicación GPS, la cámara, la fecha y otros datos que guardaba sin que lo supieras."],
+    ["Descarga la copia limpia.", "Se retiran los datos ocultos directamente del archivo, sin volver a comprimir los píxeles: la calidad queda idéntica."]
+  ],
+  "faqs": [
+    {"p": "¿Mi foto puede revelar dónde vivo?", "r": "Sí. Muchos celulares guardan en cada foto las coordenadas GPS del lugar donde se tomó, con precisión de pocos metros. Una foto de tu casa, publicada con esos datos, puede delatarla. Quitarlos antes de compartirla evita ese riesgo."},
+    {"p": "¿Las redes sociales ya los borran?", "r": "Muchas lo hacen al publicar, pero no todas, y no cuando mandas la foto como archivo por correo, por WhatsApp como documento o por un foro. Borrarlos tú mismo es lo seguro."},
+    {"p": "¿La calidad cambia?", "r": "No. En JPG, PNG y WebP los datos ocultos se retiran del archivo sin volver a codificar la imagen. La única excepción es un JPG con orientación guardada en el EXIF: para que no aparezca de lado, se gira en los píxeles y se guarda con calidad alta."},
+    {"p": "¿Se suben las fotos?", "r": "No. Todo ocurre en tu navegador; las fotos, con su ubicación incluida, nunca salen de tu equipo."}
+  ],
+  "secciones": [
+    {
+      "h": "Qué datos guarda una foto",
+      "p": [
+        "El estándar EXIF registra la marca y el modelo del dispositivo, la fecha y hora exactas, la configuración de la cámara y, si el celular tiene la ubicación activada, las coordenadas GPS. Además, los editores pueden añadir bloques XMP o IPTC con el nombre del autor, palabras clave o el programa usado, y los PNG pueden llevar texto incrustado.",
+        "Esta herramienta retira esos bloques y conserva lo que hace falta para ver la imagen bien: el perfil de color, la transparencia y, en PNG, la resolución de impresión. Las capturas de pantalla suelen venir sin metadatos; las fotos de cámara y celular casi siempre los llevan."
+      ]
+    }
+  ]
+}

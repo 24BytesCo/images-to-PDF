@@ -1,0 +1,57 @@
+      <div class="pestanas" role="group" aria-label="Origen del SVG">
+        <button class="pestana" type="button" id="tab-archivo" aria-pressed="true">Subir archivo .svg</button>
+        <button class="pestana" type="button" id="tab-codigo" aria-pressed="false">Pegar código SVG</button>
+      </div>
+      <div id="vista-archivo">
+        <div class="zona" id="zona">
+          <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+          <p class="zona-titulo">Arrastra un archivo SVG aquí</p>
+          <p class="zona-texto">o pulsa para elegirlo</p>
+        </div>
+        <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir archivo SVG" accept="image/svg+xml,.svg">
+      </div>
+      <div id="vista-codigo" hidden>
+        <label class="campo">Código SVG
+          <textarea class="codigo" id="codigo" spellcheck="false" placeholder="&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;&gt;…&lt;/svg&gt;"></textarea>
+        </label>
+      </div>
+
+      <div id="panel" hidden>
+        <div class="opciones">
+          <label class="campo">Tamaño
+            <select id="escala">
+              <option value="1">Original (×1)</option>
+              <option value="2">Doble (×2)</option>
+              <option value="3">Triple (×3)</option>
+              <option value="4">Cuádruple (×4)</option>
+              <option value="ancho">Ancho exacto…</option>
+            </select>
+          </label>
+          <label class="campo" id="campoAncho" hidden>Ancho (px)
+            <input id="ancho" type="number" min="1" max="8000" value="1024" inputmode="numeric">
+          </label>
+          <label class="campo">Fondo
+            <select id="fondoModo">
+              <option value="transparente">Transparente</option>
+              <option value="blanco">Blanco</option>
+              <option value="color">Otro color</option>
+            </select>
+          </label>
+          <label class="campo" id="campoFondo" hidden>Color
+            <input id="fondo" type="color" value="#ffffff">
+          </label>
+          <label class="campo">Formato
+            <select id="formato">
+              <option value="image/png">PNG</option>
+              <option value="image/jpeg">JPG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </label>
+        </div>
+        <div class="vista"><img id="previa" alt="Vista previa del SVG"></div>
+        <p class="dato">Resultado: <strong id="medida"></strong></p>
+        <div class="barra">
+          <span class="ayuda">El SVG se dibuja en un lienzo en tu navegador.</span>
+          <button class="boton" type="button" id="convertir">Convertir y descargar</button>
+        </div>
+      </div>
