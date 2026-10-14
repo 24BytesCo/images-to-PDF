@@ -1,0 +1,38 @@
+{
+  "slug": "convertir-imagen",
+  "sitio": "imagenes",
+  "orden": 3,
+  "nombre": "Convertir imagen",
+  "icono": "convertir",
+  "titulo": "Convertir imagen: PNG a JPG, JPG a WebP, BMP y más sin subir nada",
+  "descripcion": "Cambia el formato de tus imágenes entre PNG, JPG, WebP y BMP en tu navegador. Varias a la vez, con control de calidad y fondo para la transparencia. Sin subir archivos.",
+  "h1": "Convertir imágenes entre PNG, JPG, WebP y BMP",
+  "bajada": "Cambia el formato de una o muchas imágenes en un clic. Eliges calidad y el color de fondo si tenían transparencia: todo ocurre en tu navegador y nada se sube.",
+  "resumen_tarjeta": "Pasa imágenes entre PNG, JPG, WebP y BMP, varias a la vez.",
+  "scripts": [
+    "assets/vendor/jszip.min.js",
+    "assets/js/imagen-comun.js",
+    "assets/js/convertir-imagen.js"
+  ],
+  "pasos": [
+    ["Elige las imágenes.", "Arrástralas o pulsa para seleccionarlas. Aceptamos JPG, PNG, WebP, GIF y BMP, varias a la vez."],
+    ["Escoge el formato de salida.", "PNG conserva transparencia, JPG es el más compatible y WebP pesa menos. En JPG y WebP puedes ajustar la calidad."],
+    ["Convierte y descarga.", "Una imagen se baja sola; si son varias, llegan juntas en un ZIP."]
+  ],
+  "faqs": [
+    {"p": "¿Se pierde calidad al convertir?", "r": "Pasar a PNG o BMP no pierde nada respecto a lo que ya tiene la imagen. JPG y WebP comprimen con pérdida: con calidad 90 % la diferencia casi no se ve y el archivo pesa mucho menos."},
+    {"p": "¿Qué pasa con la transparencia de un PNG al pasarlo a JPG?", "r": "JPG no admite transparencia, así que las zonas transparentes se rellenan con el color de fondo que elijas (blanco por defecto). Si necesitas conservarla, convierte a PNG o WebP."},
+    {"p": "¿Por qué mi GIF animado sale quieto?", "r": "El navegador solo entrega el primer cuadro de un GIF. La herramienta sirve para sacar una imagen fija de él, no para convertir la animación."},
+    {"p": "¿Mis imágenes salen de mi equipo?", "r": "No. La conversión se hace con el propio navegador; ningún archivo viaja por internet."}
+  ],
+  "secciones": [
+    {
+      "h": "Qué formato elegir",
+      "p": [
+        "PNG es ideal para capturas de pantalla, logotipos y gráficos con texto o bordes nítidos, y es el único de los tres que siempre guarda la transparencia sin pérdida. Para fotografías pesa bastante.",
+        "JPG es el que abre cualquier programa, sitio web o impresora, y funciona muy bien con fotos. WebP logra archivos más livianos con la misma calidad visual y lo soportan todos los navegadores actuales, aunque algunos programas antiguos aún no lo abren.",
+        "BMP casi no se usa hoy: no comprime, así que los archivos son enormes. Sirve para programas o equipos antiguos que lo exigen, como algunos sistemas de impresión o software industrial."
+      ]
+    }
+  ]
+}

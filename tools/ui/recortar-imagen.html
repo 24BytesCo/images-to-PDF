@@ -1,0 +1,37 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra una imagen aquí</p>
+        <p class="zona-texto">o pulsa para elegirla · JPG, PNG, WebP, GIF o BMP</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir imagen" accept="image/jpeg,image/png,image/webp,image/gif,image/bmp">
+
+      <div id="panel" hidden>
+        <div class="opciones">
+          <label class="campo">Proporción del recorte
+            <select id="proporcion">
+              <option value="0">Libre</option>
+              <option value="1">1:1 · cuadrado</option>
+              <option value="1.3333">4:3</option>
+              <option value="0.75">3:4</option>
+              <option value="1.5">3:2</option>
+              <option value="1.7778">16:9</option>
+              <option value="0.5625">9:16 · historias</option>
+              <option value="0.8">4:5 · Instagram vertical</option>
+            </select>
+          </label>
+          <label class="campo">Formato de salida
+            <select id="formato">
+              <option value="original">El mismo de la imagen</option>
+              <option value="image/jpeg">JPG</option>
+              <option value="image/png">PNG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </label>
+        </div>
+        <div class="vista"><canvas id="lienzo" class="interactivo" aria-label="Imagen con el área de recorte: arrastra para moverla o dibuja una nueva"></canvas></div>
+        <p class="dato">Arrastra el recuadro para moverlo, tira de una esquina para cambiarlo o dibuja uno nuevo sobre la imagen. Recorte: <strong id="medida"></strong></p>
+        <div class="barra">
+          <button class="boton boton-secundario boton-pequeno" type="button" id="cambiar">Elegir otra imagen</button>
+          <button class="boton" type="button" id="recortar">Recortar y descargar</button>
+        </div>
+      </div>

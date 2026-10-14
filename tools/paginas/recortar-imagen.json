@@ -1,0 +1,36 @@
+{
+  "slug": "recortar-imagen",
+  "sitio": "imagenes",
+  "orden": 4,
+  "nombre": "Recortar imagen",
+  "icono": "recortar",
+  "titulo": "Recortar imagen online: libre, cuadrada, 16:9 o para Instagram",
+  "descripcion": "Recorta una foto con un recuadro que arrastras, en proporción libre o fija (1:1, 4:3, 16:9, 9:16, 4:5). Sin subir la imagen a ningún servidor.",
+  "h1": "Recortar imágenes en tu navegador",
+  "bajada": "Dibuja el recuadro sobre la foto, elige una proporción si la necesitas y descarga solo la parte que quieres. La imagen no sale de tu equipo.",
+  "resumen_tarjeta": "Recorta con un recuadro arrastrable, en proporción libre o fija.",
+  "scripts": [
+    "assets/js/imagen-comun.js",
+    "assets/js/recortar-imagen.js"
+  ],
+  "pasos": [
+    ["Elige la imagen.", "Arrástrala o pulsa para seleccionarla."],
+    ["Marca el recorte.", "Mueve el recuadro, tira de una esquina o dibuja uno nuevo. Si necesitas una proporción (cuadrada, 16:9, 4:5…), elígela en la lista."],
+    ["Descarga.", "Se guarda solo el área marcada, a la resolución original de la foto: no pierde píxeles."]
+  ],
+  "faqs": [
+    {"p": "¿El recorte baja la calidad de la foto?", "r": "No. Se copia el área marcada píxel por píxel desde la imagen original, sin reducirla. Si guardas en JPG o WebP se aplica la compresión normal del formato."},
+    {"p": "¿Cómo recorto en cuadrado para una foto de perfil?", "r": "Elige la proporción 1:1 y mueve el recuadro hasta encuadrar la cara. El recorte mantiene la máxima resolución disponible en esa zona."},
+    {"p": "¿Funciona con el dedo en el celular?", "r": "Sí. El recuadro responde a toques y arrastres; las esquinas tienen un área de agarre amplia para poder tirar de ellas con el dedo."},
+    {"p": "¿Se suben mis fotos?", "r": "No. El recorte se hace en tu navegador y la foto nunca viaja por internet."}
+  ],
+  "secciones": [
+    {
+      "h": "Qué proporción conviene",
+      "p": [
+        "1:1 sirve para fotos de perfil y publicaciones cuadradas; 4:5 es la vertical que más espacio ocupa en el feed de Instagram; 9:16 es la de historias, estados de WhatsApp y videos cortos. 16:9 es la de las pantallas y las miniaturas de video, y 4:3 y 3:2 son las de las cámaras compactas y las réflex.",
+        "Si vas a imprimir o a subir a un portal que exige una medida exacta, recorta primero con la proporción correcta y luego cambia el tamaño con Redimensionar imagen: así no deformas la foto."
+      ]
+    }
+  ]
+}

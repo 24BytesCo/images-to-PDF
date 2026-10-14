@@ -1,0 +1,26 @@
+      <style>
+        .exif-item { padding: 12px 14px; border: 1px solid var(--linea); border-radius: 12px; background: var(--papel); }
+        .exif-cab { display: flex; align-items: center; gap: 10px; }
+        .exif-cab .lista-nombre { flex: 1; }
+        .exif-datos { margin: 8px 0 0; padding-left: 20px; color: var(--gris); font-size: 14.5px; }
+        .exif-datos li.exif-gps { color: var(--acento-oscuro); font-weight: 650; }
+        .exif-limpio { margin: 8px 0 0; color: var(--ok); font-size: 14.5px; font-weight: 600; }
+      </style>
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra tus fotos aquí</p>
+        <p class="zona-texto">o pulsa para elegirlas · JPG, PNG o WebP</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir fotos" accept="image/jpeg,image/png,image/webp" multiple>
+
+      <div id="panel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+        </div>
+        <div class="lista" id="lista"></div>
+        <div class="barra">
+          <span class="ayuda">No se recomprime la imagen: solo se retiran los datos ocultos.</span>
+          <button class="boton" type="button" id="limpiar">Quitar datos y descargar</button>
+        </div>
+      </div>

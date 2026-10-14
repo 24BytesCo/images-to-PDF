@@ -156,3 +156,19 @@ h1 { margin: 0; font-size: clamp(30px, 5vw, 50px); line-height: 1.04; letter-spa
 .tareas { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
 .tareas a { padding: 7px 14px; border: 1px solid var(--linea); border-radius: 999px; background: var(--papel); color: inherit; text-decoration: none; font-size: .95rem; }
 .tareas a:hover, .tareas a:focus-visible { border-color: var(--acento); color: var(--acento-oscuro); }
+
+/* ---- Herramientas de imagen (sitio imagenes) ---- */
+.vista { margin-top: 18px; display: grid; place-items: center; padding: 12px; border: 1px solid var(--linea); border-radius: var(--radio); background: repeating-conic-gradient(#e6eaf0 0 25%, #f8fafc 0 50%) 0 0 / 16px 16px; overflow: hidden; }
+.vista canvas, .vista img { max-width: 100%; height: auto; display: block; }
+.vista canvas.interactivo { touch-action: none; cursor: crosshair; }
+.dato { margin: 12px 0 0; color: var(--gris); font-size: 14.5px; }
+.fila-botones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.pestanas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.pestana { padding: 9px 16px; border-radius: 999px; border: 1px solid #b9c2cf; background: var(--papel); font-weight: 600; cursor: pointer; }
+.pestana[aria-pressed='true'] { background: var(--tinta); color: #fff; border-color: var(--tinta); }
+.codigo { width: 100%; min-height: 130px; margin-top: 10px; padding: 10px 12px; border: 1px solid #b9c2cf; border-radius: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; resize: vertical; background: #f8fafc; }
+.muestras { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 18px; }
+.muestra { display: grid; gap: 4px; padding: 8px; border: 1px solid var(--linea); border-radius: 12px; background: var(--papel); text-align: center; cursor: pointer; font-size: 13px; }
+.muestra:hover { border-color: var(--tinta); }
+.muestra-color { height: 54px; border-radius: 8px; border: 1px solid rgba(15, 23, 42, 0.12); }
+.muestra code { font-size: 13.5px; font-weight: 700; }
