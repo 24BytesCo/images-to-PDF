@@ -1,0 +1,29 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra tu audio aquí</p>
+        <p class="zona-texto">o pulsa para elegirlo · MP3, WAV, M4A, OGG, FLAC…</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir audio" accept="audio/*,video/*,.mp3,.m4a,.aac,.wav,.ogg,.opus,.flac,.mp4,.m4v,.mov,.webm,.mkv,.avi,.3gp">
+
+      <div id="panel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+        </div>
+        <div class="opciones">
+          <label class="campo">Qué cuenta como silencio
+            <select id="umbral"><option value="-30">Sensible · hasta -30 dB (ambiente ruidoso)</option><option value="-40" selected>Normal · -40 dB (recomendado)</option><option value="-50">Estricto · -50 dB (solo silencio casi absoluto)</option></select>
+          </label>
+          <label class="campo">Pausas más largas que
+            <select id="minimo"><option value="0.3">0,3 segundos</option><option value="0.5" selected>0,5 segundos (recomendado)</option><option value="1">1 segundo</option><option value="2">2 segundos</option></select>
+          </label>
+        </div>
+
+        <label class="campo campo-casilla"><input id="respiro" type="checkbox" checked> Dejar una pausa corta de 0,15 s entre frases para que no suene «cortado»</label>
+
+        <div class="barra">
+          <span class="ayuda">La primera vez descarga el motor (~30 MB); después queda guardado.</span>
+          <button class="boton" type="button" id="ejecutar">Quitar silencios</button>
+        </div>
+      </div>
+      <div id="salida"></div>

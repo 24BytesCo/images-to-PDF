@@ -118,17 +118,33 @@
 
   /**
    * Ejecuta ffmpeg sobre uno o varios archivos.
-   * opts: { archivos:File[], args:(entradas:string[])=>string[], salida:string, mime:string,
-   *         duracion?:number (de la salida, para el progreso), alProgreso(f), alEstado(t,f) }
-   * Devuelve un Blob con el resultado.
+   * opts: { archivos:File[], args:(entradas:string[], ayudas)=>string[]|Promise<string[]>, salida:string,
+   *         mime:string, duracion?:number (de la salida, para el progreso), alProgreso(f), alEstado(t,f),
+   *         recoger?:(ff)=>Promise<Blob> (si la salida no es un solo archivo), limpiar?:string[] }
+   * ayudas: { info(i) -> texto del registro de ffmpeg sobre la entrada i, tieneAudio(i) -> bool,
+   *           registro(args, regex) -> líneas del registro de un análisis sin salida (p. ej. `-f null -`) }
+   * Devuelve un Blob con el resultado. Muestra la espera de Suite (si existe) mientras trabaja.
    */
   const ejecutar = async (opts) => {
+    if (S.ocupado) S.ocupado(true, 'Procesando… no cierres la pestaña');
+    try {
+      return await ejecutarInterno(opts);
+    } finally {
+      if (S.ocupado) S.ocupado(false);
+    }
+  };
+
+  const ejecutarInterno = async (opts) => {
     const ff = await cargar(opts.alEstado);
     ultimoLog = [];
     const entradas = opts.archivos.map((f, i) => `entrada${i}.${extension(f.name)}`);
     let ultimo = 0;
     const avanzar = (f) => {
-      if (f > ultimo) { ultimo = Math.min(f, 0.99); if (opts.alProgreso) opts.alProgreso(ultimo); }
+      if (f > ultimo) {
+        ultimo = Math.min(f, 0.99);
+        if (opts.alProgreso) opts.alProgreso(ultimo);
+        if (typeof S.progreso === 'function') S.progreso(ultimo);
+      }
     };
     manejadorLog = (linea) => {
       if (opts.duracion > 0 && /time=/.test(linea)) {
@@ -143,11 +159,35 @@
         await ff.writeFile(entradas[i], new Uint8Array(await opts.archivos[i].arrayBuffer()));
       }
       opts.alEstado('Procesando…', 0);
-      const codigo = await ff.exec(opts.args(entradas));
+      const info = async (i) => {
+        ultimoLog = [];
+        const previo = manejadorLog;
+        manejadorLog = null;
+        try { await ff.exec(['-hide_banner', '-i', entradas[i]]); } catch (_) { /* sin salida: error esperado */ }
+        manejadorLog = previo;
+        const texto = ultimoLog.join('\n');
+        ultimoLog = [];
+        return texto;
+      };
+      /** Ejecuta un análisis (sin salida útil) y devuelve las líneas del registro que cumplan `patron`. */
+      const registro = async (argumentos, patron) => {
+        const previo = [manejadorLog, manejadorProgreso];
+        const lineas = [];
+        manejadorLog = (l) => { if (patron.test(l)) lineas.push(l); };
+        manejadorProgreso = null;
+        try { await ff.exec(argumentos); } finally { [manejadorLog, manejadorProgreso] = previo; }
+        ultimoLog = [];
+        return lineas;
+      };
+      const ayudas = { info, registro, tieneAudio: async (i) => /Stream #\d+:\d+.*: Audio/.test(await info(i)) };
+      const argumentos = await opts.args(entradas, ayudas);
+      ultimoLog = [];
+      const codigo = await ff.exec(argumentos);
       if (codigo !== 0) throw errorCon('ffmpeg', explicar());
+      if (opts.alProgreso) opts.alProgreso(1);
+      if (opts.recoger) return await opts.recoger(ff);
       const datos = await ff.readFile(opts.salida);
       if (!datos || !datos.length) throw errorCon('ffmpeg', explicar());
-      if (opts.alProgreso) opts.alProgreso(1);
       return new Blob([datos.buffer], { type: opts.mime });
     } catch (error) {
       if (error && /terminate/i.test(error.message || '')) throw errorCon('cancelado', 'Proceso cancelado.');
@@ -156,7 +196,7 @@
       manejadorLog = null;
       manejadorProgreso = null;
       if (ffmpeg) {
-        for (const n of [...entradas, opts.salida]) { try { await ffmpeg.deleteFile(n); } catch (_) { /* no existe */ } }
+        for (const n of [...entradas, opts.salida, ...(opts.limpiar || [])]) { try { await ffmpeg.deleteFile(n); } catch (_) { /* no existe */ } }
       }
     }
   };
@@ -218,6 +258,11 @@
 .ff-previa{display:block;width:100%;margin-top:14px;max-height:340px;border-radius:10px;background:#000}
 audio.ff-previa{background:transparent}
 .ff-previa[hidden]{display:none}
+.campo-casilla{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-weight:400}
+.campo-casilla input{padding:0;margin-top:3px;flex:none}
+.opciones[hidden],.campo[hidden]{display:none}
+.grabadora-tiempo{font-size:34px;font-weight:700;font-variant-numeric:tabular-nums}
+.grabadora .barra{margin-top:12px}
 `;
   const inyectarEstilos = () => {
     if (document.getElementById('ff-estilos')) return;
@@ -334,16 +379,22 @@ audio.ff-previa{background:transparent}
           salida: orden.salida,
           mime: orden.mime,
           duracion: orden.duracion,
+          recoger: orden.recoger,
+          limpiar: orden.limpiar,
           alEstado: estadoUI,
           alProgreso: (f) => { S.progreso(f); estadoUI(`Procesando… ${Math.round(f * 100)} %`, f); },
         });
         await S.esperarMinimo(); // el resultado se muestra al cumplirse el mínimo de la espera
         urlResultado = URL.createObjectURL(blob);
-        const tag = orden.mime.startsWith('video/') ? 'video' : orden.mime.startsWith('image/') ? 'img' : 'audio';
-        const previa = document.createElement(tag);
-        previa.src = urlResultado;
-        if (tag !== 'img') { previa.controls = true; if (tag === 'video') previa.playsInline = true; }
-        else previa.alt = 'Vista previa del resultado';
+        const tag = orden.mime.startsWith('video/') ? 'video' : orden.mime.startsWith('image/') ? 'img'
+          : orden.mime.startsWith('audio/') ? 'audio' : null;
+        let previa = null;
+        if (tag) {
+          previa = document.createElement(tag);
+          previa.src = urlResultado;
+          if (tag !== 'img') { previa.controls = true; if (tag === 'video') previa.playsInline = true; }
+          else previa.alt = 'Vista previa del resultado';
+        }
         const origen = estado.archivos.reduce((s, a) => s + a.size, 0);
         const info = document.createElement('p');
         info.className = 'ff-fila';
@@ -358,7 +409,8 @@ audio.ff-previa{background:transparent}
         descarga.textContent = 'Descargar';
         descarga.addEventListener('click', () => S.descargar(blob, orden.nombre, orden.mime));
         info.append(txt, descarga);
-        elResultado.append(info, previa);
+        elResultado.append(info);
+        if (previa) elResultado.appendChild(previa);
         if (orden.aviso) {
           const a = document.createElement('p');
           a.className = 'ff-aviso';
@@ -393,5 +445,5 @@ audio.ff-previa{background:transparent}
     return { estado, pintar, mostrarError };
   };
 
-  window.FFmpegMotor = { cargar, cancelar, ejecutar, sonda, montar, tiempo, extension, esAudio, esVideo, esMedio, validarTamano, VERSION_NUCLEO };
+  window.FFmpegMotor = { cargar, cancelar, ejecutar, sonda, montar, inyectarEstilos, topeBytes, tiempo, extension, esAudio, esVideo, esMedio, validarTamano, VERSION_NUCLEO };
 })();

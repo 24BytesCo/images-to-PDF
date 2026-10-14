@@ -1,0 +1,71 @@
+{
+  "sitio": "video",
+  "slug": "redimensionar-video",
+  "orden": 7,
+  "nombre": "Video a vertical 9:16",
+  "icono": "proporcion",
+  "titulo": "Pasar un video a vertical 9:16 para Reels, TikTok y Shorts online",
+  "descripcion": "Convierte un video horizontal a vertical 9:16, cuadrado 1:1 o 4:5 con fondo desenfocado, barras o recorte. También cambia su tamaño. En tu navegador, sin subirlo.",
+  "h1": "Pasar un video a vertical 9:16 (o cuadrado) sin subirlo",
+  "bajada": "Adapta un video a Reels, TikTok, Shorts o estados: elige la proporción y cómo rellenar los bordes. También sirve para reducir su resolución.",
+  "resumen_tarjeta": "Convierte un video a 9:16, 1:1, 4:5 o 16:9, o cambia su tamaño.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/redimensionar-video.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video.",
+      "MP4, MOV, WebM, MKV… del celular o de cualquier cámara."
+    ],
+    [
+      "Escoge la proporción y el relleno.",
+      "Vertical 9:16, cuadrado 1:1, retrato 4:5 u horizontal 16:9; y qué hacer con los bordes sobrantes."
+    ],
+    [
+      "Procesa.",
+      "El video se ajusta al lienzo elegido con el tamaño que indiques para su lado corto."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué relleno me conviene?",
+      "r": "El fondo desenfocado (el mismo video ampliado y borroso detrás) es el más usado en redes: no deja franjas negras y no recorta nada. Las barras negras son más limpias y rápidas. Recortar llena todo el cuadro, pero pierde los lados del video (cuidado con caras o textos en los bordes)."
+    },
+    {
+      "p": "¿Qué tamaño uso para cada red?",
+      "r": "Reels, TikTok, Shorts y estados: 9:16 a 1080 (queda 1080×1920). Feed de Instagram: 1:1 (1080×1080) o 4:5 (1080×1350). YouTube: 16:9. Si tu video es largo o tu computador lento, 720 px es más rápido y suficiente para móvil."
+    },
+    {
+      "p": "¿Por qué tarda más con el fondo desenfocado?",
+      "r": "Porque cada cuadro se procesa dos veces (el fondo borroso y el video encima) en un solo hilo de tu navegador. Con videos de más de 5 minutos conviene usar barras o recortar."
+    },
+    {
+      "p": "¿Cambia también el tamaño sin cambiar la proporción?",
+      "r": "Sí: elige «Conservar la proporción» y el tamaño del lado corto. Nunca amplía un video más allá de su tamaño original. Si lo que quieres es bajar el peso, usa también «Comprimir video»."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El cambio de formato ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Por qué los videos horizontales se ven mal en vertical",
+      "p": [
+        "Un video 16:9 en una pantalla vertical ocupa solo una franja en el centro y deja el resto vacío. Las redes lo penalizan o lo muestran con bandas. Adaptar el video a 9:16 aprovecha toda la pantalla y mejora la retención.",
+        "Con el fondo desenfocado el espectador ve imagen en toda la pantalla y el video original aparece completo en el centro, sin recortes."
+      ]
+    },
+    {
+      "h": "Tamaño y peso",
+      "p": [
+        "El tamaño elegido es el lado corto del lienzo: 1080 en 9:16 produce 1080×1920; 720 produce 720×1280. El video se codifica en H.264 con AAC, listo para subir. Si pesa demasiado para WhatsApp, pásalo por «Comprimir video» con tamaño objetivo."
+      ]
+    }
+  ]
+}

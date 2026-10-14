@@ -57,9 +57,9 @@
     "og_image_alt": "24Bytes Audio: herramientas de audio que no suben tus archivos",
     "lista_nombre": "Herramientas de audio",
     "portada": {
-      "titulo": "24Bytes Audio: sacar MP3, recortar y unir audios sin subirlos",
-      "descripcion": "Herramientas de audio gratis que funcionan en tu navegador: pasar un video a MP3, recortar, unir y convertir audios. Tus archivos no se suben a ningún servidor.",
-      "bajada": "Saca el audio de un video, recórtalo, únelo o conviértelo directamente en tu navegador. Tus archivos no se suben a ningún servidor: ni registro, ni marca de agua, ni límite de uso.",
+      "titulo": "24Bytes Audio: grabar, recortar, subir volumen y más, sin subir audios",
+      "descripcion": "Herramientas de audio gratis en tu navegador: grabadora de voz, pasar video a MP3, recortar, unir, subir volumen, quitar silencios, reducir ruido y más. Nada se sube.",
+      "bajada": "Graba tu voz, saca el audio de un video, recórtalo, únelo, límpialo o conviértelo directamente en tu navegador. Tus archivos no se suben a ningún servidor: ni registro, ni marca de agua, ni límite de uso.",
       "porque_h": "Por qué no subimos tus audios",
       "porque_p": "Casi todos los conversores de audio en línea envían tu archivo a un servidor ajeno: la nota de voz, la grabación de una reunión o la entrevista pasan por máquinas que no controlas. Aquí el trabajo lo hace tu propio navegador con ffmpeg compilado a WebAssembly. La primera vez se descarga el motor (unos 30 MB, se guarda en la caché y no se vuelve a bajar); tus archivos nunca salen de tu equipo."
     }
@@ -79,9 +79,9 @@
     "og_image_alt": "24Bytes Video: herramientas de video que no suben tus archivos",
     "lista_nombre": "Herramientas de video",
     "portada": {
-      "titulo": "24Bytes Video: comprimir video y hacer GIF sin subir archivos",
-      "descripcion": "Herramientas de video gratis que funcionan en tu navegador: comprimir video, convertir video a GIF y quitar el audio. Tus videos no se suben a ningún servidor.",
-      "bajada": "Comprime un video, conviértelo en GIF o quítale el sonido directamente en tu navegador. Tus videos no se suben a ningún servidor: ni registro, ni marca de agua, ni límite de uso.",
+      "titulo": "24Bytes Video: comprimir, recortar, unir y convertir sin subir archivos",
+      "descripcion": "Herramientas de video gratis en tu navegador: comprimir a un tamaño exacto, convertir a MP4, recortar, unir, grabar la pantalla, pasar a vertical y más. Nada se sube.",
+      "bajada": "Comprime a los MB que necesites, convierte a MP4, recorta, une, pasa a vertical o graba tu pantalla directamente en tu navegador. Tus videos no se suben a ningún servidor: ni registro, ni marca de agua, ni límite de uso.",
       "porque_h": "Por qué no subimos tus videos",
       "porque_p": "Casi todos los compresores de video en línea te piden subir el archivo completo a un servidor ajeno y esperar la cola. Aquí el trabajo lo hace tu propio navegador con ffmpeg compilado a WebAssembly: el video familiar, la grabación de pantalla o el material de un cliente no viajan por internet. La primera vez se descarga el motor (unos 30 MB, queda en la caché); tus videos nunca salen de tu equipo."
     }

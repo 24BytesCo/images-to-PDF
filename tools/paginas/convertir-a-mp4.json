@@ -1,0 +1,71 @@
+{
+  "sitio": "video",
+  "slug": "convertir-a-mp4",
+  "orden": 2,
+  "nombre": "Convertir video a MP4",
+  "icono": "convertir-video",
+  "titulo": "Convertir MOV, MKV, AVI y WebM a MP4 online sin subir el video",
+  "descripcion": "Convierte videos MOV, MKV, AVI, WebM, WMV, FLV o 3GP a MP4 (H.264). Si ya es compatible, solo cambia el contenedor sin perder calidad. En tu navegador.",
+  "h1": "Convertir MOV, MKV, AVI o WebM a MP4 sin subirlo",
+  "bajada": "Un solo conversor para los formatos que no se reproducen en todas partes. Si el video ya es compatible, la conversión es instantánea y sin pérdida.",
+  "resumen_tarjeta": "Convierte MOV, MKV, AVI, WebM y otros formatos a MP4.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/convertir-a-mp4.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video.",
+      "MOV, MKV, AVI, WebM, WMV, FLV, 3GP… cualquier formato de video."
+    ],
+    [
+      "Ajusta la calidad.",
+      "Solo cuenta si hay que recodificar. Deja marcada la copia rápida para no perder nada cuando sea posible."
+    ],
+    [
+      "Convierte y descarga.",
+      "La herramienta te dice si copió el video tal cual o si lo recodificó."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué hace la «copia rápida»?",
+      "r": "Un archivo MOV o MKV suele contener el mismo video H.264 y audio AAC que un MP4; lo que cambia es la «caja» que los envuelve. Si es el caso, la herramienta solo pasa los datos a una caja MP4: tarda segundos y no hay pérdida alguna. Si el video usa otro códec (HEVC, VP9, MPEG-4, WMV…), lo recodifica a H.264."
+    },
+    {
+      "p": "¿Mi MOV del iPhone se convierte bien?",
+      "r": "Sí. Si el iPhone grabó en H.264 (ajuste «Más compatible») se copia sin recodificar; si grabó en HEVC (ajuste «Alta eficiencia»), se recodifica a H.264, que tarda más pero se reproduce en cualquier dispositivo."
+    },
+    {
+      "p": "¿Por qué convertir a MP4?",
+      "r": "Es el formato que reproduce casi todo: WhatsApp, Instagram, YouTube, televisores, Windows, Mac, Android e iPhone. MKV, AVI o WebM dan problemas en muchas apps y reproductores."
+    },
+    {
+      "p": "¿Convierte a otros formatos (MOV, AVI, MKV)?",
+      "r": "No: esta herramienta solo produce MP4. Es lo que se necesita casi siempre, y mantenerla simple evita resultados que no se abren en ningún lado."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. La conversión ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Contenedor y códec: por qué a veces es instantáneo",
+      "p": [
+        "Un archivo de video tiene dos capas: el códec (cómo se comprimen imagen y sonido) y el contenedor (el formato del archivo: .mov, .mkv, .mp4). Cambiar solo el contenedor no toca la imagen, así que no hay pérdida y es muy rápido. Cambiar el códec obliga a decodificar y volver a comprimir todo el video.",
+        "La herramienta lee el video y decide sola cuál de los dos caminos tomar; al terminar te dice cuál fue."
+      ]
+    },
+    {
+      "h": "Si el resultado pesa demasiado",
+      "p": [
+        "Un MP4 recodificado con calidad alta puede pesar más que el original (por ejemplo, un WebM de poca tasa). Si lo que buscas es reducir el peso, pasa el resultado por «Comprimir video», que además permite fijar un tamaño objetivo para WhatsApp o correo."
+      ]
+    }
+  ]
+}

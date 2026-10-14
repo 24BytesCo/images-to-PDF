@@ -1,0 +1,71 @@
+{
+  "sitio": "audio",
+  "slug": "audio-a-video",
+  "orden": 11,
+  "nombre": "Audio a video (MP3 + imagen)",
+  "icono": "audio-video",
+  "titulo": "Convertir audio a video MP4 con una imagen, para YouTube y Reels",
+  "descripcion": "Une un MP3 (o WAV, M4A) con una imagen y crea un video MP4 listo para YouTube, Instagram, TikTok o Facebook. Gratis y en tu navegador, sin subir nada.",
+  "h1": "Convertir un audio en video con una imagen, sin subirlo",
+  "bajada": "YouTube, Reels, Shorts y TikTok no aceptan audio suelto. Une tu MP3 con una portada y obtén un MP4 listo para publicar.",
+  "resumen_tarjeta": "Convierte un MP3 y una imagen en un video MP4 para YouTube o Reels.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/audio-a-video.js"
+  ],
+  "pasos": [
+    [
+      "Elige el audio y la imagen.",
+      "Puedes soltar los dos a la vez. La imagen se verá fija durante todo el audio."
+    ],
+    [
+      "Escoge el formato.",
+      "Horizontal para YouTube, vertical para Reels, Shorts y TikTok, cuadrado para el feed."
+    ],
+    [
+      "Crea el video.",
+      "Dura exactamente lo mismo que el audio; puedes verlo antes de descargarlo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué imagen conviene usar?",
+      "r": "Una portada con el título, el logo o una foto de la canción. Para YouTube, 1280×720 es el tamaño natural; para Reels y Shorts, 1080×1920. Si la imagen no tiene esa proporción, puedes mostrarla completa con barras negras o recortarla para llenar el cuadro."
+    },
+    {
+      "p": "¿Cuánto dura el video y cuánto pesa?",
+      "r": "Dura lo que el audio. Como la imagen no cambia, el video pesa poco: casi todo el peso es el audio a 192 kbps. Una canción de 4 minutos suele quedar en menos de 8 MB."
+    },
+    {
+      "p": "¿Puedo subir un podcast a YouTube con esto?",
+      "r": "Sí, es uno de los usos más comunes. YouTube acepta el MP4 como cualquier otro video. Si el episodio dura horas, recuerda el tope de 500 MB por archivo de esta herramienta."
+    },
+    {
+      "p": "¿Qué formatos de imagen acepta?",
+      "r": "JPG y PNG directamente; WebP, BMP y GIF se convierten a PNG dentro del navegador antes de unirlos (de un GIF se usa solo el primer cuadro)."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. La unión de imagen y audio ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Por qué las plataformas piden un video",
+      "p": [
+        "YouTube, Instagram, TikTok y Facebook solo publican video. Un MP3 «a pelo» no se puede subir, así que músicos, podcasters y creadores de contenido necesitan un envoltorio de video con una imagen estática. Esta herramienta lo hace sin instalar un editor ni pagar una suscripción.",
+        "El video se codifica en H.264 con AAC, el formato que aceptan todas las plataformas, con una tasa de cuadros baja porque la imagen no se mueve: archivo liviano y subida rápida."
+      ]
+    },
+    {
+      "h": "Cómo sacar un resultado profesional",
+      "p": [
+        "Pon el título o el nombre del artista dentro de la propia imagen: es lo único que se verá. Para un solo audio largo, un fundido final (con «Fundido de entrada y salida») evita el corte brusco. Si tienes varios audios, únelos primero con «Unir audios» para publicar un solo video."
+      ]
+    }
+  ]
+}

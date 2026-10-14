@@ -1,0 +1,71 @@
+{
+  "sitio": "video",
+  "slug": "recortar-video",
+  "orden": 3,
+  "nombre": "Recortar video",
+  "icono": "recortar",
+  "titulo": "Recortar un video online gratis: cortar inicio y final sin subirlo",
+  "descripcion": "Corta un video entre dos instantes marcándolos en la vista previa. Modo preciso (al fotograma) o rápido (sin recodificar). Gratis y en tu navegador, sin subir el archivo.",
+  "h1": "Recortar un video sin subirlo a internet",
+  "bajada": "Marca dónde empieza y dónde termina el tramo que quieres conservar, directamente sobre la vista previa. El video no sale de tu equipo.",
+  "resumen_tarjeta": "Corta un video entre dos instantes, al fotograma o en modo rápido.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/recortar-video.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video.",
+      "MP4, MOV, WebM, MKV, AVI… aparece una vista previa para moverte por él."
+    ],
+    [
+      "Marca inicio y fin.",
+      "Reproduce hasta el punto exacto y pulsa «Marcar inicio aquí» o «Marcar fin aquí»; también puedes escribir los segundos."
+    ],
+    [
+      "Elige preciso o rápido y recorta.",
+      "El preciso corta al fotograma; el rápido es casi instantáneo pero se ajusta a un fotograma clave."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Cuál es la diferencia entre recorte preciso y rápido?",
+      "r": "El preciso vuelve a codificar el video: cuesta más tiempo pero empieza exactamente donde marcaste. El rápido copia los datos sin recodificar: es casi instantáneo y no pierde calidad, pero solo puede empezar en un «fotograma clave» (suelen estar cada 1 a 5 segundos), así que puede traer unos segundos de más al principio."
+    },
+    {
+      "p": "¿Se pierde calidad al recortar?",
+      "r": "En el modo rápido, ninguna. En el preciso, el video se recodifica con una calidad alta (H.264, CRF 23), imperceptible en la mayoría de los casos, pero técnicamente no es idéntico al original."
+    },
+    {
+      "p": "¿Puedo quedarme con varios tramos?",
+      "r": "Recorta cada tramo por separado y únelos después con «Unir videos». Así controlas el orden y puedes descartar lo que sobra."
+    },
+    {
+      "p": "¿Qué formato tiene el resultado?",
+      "r": "MP4 (H.264 + AAC) en modo preciso. En modo rápido se conserva el contenedor del original (MP4, WebM o MKV); si el formato no admite el recorte rápido (AVI, WMV…), se avisa y se recorta con precisión."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El recorte ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cuándo usar cada modo",
+      "p": [
+        "Rápido: para quitar el principio y el final de una grabación larga cuando unos segundos de más no importan, o para trocear un video grande en minutos. Preciso: para un clip que tiene que empezar en un gesto o una palabra concreta, o cuando el rápido dejó algo que no querías.",
+        "Si vas a subirlo a una red social, recorta primero y comprime después con «Comprimir video» para que el archivo sea liviano."
+      ]
+    },
+    {
+      "h": "Videos del celular",
+      "p": [
+        "Los videos de iPhone (MOV) y Android (MP4) se recortan sin problema. La vista previa usa el reproductor de tu navegador: si no puede mostrar el códec (por ejemplo, HEVC en algunos Chrome), igual puedes escribir los segundos a mano y recortar."
+      ]
+    }
+  ]
+}

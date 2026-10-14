@@ -1,0 +1,71 @@
+{
+  "sitio": "video",
+  "slug": "cambiar-audio-video",
+  "orden": 11,
+  "nombre": "Cambiar o añadir audio a un video",
+  "icono": "audio-video",
+  "titulo": "Cambiar o añadir audio a un video online (música, voz en off)",
+  "descripcion": "Pon música a un video, reemplaza su sonido por otro audio o mezcla ambos. Sin recodificar la imagen cuando es posible. En tu navegador, sin subir nada.",
+  "h1": "Cambiar o añadir el audio de un video sin subirlo",
+  "bajada": "Reemplaza el sonido original por una canción o una voz en off, o mézclalos con la música de fondo a un volumen más bajo.",
+  "resumen_tarjeta": "Reemplaza o mezcla el audio de un video con música o voz en off.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/cambiar-audio-video.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video y el audio.",
+      "Puedes soltar los dos archivos a la vez: se reconocen solos."
+    ],
+    [
+      "Decide cómo combinarlos.",
+      "Reemplazar el sonido original o mezclarlo con el nuevo, y qué hacer si el audio es más corto que el video."
+    ],
+    [
+      "Combina y descarga.",
+      "La imagen se copia sin recodificar cuando el video ya es MP4/MOV, así que es rápido y sin pérdida."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Qué diferencia hay entre reemplazar y mezclar?",
+      "r": "Reemplazar descarta el audio original: el video queda con el sonido nuevo solamente. Mezclar conserva el sonido original (voces, ambiente) y suma el nuevo por encima, a un volumen que eliges (100 %, 50 % o 25 %): lo normal para música de fondo."
+    },
+    {
+      "p": "¿Y si el video no tiene audio?",
+      "r": "También funciona: el audio nuevo se añade tal cual (no hay nada que mezclar y la herramienta te lo dice)."
+    },
+    {
+      "p": "¿Qué pasa si el audio dura menos que el video?",
+      "r": "Tú eliges: o el resultado termina cuando acaba el audio, o el audio se repite en bucle hasta cubrir todo el video. Si el audio es más largo, siempre se corta donde termina el video."
+    },
+    {
+      "p": "¿Puedo usar música con derechos de autor?",
+      "r": "La herramienta no lo impide, pero publicar música ajena en YouTube, Instagram o TikTok puede traer bloqueos o reclamaciones. Usa música propia, libre de derechos o con licencia."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. La combinación ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Casos típicos",
+      "p": [
+        "Poner música a un video del celular, cambiar un audio dañado por una grabación aparte, añadir una voz en off a una grabación de pantalla, o sustituir el sonido de un clip por la pista limpia de una grabadora externa.",
+        "Para que la música no tape la voz, usa «Mezclar» con 25 % o 50 %. Si el audio nuevo es muy bajo o muy alto, ajústalo antes con «Subir volumen y normalizar»."
+      ]
+    },
+    {
+      "h": "Qué se conserva",
+      "p": [
+        "La imagen del video se copia sin tocar cuando es MP4, M4V o MOV; con otros formatos se recodifica a H.264. El audio final es AAC de 192 kbps. Si solo quieres quitar el sonido, usa «Quitar el audio de un video»."
+      ]
+    }
+  ]
+}

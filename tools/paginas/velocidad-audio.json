@@ -1,0 +1,67 @@
+{
+  "sitio": "audio",
+  "slug": "velocidad-audio",
+  "orden": 7,
+  "nombre": "Cambiar velocidad del audio",
+  "icono": "velocidad",
+  "titulo": "Acelerar o ralentizar un audio online, con o sin cambio de tono",
+  "descripcion": "Cambia la velocidad de un audio de 0,25× a 4× manteniendo el tono de la voz, o con el efecto de disco acelerado. Gratis, sin subir el archivo.",
+  "h1": "Acelerar o ralentizar un audio sin cambiar la voz",
+  "bajada": "Escucha una clase a 1,5×, un dictado más despacio o crea el efecto «ardilla»: tú decides si el tono se mantiene o cambia con la velocidad.",
+  "resumen_tarjeta": "Acelera o ralentiza un audio, manteniendo el tono o cambiándolo.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/velocidad-audio.js"
+  ],
+  "pasos": [
+    [
+      "Elige el audio.",
+      "MP3, WAV, M4A, OGG… o un video del que quieras solo el sonido."
+    ],
+    [
+      "Fija la velocidad.",
+      "Escribe un número entre 0,25 y 4, o usa los atajos de 0,75×, 1,25×, 1,5× y 2×."
+    ],
+    [
+      "Elige qué pasa con el tono.",
+      "«Mantener» conserva la voz natural; «cambiar» sube o baja el tono junto con la velocidad, como un disco de vinilo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Cuál es la diferencia entre mantener y cambiar el tono?",
+      "r": "Mantener el tono estira o comprime el tiempo sin tocar la altura de la voz: a 1,5× una persona sigue sonando como ella misma, solo que habla más rápido. Cambiar el tono es el efecto clásico de acelerar un disco: más rápido y más agudo (voz de ardilla), o más lento y más grave."
+    },
+    {
+      "p": "¿Hasta qué velocidad se entiende una voz?",
+      "r": "Con el tono mantenido, la mayoría de las voces se entienden bien hasta 2×. A 3× o 4× sirve para buscar un tramo, no para escuchar. Por debajo de 0,5× aparecen artefactos metálicos."
+    },
+    {
+      "p": "¿Sirve para una clase, un podcast o un audio de WhatsApp?",
+      "r": "Sí: es justo el uso más común. Guarda el audio a 1,5× y lo escuchas en menos tiempo en cualquier reproductor, sin depender de que la app tenga control de velocidad."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. Cambiar la velocidad ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Para qué se usa cada modo",
+      "p": [
+        "Con el tono mantenido: oír clases, conferencias y audiolibros más rápido; transcribir una entrevista a 0,75× para no perder palabras; ajustar un locutado para que quepa en un tiempo exacto.",
+        "Cambiando el tono: efectos de voz (ardilla, monstruo), sacar una canción de oído más despacio, o recrear el sonido de un disco a otra revolución. Es un efecto, no una corrección: la voz no suena natural."
+      ]
+    },
+    {
+      "h": "Cómo queda el archivo",
+      "p": [
+        "El resultado es un MP3 de 192 kbps. La duración final es la original dividida entre la velocidad: un audio de 10 minutos a 2× dura 5. El archivo original no se modifica."
+      ]
+    }
+  ]
+}

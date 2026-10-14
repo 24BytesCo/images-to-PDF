@@ -1,0 +1,67 @@
+{
+  "sitio": "audio",
+  "slug": "fundido-audio",
+  "orden": 10,
+  "nombre": "Fundido de entrada y salida",
+  "icono": "fundido",
+  "titulo": "Añadir fundido de entrada y salida a un audio (fade in / out)",
+  "descripcion": "Haz que un audio o una canción empiece y termine suavemente con un fundido (fade in y fade out) de la duración que elijas. En tu navegador, sin subir nada.",
+  "h1": "Añadir fundido de entrada y salida a un audio",
+  "bajada": "Que la música no empiece de golpe ni se corte seco: define cuántos segundos dura el fundido al principio y al final.",
+  "resumen_tarjeta": "Empieza y termina el audio con un fundido suave (fade in / out).",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/fundido-audio.js"
+  ],
+  "pasos": [
+    [
+      "Elige el audio.",
+      "Una canción, un tono de llamada, una pista para tu video…"
+    ],
+    [
+      "Escribe los fundidos.",
+      "Segundos de entrada y de salida. Pon 0 en el que no quieras."
+    ],
+    [
+      "Aplica y escucha.",
+      "El resultado se puede oír antes de descargarlo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Cuánto debe durar un fundido?",
+      "r": "Para música, 2 o 3 segundos al inicio y 3 a 5 al final queda natural. Para un tono de llamada o un efecto corto, medio segundo basta. Si el fundido es más largo que el audio, la herramienta te avisa."
+    },
+    {
+      "p": "¿Sirve para unir dos canciones con transición?",
+      "r": "No directamente: aplica un fundido de salida a la primera y uno de entrada a la segunda, y luego únelas con «Unir audios». Las dos se oirán una detrás de otra, sin superponerse."
+    },
+    {
+      "p": "¿Se cambia el resto del audio?",
+      "r": "El audio de en medio queda igual. Como el archivo se vuelve a codificar a MP3 de 192 kbps, se pierde un poco de calidad respecto a un original sin comprimir."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El fundido ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Para qué sirve un buen fundido",
+      "p": [
+        "Un audio que empieza o termina en seco suena a corte de edición. El fundido de entrada sube el volumen desde silencio, y el de salida lo baja hasta silencio: evita el «clic» de un corte brusco y hace que la música se sienta terminada.",
+        "Es especialmente útil al recortar una canción para usarla de tono de llamada, de música de un video o de fondo en una presentación."
+      ]
+    },
+    {
+      "h": "Combínalo con otras herramientas",
+      "p": [
+        "Un flujo típico: recortar el tramo que te interesa con «Recortar audio», dar fundido aquí y, si lo vas a poner en un video, usar «Audio a video» o «Cambiar o añadir audio a un video»."
+      ]
+    }
+  ]
+}

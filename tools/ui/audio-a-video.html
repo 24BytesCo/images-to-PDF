@@ -1,0 +1,28 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra el audio y la imagen aquí</p>
+        <p class="zona-texto">o pulsa para elegirlos · un audio (MP3, WAV, M4A) y una imagen (JPG, PNG, WebP)</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir audio e imagen" accept="audio/*,image/*,.mp3,.m4a,.aac,.wav,.ogg,.opus,.flac,.jpg,.jpeg,.png,.webp,.bmp,.gif" multiple>
+
+      <div id="panel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+        </div>
+        <div class="lista" id="lista"></div>
+        <div class="opciones">
+          <label class="campo">Para qué red o plataforma
+            <select id="formato"><option value="1280x720" selected>YouTube · horizontal 1280×720</option><option value="1080x1920">Reels, Shorts, TikTok · vertical 1080×1920</option><option value="1080x1080">Instagram, Facebook · cuadrado 1080×1080</option></select>
+          </label>
+          <label class="campo">Si la imagen no encaja
+            <select id="ajuste"><option value="barras" selected>Mostrarla completa, con barras negras</option><option value="recortar">Recortar para llenar todo el cuadro</option></select>
+          </label>
+        </div>
+
+        <div class="barra">
+          <span class="ayuda">El video dura lo mismo que el audio. La primera vez descarga el motor (~30 MB); después queda guardado.</span>
+          <button class="boton" type="button" id="ejecutar">Crear video</button>
+        </div>
+      </div>
+      <div id="salida"></div>

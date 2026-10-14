@@ -86,8 +86,12 @@ def test_mas_herramientas_solo_del_sitio():
         assert f'https://{cfg["dominio"]}' not in cuerpo
 
 
-RUTAS_AUDIO = {"mp4-a-mp3", "convertir-audio", "recortar-audio", "unir-audios", "privacidad"}
-RUTAS_VIDEO = {"comprimir-video", "video-a-gif", "quitar-audio-video", "privacidad"}
+RUTAS_AUDIO = {"mp4-a-mp3", "convertir-audio", "recortar-audio", "unir-audios", "volumen-audio", "velocidad-audio",
+               "quitar-silencios-audio", "reducir-ruido-audio", "fundido-audio", "audio-a-video", "grabadora-de-voz",
+               "privacidad"}
+RUTAS_VIDEO = {"comprimir-video", "video-a-gif", "quitar-audio-video", "recortar-video", "unir-videos", "convertir-a-mp4",
+               "velocidad-video", "rotar-voltear-video", "redimensionar-video", "video-a-jpg", "cambiar-audio-video",
+               "grabador-de-pantalla", "gif-a-mp4", "privacidad"}
 
 
 def slugs_de_sitemap(clave):

@@ -11,11 +11,24 @@
           <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
         </div>
         <div class="opciones">
+          <label class="campo">Cómo comprimir
+            <select id="modo"><option value="nivel" selected>Por nivel de compresión</option><option value="objetivo">Por tamaño objetivo (a X MB)</option></select>
+          </label>
+        </div>
+        <div class="opciones" id="camposNivel">
           <label class="campo">Nivel de compresión
             <select id="nivel"><option value="26">Ligera · casi sin diferencia</option><option value="28" selected>Equilibrada (recomendada)</option><option value="32">Fuerte · mucho menos peso</option></select>
           </label>
           <label class="campo">Resolución máxima (alto)
             <select id="resolucion"><option value="0" selected>No cambiar</option><option value="1080">1080 p</option><option value="720">720 p</option><option value="480">480 p</option></select>
+          </label>
+        </div>
+        <div class="opciones" id="camposObjetivo" hidden>
+          <label class="campo">Para enviarlo por
+            <select id="destino"><option value="16" selected>WhatsApp · 16 MB</option><option value="10">Discord (cuenta gratuita) · 10 MB</option><option value="25">Correo electrónico · 25 MB</option><option value="otro">Otro tamaño…</option></select>
+          </label>
+          <label class="campo" id="campoMb" hidden>Tamaño máximo (MB)
+            <input id="objetivoMb" type="number" inputmode="decimal" min="0.5" step="0.5" value="8">
           </label>
         </div>
         <p class="ayuda" id="avisoLargo" hidden>Este video es largo: comprimir en el navegador es más lento que en un servidor y puede tardar varios minutos. Deja la pestaña abierta.</p>

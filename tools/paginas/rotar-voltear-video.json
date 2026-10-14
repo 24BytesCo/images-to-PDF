@@ -1,0 +1,71 @@
+{
+  "sitio": "video",
+  "slug": "rotar-voltear-video",
+  "orden": 9,
+  "nombre": "Rotar y voltear video",
+  "icono": "rotar-video",
+  "titulo": "Rotar y voltear un video online: 90°, 180° y espejo, sin subirlo",
+  "descripcion": "Gira un video 90° a la derecha o izquierda, ponlo al revés o hazle espejo horizontal o vertical, viendo antes cómo queda. En tu navegador, sin subir el archivo.",
+  "h1": "Rotar o voltear un video sin subirlo a internet",
+  "bajada": "¿Grabaste con el celular de lado o el video quedó al revés? Gíralo o hazle espejo, con vista previa antes de guardar.",
+  "resumen_tarjeta": "Gira 90° o 180° y voltea un video, con vista previa.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/rotar-voltear-video.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video.",
+      "MP4, MOV, WebM, MKV… aparece una vista previa."
+    ],
+    [
+      "Escoge la acción.",
+      "Girar 90° a un lado u otro, 180°, espejo horizontal o volteo vertical. La vista previa se actualiza al instante."
+    ],
+    [
+      "Aplica y descarga.",
+      "Se guarda un MP4 nuevo; el original no se toca."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Cuál es la diferencia entre girar y voltear?",
+      "r": "Girar mueve el video como si dieras vuelta a una foto: 90° lo pasa de horizontal a vertical. Voltear (espejo) invierte la imagen como en un espejo: la izquierda pasa a la derecha, sin cambiar la orientación general."
+    },
+    {
+      "p": "Mi video se ve de lado en el computador pero bien en el celular, ¿por qué?",
+      "r": "El celular guarda el video siempre en horizontal y añade una nota de «rotación». Algunos reproductores ignoran esa nota. Aquí el video se lee con la rotación aplicada; si aun así sale de lado, gíralo con esta herramienta y quedará fijo en cualquier reproductor."
+    },
+    {
+      "p": "¿Se pierde calidad?",
+      "r": "Girar obliga a recodificar el video, con calidad alta (H.264, CRF 23). La pérdida es mínima y difícil de ver."
+    },
+    {
+      "p": "¿Se rota el audio también?",
+      "r": "El audio no se afecta; se vuelve a codificar a AAC y suena igual."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El giro ocurre en tu navegador con ffmpeg compilado a WebAssembly. Lo único que se descarga es el motor (unos 30 MB, la primera vez, y queda en la caché); tu archivo nunca sale de tu equipo. Puedes comprobarlo desconectando el wifi una vez cargado el motor: sigue funcionando."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador guarda el archivo varias veces en RAM mientras lo procesa y, por encima de ese tamaño, la pestaña se cierra sin avisar. Si el tuyo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Problemas que resuelve",
+      "p": [
+        "Videos grabados con el celular en la orientación equivocada, escaneos o cámaras de seguridad montadas boca abajo, clips de una cámara de acción girada, o textos que se leen al revés porque la cámara frontal los espeja (para eso, el espejo horizontal).",
+        "Si después quieres cambiar la proporción para Reels o TikTok, usa «Redimensionar video y pasar a vertical»."
+      ]
+    },
+    {
+      "h": "Sobre la vista previa",
+      "p": [
+        "La vista previa es una simulación con tu navegador: sirve para elegir bien antes de procesar. El video real solo se genera al pulsar el botón, y se ve como la previa."
+      ]
+    }
+  ]
+}
