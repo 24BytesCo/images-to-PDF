@@ -1,0 +1,1 @@
+Wrappers UMD de @ffmpeg/ffmpeg 0.12.15 (MIT). El nucleo @ffmpeg/core 0.12.10 (un hilo) NO va en el repo: se sirve desde cdn.24bytes.pro/ffmpeg/0.12.10/.

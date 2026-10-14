@@ -34,6 +34,17 @@ ICONOS = {
 }
 
 
+# Iconos de audio y video (bloque aparte para no chocar al fusionar con otras ramas).
+ICONOS.update({
+    "audio": '<path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>',
+    "recortar": '<circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="m8 8.5 12 8M8 15.5l12-8"/>',
+    "video": '<path d="M3 6h13v12H3z"/><path d="m16 10 5-3v10l-5-3"/>',
+    "gif": '<path d="M3 5h18v14H3z"/><path d="M9.5 10.5H8a1.5 1.5 0 0 0 0 3h1.5V12M13 10v4M16 14v-4h2.5M16 12h2"/>',
+    "silencio": '<path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="m16 9 5 6m0-6-5 6"/>',
+    "unir-audio": '<path d="M3 9h3v6H3zM9 6h3v12H9zM15 8h3v8h-3z"/><path d="M20.5 12H22"/>',
+})
+
+
 def svg(clave: str) -> str:
     trazos = ICONOS.get(clave, ICONOS["organizar"])
     return (
@@ -268,7 +279,7 @@ def portada(paginas: list[dict], plantilla: str, cfg: dict, com: dict) -> str:
         {"@context": "https://schema.org", "@type": "WebSite", "name": cfg["marca"], "url": cfg["base_url"],
          "inLanguage": "es", "description": cfg["lema"],
          "publisher": {"@type": "Organization", "name": "24Bytes", "url": "https://24bytes.pro"}},
-        {"@context": "https://schema.org", "@type": "ItemList", "name": "Herramientas PDF",
+        {"@context": "https://schema.org", "@type": "ItemList", "name": cfg.get("lista_nombre", "Herramientas PDF"),
          "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": p["nombre"], "url": f'{cfg["base_url"]}{p["slug"]}/'}
                              for i, p in enumerate(principales(paginas))]},
     ]

@@ -38,5 +38,47 @@
       "porque_h": "Por qué no subimos tus fotos",
       "porque_p": "Casi todas las herramientas de imágenes en línea suben tu foto a un servidor ajeno para procesarla. Aquí el trabajo lo hace tu propio navegador: la foto del documento, el recibo o la imagen personal nunca viajan por internet. Puedes comprobarlo desconectando el wifi después de cargar la página: todo sigue funcionando."
     }
+  },
+  "audio": {
+    "dominio": "audio.24bytes.pro",
+    "base_url": "https://audio.24bytes.pro/",
+    "marca": "24Bytes Audio",
+    "sello": "AUD",
+    "lema": "Herramientas de audio que no suben tus archivos",
+    "verificacion_google": "35QQddAFVCcauzJO1nGmIASlRfsLoPmEYeIm7bbcaj4",
+    "adsense_client": "",
+    "umami_id": "",
+    "nombre_pie": "Más herramientas",
+    "contacto": false,
+    "og_image_alt": "24Bytes Audio: herramientas de audio que no suben tus archivos",
+    "lista_nombre": "Herramientas de audio",
+    "portada": {
+      "titulo": "24Bytes Audio: sacar MP3, recortar y unir audios sin subirlos",
+      "descripcion": "Herramientas de audio gratis que funcionan en tu navegador: pasar un video a MP3, recortar, unir y convertir audios. Tus archivos no se suben a ningún servidor.",
+      "bajada": "Saca el audio de un video, recórtalo, únelo o conviértelo directamente en tu navegador. Tus archivos no se suben a ningún servidor: ni registro, ni marca de agua, ni límite de uso.",
+      "porque_h": "Por qué no subimos tus audios",
+      "porque_p": "Casi todos los conversores de audio en línea envían tu archivo a un servidor ajeno: la nota de voz, la grabación de una reunión o la entrevista pasan por máquinas que no controlas. Aquí el trabajo lo hace tu propio navegador con ffmpeg compilado a WebAssembly. La primera vez se descarga el motor (unos 30 MB, se guarda en la caché y no se vuelve a bajar); tus archivos nunca salen de tu equipo."
+    }
+  },
+  "video": {
+    "dominio": "video.24bytes.pro",
+    "base_url": "https://video.24bytes.pro/",
+    "marca": "24Bytes Video",
+    "sello": "VID",
+    "lema": "Herramientas de video que no suben tus archivos",
+    "verificacion_google": "35QQddAFVCcauzJO1nGmIASlRfsLoPmEYeIm7bbcaj4",
+    "adsense_client": "",
+    "umami_id": "",
+    "nombre_pie": "Más herramientas",
+    "contacto": false,
+    "og_image_alt": "24Bytes Video: herramientas de video que no suben tus archivos",
+    "lista_nombre": "Herramientas de video",
+    "portada": {
+      "titulo": "24Bytes Video: comprimir video y hacer GIF sin subir archivos",
+      "descripcion": "Herramientas de video gratis que funcionan en tu navegador: comprimir video, convertir video a GIF y quitar el audio. Tus videos no se suben a ningún servidor.",
+      "bajada": "Comprime un video, conviértelo en GIF o quítale el sonido directamente en tu navegador. Tus videos no se suben a ningún servidor: ni registro, ni marca de agua, ni límite de uso.",
+      "porque_h": "Por qué no subimos tus videos",
+      "porque_p": "Casi todos los compresores de video en línea te piden subir el archivo completo a un servidor ajeno y esperar la cola. Aquí el trabajo lo hace tu propio navegador con ffmpeg compilado a WebAssembly: el video familiar, la grabación de pantalla o el material de un cliente no viajan por internet. La primera vez se descarga el motor (unos 30 MB, queda en la caché); tus videos nunca salen de tu equipo."
+    }
   }
 }

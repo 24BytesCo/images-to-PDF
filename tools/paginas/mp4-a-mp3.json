@@ -1,0 +1,67 @@
+{
+  "slug": "mp4-a-mp3",
+  "sitio": "audio",
+  "orden": 1,
+  "nombre": "MP4 a MP3",
+  "icono": "audio",
+  "titulo": "Convertir MP4 a MP3 gratis online sin subir el video",
+  "descripcion": "Extrae el audio de un video MP4, MOV o WebM y guárdalo como MP3 en tu propio navegador. Gratis, sin marca de agua y sin subir el archivo.",
+  "h1": "Convertir MP4 a MP3 sin subir el video",
+  "bajada": "Saca el audio de cualquier video y guárdalo como MP3. Todo ocurre en tu navegador: el video no se sube a ningún servidor.",
+  "resumen_tarjeta": "Extrae el audio de un video MP4, MOV o WebM y guárdalo como MP3.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/mp4-a-mp3.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video.",
+      "Arrástralo a la zona de carga o pulsa para seleccionarlo. También sirve un audio (M4A, WAV…)."
+    ],
+    [
+      "Escoge la calidad.",
+      "192 kbps es un buen punto medio; 320 kbps para música; 64 kbps mono para voz o clases grabadas."
+    ],
+    [
+      "Extrae y descarga.",
+      "Verás el progreso real; al terminar puedes escucharlo antes de descargarlo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Se pierde calidad al pasar de MP4 a MP3?",
+      "r": "El audio del MP4 ya viene comprimido (casi siempre AAC). Al pasarlo a MP3 se recodifica, así que hay una pérdida mínima; con 192 kbps o más no se nota al oído. No se puede recuperar calidad que el video original no tenía."
+    },
+    {
+      "p": "¿Funciona con videos de WhatsApp, del celular o grabaciones de pantalla?",
+      "r": "Sí, con MP4, MOV, WebM, MKV y la mayoría de formatos. Si el video no tiene pista de audio (por ejemplo, una grabación de pantalla sin sonido), la herramienta te lo dice en vez de entregar un archivo vacío."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El procesamiento ocurre en tu navegador con ffmpeg compilado a WebAssembly. Puedes comprobarlo: abre la herramienta, espera a que cargue el motor, desconecta el wifi y úsala; funciona igual."
+    },
+    {
+      "p": "¿Por qué la primera vez tarda en empezar?",
+      "r": "Sí. La primera vez que usas una herramienta se descarga el motor de conversión (ffmpeg, unos 30 MB) desde nuestro CDN; después queda en la caché de tu navegador y no se vuelve a bajar. Lo único que viaja es ese motor: tu archivo nunca se envía a ningún servidor."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador mantiene el archivo varias veces en RAM mientras lo procesa y, por encima de eso, la pestaña se cierra sin avisar. Si tu archivo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Qué calidad elegir para cada caso",
+      "p": [
+        "Música que vas a guardar: 320 kbps conserva todo lo que había en el video. Para escuchar en el celular con auriculares, 192 kbps es prácticamente indistinguible y pesa casi la mitad.",
+        "Voz (clases, entrevistas, notas de voz, reuniones): la opción de 64 kbps mono suele bastar y deja archivos muy pequeños, fáciles de enviar por correo o WhatsApp. Si la voz queda con poca presencia, sube a 128 kbps."
+      ]
+    },
+    {
+      "h": "Qué pasa con la imagen y los subtítulos",
+      "p": [
+        "Solo se conserva el sonido: la imagen, los subtítulos y los capítulos del video se descartan. Si lo que quieres es lo contrario, quitar el sonido y dejar el video, usa «Quitar el audio de un video»."
+      ]
+    }
+  ]
+}

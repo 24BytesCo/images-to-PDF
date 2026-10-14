@@ -1,0 +1,65 @@
+{
+  "slug": "quitar-audio-video",
+  "sitio": "video",
+  "orden": 3,
+  "nombre": "Quitar audio de un video",
+  "icono": "silencio",
+  "titulo": "Quitar el audio de un video online gratis sin subirlo",
+  "descripcion": "Elimina el sonido de un video MP4, MOV o WebM sin recodificar ni perder calidad de imagen. En tu navegador, sin subir el archivo.",
+  "h1": "Quitar el audio de un video sin subirlo",
+  "bajada": "Deja el video sin sonido en segundos y sin perder calidad de imagen: el video no se recodifica, solo se descarta la pista de audio.",
+  "resumen_tarjeta": "Deja el video sin sonido, sin recodificar ni perder calidad.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/quitar-audio-video.js"
+  ],
+  "pasos": [
+    [
+      "Elige el video.",
+      "Arrástralo a la zona de carga o pulsa para seleccionarlo."
+    ],
+    [
+      "Quita el audio.",
+      "Se descarta la pista de sonido y se conserva el video tal cual."
+    ],
+    [
+      "Revisa y descarga.",
+      "Reprodúcelo para confirmar que quedó mudo y guárdalo."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Se pierde calidad de imagen?",
+      "r": "No. El video no se recodifica: se copia exactamente igual y solo se omite la pista de audio. Por eso es casi instantáneo y el peso baja en lo que ocupaba el sonido."
+    },
+    {
+      "p": "¿Para qué sirve?",
+      "r": "Para publicar un video sin música con derechos, para quitar una conversación de fondo, para usarlo como fondo de una web o presentación, o para reemplazar el sonido en un editor sin arrastrar el original."
+    },
+    {
+      "p": "¿Puedo poner otra música después?",
+      "r": "Esta herramienta solo quita el sonido. El video mudo se abre en cualquier editor, o en el reproductor del sistema, para añadir otra pista."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El procesamiento ocurre en tu navegador con ffmpeg compilado a WebAssembly. Puedes comprobarlo: abre la herramienta, espera a que cargue el motor, desconecta el wifi y úsala; funciona igual."
+    },
+    {
+      "p": "¿Por qué la primera vez tarda en empezar?",
+      "r": "Sí. La primera vez que usas una herramienta se descarga el motor de conversión (ffmpeg, unos 30 MB) desde nuestro CDN; después queda en la caché de tu navegador y no se vuelve a bajar. Lo único que viaja es ese motor: tu archivo nunca se envía a ningún servidor."
+    },
+    {
+      "p": "¿Qué tamaño de archivo admite?",
+      "r": "Hasta 500 MB por archivo. Es un tope de memoria: el navegador mantiene el archivo varias veces en RAM mientras lo procesa y, por encima de eso, la pestaña se cierra sin avisar. Si tu archivo es más grande, recórtalo o comprímelo antes."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Cuándo usar esto en lugar de silenciar",
+      "p": [
+        "Silenciar el volumen en el reproductor no cambia el archivo: quien lo reciba oirá todo. Quitar la pista de audio elimina el sonido de verdad, que es lo que necesitas antes de compartir un video con conversaciones privadas o música con derechos.",
+        "Como el video se copia sin recodificar, el resultado conserva el formato y la calidad exactos del original."
+      ]
+    }
+  ]
+}

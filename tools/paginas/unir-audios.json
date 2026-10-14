@@ -1,0 +1,65 @@
+{
+  "slug": "unir-audios",
+  "sitio": "audio",
+  "orden": 4,
+  "nombre": "Unir audios",
+  "icono": "unir-audio",
+  "titulo": "Unir audios online gratis: juntar varios MP3 en uno sin subirlos",
+  "descripcion": "Une varios audios (MP3, WAV, M4A, OGG) en un solo archivo MP3 en el orden que elijas. En tu navegador, sin subir nada.",
+  "h1": "Unir varios audios en un solo MP3",
+  "bajada": "Junta grabaciones, pistas o notas de voz en un único archivo, en el orden que quieras. No se sube a ningún servidor.",
+  "resumen_tarjeta": "Junta varios audios en un solo MP3, en el orden que elijas.",
+  "scripts": [
+    "assets/js/ffmpeg-motor.js",
+    "assets/js/unir-audios.js"
+  ],
+  "pasos": [
+    [
+      "Elige los audios.",
+      "Arrástralos todos juntos o añádelos de a uno. Pueden ser de formatos distintos."
+    ],
+    [
+      "Ordénalos.",
+      "Usa las flechas ↑ ↓ de cada fila para ponerlos en el orden final."
+    ],
+    [
+      "Une y descarga.",
+      "Se genera un MP3 de 192 kbps con todos seguidos."
+    ]
+  ],
+  "faqs": [
+    {
+      "p": "¿Pueden ser formatos distintos?",
+      "r": "Sí. Cada audio se normaliza (44,1 kHz, estéreo) antes de unirlos, así que puedes mezclar un WAV con un M4A y un MP3."
+    },
+    {
+      "p": "¿Hay pausas o cortes entre los audios?",
+      "r": "Se unen sin pausa ni transición. Si quieres un silencio entre pistas, añade un audio de silencio entre ellas."
+    },
+    {
+      "p": "¿Por qué el resultado es siempre MP3?",
+      "r": "Para que un solo formato funcione en cualquier dispositivo. Si luego lo necesitas en WAV, M4A u OGG, pásalo por «Convertir audio»."
+    },
+    {
+      "p": "¿Mi archivo se sube a algún servidor?",
+      "r": "No. El procesamiento ocurre en tu navegador con ffmpeg compilado a WebAssembly. Puedes comprobarlo: abre la herramienta, espera a que cargue el motor, desconecta el wifi y úsala; funciona igual."
+    },
+    {
+      "p": "¿Por qué la primera vez tarda en empezar?",
+      "r": "Sí. La primera vez que usas una herramienta se descarga el motor de conversión (ffmpeg, unos 30 MB) desde nuestro CDN; después queda en la caché de tu navegador y no se vuelve a bajar. Lo único que viaja es ese motor: tu archivo nunca se envía a ningún servidor."
+    },
+    {
+      "p": "¿Cuánto pueden pesar?",
+      "r": "Entre todos los archivos, hasta 500 MB. Es un tope de memoria del navegador."
+    }
+  ],
+  "secciones": [
+    {
+      "h": "Ideas de uso",
+      "p": [
+        "Juntar las partes de una grabación larga que el celular cortó en varios archivos, armar un podcast con intro, cuerpo y cierre grabados por separado o compilar notas de voz de una misma reunión en un solo archivo para compartir.",
+        "Antes de unir, recorta cada pista con «Recortar audio» si tienen silencios largos al inicio o al final."
+      ]
+    }
+  ]
+}

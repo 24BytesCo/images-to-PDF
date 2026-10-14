@@ -1,0 +1,28 @@
+      <div class="zona" id="zona">
+        <span class="zona-icono"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14"/></svg></span>
+        <p class="zona-titulo">Arrastra tu video aquí</p>
+        <p class="zona-texto">o pulsa para elegirlo · MP4, MOV, WebM, MKV…</p>
+      </div>
+      <input class="entrada-archivo" id="entrada" type="file" aria-label="Elegir video" accept="video/*,.mp4,.m4v,.mov,.webm,.mkv,.avi,.3gp">
+
+      <div id="panel" hidden>
+        <div class="barra">
+          <span class="barra-info" id="resumen"></span>
+          <button class="boton boton-secundario boton-pequeno" type="button" id="vaciar">Vaciar</button>
+        </div>
+        <div class="opciones">
+          <label class="campo">Nivel de compresión
+            <select id="nivel"><option value="26">Ligera · casi sin diferencia</option><option value="28" selected>Equilibrada (recomendada)</option><option value="32">Fuerte · mucho menos peso</option></select>
+          </label>
+          <label class="campo">Resolución máxima (alto)
+            <select id="resolucion"><option value="0" selected>No cambiar</option><option value="1080">1080 p</option><option value="720">720 p</option><option value="480">480 p</option></select>
+          </label>
+        </div>
+        <p class="ayuda" id="avisoLargo" hidden>Este video es largo: comprimir en el navegador es más lento que en un servidor y puede tardar varios minutos. Deja la pestaña abierta.</p>
+
+        <div class="barra">
+          <span class="ayuda">La primera vez descarga el motor (~30 MB). Mantén la pestaña abierta.</span>
+          <button class="boton" type="button" id="ejecutar">Comprimir video</button>
+        </div>
+      </div>
+      <div id="salida"></div>
