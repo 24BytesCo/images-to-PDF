@@ -127,9 +127,14 @@
    */
   const ejecutar = async (opts) => {
     if (S.ocupado) S.ocupado(true, 'Procesando… no cierres la pestaña');
+    let bien = false;
     try {
-      return await ejecutarInterno(opts);
+      const blob = await ejecutarInterno(opts);
+      bien = true;
+      return blob;
     } finally {
+      // Con éxito, la espera se cumple antes de cerrar; un error la cierra al instante.
+      if (bien && typeof S.esperarMinimo === 'function') await S.esperarMinimo();
       if (S.ocupado) S.ocupado(false);
     }
   };

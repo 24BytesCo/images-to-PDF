@@ -40,7 +40,29 @@
     del repo de libheif en tiempo de prueba, no se versiona binario).
   - Pendientes de imagenes: **Umami** (crear sitio en el panel y poner `umami_id` en `sitios.json`);
     **formulario de contacto** desactivado (añadir origen `imagenes.24bytes.pro` al mapa `ORIGENES` del
-    Portafolio y poner `"contacto": true`). Faltan Paso 4 (R2/ffmpeg) y Paso 5 (audio/video).
+    Portafolio y poner `"contacto": true`).
+- **14/10: Pasos 4 y 5 HECHOS + ampliación.** Cuatro sitios vivos en Workers: pdf (10), imagenes (15),
+  audio (11), video (13) = **49 herramientas**. Suite `pytest tests` = 155 verdes (~3,5 min).
+  - **CDN:** bucket R2 `cdn` con `@ffmpeg/core@0.12.10` (un hilo) en `cdn.24bytes.pro/ffmpeg/0.12.10/`,
+    CORS solo `https://*.24bytes.pro` (+ localhost:8765), caché inmutable. Motor `assets/js/ffmpeg-motor.js`
+    (carga perezosa, tope 500 MB, aviso explícito si el CDN cae; override de test `window.CDN_FFMPEG`).
+  - **Despliegue:** `bash ~/publicar.sh` (paso4 R2 + paso5 Workers, idempotente) o, solo código,
+    `CLOUDFLARE_API_TOKEN=$(cat ~/.cf-pages-token) npx wrangler deploy -c wrangler.<sitio>.jsonc`. Desde el
+    14/10 el clasificador SÍ dejó a Claude correr ambos. El `!` NO funciona en sesiones remotas.
+  - **Espera con apoyo** (panel EN la página, no popup): barra, «Faltan N s», «¿Por qué te mostramos
+    esto?» y café; mínimo 10 s o lo que tarde; descarga retenida; error cierra al instante. Config por sitio
+    `espera {activa, minimo_seg, cafe_url}` en `sitios.json` (cafe_url vacío = sin botón). Toda descarga
+    DEBE ir por `Suite.descargar` (si no, se salta la compuerta). Tests: `window.SUITE_ESPERA_MIN_MS`
+    (conftest lo pone en 0; test_espera.py lo ejerce). El anuncio NO se inyecta ni refresca al pulsar.
+  - **Trampa de fusión (resuelta):** `ffmpeg-motor.ejecutar()` cerraba la espera en su `finally` antes del
+    mínimo; ahora espera `S.esperarMinimo()` si terminó bien.
+  - **Trampas del núcleo 0.12.10:** mjpeg con `-q:v` < 5 revienta; el filtro `fps` revienta con algunos
+    clips (usar `select` + `-vsync 0`); `afftdn` con `tn=1` no hace nada (usar `nf` medido).
+  - **AdSense:** `ca-pub-1072758812585458`; script + `ads.txt` en 24bytes.pro (Portafolio, 14/10). En los
+    sitios de herramientas aún NO (poner `adsense_client` en `sitios.json` tras la aprobación).
+  - **Pendientes:** enlace del café; Umami por sitio (imagenes/audio/video sin medición); Cancelar de
+    audio/video queda inerte durante la espera (decidir); Fase B (marca de agua en video, Whisper);
+    distribución (sitemaps a GSC, IndexNow); push (main va muy por delante de origin).
   - **Aviso en SECOP Monitor** (Paso 6, lo más rápido para ingresos): lo ejecuta la **sesión de SECOP-Monitor**
     por rama→QA→master (regla de una sesión por proyecto). Encargo listo en `docs/encargo-aviso-secop.md`.
   - Pendiente aquí: Paso 2 (CF Pages + DNS, requiere Alexis/Cloudflare), Paso 3 (imagenes.24bytes.pro),
