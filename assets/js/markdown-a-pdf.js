@@ -397,7 +397,8 @@
           margin: [0, 8, 0, 0],
         });
       }
-      window.pdfMake.createPdf(docDefinition).download(nombre);
+      const pdfBlob = await new Promise((ok) => window.pdfMake.createPdf(docDefinition).getBlob(ok));
+      S.descargar(pdfBlob, nombre, 'application/pdf');
       S.evento('descarga', { herramienta: 'markdown-a-pdf' });
       if (ctx.omitidas.valor) S.aviso('PDF creado. Algunas imágenes remotas no se pudieron incluir (bloqueadas por CORS).', '');
       else S.aviso('PDF creado. Revisa tus descargas.', 'ok');

@@ -112,7 +112,7 @@
         const { datos, formato: fmt } = await paraPdf(im);
         pdf.addImage(datos, fmt, (anchoPag - w) / 2, (altoPag - h) / 2, w, h, undefined, 'FAST');
       }
-      pdf.save(nombre);
+      S.descargar(pdf.output('blob'), nombre, 'application/pdf');
       S.aviso('PDF creado. Revisa tus descargas.', 'ok');
       S.evento('descarga', { herramienta: 'imagenes-a-pdf' });
     } catch (error) {
