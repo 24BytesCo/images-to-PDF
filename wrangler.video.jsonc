@@ -1,0 +1,8 @@
+{
+  // Worker de assets estáticos para video.24bytes.pro (sitio "video" de la suite).
+  // Sin lógica: solo sirve la carpeta sitios/video generada por tools/build.py.
+  // El núcleo de ffmpeg (31 MB) NO va aquí: se sirve desde cdn.24bytes.pro (R2).
+  "name": "video",
+  "compatibility_date": "2026-10-06",
+  "assets": { "directory": "sitios/video" }
+}
