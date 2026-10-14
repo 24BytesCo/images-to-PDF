@@ -128,19 +128,19 @@ páginas casi duplicadas por plantilla: «MOV/MKV/AVI/WEBM a MP4» es UNA herram
   (modelo de 40-150 MB: caro en descarga, alto valor).
 - Total tras Fase A: ~45 herramientas (28 actuales + ~17).
 
-### B. Espera con apoyo al proyecto (modal al procesar)
-- Al pulsar el botón que procesa/descarga, aparece un modal **no cerrable** con barra de progreso, mínimo
-  **10 s** o lo que tarde la conversión (lo mayor). Al terminar se cierra solo y se inicia la descarga.
-  Un error cierra el modal de inmediato (no se castiga el fallo).
+### B. Espera con apoyo al proyecto (panel en la misma página, NO popup — decisión de Alexis 14/10)
+- Al pulsar el botón que procesa/descarga, aparece un **panel dentro de la página** (al final de la zona
+  de la herramienta, junto al hueco de anuncio) con barra de progreso, «Faltan N s», mínimo **10 s** o lo
+  que tarde la conversión (lo mayor). Mientras dura, los controles de la herramienta quedan deshabilitados.
+  Al terminar se oculta y se inicia la descarga. Un error cierra el panel de inmediato.
 - Texto fijo «¿Por qué te mostramos esto?»: el sitio es gratuito y de código abierto; el aviso (y, cuando
   haya, un anuncio) ayuda a pagar dominios, servidores y bases de datos. Botón **«Invítame un café»**
   (`cafe_url` en `sitios.json`; si está vacío, el botón no se pinta).
-- Configurable por sitio en `sitios.json` (`espera.activa`, `minimo_seg`, `cafe_url`,
-  `anuncio_en_modal`). Gancho de pruebas: `window.SUITE_ESPERA_MIN_MS`.
-- **Riesgo AdSense:** hasta donde sé, las políticas de AdSense no admiten anuncios dentro de pop-ups o
-  interstitiales forzados, y una sanción afecta a la cuenta que cubre `24bytes.pro` (incluye SECOP). Por eso
-  `anuncio_en_modal` queda en **false** por defecto: el modal muestra la explicación y el café; el anuncio
-  va en el hueco normal bajo la herramienta. Revisar la política vigente antes de activarlo.
+- Configurable por sitio en `sitios.json` (`espera.activa`, `minimo_seg`, `cafe_url`). Gancho de pruebas:
+  `window.SUITE_ESPERA_MIN_MS`.
+- **AdSense:** el anuncio es el hueco normal de la página, cargado con la página; NO se inyecta ni se
+  refresca al pulsar (hasta donde sé, la política lo prohíbe, igual que los anuncios en pop-ups forzados).
+  El panel solo se coloca junto a él. Revisar la política vigente al activar AdSense.
 
 ## GSTACK REVIEW REPORT
 
