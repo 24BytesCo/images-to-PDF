@@ -65,8 +65,13 @@ def test_recursos_locales_existen_y_sin_cdn():
         html = (base / p["slug"] / "index.html").read_text(encoding="utf-8")
         for src in re.findall(r'<script[^>]+src="([^"]+)"', html):
             if src.startswith("http"):
-                # Solo analítica propia (Umami en 24bytes.pro); jamás librerías por CDN.
-                assert src.startswith("https://24bytes.pro/"), f"{p['slug']} carga {src}"
+                # Analítica propia (Umami en 24bytes.pro) y, desde el 15/10, el
+                # script de AdSense: son los dos únicos externos admitidos.
+                # Librerías por CDN siguen prohibidas.
+                permitido = src.startswith("https://24bytes.pro/") or src.startswith(
+                    "https://pagead2.googlesyndication.com/"
+                )
+                assert permitido, f"{p['slug']} carga {src}"
                 continue
             assert (base / p["slug"] / src).resolve().exists(), f"{p['slug']}: falta {src}"
 

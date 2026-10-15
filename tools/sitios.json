@@ -6,9 +6,13 @@
     "sello": "PDF",
     "lema": "Herramientas PDF que no suben tus archivos",
     "verificacion_google": "35QQddAFVCcauzJO1nGmIASlRfsLoPmEYeIm7bbcaj4",
-    "adsense_client": "",
+    "adsense_client": "ca-pub-1072758812585458",
     "umami_id": "00ab1a32-c1d0-4735-8506-4104a5eb7f58",
-    "espera": {"activa": true, "minimo_seg": 10, "cafe_url": ""},
+    "espera": {
+      "activa": true,
+      "minimo_seg": 10,
+      "cafe_url": ""
+    },
     "og_image_alt": "24Bytes PDF: herramientas PDF que no suben tus archivos",
     "nombre_pie": "Más herramientas",
     "contacto": true,
@@ -27,9 +31,13 @@
     "sello": "IMG",
     "lema": "Herramientas de imágenes que no suben tus fotos",
     "verificacion_google": "35QQddAFVCcauzJO1nGmIASlRfsLoPmEYeIm7bbcaj4",
-    "adsense_client": "",
+    "adsense_client": "ca-pub-1072758812585458",
     "umami_id": "",
-    "espera": {"activa": true, "minimo_seg": 10, "cafe_url": ""},
+    "espera": {
+      "activa": true,
+      "minimo_seg": 10,
+      "cafe_url": ""
+    },
     "og_image_alt": "24Bytes Imágenes: herramientas de imágenes que no suben tus fotos",
     "nombre_pie": "Más herramientas",
     "contacto": false,
@@ -49,9 +57,13 @@
     "sello": "AUD",
     "lema": "Herramientas de audio que no suben tus archivos",
     "verificacion_google": "35QQddAFVCcauzJO1nGmIASlRfsLoPmEYeIm7bbcaj4",
-    "adsense_client": "",
+    "adsense_client": "ca-pub-1072758812585458",
     "umami_id": "",
-    "espera": {"activa": true, "minimo_seg": 10, "cafe_url": ""},
+    "espera": {
+      "activa": true,
+      "minimo_seg": 10,
+      "cafe_url": ""
+    },
     "nombre_pie": "Más herramientas",
     "contacto": false,
     "og_image_alt": "24Bytes Audio: herramientas de audio que no suben tus archivos",
@@ -71,9 +83,13 @@
     "sello": "VID",
     "lema": "Herramientas de video que no suben tus archivos",
     "verificacion_google": "35QQddAFVCcauzJO1nGmIASlRfsLoPmEYeIm7bbcaj4",
-    "adsense_client": "",
+    "adsense_client": "ca-pub-1072758812585458",
     "umami_id": "",
-    "espera": {"activa": true, "minimo_seg": 10, "cafe_url": ""},
+    "espera": {
+      "activa": true,
+      "minimo_seg": 10,
+      "cafe_url": ""
+    },
     "nombre_pie": "Más herramientas",
     "contacto": false,
     "og_image_alt": "24Bytes Video: herramientas de video que no suben tus archivos",

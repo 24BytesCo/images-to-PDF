@@ -4,6 +4,23 @@
 
 ## 0. Estado al 2026-10-12 — LEER PRIMERO
 
+- **Publicidad (15/10, hecho por la sesión Portafolio por encargo de Alexis):**
+  AdSense `ca-pub-1072758812585458` activo en los cuatro sitios
+  (`adsense_client` en `tools/sitios.json`) y `ads.txt` propio por sitio que
+  escribe `build.py` junto al `robots.txt`. Desplegado con
+  `npx wrangler deploy -c wrangler.<sitio>.jsonc` y verificado desde fuera.
+  - **Solo el script**: `anuncio()` ya no pinta el `<ins>` salvo que el sitio
+    declare `adsense_slot`. Sin slot el bloque no se llena y `.anuncio` reserva
+    120 px, o sea un hueco vacío en cada página. Los anuncios automáticos los
+    coloca Google con el script.
+  - **Dos reglas de la suite cambiaron**, porque la publicidad las rompía:
+    `test_recursos_locales_existen_y_sin_cdn` admite ahora el origen de AdSense
+    (nada más; las librerías por CDN siguen prohibidas), y el presupuesto de
+    300 KB de `test_ffmpeg_ampliacion.py` excluye el tráfico de anuncios igual
+    que ya excluía el núcleo de ffmpeg: mide NUESTRO peso. AdSense añade unos
+    700 KB por carga. Suite tras el cambio: 154 pasan, 1 se salta.
+  - SECOP Monitor y San Roque NO llevan anuncios por ser productos de pago.
+
 - **Publicada** «Preparar oferta para SECOP II» (`/oferta-secop-pdf/`, commit `ee3fd93`): une, folia con folio
   corrido entre partes y parte en archivos de menos de 50 MB; compresión opcional con pdf-lib (jsPDF compartía
   recursos y cada parte cargaba todas las imágenes). Probada en Chrome a 1280 y 390 px.

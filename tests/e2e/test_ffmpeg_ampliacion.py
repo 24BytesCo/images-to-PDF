@@ -511,7 +511,12 @@ def test_nuevas_sin_desborde_ni_errores_y_livianas(sesion_factory, sitio, slug):
     pg.wait_for_load_state("networkidle")
     assert not pg.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1"), "desborde a 390 px"
     assert not s.errores, s.errores
-    total = sum(n for u, n in pesos if "ffmpeg-core" not in u and "/vendor/ffmpeg/" not in u)
+    # El presupuesto mide NUESTRO peso: fuera el núcleo de ffmpeg y la
+    # publicidad (AdSense trae ~700 KB propios y se carga en paralelo).
+    ajenos = ("ffmpeg-core", "/vendor/ffmpeg/", "googlesyndication.com",
+              "doubleclick.net", "googleadservices.com", "adtrafficquality.google",
+              "google.com/pagead", "googletagservices.com")
+    total = sum(n for u, n in pesos if not any(a in u for a in ajenos))
     assert total < 300 * 1024, f"{slug}: {total} bytes antes del primer uso"
     assert not any("ffmpeg-core" in u for u, _ in pesos), "el núcleo no debe bajarse hasta usar la herramienta"
 

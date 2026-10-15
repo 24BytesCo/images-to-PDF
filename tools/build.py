@@ -147,7 +147,10 @@ def json_ld(objeto: dict) -> str:
 
 
 def anuncio(cfg: dict, posicion: str) -> str:
-    if not cfg["adsense_client"]:
+    # Sin `adsense_slot` no se pinta el bloque: un <ins> sin slot no se llena y
+    # `.anuncio` reserva 120 px, así que dejaría un hueco vacío en cada página.
+    # Con solo el script, Google coloca los anuncios automáticos donde quiera.
+    if not cfg["adsense_client"] or not cfg.get("adsense_slot"):
         return ""
     return (
         f'<aside class="anuncio" aria-label="Publicidad" data-posicion="{posicion}">'
@@ -410,6 +413,11 @@ def construir_sitio(clave: str, cfg: dict, sitios: dict, plantilla: str) -> int:
     sitemap.append("</urlset>")
     (salida / "sitemap.xml").write_text("\n".join(sitemap) + "\n", encoding="utf-8")
     (salida / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {cfg['base_url']}sitemap.xml\n", encoding="utf-8")
+    if cfg["adsense_client"]:
+        # Google lee el ads.txt de la raíz para los subdominios, pero uno propio
+        # por sitio evita depender de eso.
+        pub = cfg["adsense_client"].replace("ca-", "")
+        (salida / "ads.txt").write_text(f"google.com, {pub}, DIRECT, f08c47fec0942fa0\n", encoding="utf-8")
     print(f"[{clave}] {len(principales(paginas))} herramientas, {len(paginas) - len(principales(paginas))} páginas más + portada + sitemap ({len(urls)} URLs)")
     return len(urls)
 
